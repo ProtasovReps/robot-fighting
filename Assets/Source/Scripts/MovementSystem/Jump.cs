@@ -1,5 +1,6 @@
 using NewInputSystem;
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace Movement
@@ -9,11 +10,17 @@ namespace Movement
         [SerializeField] private float _jumpHeight;
         [SerializeField] private float _jumpTime;
         [SerializeField] private float _fallSpeed;
-        [SerializeField] private InputReader _inputReader; // Reflex
-
+        
         private float _startHeight;
+        private InputReader _inputReader;
         private Transform _transform;
 
+        [Inject]
+        private void Inject(InputReader inputReader)
+        {
+            _inputReader = inputReader;
+        }
+        
         private void Awake()
         {
             _transform = transform;
@@ -30,11 +37,11 @@ namespace Movement
         {
             if (_transform.position.y > _startHeight)
                 return;
-
-            StartCoroutine(TranslateUp());
+            
+            TranslateUp().Forget();
         }
 
-        private IEnumerator TranslateUp() // лучше на эвейтах (юнитаск)
+        private async UniTaskVoid TranslateUp()
         {
             Vector3 targetPosition = _transform.position + _transform.up * _jumpHeight;
             float expiredTime = 0f;
@@ -45,18 +52,18 @@ namespace Movement
 
                 _transform.position = new Vector3(_transform.position.x, upPosition, _transform.position.z);
                 expiredTime += Time.deltaTime;
-                yield return null;
+                await UniTask.Yield();
             }
-
-            StartCoroutine(TranslateDown());
+            
+            TranslateDown().Forget();
         }
 
-        private IEnumerator TranslateDown()
+        private async UniTaskVoid TranslateDown()
         {
             while (_transform.position.y > _startHeight)
             {
                 _transform.position += _fallSpeed * Time.deltaTime * Physics.gravity;
-                yield return null;
+                await UniTask.Yield();
             }
         }
     }

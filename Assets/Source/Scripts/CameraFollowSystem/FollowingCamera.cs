@@ -1,41 +1,46 @@
 using UnityEngine;
 
-public class FollowingCamera : MonoBehaviour
+namespace Camera
 {
-    [SerializeField] private Transform _firstFighter;
-    [SerializeField] private Transform _secondFighter;
-    [SerializeField] private float _maxCameraDistance;
-    [SerializeField] private float _minCameraDistance;
-    [SerializeField] private float _followSpeed;
-    [SerializeField] private float _zoomSpeed;
-
-    private Transform _transform;
-
-    private void Awake()
+    public class FollowingCamera : MonoBehaviour
     {
-        _transform = transform;
-    }
+        [SerializeField] private Transform _firstFighter;
+        [SerializeField] private Transform _secondFighter;
+        [SerializeField] private float _maxCameraDistance;
+        [SerializeField] private float _minCameraDistance;
+        [SerializeField] private float _followSpeed;
+        [SerializeField] private float _zoomSpeed;
 
-    private void Update()
-    {
-        Follow();
-        ChangeOffset();
-    }
+        private Transform _transform;
 
-    private void Follow()
-    {
-        float centralRightPosition = (_firstFighter.position.x + _secondFighter.position.x) * 0.5f;
-        var newPosition = new Vector3(centralRightPosition, _transform.position.y, _transform.position.z);
+        private void Awake()
+        {
+            _transform = transform;
+        }
 
-        _transform.position = Vector3.Lerp(_transform.position, newPosition, _followSpeed * Time.deltaTime);
-    }
+        private void Update()
+        {
+            Follow();
+            ChangeOffset();
+        }
 
-    private void ChangeOffset()
-    {
-        float playerDistance = Mathf.Abs(_firstFighter.position.x - _secondFighter.position.x);
-        float targetForwardPosition = Mathf.Lerp(_minCameraDistance, _maxCameraDistance, playerDistance / _maxCameraDistance);
-        float newForwardPosition = Mathf.Lerp(_transform.position.z, -targetForwardPosition, _zoomSpeed * Time.deltaTime);
+        private void Follow()
+        {
+            float centralRightPosition = (_firstFighter.position.x + _secondFighter.position.x) * 0.5f;
+            var newPosition = new Vector3(centralRightPosition, _transform.position.y, _transform.position.z);
 
-        _transform.position = new Vector3(_transform.position.x, _transform.position.y, newForwardPosition);
+            _transform.position = Vector3.Lerp(_transform.position, newPosition, _followSpeed * Time.deltaTime);
+        }
+
+        private void ChangeOffset()
+        {
+            float playerDistance = Mathf.Abs(_firstFighter.position.x - _secondFighter.position.x);
+            float targetForwardPosition =
+                Mathf.Lerp(_minCameraDistance, _maxCameraDistance, playerDistance / _maxCameraDistance);
+            float newForwardPosition =
+                Mathf.Lerp(_transform.position.z, -targetForwardPosition, _zoomSpeed * Time.deltaTime);
+
+            _transform.position = new Vector3(_transform.position.x, _transform.position.y, newForwardPosition);
+        }
     }
 }

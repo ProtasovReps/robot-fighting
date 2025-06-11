@@ -1,5 +1,6 @@
 using Extensions;
 using NewInputSystem;
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace Movement
@@ -7,11 +8,17 @@ namespace Movement
     public class PositionTranslation : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
-        [SerializeField] private InputReader _inputReader; // сервис, получать через Reflex
         [SerializeField] private DistanceValidator _distanceValidator;
 
+        private InputReader _inputReader;
         private Transform _transform;
 
+        [Inject]
+        private void Inject(InputReader inputReader)
+        {
+            _inputReader = inputReader;
+        }
+        
         private void Awake()
         {
             _transform = transform;
