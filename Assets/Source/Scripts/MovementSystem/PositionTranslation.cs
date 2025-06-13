@@ -1,37 +1,36 @@
 using Extensions;
-using NewInputSystem;
+using InputSystem;
+using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace Movement
+namespace MovementSystem
 {
     public class PositionTranslation : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private DistanceValidator _distanceValidator;
-
+       
         private InputReader _inputReader;
         private Transform _transform;
-
+        
         [Inject]
         private void Inject(InputReader inputReader)
         {
             _inputReader = inputReader;
         }
         
-        private void Awake()
+        private void Start()
         {
             _transform = transform;
+            _inputReader.Direction
+                .Subscribe(TranslatePosition)
+                .AddTo(this);
         }
 
-        private void Update()
+        private void TranslatePosition(float direction)
         {
-            TranslatePosition();
-        }
-
-        private void TranslatePosition()
-        {
-            float targetDistance = _inputReader.Direction * _moveSpeed * Time.deltaTime;
+            float targetDistance = direction * _moveSpeed * Time.deltaTime;
             Vector3 targetPosition = _transform.position + _transform.right * targetDistance;
 
             if (_distanceValidator.IsValidDistance(targetPosition) == false)

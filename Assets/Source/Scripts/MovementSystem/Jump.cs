@@ -1,16 +1,17 @@
-using NewInputSystem;
+using InputSystem;
 using Cysharp.Threading.Tasks;
+using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace Movement
+namespace MovementSystem
 {
     public class Jump : MonoBehaviour
     {
         [SerializeField] private float _jumpHeight;
         [SerializeField] private float _jumpTime;
         [SerializeField] private float _fallSpeed;
-        
+
         private float _startHeight;
         private InputReader _inputReader;
         private Transform _transform;
@@ -20,28 +21,25 @@ namespace Movement
         {
             _inputReader = inputReader;
         }
-        
-        private void Awake()
+
+        private void Start()
         {
             _transform = transform;
-            _inputReader.JumpPressed += OnJumpPressed;
             _startHeight = transform.position.y;
-        }
-
-        private void OnDestroy()
-        {
-            _inputReader.JumpPressed -= OnJumpPressed;
+            _inputReader.JumpPressed
+                .Subscribe(_ => OnJumpPressed())
+                .AddTo(this);
         }
 
         private void OnJumpPressed()
         {
             if (_transform.position.y > _startHeight)
                 return;
-            
+
             TranslateUp().Forget();
         }
 
-        private async UniTaskVoid TranslateUp()
+        private async UniTaskVoid TranslateUp() // может в будущем понадобится добавить CancellationToken для прерывания подъема при получении урона
         {
             Vector3 targetPosition = _transform.position + _transform.up * _jumpHeight;
             float expiredTime = 0f;
@@ -54,7 +52,7 @@ namespace Movement
                 expiredTime += Time.deltaTime;
                 await UniTask.Yield();
             }
-            
+
             TranslateDown().Forget();
         }
 

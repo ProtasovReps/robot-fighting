@@ -1,4 +1,4 @@
-using NewInputSystem;
+using InputSystem;
 using Reflex.Core;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ namespace Reflex
     public class LevelInstaller : MonoBehaviour, IInstaller
     {
         [SerializeField] private InputReader _inputReader;
-
+        
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             InstallInput(containerBuilder);

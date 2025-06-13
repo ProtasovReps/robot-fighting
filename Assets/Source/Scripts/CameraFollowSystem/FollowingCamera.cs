@@ -1,6 +1,7 @@
+using R3;
 using UnityEngine;
 
-namespace Camera
+namespace CameraFollowSystem
 {
     public class FollowingCamera : MonoBehaviour
     {
@@ -16,15 +17,19 @@ namespace Camera
         private void Awake()
         {
             _transform = transform;
+            
+            Observable.EveryUpdate()
+                .Subscribe(_ => Animate())
+                .AddTo(this);
         }
 
-        private void Update()
+        private void Animate()
         {
-            Follow();
-            ChangeOffset();
+            Centralize();
+            Zoom();
         }
 
-        private void Follow()
+        private void Centralize()
         {
             float centralRightPosition = (_firstFighter.position.x + _secondFighter.position.x) * 0.5f;
             var newPosition = new Vector3(centralRightPosition, _transform.position.y, _transform.position.z);
@@ -32,7 +37,7 @@ namespace Camera
             _transform.position = Vector3.Lerp(_transform.position, newPosition, _followSpeed * Time.deltaTime);
         }
 
-        private void ChangeOffset()
+        private void Zoom()
         {
             float playerDistance = Mathf.Abs(_firstFighter.position.x - _secondFighter.position.x);
             float targetForwardPosition =

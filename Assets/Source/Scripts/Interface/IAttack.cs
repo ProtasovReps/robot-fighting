@@ -1,4 +1,4 @@
-namespace CustomInterface
+namespace Interface
 {
     public interface IAttack
     {
