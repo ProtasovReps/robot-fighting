@@ -7,24 +7,27 @@ namespace InputSystem
     {
         private UserInput _input;
         private Subject<Unit> _jumpPressed;
-        private ReactiveProperty<float> _direction;
-
+        private Subject<Unit> _upAttackPressed;
+        private Subject<float> _directionChanged;
+        
         public Observable<Unit> JumpPressed => _jumpPressed;
-        public ReadOnlyReactiveProperty<float> Direction => _direction;
+        public Observable<Unit> UpAttackPressed => _upAttackPressed;
+        public Observable<float> DirectionChanged => _directionChanged;
         
         private void Awake()
         {
             Observable.EveryUpdate()
-                .Subscribe(_ => _direction.OnNext(_input.Player.Move.ReadValue<float>()))
+                .Subscribe(_ => _directionChanged.OnNext(_input.Player.Move.ReadValue<float>()))
                 .AddTo(this);
             
-            _input.Player.Jump.performed += inputAction => _jumpPressed.OnNext(Unit.Default);
+            _input.Player.Jump.performed += _ => _jumpPressed.OnNext(Unit.Default);
+            _input.Player.FistPunch.performed += _ => _upAttackPressed.OnNext(Unit.Default);
         }
 
         private void OnDestroy()
         {
             _jumpPressed.OnCompleted();
-            _direction.OnCompleted();
+            _directionChanged.OnCompleted();
             _input.Disable();
         }
 
@@ -32,7 +35,8 @@ namespace InputSystem
         {
             _input = input;
             _jumpPressed = new Subject<Unit>();
-            _direction = new ReactiveProperty<float>();
+            _upAttackPressed  = new Subject<Unit>();
+            _directionChanged = new Subject<float>();
             
             _input.Enable();
         }

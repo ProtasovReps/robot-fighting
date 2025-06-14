@@ -23,7 +23,7 @@ namespace MovementSystem
         private void Start()
         {
             _transform = transform;
-            _inputReader.Direction
+            _inputReader.DirectionChanged
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
         }
@@ -31,7 +31,7 @@ namespace MovementSystem
         private void TranslatePosition(float direction)
         {
             float targetDistance = direction * _moveSpeed * Time.deltaTime;
-            Vector3 targetPosition = _transform.position + _transform.right * targetDistance;
+            Vector3 targetPosition = _transform.position + Vector3.right * targetDistance;
 
             if (_distanceValidator.IsValidDistance(targetPosition) == false)
                 return;

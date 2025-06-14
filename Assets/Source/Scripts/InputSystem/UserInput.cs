@@ -46,6 +46,15 @@ namespace InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FistPunch"",
+                    ""type"": ""Button"",
+                    ""id"": ""adc164a2-6015-4743-af82-f421f6bc3d1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +156,17 @@ namespace InputSystem
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1dd6b013-6914-464a-be83-05fb72da8839"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""FistPunch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -180,6 +200,7 @@ namespace InputSystem
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_FistPunch = m_Player.FindAction("FistPunch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -243,12 +264,14 @@ namespace InputSystem
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_FistPunch;
         public struct PlayerActions
         {
             private @UserInput m_Wrapper;
             public PlayerActions(@UserInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @FistPunch => m_Wrapper.m_Player_FistPunch;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -264,6 +287,9 @@ namespace InputSystem
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @FistPunch.started += instance.OnFistPunch;
+                @FistPunch.performed += instance.OnFistPunch;
+                @FistPunch.canceled += instance.OnFistPunch;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -274,6 +300,9 @@ namespace InputSystem
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @FistPunch.started -= instance.OnFistPunch;
+                @FistPunch.performed -= instance.OnFistPunch;
+                @FistPunch.canceled -= instance.OnFistPunch;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -313,6 +342,7 @@ namespace InputSystem
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnFistPunch(InputAction.CallbackContext context);
         }
     }
 }
