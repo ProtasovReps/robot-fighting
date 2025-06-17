@@ -3,7 +3,7 @@ using HealthSystem;
 using Interface;
 using UnityEngine;
 
-namespace FighterSystem
+namespace CharacterSystem
 {
     public class Fighter : MonoBehaviour
     {

@@ -1,5 +1,7 @@
 using Extensions;
+using FighterStateSystem.States;
 using InputSystem;
+using Interface;
 using R3;
 using Reflex.Attributes;
 using UnityEngine;
@@ -13,17 +15,20 @@ namespace MovementSystem
        
         private InputReader _inputReader;
         private Transform _transform;
+        private IStateChangeable _stateMachine;
         
         [Inject]
-        private void Inject(InputReader inputReader)
+        private void Inject(InputReader inputReader, IStateChangeable stateMachine)
         {
             _inputReader = inputReader;
+            _stateMachine = stateMachine;
         }
         
         private void Start()
         {
             _transform = transform;
-            _inputReader.DirectionChanged
+            _inputReader.Direction
+                .Where(_ => _stateMachine.CurrentState == typeof(MoveState) || _stateMachine.CurrentState == typeof(MoveJumpState))
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
         }

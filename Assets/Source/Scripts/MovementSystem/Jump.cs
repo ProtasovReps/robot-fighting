@@ -1,5 +1,7 @@
-using InputSystem;
 using Cysharp.Threading.Tasks;
+using FighterStateSystem.States;
+using InputSystem;
+using Interface;
 using R3;
 using Reflex.Attributes;
 using UnityEngine;
@@ -15,11 +17,15 @@ namespace MovementSystem
         private float _startHeight;
         private InputReader _inputReader;
         private Transform _transform;
+        private IStateChangeable _stateMachine;
 
+        public bool IsJumping => transform.position.y > _startHeight;
+        
         [Inject]
-        private void Inject(InputReader inputReader)
+        private void Inject(InputReader inputReader, IStateChangeable stateMachine)
         {
             _inputReader = inputReader;
+            _stateMachine = stateMachine;
         }
 
         private void Start()
@@ -27,6 +33,7 @@ namespace MovementSystem
             _transform = transform;
             _startHeight = transform.position.y;
             _inputReader.JumpPressed
+                .Where(_ => _stateMachine.CurrentState == typeof(JumpState) || _stateMachine.CurrentState == typeof(MoveState))
                 .Subscribe(_ => OnJumpPressed())
                 .AddTo(this);
         }

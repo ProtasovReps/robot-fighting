@@ -6,7 +6,6 @@ namespace HealthSystem
 {
     public class Health : IValueChangeable, IDamageable
     {
-        private readonly float _startValue;
         private readonly ReactiveProperty<float> _currentValue;
         
         public Health(float startValue)
@@ -14,7 +13,6 @@ namespace HealthSystem
             if (startValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startValue));
 
-            _startValue = startValue;
             _currentValue = new ReactiveProperty<float>(startValue);
         }
         

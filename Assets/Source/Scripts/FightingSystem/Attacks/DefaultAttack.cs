@@ -8,7 +8,6 @@ namespace FightingSystem.Attacks
 
         public float Delay { get; } // убрать от сюда и сделать scriptable object для атак
         
-
         public void ApplyDamage(IDamageable damageable)
         {
             damageable.AcceptDamage(_damage);

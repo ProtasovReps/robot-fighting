@@ -1,10 +1,10 @@
-﻿using FighterSystem;
+﻿using CharacterSystem;
 using Interface;
 using UnityEngine;
 
 namespace Extensions
 {
-    public class Raycaster : MonoBehaviour
+    public class Spherecaster : MonoBehaviour
     {
         private const int MaxHits = 1;
         
@@ -18,11 +18,6 @@ namespace Extensions
         {
             _transform = transform;
             _hits = new Collider[MaxHits];
-        }
-
-        private void Update()
-        {
-            Debug.Log(TryFindDamageable(out IDamageable damageable));
         }
 
         public bool TryFindDamageable(out IDamageable damageable)

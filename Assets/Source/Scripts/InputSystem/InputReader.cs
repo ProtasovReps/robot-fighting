@@ -8,11 +8,11 @@ namespace InputSystem
         private UserInput _input;
         private Subject<Unit> _jumpPressed;
         private Subject<Unit> _upAttackPressed;
-        private Subject<float> _directionChanged;
+        private ReactiveProperty<float> _directionChanged;
         
         public Observable<Unit> JumpPressed => _jumpPressed;
         public Observable<Unit> UpAttackPressed => _upAttackPressed;
-        public Observable<float> DirectionChanged => _directionChanged;
+        public ReadOnlyReactiveProperty<float> Direction => _directionChanged;
         
         private void Awake()
         {
@@ -26,8 +26,6 @@ namespace InputSystem
 
         private void OnDestroy()
         {
-            _jumpPressed.OnCompleted();
-            _directionChanged.OnCompleted();
             _input.Disable();
         }
 
@@ -36,8 +34,7 @@ namespace InputSystem
             _input = input;
             _jumpPressed = new Subject<Unit>();
             _upAttackPressed  = new Subject<Unit>();
-            _directionChanged = new Subject<float>();
-            
+            _directionChanged = new ReactiveProperty<float>();
             _input.Enable();
         }
     }

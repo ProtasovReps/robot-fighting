@@ -1,7 +1,7 @@
 using HealthSystem;
 using UnityEngine;
 
-namespace FighterSystem
+namespace CharacterSystem
 { //Возвращать в случае чего файтера, сама фабрика должна быть Fighter, а враг или игрок - наследники переопределят
     public class FighterFactory : MonoBehaviour // пока что по сути мок
     {
