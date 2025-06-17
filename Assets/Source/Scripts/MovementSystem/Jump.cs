@@ -19,8 +19,8 @@ namespace MovementSystem
         private Transform _transform;
         private IStateChangeable _stateMachine;
 
-        public bool IsJumping => transform.position.y > _startHeight;
-        
+        public bool IsGrounded { get; private set; } = true;
+    
         [Inject]
         private void Inject(InputReader inputReader, IStateChangeable stateMachine)
         {
@@ -31,22 +31,25 @@ namespace MovementSystem
         private void Start()
         {
             _transform = transform;
-            _startHeight = transform.position.y;
+            _startHeight = _transform.position.y;
             _inputReader.JumpPressed
-                .Where(_ => _stateMachine.CurrentState == typeof(JumpState) || _stateMachine.CurrentState == typeof(MoveState))
+                .Where(_ => _stateMachine.CurrentState == typeof(JumpState) ||
+                            _stateMachine.CurrentState == typeof(MoveState))
                 .Subscribe(_ => OnJumpPressed())
                 .AddTo(this);
         }
 
         private void OnJumpPressed()
         {
-            if (_transform.position.y > _startHeight)
+            if (IsGrounded == false)
                 return;
 
+            IsGrounded = false;
             TranslateUp().Forget();
         }
 
-        private async UniTaskVoid TranslateUp() // может в будущем понадобится добавить CancellationToken для прерывания подъема при получении урона
+        // может в будущем понадобится добавить CancellationToken для прерывания подъема при получении урона
+        private async UniTaskVoid TranslateUp()
         {
             Vector3 targetPosition = _transform.position + _transform.up * _jumpHeight;
             float expiredTime = 0f;
@@ -70,6 +73,8 @@ namespace MovementSystem
                 _transform.position += _fallSpeed * Time.deltaTime * Physics.gravity;
                 await UniTask.Yield();
             }
+            
+            IsGrounded = true;
         }
     }
 }

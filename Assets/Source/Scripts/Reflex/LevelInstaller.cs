@@ -42,17 +42,17 @@ namespace Reflex
             var initializer = new TransitionInitializer(stateMachine)
                 .InitializeTransition<IdleState, float>(
                     _inputReader.Direction
-                        .Where(direction => direction == 0 && _jump.IsJumping == false))
+                        .Where(direction => direction == 0 && _jump.IsGrounded))
                 .InitializeTransition<MoveState, float>(
                     _inputReader.Direction
-                        .Where(direction => direction != 0 && _jump.IsJumping == false))
+                        .Where(direction => direction != 0 && _jump.IsGrounded))
                 .InitializeTransition<MoveJumpState, float>(
                     _inputReader.Direction
-                        .Where(direction => direction != 0 && _jump.IsJumping))
+                        .Where(direction => direction != 0 && _jump.IsGrounded == false))
                 .InitializeTransition<JumpState, Unit>(
                     _inputReader.JumpPressed
-                        .Where(_ => _jump.IsJumping == false));
-
+                        .Where(_ => _jump.IsGrounded));
+            
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }
     }

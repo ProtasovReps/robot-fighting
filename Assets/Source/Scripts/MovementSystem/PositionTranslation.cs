@@ -12,23 +12,24 @@ namespace MovementSystem
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private DistanceValidator _distanceValidator;
-       
+
         private InputReader _inputReader;
         private Transform _transform;
         private IStateChangeable _stateMachine;
-        
+
         [Inject]
         private void Inject(InputReader inputReader, IStateChangeable stateMachine)
         {
             _inputReader = inputReader;
             _stateMachine = stateMachine;
         }
-        
+
         private void Start()
         {
             _transform = transform;
             _inputReader.Direction
-                .Where(_ => _stateMachine.CurrentState == typeof(MoveState) || _stateMachine.CurrentState == typeof(MoveJumpState))
+                .Where(_ => _stateMachine.CurrentState == typeof(MoveState)
+                            || _stateMachine.CurrentState == typeof(MoveJumpState))
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
         }
