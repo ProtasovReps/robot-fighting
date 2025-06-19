@@ -1,5 +1,5 @@
 using Extensions;
-using FighterStateSystem.States;
+using FiniteStateMachine.States;
 using InputSystem;
 using Interface;
 using R3;
@@ -28,8 +28,8 @@ namespace MovementSystem
         {
             _transform = transform;
             _inputReader.Direction
-                .Where(_ => _stateMachine.CurrentState == typeof(MoveState)
-                            || _stateMachine.CurrentState == typeof(MoveJumpState))
+                .Where(_ => _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveState) ||
+                            _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveJumpState))
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
         }

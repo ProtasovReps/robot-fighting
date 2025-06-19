@@ -1,22 +1,24 @@
 using System;
+using AnimationSystem;
 using HealthSystem;
 using Interface;
-using UnityEngine;
 
 namespace CharacterSystem
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : Character
     {
         private Health _health;
 
         public IDamageable Health => _health;
 
-        public void Initialize(Health health)
+        public void Initialize(Health health, CharacterAnimation[] animations)
         {
             if(health == null)
                 throw new ArgumentNullException(nameof(health));
             
             _health = health;
+            
+            Initialize(animations);
         }
     }
 }

@@ -1,5 +1,5 @@
-using FighterStateSystem;
-using FighterStateSystem.States;
+using FiniteStateMachine;
+using FiniteStateMachine.States;
 using InputSystem;
 using Interface;
 using MovementSystem;

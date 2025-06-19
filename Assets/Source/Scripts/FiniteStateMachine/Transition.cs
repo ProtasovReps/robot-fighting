@@ -1,7 +1,7 @@
 ﻿using System;
 using Interface;
 
-namespace FighterStateSystem
+namespace FiniteStateMachine
 {
     public class Transition<TTargetState>
         where TTargetState : IState
@@ -18,7 +18,7 @@ namespace FighterStateSystem
 
         public void Transit()
         {
-            if (_machine.CurrentState == typeof(TTargetState))
+            if (_machine.CurrentState.CurrentValue.Type == typeof(TTargetState))
                 return;
 
             _machine.Enter(typeof(TTargetState));

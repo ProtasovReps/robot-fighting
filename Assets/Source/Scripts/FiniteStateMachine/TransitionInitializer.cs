@@ -2,7 +2,7 @@
 using Interface;
 using R3;
 
-namespace FighterStateSystem
+namespace FiniteStateMachine
 {
     public class TransitionInitializer : IDisposable
     {

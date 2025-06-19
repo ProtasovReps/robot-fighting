@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using FighterStateSystem.States;
+using FiniteStateMachine.States;
 using InputSystem;
 using Interface;
 using R3;
@@ -20,7 +20,7 @@ namespace MovementSystem
         private IStateChangeable _stateMachine;
 
         public bool IsGrounded { get; private set; } = true;
-    
+
         [Inject]
         private void Inject(InputReader inputReader, IStateChangeable stateMachine)
         {
@@ -33,8 +33,8 @@ namespace MovementSystem
             _transform = transform;
             _startHeight = _transform.position.y;
             _inputReader.JumpPressed
-                .Where(_ => _stateMachine.CurrentState == typeof(JumpState) ||
-                            _stateMachine.CurrentState == typeof(MoveState))
+                .Where(_ => _stateMachine.CurrentState.CurrentValue.Type == typeof(JumpState) ||
+                            _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveState))
                 .Subscribe(_ => OnJumpPressed())
                 .AddTo(this);
         }
@@ -73,7 +73,7 @@ namespace MovementSystem
                 _transform.position += _fallSpeed * Time.deltaTime * Physics.gravity;
                 await UniTask.Yield();
             }
-            
+
             IsGrounded = true;
         }
     }

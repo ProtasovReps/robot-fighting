@@ -1,7 +1,7 @@
 ﻿using System;
 using Interface;
 
-namespace FighterStateSystem.States
+namespace FiniteStateMachine.States
 {
     public abstract class State : IState
     {

@@ -1,9 +1,9 @@
-using System;
+using R3;
 
 namespace Interface
 {
     public interface IStateChangeable
     {
-        Type CurrentState { get; }
+        ReadOnlyReactiveProperty<IState> CurrentState { get; }
     }
 }

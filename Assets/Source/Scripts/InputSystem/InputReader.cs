@@ -8,16 +8,16 @@ namespace InputSystem
         private UserInput _input;
         private Subject<Unit> _jumpPressed;
         private Subject<Unit> _upAttackPressed;
-        private ReactiveProperty<float> _directionChanged;
+        private ReactiveProperty<float> _direction;
         
         public Observable<Unit> JumpPressed => _jumpPressed;
         public Observable<Unit> UpAttackPressed => _upAttackPressed;
-        public ReadOnlyReactiveProperty<float> Direction => _directionChanged;
+        public ReadOnlyReactiveProperty<float> Direction => _direction;
         
         private void Awake()
         {
             Observable.EveryUpdate()
-                .Subscribe(_ => _directionChanged.OnNext(_input.Player.Move.ReadValue<float>()))
+                .Subscribe(_ => _direction.OnNext(_input.Player.Move.ReadValue<float>()))
                 .AddTo(this);
             
             _input.Player.Jump.performed += _ => _jumpPressed.OnNext(Unit.Default);
@@ -34,7 +34,7 @@ namespace InputSystem
             _input = input;
             _jumpPressed = new Subject<Unit>();
             _upAttackPressed  = new Subject<Unit>();
-            _directionChanged = new ReactiveProperty<float>();
+            _direction = new ReactiveProperty<float>();
             _input.Enable();
         }
     }

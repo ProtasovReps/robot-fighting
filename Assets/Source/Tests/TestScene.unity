@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 59013044}
   - component: {fileID: 59013043}
   - component: {fileID: 59013046}
-  - component: {fileID: 59013047}
   m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
@@ -231,18 +230,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &59013047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59013042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872a22097182d4e44b5f875692af7e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &148231702
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +347,7 @@ GameObject:
   - component: {fileID: 264094245}
   - component: {fileID: 264094244}
   - component: {fileID: 264094243}
+  - component: {fileID: 264094251}
   - component: {fileID: 264094250}
   - component: {fileID: 264094247}
   - component: {fileID: 264094248}
@@ -492,6 +480,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872a22097182d4e44b5f875692af7e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 264094251}
+--- !u!95 &264094251
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264094242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &312660776
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +992,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1048416827}
-  - component: {fileID: 1048416826}
   m_Layer: 0
   m_Name: Attacker
   m_TagString: Untagged
@@ -990,19 +999,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1048416826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048416825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cbfd7e67522924e9dab6e7eaaafd91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _inputReader: {fileID: 0}
 --- !u!4 &1048416827
 Transform:
   m_ObjectHideFlags: 0
@@ -1298,6 +1294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 1539831129}
+  _jump: {fileID: 264094249}
 --- !u!114 &1787397539
 MonoBehaviour:
   m_ObjectHideFlags: 0

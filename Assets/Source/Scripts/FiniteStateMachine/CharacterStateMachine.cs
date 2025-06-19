@@ -1,15 +1,16 @@
 ﻿using System;
 using Extensions.Exceptions;
 using Interface;
+using R3;
 using UnityEngine;
 
-namespace FighterStateSystem
+namespace FiniteStateMachine
 {
     public class CharacterStateMachine : IStateChangeable
     {
         private readonly IState[] _states;
-        
-        private IState _currentState;
+
+        private ReactiveProperty<IState> _currentState;
         
         public CharacterStateMachine(IState[] states, IState startState)
         {
@@ -23,10 +24,10 @@ namespace FighterStateSystem
                 throw new ArgumentNullException(nameof(startState));
             
             _states = states;
-            _currentState = startState;
+            _currentState = new ReactiveProperty<IState>(startState);
         }
 
-        public Type CurrentState => _currentState.Type;
+        public ReadOnlyReactiveProperty<IState> CurrentState => _currentState;
 
         public void Enter(Type newState)
         {
@@ -35,7 +36,7 @@ namespace FighterStateSystem
             if (state == null)
                 throw new StateNotFoundException(nameof(newState));
             
-            _currentState = state;
+            _currentState.OnNext(state);
             Debug.Log(state); // убрать потом
         }
     }
