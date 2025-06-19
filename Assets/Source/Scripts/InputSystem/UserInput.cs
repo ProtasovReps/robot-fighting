@@ -48,7 +48,7 @@ namespace InputSystem
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""FistPunch"",
+                    ""name"": ""Punch"",
                     ""type"": ""Button"",
                     ""id"": ""adc164a2-6015-4743-af82-f421f6bc3d1c"",
                     ""expectedControlType"": ""Button"",
@@ -164,7 +164,18 @@ namespace InputSystem
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""FistPunch"",
+                    ""action"": ""Punch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""65bb43ef-fda6-4aac-bb2f-ae13e147390e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Punch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -200,7 +211,7 @@ namespace InputSystem
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-            m_Player_FistPunch = m_Player.FindAction("FistPunch", throwIfNotFound: true);
+            m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -264,14 +275,14 @@ namespace InputSystem
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
-        private readonly InputAction m_Player_FistPunch;
+        private readonly InputAction m_Player_Punch;
         public struct PlayerActions
         {
             private @UserInput m_Wrapper;
             public PlayerActions(@UserInput wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
-            public InputAction @FistPunch => m_Wrapper.m_Player_FistPunch;
+            public InputAction @Punch => m_Wrapper.m_Player_Punch;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -287,9 +298,9 @@ namespace InputSystem
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @FistPunch.started += instance.OnFistPunch;
-                @FistPunch.performed += instance.OnFistPunch;
-                @FistPunch.canceled += instance.OnFistPunch;
+                @Punch.started += instance.OnPunch;
+                @Punch.performed += instance.OnPunch;
+                @Punch.canceled += instance.OnPunch;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -300,9 +311,9 @@ namespace InputSystem
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
-                @FistPunch.started -= instance.OnFistPunch;
-                @FistPunch.performed -= instance.OnFistPunch;
-                @FistPunch.canceled -= instance.OnFistPunch;
+                @Punch.started -= instance.OnPunch;
+                @Punch.performed -= instance.OnPunch;
+                @Punch.canceled -= instance.OnPunch;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -342,7 +353,7 @@ namespace InputSystem
         {
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
-            void OnFistPunch(InputAction.CallbackContext context);
+            void OnPunch(InputAction.CallbackContext context);
         }
     }
 }

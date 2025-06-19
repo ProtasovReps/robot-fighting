@@ -35,7 +35,8 @@ namespace Reflex
                 new IdleState(),
                 new MoveState(),
                 new JumpState(),
-                new MoveJumpState()
+                new MoveJumpState(),
+                new ArmAttackState()
             };
 
             var stateMachine = new CharacterStateMachine(states, states[0]);
@@ -51,7 +52,10 @@ namespace Reflex
                         .Where(direction => direction != 0 && _jump.IsGrounded == false))
                 .InitializeTransition<JumpState, Unit>(
                     _inputReader.JumpPressed
-                        .Where(_ => _jump.IsGrounded));
+                        .Where(_ => _jump.IsGrounded))
+                .InitializeTransition<ArmAttackState, Unit>(
+                    _inputReader.PunchPressed);
+            
             
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }

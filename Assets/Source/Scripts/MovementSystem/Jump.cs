@@ -15,16 +15,14 @@ namespace MovementSystem
         [SerializeField] private float _fallSpeed;
 
         private float _startHeight;
-        private InputReader _inputReader;
         private Transform _transform;
         private IStateChangeable _stateMachine;
 
         public bool IsGrounded { get; private set; } = true;
 
         [Inject]
-        private void Inject(InputReader inputReader, IStateChangeable stateMachine)
+        private void Inject(IStateChangeable stateMachine)
         {
-            _inputReader = inputReader;
             _stateMachine = stateMachine;
         }
 
@@ -32,9 +30,8 @@ namespace MovementSystem
         {
             _transform = transform;
             _startHeight = _transform.position.y;
-            _inputReader.JumpPressed
-                .Where(_ => _stateMachine.CurrentState.CurrentValue.Type == typeof(JumpState) ||
-                            _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveState))
+            _stateMachine.CurrentState
+                .Where(state => state.Type == typeof(JumpState))
                 .Subscribe(_ => OnJumpPressed())
                 .AddTo(this);
         }

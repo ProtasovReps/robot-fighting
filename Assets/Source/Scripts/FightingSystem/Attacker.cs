@@ -1,7 +1,8 @@
+using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Extensions;
-using InputSystem;
+using FiniteStateMachine.States;
 using Interface;
 using R3;
 using Reflex.Attributes;
@@ -14,22 +15,20 @@ namespace FightingSystem
         [SerializeField] private Spherecaster _spherecaster;
         
         private IAttack _attack;
-        private InputReader _inputReader;
         private CancellationTokenSource _cancellationTokenSource;
-
-        protected IAttack Attack => _attack;
-        protected InputReader InputReader => _inputReader;
+        private IStateChangeable _stateMachine;
         
         [Inject]
-        private void Inject(InputReader inputReader)
+        private void Inject(IStateChangeable stateMachine)
         {
-            _inputReader = inputReader;
+            _stateMachine = stateMachine;
         }
 
         private void Start()
         {
-            InputReader.UpAttackPressed // разные аттакеры будут разные клавиши обрабатывтаь?
-                .Subscribe(_ => AttackDelayed().Forget()) // А если в кд? СТЕЙТ МАШИНА!
+            _stateMachine.CurrentState //здесь нужен будет кулдаун, 
+                .Where(state => state.Type == typeof(ArmAttackState)) // у наследников менять необходимый тип
+                .Subscribe(_ => AttackDelayed().Forget())
                 .AddTo(this);
         }
         
@@ -38,8 +37,9 @@ namespace FightingSystem
             _attack = attack;
         }
         
-        private async UniTaskVoid AttackDelayed() //или сюда проверку впиндюрить на стейт
+        private async UniTaskVoid AttackDelayed() // у наследников менять тип атаки
         {
+            Debug.Log("Бью");
             _cancellationTokenSource = new CancellationTokenSource();
             // аниматор проиграть анимацию
             await UniTask.WaitForSeconds(_attack.Delay, false, PlayerLoopTiming.Update, _cancellationTokenSource.Token, true);

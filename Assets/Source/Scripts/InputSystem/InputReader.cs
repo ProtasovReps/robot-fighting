@@ -7,11 +7,11 @@ namespace InputSystem
     {
         private UserInput _input;
         private Subject<Unit> _jumpPressed;
-        private Subject<Unit> _upAttackPressed;
+        private Subject<Unit> _punchPressed;
         private ReactiveProperty<float> _direction;
         
         public Observable<Unit> JumpPressed => _jumpPressed;
-        public Observable<Unit> UpAttackPressed => _upAttackPressed;
+        public Observable<Unit> PunchPressed => _punchPressed;
         public ReadOnlyReactiveProperty<float> Direction => _direction;
         
         private void Awake()
@@ -21,7 +21,7 @@ namespace InputSystem
                 .AddTo(this);
             
             _input.Player.Jump.performed += _ => _jumpPressed.OnNext(Unit.Default);
-            _input.Player.FistPunch.performed += _ => _upAttackPressed.OnNext(Unit.Default);
+            _input.Player.Punch.performed += _ => _punchPressed.OnNext(Unit.Default);
         }
 
         private void OnDestroy()
@@ -33,7 +33,7 @@ namespace InputSystem
         {
             _input = input;
             _jumpPressed = new Subject<Unit>();
-            _upAttackPressed  = new Subject<Unit>();
+            _punchPressed  = new Subject<Unit>();
             _direction = new ReactiveProperty<float>();
             _input.Enable();
         }

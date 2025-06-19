@@ -13,9 +13,9 @@ namespace MovementSystem
         [SerializeField] private float _moveSpeed;
         [SerializeField] private DistanceValidator _distanceValidator;
 
-        private InputReader _inputReader;
         private Transform _transform;
         private IStateChangeable _stateMachine;
+        private InputReader _inputReader;
 
         [Inject]
         private void Inject(InputReader inputReader, IStateChangeable stateMachine)

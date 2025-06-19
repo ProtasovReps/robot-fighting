@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "FistPunch",
+                    "name": "Punch",
                     "type": "Button",
                     "id": "adc164a2-6015-4743-af82-f421f6bc3d1c",
                     "expectedControlType": "Button",
@@ -140,7 +140,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "FistPunch",
+                    "action": "Punch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "65bb43ef-fda6-4aac-bb2f-ae13e147390e",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Punch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
