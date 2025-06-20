@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -366,7 +366,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264094242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -423,6 +423,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1007497094}
+  - {fileID: 891409731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!114 &264094247
@@ -490,8 +491,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264094242}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: b9547cc379d18674699a094b2f7988bc, type: 3}
+  m_Controller: {fileID: 9100000, guid: b81d2fab7b61f464cbcb3370420b43f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -833,6 +834,11 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!4 &891409731 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+  m_PrefabInstance: {fileID: 1526304848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &916765567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,6 +1114,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1526304848
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 264094245}
+    m_Modifications:
+    - target: {fileID: 1361586278332686, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_Name
+      value: ToonRobot (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743824733607320, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95068659166881912, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95068659166881912, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b81d2fab7b61f464cbcb3370420b43f0, type: 2}
+    m_RemovedComponents:
+    - {fileID: 114124796016523258, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8b2f3c8ad8881b42b96e86e7e36fdda, type: 3}
 --- !u!1 &1539831128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1427,7 @@ MonoBehaviour:
   _fighter: {fileID: 264094250}
   _healthView: {fileID: 312660780}
   _startHealthValue: 100
+  _attacker: {fileID: 0}
 --- !u!4 &1975940814
 Transform:
   m_ObjectHideFlags: 0
