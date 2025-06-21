@@ -34,14 +34,15 @@ namespace CharacterSystem
         private Fighter Produce()
         {
             Health health = new(_startHealthValue);
-            DefaultAttack attack = new();
+            DefaultAttack fistAttack = new(10, 0.5f);
+            DefaultAttack legAttack = new(5, 0.5f); //
             CharacterAnimation[] animations =
             {
                 new TriggerAnimation<IdleState>(_stateMachine, _fighter.Animator, AnimationHashes.Idle),
                 new TriggerAnimation<MoveState>(_stateMachine, _fighter.Animator, AnimationHashes.Move),
             };
 
-            _attacker.Initialize(attack);
+            _attacker.Initialize(fistAttack);
             _fighter.Initialize(health, animations);
             _healthView.Initialize(health);
             return _fighter;

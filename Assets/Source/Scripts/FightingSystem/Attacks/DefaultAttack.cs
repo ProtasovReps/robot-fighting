@@ -4,10 +4,16 @@ namespace FightingSystem.Attacks
 {
     public class DefaultAttack : IAttack
     {
-        private readonly float _damage = 10f; // лучше получать из scriptable object или стат класса
+        private readonly float _damage;
 
-        public float Delay { get; } = 0.5f;// убрать от сюда и сделать scriptable object для атак
-        
+        public DefaultAttack(float damage, float delay)
+        {
+            _damage = damage;
+            Delay = delay;
+        }
+
+        public float Delay { get; }
+
         public void ApplyDamage(IDamageable damageable)
         {
             damageable.AcceptDamage(_damage);
