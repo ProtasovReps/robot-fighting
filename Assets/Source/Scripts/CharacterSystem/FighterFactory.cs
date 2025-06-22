@@ -39,7 +39,7 @@ namespace CharacterSystem
             CharacterAnimation[] animations =
             {
                 new TriggerAnimation<IdleState>(_stateMachine, _fighter.Animator, AnimationHashes.Idle),
-                new TriggerAnimation<MoveState>(_stateMachine, _fighter.Animator, AnimationHashes.Move),
+                new TriggerAnimation<MoveState>(_stateMachine, _fighter.Animator, AnimationHashes.ForwardMove),
             };
 
             _attacker.Initialize(fistAttack);
