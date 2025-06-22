@@ -24,19 +24,14 @@ namespace FiniteStateMachine
         }
 
         public TransitionInitializer InitializeTransition<TTargetState, T>(
-            Observable<T> observable,
-            Action observer = null)
+            Observable<T> observable)
             where TTargetState : IState
         {
             var transition = new Transition<TTargetState>(_machine);
-            
-            observable.Subscribe(_ =>
-            {
-                transition.Transit();
-                observer?.Invoke();
-            })
-            .AddTo(_disposables);
-            
+
+            observable.Subscribe(_ => transition.Transit())
+                .AddTo(_disposables);
+
             return this;
         }
     }

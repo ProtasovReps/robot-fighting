@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using FiniteStateMachine.States;
-using InputSystem;
 using Interface;
 using R3;
 using Reflex.Attributes;
@@ -8,7 +7,7 @@ using UnityEngine;
 
 namespace MovementSystem
 {
-    public class Jump : MonoBehaviour
+    public class Jump : MonoBehaviour, IExecutable
     {
         [SerializeField] private float _jumpHeight;
         [SerializeField] private float _jumpTime;
@@ -18,7 +17,7 @@ namespace MovementSystem
         private Transform _transform;
         private IStateChangeable _stateMachine;
 
-        public bool IsGrounded { get; private set; } = true;
+        public bool IsExecuting { get; private set; }
 
         [Inject]
         private void Inject(IStateChangeable stateMachine)
@@ -38,10 +37,10 @@ namespace MovementSystem
 
         private void OnJumpPressed()
         {
-            if (IsGrounded == false)
+            if (IsExecuting)
                 return;
 
-            IsGrounded = false;
+            IsExecuting = true;
             TranslateUp().Forget();
         }
 
@@ -71,7 +70,7 @@ namespace MovementSystem
                 await UniTask.Yield();
             }
 
-            IsGrounded = true;
+            IsExecuting = false;
         }
     }
 }

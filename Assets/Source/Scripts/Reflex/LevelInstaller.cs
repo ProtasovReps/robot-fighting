@@ -1,5 +1,6 @@
 using FiniteStateMachine;
 using FiniteStateMachine.States;
+using FiniteStateMachine.TransitionConditions;
 using InputSystem;
 using Interface;
 using MovementSystem;
@@ -41,21 +42,11 @@ namespace Reflex
 
             var stateMachine = new CharacterStateMachine(states, states[0]);
             var initializer = new TransitionInitializer(stateMachine)
-                .InitializeTransition<IdleState, float>(
-                    _inputReader.Direction
-                        .Where(direction => direction == 0 && _jump.IsGrounded))
-                .InitializeTransition<MoveState, float>(
-                    _inputReader.Direction
-                        .Where(direction => direction != 0 && _jump.IsGrounded))
-                .InitializeTransition<MoveJumpState, float>(
-                    _inputReader.Direction
-                        .Where(direction => direction != 0 && _jump.IsGrounded == false))
-                .InitializeTransition<JumpState, Unit>(
-                    _inputReader.JumpPressed
-                        .Where(_ => _jump.IsGrounded))
-                .InitializeTransition<ArmAttackState, Unit>(
-                    _inputReader.PunchPressed);
-            
+                .InitializeTransition<IdleState, float>(new IdleCondition(_inputReader, _jump).GetCondition())
+                .InitializeTransition<MoveState, float>(new MoveCondition(_inputReader, _jump).GetCondition())
+                .InitializeTransition<MoveJumpState, float>(new MoveJumpCondition(_inputReader, _jump).GetCondition())
+                .InitializeTransition<JumpState, Unit>(new JumpCondition(_inputReader, _jump).GetCondition())
+                .InitializeTransition<ArmAttackState, Unit>(new PunchCondition(_inputReader).GetCondition());
             
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }
