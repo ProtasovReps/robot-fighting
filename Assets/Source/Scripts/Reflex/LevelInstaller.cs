@@ -1,6 +1,6 @@
 using FiniteStateMachine;
 using FiniteStateMachine.States;
-using FiniteStateMachine.TransitionConditions;
+using FiniteStateMachine.Conditions;
 using InputSystem;
 using Interface;
 using MovementSystem;
@@ -14,7 +14,7 @@ namespace Reflex
     {
         [SerializeField] private InputReader _inputReader;
         [SerializeField] private Jump _jump; // мок
-        
+
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             InstallInput(containerBuilder);
@@ -40,14 +40,18 @@ namespace Reflex
                 new ArmAttackState()
             };
 
+            var idleCondition = new MoveCondition(_inputReader, false, new JumpCondition(_jump, false, new SourceCondition<float>(_inputReader.Direction)));
+            var moveCondition = new MoveCondition(_inputReader, true, new JumpCondition(_jump, false, new SourceCondition<float>(_inputReader.Direction)));
+            var jumpCondition = new JumpCondition(_jump, false, new SourceCondition<Unit>(_inputReader.JumpPressed));
+            var moveJumpCondition = new MoveCondition(_inputReader, true, new JumpCondition(_jump, true, new SourceCondition<float>(_inputReader.Direction)));
+            
             var stateMachine = new CharacterStateMachine(states, states[0]);
             var initializer = new TransitionInitializer(stateMachine)
-                .InitializeTransition<IdleState, float>(new IdleCondition(_inputReader, _jump).GetCondition())
-                .InitializeTransition<MoveState, float>(new MoveCondition(_inputReader, _jump).GetCondition())
-                .InitializeTransition<MoveJumpState, float>(new MoveJumpCondition(_inputReader, _jump).GetCondition())
-                .InitializeTransition<JumpState, Unit>(new JumpCondition(_inputReader, _jump).GetCondition())
-                .InitializeTransition<ArmAttackState, Unit>(new PunchCondition(_inputReader).GetCondition());
-            
+                .InitializeTransition<IdleState, Unit>(idleCondition.GetCondition())
+                .InitializeTransition<MoveState, Unit>(moveCondition.GetCondition())
+                .InitializeTransition<MoveJumpState, Unit>(moveJumpCondition.GetCondition())
+                .InitializeTransition<JumpState, Unit>(jumpCondition.GetCondition());
+
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }
     }
