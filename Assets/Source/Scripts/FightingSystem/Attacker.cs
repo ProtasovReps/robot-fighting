@@ -8,11 +8,11 @@ namespace FightingSystem
     public abstract class Attacker : MonoBehaviour, IExecutable
     {
         [SerializeField] private Spherecaster _spherecaster;
-        
+
         private IAttack _attack;
-       
+
         public bool IsExecuting { get; private set; }
-        
+
         public void Initialize(IAttack attack)
         {
             _attack = attack;
@@ -26,15 +26,17 @@ namespace FightingSystem
             IsExecuting = true;
             AttackDelayed().Forget();
         }
-        
+
         private async UniTaskVoid AttackDelayed()
         {
             await UniTask.WaitForSeconds(_attack.Delay);
-            
-            if (_spherecaster.TryFindDamageable(out IDamageable damageable) == false)
-                return;
-            
-            _attack.ApplyDamage(damageable);
+            bool isHitted = _spherecaster.TryFindDamageable(out IDamageable damageable);
+
+            if (isHitted)
+            {
+                _attack.ApplyDamage(damageable);
+            }
+
             IsExecuting = false;
         }
     }

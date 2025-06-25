@@ -34,7 +34,7 @@ namespace CharacterSystem
         private Fighter Produce()
         {
             Health health = new(_startHealthValue);
-            DefaultAttack fistAttack = new(10, 0.5f);
+            DefaultAttack fistAttack = new(10, 0.2f);
             DefaultAttack legAttack = new(5, 0.5f); //
             CharacterAnimation[] animations =
             {
