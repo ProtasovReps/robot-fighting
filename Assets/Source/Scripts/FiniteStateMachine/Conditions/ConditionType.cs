@@ -2,7 +2,9 @@
 {
     public enum ConditionType
     {
-        Move,
+        Stay,
+        MoveLeft,
+        MoveRight,
         Jump,
         ArmAttack
     }

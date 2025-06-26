@@ -38,28 +38,35 @@ namespace Reflex
             IState[] states =
             {
                 new IdleState(),
-                new MoveState(),
+                new MoveLeftState(),
+                new MoveRightState(),
                 new JumpState(),
                 new MoveJumpState(),
-                new ArmAttackState()
+                new PunchState()
             };
 
             var conditionBuilder = new ConditionBuilder();
 
-            conditionBuilder.Add(ConditionType.Move, _ => _inputReader.Direction.CurrentValue != 0);
+            conditionBuilder.Add(ConditionType.Stay, _ => _inputReader.Direction.CurrentValue == 0);
+            conditionBuilder.Add(ConditionType.MoveLeft, _ => _inputReader.Direction.CurrentValue < 0);
+            conditionBuilder.Add(ConditionType.MoveRight, _ => _inputReader.Direction.CurrentValue > 0);
             conditionBuilder.Add(ConditionType.Jump, _ => _jump.IsExecuting);
             conditionBuilder.Add(ConditionType.ArmAttack, _ => _attacker.IsExecuting);
 
-            Func<Unit, bool> stayCondition = conditionBuilder.Build(
-                (ConditionType.Move, false),
+            Func<Unit, bool> idleCondition = conditionBuilder.Build(
+                (ConditionType.Stay, true),
                 (ConditionType.Jump, false),
                 (ConditionType.ArmAttack, false));
-            Func<Unit, bool> moveCondition = conditionBuilder.Build(
-                (ConditionType.Move, true),
+            Func<Unit, bool> moveLeftCondition = conditionBuilder.Build(
+                (ConditionType.MoveLeft, true),
+                (ConditionType.Jump, false),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> moveRightCondition = conditionBuilder.Build(
+                (ConditionType.MoveRight, true),
                 (ConditionType.Jump, false),
                 (ConditionType.ArmAttack, false));
             Func<Unit, bool> moveJumpCondition = conditionBuilder.Build(
-                (ConditionType.Move, true),
+                (ConditionType.Stay, false),
                 (ConditionType.Jump, true),
                 (ConditionType.ArmAttack, false));
             Func<Unit, bool> jumpCondition = conditionBuilder.Build(
@@ -70,11 +77,12 @@ namespace Reflex
             var stateMachine = new CharacterStateMachine(states, states[0]);
 
             var transitionInitializer = new TransitionInitializer(stateMachine)
-                .InitializeTransition<IdleState, float>(_inputReader.Direction, stayCondition)
-                .InitializeTransition<MoveState, float>(_inputReader.Direction, moveCondition)
+                .InitializeTransition<IdleState, float>(_inputReader.Direction, idleCondition)
+                .InitializeTransition<MoveLeftState, float>(_inputReader.Direction, moveLeftCondition)
+                .InitializeTransition<MoveRightState, float>(_inputReader.Direction, moveRightCondition)
                 .InitializeTransition<JumpState, Unit>(_inputReader.JumpPressed, jumpCondition)
                 .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, moveJumpCondition)
-                .InitializeTransition<ArmAttackState, Unit>(_inputReader.PunchPressed, attackCondition);
+                .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, attackCondition);
 
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }
