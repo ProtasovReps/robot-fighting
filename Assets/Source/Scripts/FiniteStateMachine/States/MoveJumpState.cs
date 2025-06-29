@@ -1,6 +1,6 @@
 ﻿namespace FiniteStateMachine.States
 {
-    public class MoveJumpState : State
+    public class MoveJumpState : MoveState
     {
     }
 }

@@ -24,12 +24,16 @@ namespace FiniteStateMachine
         }
 
         public TransitionInitializer InitializeTransition<TTargetState, T>(
-            Observable<T> observable)
+            Observable<T> observable,
+            Func<Unit, bool> condition)
             where TTargetState : IState
         {
             var transition = new Transition<TTargetState>(_machine);
 
-            observable.Subscribe(_ => transition.Transit())
+            observable
+                .Select(_ => Unit.Default)
+                .Where(condition)
+                .Subscribe(_ => transition.Transit())
                 .AddTo(_disposables);
 
             return this;

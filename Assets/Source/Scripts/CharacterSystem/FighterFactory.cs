@@ -5,6 +5,7 @@ using FightingSystem.Attacks;
 using FiniteStateMachine.States;
 using HealthSystem;
 using Interface;
+using MovementSystem;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -34,12 +35,15 @@ namespace CharacterSystem
         private Fighter Produce()
         {
             Health health = new(_startHealthValue);
-            DefaultAttack fistAttack = new(10, 0.5f);
-            DefaultAttack legAttack = new(5, 0.5f); //
+            DefaultAttack fistAttack = new(10, 0.2f);
+            
             CharacterAnimation[] animations =
             {
                 new TriggerAnimation<IdleState>(_stateMachine, _fighter.Animator, AnimationHashes.Idle),
-                new TriggerAnimation<MoveState>(_stateMachine, _fighter.Animator, AnimationHashes.ForwardMove),
+                new TriggerAnimation<MoveLeftState>(_stateMachine, _fighter.Animator, AnimationHashes.MoveLeft),
+                new TriggerAnimation<MoveRightState>(_stateMachine, _fighter.Animator, AnimationHashes.MoveRight),
+                new TriggerAnimation<PunchState>(_stateMachine, _fighter.Animator, AnimationHashes.Attack),
+                new TriggerAnimation<JumpState>(_stateMachine, _fighter.Animator, AnimationHashes.Jump)
             };
 
             _attacker.Initialize(fistAttack);

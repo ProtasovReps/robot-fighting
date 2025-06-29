@@ -12,7 +12,7 @@ namespace FightingSystem.Attacks
             Delay = delay;
         }
 
-        public float Delay { get; }
+        public float Delay { get; } 
 
         public void ApplyDamage(IDamageable damageable)
         {

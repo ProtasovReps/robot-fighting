@@ -1,3 +1,6 @@
+using System;
+using Extensions;
+using FightingSystem;
 using FiniteStateMachine;
 using FiniteStateMachine.States;
 using FiniteStateMachine.Conditions;
@@ -14,6 +17,7 @@ namespace Reflex
     {
         [SerializeField] private InputReader _inputReader;
         [SerializeField] private Jump _jump; // мок
+        [SerializeField] private Attacker _attacker;
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
@@ -34,23 +38,51 @@ namespace Reflex
             IState[] states =
             {
                 new IdleState(),
-                new MoveState(),
+                new MoveLeftState(),
+                new MoveRightState(),
                 new JumpState(),
                 new MoveJumpState(),
-                new ArmAttackState()
+                new PunchState()
             };
 
-            var idleCondition = new MoveCondition(_inputReader, false, new JumpCondition(_jump, false, new SourceCondition<float>(_inputReader.Direction)));
-            var moveCondition = new MoveCondition(_inputReader, true, new JumpCondition(_jump, false, new SourceCondition<float>(_inputReader.Direction)));
-            var jumpCondition = new JumpCondition(_jump, false, new SourceCondition<Unit>(_inputReader.JumpPressed));
-            var moveJumpCondition = new MoveCondition(_inputReader, true, new JumpCondition(_jump, true, new SourceCondition<float>(_inputReader.Direction)));
-            
+            var conditionBuilder = new ConditionBuilder();
+
+            conditionBuilder.Add(ConditionType.Stay, _ => _inputReader.Direction.CurrentValue == 0);
+            conditionBuilder.Add(ConditionType.MoveLeft, _ => _inputReader.Direction.CurrentValue < 0);
+            conditionBuilder.Add(ConditionType.MoveRight, _ => _inputReader.Direction.CurrentValue > 0);
+            conditionBuilder.Add(ConditionType.Jump, _ => _jump.IsExecuting);
+            conditionBuilder.Add(ConditionType.ArmAttack, _ => _attacker.IsExecuting);
+
+            Func<Unit, bool> idleCondition = conditionBuilder.Build(
+                (ConditionType.Stay, true),
+                (ConditionType.Jump, false),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> moveLeftCondition = conditionBuilder.Build(
+                (ConditionType.MoveLeft, true),
+                (ConditionType.Jump, false),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> moveRightCondition = conditionBuilder.Build(
+                (ConditionType.MoveRight, true),
+                (ConditionType.Jump, false),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> moveJumpCondition = conditionBuilder.Build(
+                (ConditionType.Stay, false),
+                (ConditionType.Jump, true),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> jumpCondition = conditionBuilder.Build(
+                (ConditionType.Jump, false),
+                (ConditionType.ArmAttack, false));
+            Func<Unit, bool> attackCondition = conditionBuilder.Build((ConditionType.ArmAttack, false));
+
             var stateMachine = new CharacterStateMachine(states, states[0]);
-            var initializer = new TransitionInitializer(stateMachine)
-                .InitializeTransition<IdleState, Unit>(idleCondition.GetCondition())
-                .InitializeTransition<MoveState, Unit>(moveCondition.GetCondition())
-                .InitializeTransition<MoveJumpState, Unit>(moveJumpCondition.GetCondition())
-                .InitializeTransition<JumpState, Unit>(jumpCondition.GetCondition());
+
+            var transitionInitializer = new TransitionInitializer(stateMachine)
+                .InitializeTransition<IdleState, float>(_inputReader.Direction, idleCondition)
+                .InitializeTransition<MoveLeftState, float>(_inputReader.Direction, moveLeftCondition)
+                .InitializeTransition<MoveRightState, float>(_inputReader.Direction, moveRightCondition)
+                .InitializeTransition<JumpState, Unit>(_inputReader.JumpPressed, jumpCondition)
+                .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, moveJumpCondition)
+                .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, attackCondition);
 
             builder.AddSingleton(stateMachine, typeof(IStateChangeable));
         }

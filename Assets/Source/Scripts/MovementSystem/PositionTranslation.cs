@@ -28,8 +28,7 @@ namespace MovementSystem
         {
             _transform = transform;
             _inputReader.Direction
-                .Where(_ => _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveState) ||
-                            _stateMachine.CurrentState.CurrentValue.Type == typeof(MoveJumpState))
+                .Where(_ => _stateMachine.CurrentState.CurrentValue is MoveState)
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
         }

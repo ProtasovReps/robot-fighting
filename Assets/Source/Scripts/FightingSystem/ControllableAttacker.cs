@@ -18,7 +18,7 @@ namespace FightingSystem
         private void Start()
         {
             _stateMachine.CurrentState //здесь нужен будет кулдаун, 
-                .Where(state => state.Type == typeof(ArmAttackState)) // у наследников менять необходимый тип
+                .Where(state => state.Type == typeof(PunchState)) // у наследников менять необходимый тип
                 .Subscribe(_ => Attack())
                 .AddTo(this);
         }
