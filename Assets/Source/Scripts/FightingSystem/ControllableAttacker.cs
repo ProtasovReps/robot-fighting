@@ -8,7 +8,7 @@ namespace FightingSystem
     public class ControllableAttacker : Attacker
     {
         private IStateChangeable _stateMachine;
-        
+
         [Inject]
         private void Inject(IStateChangeable stateMachine)
         {
@@ -17,11 +17,10 @@ namespace FightingSystem
 
         private void Start()
         {
-            _stateMachine.CurrentState //здесь нужен будет кулдаун, 
-                .Where(state => state.Type == typeof(PunchState)) // у наследников менять необходимый тип
-                .Subscribe(_ => Attack())
+            _stateMachine.CurrentState
+                .Where(state => state is AttackState)
+                .Subscribe(state => Attack(state.Type))
                 .AddTo(this);
         }
-
     }
 }

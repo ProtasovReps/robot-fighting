@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Kick",
+                    "type": "Button",
+                    "id": "a2aaa973-1cca-4cf2-a5aa-39fb06a3927a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -136,7 +145,7 @@
                 {
                     "name": "",
                     "id": "1dd6b013-6914-464a-be83-05fb72da8839",
-                    "path": "<Keyboard>/ctrl",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -146,12 +155,12 @@
                 },
                 {
                     "name": "",
-                    "id": "65bb43ef-fda6-4aac-bb2f-ae13e147390e",
-                    "path": "<Mouse>/leftButton",
+                    "id": "bbf66413-2f6c-449c-8e57-7e00ff5a22fc",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Punch",
+                    "groups": "Keyboard",
+                    "action": "Kick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
