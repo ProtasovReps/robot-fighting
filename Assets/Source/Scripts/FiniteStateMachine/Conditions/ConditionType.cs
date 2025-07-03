@@ -6,6 +6,6 @@
         MoveLeft,
         MoveRight,
         Jump,
-        ArmAttack
+        Attack
     }
 }

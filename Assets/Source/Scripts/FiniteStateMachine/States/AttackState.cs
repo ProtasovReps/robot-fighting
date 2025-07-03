@@ -1,6 +1,6 @@
 ﻿namespace FiniteStateMachine.States
 {
-    public class PunchState : AttackState
+    public class AttackState : State
     {
     }
 }
