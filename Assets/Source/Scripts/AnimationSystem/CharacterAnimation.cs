@@ -7,12 +7,12 @@ namespace AnimationSystem
 {
     public abstract class CharacterAnimation : IDisposable
     {
-        private readonly IStateChangeable _stateMachine;
+        private readonly IStateMachine _stateMachine;
         private readonly Animator _animator;
         
         private IDisposable _subscription;
 
-        protected CharacterAnimation(IStateChangeable stateMachine, Animator animator)
+        protected CharacterAnimation(IStateMachine stateMachine, Animator animator)
         {
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));

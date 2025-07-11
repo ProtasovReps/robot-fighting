@@ -52,7 +52,6 @@ namespace FightingSystem
 
         private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
         {
-            Debug.Log("Стреляю");
             await UniTask.WaitForSeconds(attack.Delay);
             bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
 
@@ -62,7 +61,6 @@ namespace FightingSystem
             }
 
             IsExecuting = false;
-            Debug.Log("Выстрелил");
         }
     }
 }

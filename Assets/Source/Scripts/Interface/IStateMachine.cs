@@ -2,7 +2,7 @@ using R3;
 
 namespace Interface
 {
-    public interface IStateChangeable
+    public interface IStateMachine
     {
         ReadOnlyReactiveProperty<IState> CurrentState { get; }
     }

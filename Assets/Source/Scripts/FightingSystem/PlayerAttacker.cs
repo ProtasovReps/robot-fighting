@@ -5,12 +5,12 @@ using Reflex.Attributes;
 
 namespace FightingSystem
 {
-    public class ControllableAttacker : Attacker
+    public class PlayerAttacker : Attacker
     {
-        private IStateChangeable _stateMachine;
+        private IPlayerStateMachine _stateMachine;
 
         [Inject]
-        private void Inject(IStateChangeable stateMachine)
+        private void Inject(IPlayerStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }

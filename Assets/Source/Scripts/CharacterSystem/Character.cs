@@ -22,7 +22,6 @@ namespace CharacterSystem
 
         private void OnDestroy()
         {
-            // не совсем очевидно, лучше их в диспозер просто кидать, а сам диспозер раздавать в инсталлере
             for (int i = 0; i < _animations.Length; i++)
             {
                 _animations[i].Dispose();

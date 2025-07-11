@@ -1,36 +1,33 @@
 using Extensions;
 using FiniteStateMachine.States;
-using InputSystem;
 using Interface;
 using R3;
-using Reflex.Attributes;
 using UnityEngine;
 
 namespace MovementSystem
 {
-    public class PositionTranslation : MonoBehaviour
+    public abstract class PositionTranslation : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;
         [SerializeField] private DistanceValidator _distanceValidator;
 
         private Transform _transform;
-        private IStateChangeable _stateMachine;
-        private InputReader _inputReader;
-
-        [Inject]
-        private void Inject(InputReader inputReader, IStateChangeable stateMachine)
-        {
-            _inputReader = inputReader;
-            _stateMachine = stateMachine;
-        }
+        private IStateMachine _stateMachine;
+        private IDirectionChangeable _directionChangeable;
 
         private void Start()
         {
             _transform = transform;
-            _inputReader.Direction
+            _directionChangeable.Direction
                 .Where(_ => _stateMachine.CurrentState.CurrentValue is MoveState)
                 .Subscribe(TranslatePosition)
                 .AddTo(this);
+        }
+
+        protected void Initialize(IStateMachine stateMachine, IDirectionChangeable directionChangeable)
+        {
+            _directionChangeable = directionChangeable;
+            _stateMachine = stateMachine;
         }
 
         private void TranslatePosition(float direction)

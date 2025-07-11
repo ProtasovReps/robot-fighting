@@ -1,9 +1,10 @@
+using Interface;
 using R3;
 using UnityEngine;
 
 namespace InputSystem
 {
-    public class InputReader : MonoBehaviour
+    public class PlayerInputReader : MonoBehaviour, IDirectionChangeable
     {
         private UserInput _input;
         private Subject<Unit> _jumpPressed;
