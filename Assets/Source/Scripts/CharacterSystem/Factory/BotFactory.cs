@@ -1,25 +1,21 @@
-﻿using AnimationSystem;
-using CharacterSystem.Data;
-using Extensions;
-using FiniteStateMachine.States;
+﻿using CharacterSystem.Data;
+using FiniteStateMachine.Factory;
 using Interface;
 
 namespace CharacterSystem.Factory
 {
-    public class BotFactory : FighterFactory 
+    public class BotFactory : FighterFactory
     {
-        public BotFactory(FighterData data, IStateMachine stateMachine) : base(data, stateMachine)
+        private readonly BotData _botData;
+        
+        public BotFactory(BotData fighterData) : base(fighterData)
         {
+            _botData = fighterData;
         }
 
-        protected override CharacterAnimation[] GetAnimations()
+        protected override IStateMachine GetStateMachine()
         {
-            return new CharacterAnimation[]
-            {
-                new TriggerAnimation<IdleState>(StateMachine, FighterData.Fighter.Animator, AnimationHashes.Idle),
-                new TriggerAnimation<MoveLeftState>(StateMachine, FighterData.Fighter.Animator, AnimationHashes.MoveLeft),
-                new TriggerAnimation<MoveRightState>(StateMachine, FighterData.Fighter.Animator, AnimationHashes.MoveRight),
-            };
+            return new BotStateMachineFactory(_botData).Produce();
         }
     }
 }

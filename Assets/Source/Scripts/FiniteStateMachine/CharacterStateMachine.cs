@@ -11,7 +11,7 @@ namespace FiniteStateMachine
         private readonly IState[] _states;
         private readonly ReactiveProperty<IState> _currentState;
 
-        public CharacterStateMachine(IState[] states, IState startState)
+        public CharacterStateMachine(IState[] states)
         {
             if (states == null)
                 throw new ArgumentNullException(nameof(states));
@@ -19,11 +19,8 @@ namespace FiniteStateMachine
             if (states.Length == 0)
                 throw new ArgumentOutOfRangeException(nameof(states));
 
-            if (startState == null)
-                throw new ArgumentNullException(nameof(startState));
-
             _states = states;
-            _currentState = new ReactiveProperty<IState>(startState);
+            _currentState = new ReactiveProperty<IState>(states[0]);
         }
 
         public ReadOnlyReactiveProperty<IState> CurrentState => _currentState;

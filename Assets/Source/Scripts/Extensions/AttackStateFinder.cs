@@ -5,11 +5,11 @@ using FiniteStateMachine.States;
 
 namespace Extensions
 {
-    public static class RequiredStateFinder
+    public static class AttackStateFinder
     {
         private static readonly Dictionary<AttackType, Type> _states;
         
-        static RequiredStateFinder()
+        static AttackStateFinder()
         {
             _states = new Dictionary<AttackType, Type>
             {

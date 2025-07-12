@@ -1,16 +1,13 @@
 ﻿using System;
-using AnimationSystem;
 using UnityEngine;
 
-namespace CharacterSystem
+namespace AnimationSystem
 {
-    public abstract class Character : MonoBehaviour
+    public class AnimatedCharacter : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
+        [field: SerializeField] public Animator Animator { get; private set; }
 
         private CharacterAnimation[] _animations;
-
-        public Animator Animator => _animator;
 
         private void Start()
         {
@@ -28,7 +25,7 @@ namespace CharacterSystem
             }
         }
 
-        protected void Initialize(CharacterAnimation[] animations)
+        public void Initialize(CharacterAnimation[] animations)
         {
             if (animations == null)
                 throw new ArgumentNullException(nameof(animations));

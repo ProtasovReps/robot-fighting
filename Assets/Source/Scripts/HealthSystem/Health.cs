@@ -17,7 +17,7 @@ namespace HealthSystem
         }
         
         public ReadOnlyReactiveProperty<float> CurrentValue => _currentValue;
-
+        
         public void AcceptDamage(float damage)
         {
             if (damage < 0)

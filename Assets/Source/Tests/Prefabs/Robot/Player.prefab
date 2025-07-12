@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872a22097182d4e44b5f875692af7e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 7072284674470799382}
+  _stunDuration: 0
 --- !u!114 &3296656519962594719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,9 +97,11 @@ MonoBehaviour:
   - {fileID: 5086699733892058580}
   - {fileID: 4617473264512631198}
   <Fighter>k__BackingField: {fileID: 3198600417946103219}
+  <Attacker>k__BackingField: {fileID: 8454669540832127550}
+  <AnimatedCharacter>k__BackingField: {fileID: 0}
   <HealthView>k__BackingField: {fileID: 0}
   <StartHealthValue>k__BackingField: 100
-  <Attacker>k__BackingField: {fileID: 8454669540832127550}
+  <StunDuration>k__BackingField: 0.1
   <PlayerInputReader>k__BackingField: {fileID: 4169665270030267081}
   <PositionTranslation>k__BackingField: {fileID: 8317237888319817899}
   <Jump>k__BackingField: {fileID: 3296656519962594719}
@@ -707,6 +709,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6707389324209408961, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7072284674470799382}
+    - targetCorrespondingSourceObject: {fileID: 6707389324209408961, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1582464566641025659}
   m_SourcePrefab: {fileID: 100100000, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
 --- !u!1 &6258952494519842969 stripped
 GameObject:
@@ -734,6 +739,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1582464566641025659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6258952494519842969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Animator>k__BackingField: {fileID: 7072284674470799382}
 --- !u!4 &7941875976654055876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7349343746878986908, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}

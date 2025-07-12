@@ -1,15 +1,15 @@
 ﻿using System;
+using CharacterSystem.Data;
 using FiniteStateMachine.States;
-using InputSystem;
 using Interface;
 using R3;
 
 namespace FiniteStateMachine.Factory
 {
-    public class BotStateMachineFactory : StateMachineFactory<IBotStateMachine>
+    public class BotStateMachineFactory : StateMachineFactory
     {
-        public BotStateMachineFactory(BotInputReader botInput)
-            : base(botInput)
+        public BotStateMachineFactory(BotData botData)
+            : base(botData.BotInputReader, botData.Fighter)
         {
         }
 
@@ -24,11 +24,6 @@ namespace FiniteStateMachine.Factory
             };
         }
 
-        protected override IBotStateMachine GetStateMachine(IState[] states)
-        {
-            return new CharacterStateMachine(states, states[1]); //1
-        }
-
         protected override void AddExtraConditions(ConditionBuilder builder)
         {
         }
@@ -36,14 +31,22 @@ namespace FiniteStateMachine.Factory
         protected override void InitializeConditionTransition(ConditionBuilder builder,
             CharacterStateMachine stateMachine)
         {
-            Func<Unit, bool> idleCondition = builder.Build((typeof(IdleState), true));
-            Func<Unit, bool> moveLeftCondition = builder.Build((typeof(MoveLeftState), true));
-            Func<Unit, bool> moveRightCondition = builder.Build((typeof(MoveRightState), true));
+            Func<Unit, bool> idleCondition = builder.Build(
+                (typeof(IdleState), true),
+                (typeof(HittedState), false));
+            Func<Unit, bool> moveLeftCondition = builder.Build(
+                (typeof(MoveLeftState), true),
+                (typeof(HittedState), false));
+            Func<Unit, bool> moveRightCondition = builder.Build(
+                (typeof(MoveRightState), true),
+                (typeof(HittedState), false));
+            Func<Unit, bool> hittedCondition = builder.Build((typeof(HittedState), true));
 
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, float>(InputReader.Direction, idleCondition)
                 .InitializeTransition<MoveLeftState, float>(InputReader.Direction, moveLeftCondition)
-                .InitializeTransition<MoveRightState, float>(InputReader.Direction, moveRightCondition);
+                .InitializeTransition<MoveRightState, float>(InputReader.Direction, moveRightCondition)
+                .InitializeTransition<HittedState, float>(InputReader.Direction, hittedCondition);
         }
     }
 }

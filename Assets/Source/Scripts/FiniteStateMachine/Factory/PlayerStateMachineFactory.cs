@@ -1,31 +1,25 @@
 ﻿using System;
-using FightingSystem;
+using CharacterSystem.Data;
 using FiniteStateMachine.States;
 using InputSystem;
 using Interface;
-using MovementSystem;
 using R3;
 
 namespace FiniteStateMachine.Factory
 {
-    public class PlayerStateMachineFactory : StateMachineFactory<IPlayerStateMachine>
+    public class PlayerStateMachineFactory : StateMachineFactory
     {
-        private readonly Jump _jump;
-        private readonly Attacker _attacker;
         private readonly PlayerInputReader _inputReader;
-
-        public PlayerStateMachineFactory(PlayerInputReader playerInputReader, Jump jump, Attacker attacker)
-            : base(playerInputReader)
+        private readonly PlayerData _playerData;
+        
+        public PlayerStateMachineFactory(PlayerData playerData)
+            : base(playerData.PlayerInputReader, playerData.Fighter)
         {
-            if (jump == null)
-                throw new ArgumentNullException(nameof(jump));
+            if (playerData == null)
+                throw new ArgumentNullException(nameof(playerData));
 
-            if (attacker == null)
-                throw new ArgumentNullException(nameof(attacker));
-
-            _jump = jump;
-            _attacker = attacker;
-            _inputReader = playerInputReader;
+            _playerData = playerData;
+            _inputReader = playerData.PlayerInputReader;
         }
 
         protected override IState[] GetStates()
@@ -42,15 +36,10 @@ namespace FiniteStateMachine.Factory
             };
         }
 
-        protected override IPlayerStateMachine GetStateMachine(IState[] states)
-        {
-            return new CharacterStateMachine(states, states[0]);
-        }
-
         protected override void AddExtraConditions(ConditionBuilder builder)
         {
-            builder.Add<JumpState>(_ => _jump.IsExecuting);
-            builder.Add<AttackState>(_ => _attacker.IsExecuting);
+            builder.Add<JumpState>(_ => _playerData.Jump.IsExecuting);
+            builder.Add<AttackState>(_ => _playerData.Attacker.IsExecuting);
         }
 
         protected override void InitializeConditionTransition(ConditionBuilder builder,
@@ -83,7 +72,7 @@ namespace FiniteStateMachine.Factory
                 .InitializeTransition<MoveRightState, float>(InputReader.Direction, moveRightCondition)
                 .InitializeTransition<JumpState,
                     Unit>(_inputReader.JumpPressed, jumpCondition) // пока так, чтобы не ломалось из-за разницы с ботом 
-                .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, moveJumpCondition)
+                .InitializeTransition<MoveJumpState, float>(InputReader.Direction, moveJumpCondition)
                 .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, attackCondition)
                 .InitializeTransition<KickState, Unit>(_inputReader.KickPressed, attackCondition);
         }

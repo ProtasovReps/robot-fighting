@@ -1,6 +1,8 @@
+using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
 using FiniteStateMachine.Factory;
+using HealthSystem;
 using InputSystem;
 using Interface;
 using Reflex.Core;
@@ -32,18 +34,11 @@ namespace Reflex
 
         private void InstallFighters(ContainerBuilder builder)
         {
-            PlayerStateMachineFactory playerStateMachineFactory =
-                new(_playerData.PlayerInputReader, _playerData.Jump, _playerData.Attacker);
-            BotStateMachineFactory botStateMachineFactory = new(_botData.BotInputReader);
-
-            IPlayerStateMachine playerStateMachine = playerStateMachineFactory.Produce();
-            IBotStateMachine botStateMachine = botStateMachineFactory.Produce();
-
-            PlayerFactory playerFactory = new(_playerData, playerStateMachine);
-            BotFactory botFactory = new(_botData, botStateMachine);
-
-            playerFactory.Produce();
-            botFactory.Produce();
+            AnimationFactory animationFactory = new();
+            PlayerFactory playerFactory = new(_playerData);
+            BotFactory botFactory = new(_botData);
+            IStateMachine playerStateMachine = playerFactory.Produce(animationFactory);
+            IStateMachine botStateMachine = botFactory.Produce(animationFactory);
 
             builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
             builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));
