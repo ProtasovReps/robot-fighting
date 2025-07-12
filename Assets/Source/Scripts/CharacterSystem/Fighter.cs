@@ -1,24 +1,25 @@
 using System;
-using AnimationSystem;
 using HealthSystem;
 using Interface;
+using UnityEngine;
 
 namespace CharacterSystem
 {
-    public class Fighter : Character
+    public class Fighter : MonoBehaviour
     {
-        private Health _health;
+        public IDamageable Health { get; private set; }
+        public IExecutable Stun { get; private set; }
 
-        public IDamageable Health => _health;
-
-        public void Initialize(Health health, CharacterAnimation[] animations)
+        public void Initialize(Health health, IExecutable stun)
         {
-            if(health == null)
+            if (health == null)
                 throw new ArgumentNullException(nameof(health));
+
+            if (stun == null)
+                throw new ArgumentNullException(nameof(stun));
             
-            _health = health;
-            
-            Initialize(animations);
+            Health = health;
+            Stun = stun;
         }
     }
 }

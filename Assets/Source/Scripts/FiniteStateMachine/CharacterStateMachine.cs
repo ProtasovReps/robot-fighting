@@ -6,25 +6,21 @@ using UnityEngine;
 
 namespace FiniteStateMachine
 {
-    public class CharacterStateMachine : IStateChangeable
+    public class CharacterStateMachine : IPlayerStateMachine, IBotStateMachine
     {
         private readonly IState[] _states;
+        private readonly ReactiveProperty<IState> _currentState;
 
-        private ReactiveProperty<IState> _currentState;
-        
-        public CharacterStateMachine(IState[] states, IState startState)
+        public CharacterStateMachine(IState[] states)
         {
             if (states == null)
                 throw new ArgumentNullException(nameof(states));
-            
-            if(states.Length == 0)
+
+            if (states.Length == 0)
                 throw new ArgumentOutOfRangeException(nameof(states));
-            
-            if(startState == null)
-                throw new ArgumentNullException(nameof(startState));
-            
+
             _states = states;
-            _currentState = new ReactiveProperty<IState>(startState);
+            _currentState = new ReactiveProperty<IState>(states[0]);
         }
 
         public ReadOnlyReactiveProperty<IState> CurrentState => _currentState;
@@ -35,7 +31,7 @@ namespace FiniteStateMachine
 
             if (state == null)
                 throw new StateNotFoundException(nameof(newState));
-            
+
             _currentState.OnNext(state);
             Debug.Log(state); // убрать потом
         }

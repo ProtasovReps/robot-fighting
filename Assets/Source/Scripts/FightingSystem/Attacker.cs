@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Extensions;
 using Interface;
@@ -7,34 +9,55 @@ namespace FightingSystem
 {
     public abstract class Attacker : MonoBehaviour, IExecutable
     {
-        [SerializeField] private Spherecaster _spherecaster;
-
-        private IAttack _attack;
+        private Dictionary<IAttack, Spherecaster> _attacks;
 
         public bool IsExecuting { get; private set; }
 
-        public void Initialize(IAttack attack)
+        public void Initialize(Dictionary<IAttack, Spherecaster> attacks)
         {
-            _attack = attack;
+            if (attacks == null)
+            {
+                throw new ArgumentNullException(nameof(attacks));
+            }
+
+            _attacks = attacks;
         }
 
-        protected void Attack()
+        protected void Attack(Type state)
         {
             if (IsExecuting)
+            {
                 return;
+            }
 
+            IAttack attackKey = null;
+                
+            foreach (IAttack attack in _attacks.Keys)
+            {
+                if (attack.RequiredState == state)
+                {
+                    attackKey = attack;
+                    break;
+                }
+            }
+
+            if (attackKey == null)
+            {
+                throw new KeyNotFoundException(nameof(attackKey));
+            }
+            
             IsExecuting = true;
-            AttackDelayed().Forget();
+            AttackDelayed(attackKey, _attacks[attackKey]).Forget();
         }
 
-        private async UniTaskVoid AttackDelayed()
+        private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
         {
-            await UniTask.WaitForSeconds(_attack.Delay);
-            bool isHitted = _spherecaster.TryFindDamageable(out IDamageable damageable);
+            await UniTask.WaitForSeconds(attack.Delay);
+            bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
 
             if (isHitted)
             {
-                _attack.ApplyDamage(damageable);
+                attack.ApplyDamage(damageable);
             }
 
             IsExecuting = false;

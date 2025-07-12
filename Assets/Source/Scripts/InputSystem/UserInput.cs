@@ -55,6 +55,15 @@ namespace InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Kick"",
+                    ""type"": ""Button"",
+                    ""id"": ""a2aaa973-1cca-4cf2-a5aa-39fb06a3927a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -160,7 +169,7 @@ namespace InputSystem
                 {
                     ""name"": """",
                     ""id"": ""1dd6b013-6914-464a-be83-05fb72da8839"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/c"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -170,12 +179,12 @@ namespace InputSystem
                 },
                 {
                     ""name"": """",
-                    ""id"": ""65bb43ef-fda6-4aac-bb2f-ae13e147390e"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""id"": ""bbf66413-2f6c-449c-8e57-7e00ff5a22fc"",
+                    ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Punch"",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Kick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -212,6 +221,7 @@ namespace InputSystem
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
+            m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -276,6 +286,7 @@ namespace InputSystem
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Punch;
+        private readonly InputAction m_Player_Kick;
         public struct PlayerActions
         {
             private @UserInput m_Wrapper;
@@ -283,6 +294,7 @@ namespace InputSystem
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Punch => m_Wrapper.m_Player_Punch;
+            public InputAction @Kick => m_Wrapper.m_Player_Kick;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -301,6 +313,9 @@ namespace InputSystem
                 @Punch.started += instance.OnPunch;
                 @Punch.performed += instance.OnPunch;
                 @Punch.canceled += instance.OnPunch;
+                @Kick.started += instance.OnKick;
+                @Kick.performed += instance.OnKick;
+                @Kick.canceled += instance.OnKick;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -314,6 +329,9 @@ namespace InputSystem
                 @Punch.started -= instance.OnPunch;
                 @Punch.performed -= instance.OnPunch;
                 @Punch.canceled -= instance.OnPunch;
+                @Kick.started -= instance.OnKick;
+                @Kick.performed -= instance.OnKick;
+                @Kick.canceled -= instance.OnKick;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -354,6 +372,7 @@ namespace InputSystem
             void OnMove(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
             void OnPunch(InputAction.CallbackContext context);
+            void OnKick(InputAction.CallbackContext context);
         }
     }
 }

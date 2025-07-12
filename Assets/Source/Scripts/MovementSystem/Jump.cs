@@ -15,12 +15,12 @@ namespace MovementSystem
 
         private float _startHeight;
         private Transform _transform;
-        private IStateChangeable _stateMachine;
+        private IStateMachine _stateMachine;
 
         public bool IsExecuting { get; private set; }
 
         [Inject]
-        private void Inject(IStateChangeable stateMachine)
+        private void Inject(IPlayerStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
         }

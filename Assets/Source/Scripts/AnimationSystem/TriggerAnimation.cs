@@ -9,7 +9,7 @@ namespace AnimationSystem
     {
         private readonly int _animationHash;
         
-        public TriggerAnimation(IStateChangeable stateMachine, Animator animator, int animationHash)
+        public TriggerAnimation(IStateMachine stateMachine, Animator animator, int animationHash)
             : base(stateMachine, animator)
         {
             _animationHash = animationHash;
