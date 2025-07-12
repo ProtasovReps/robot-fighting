@@ -24,7 +24,7 @@ namespace CharacterSystem
         {
             for (int i = 0; i < _animations.Length; i++)
             {
-                _animations[i].Dispose();
+               _animations[i].Dispose();
             }
         }
 

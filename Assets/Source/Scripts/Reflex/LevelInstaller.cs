@@ -12,13 +12,13 @@ namespace Reflex
     {
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private BotData _botData;
-        
+
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             InstallInput();
             InstallFighters(containerBuilder);
         }
-        
+
         private void InstallInput()
         {
             UserInput input = new();
@@ -32,18 +32,19 @@ namespace Reflex
 
         private void InstallFighters(ContainerBuilder builder)
         {
-            PlayerStateMachineFactory playerStateMachineFactory = new(_playerData.PlayerInputReader, _playerData.Jump, _playerData.Attacker);
-            BotStateMachineFactory botStateMachiineFactory = new(_botData.BotInputReader);
-            
+            PlayerStateMachineFactory playerStateMachineFactory =
+                new(_playerData.PlayerInputReader, _playerData.Jump, _playerData.Attacker);
+            BotStateMachineFactory botStateMachineFactory = new(_botData.BotInputReader);
+
             IPlayerStateMachine playerStateMachine = playerStateMachineFactory.Produce();
-            IBotStateMachine botStateMachine = botStateMachiineFactory.Produce();
-            
+            IBotStateMachine botStateMachine = botStateMachineFactory.Produce();
+
             PlayerFactory playerFactory = new(_playerData, playerStateMachine);
             BotFactory botFactory = new(_botData, botStateMachine);
-            
+
             playerFactory.Produce();
             botFactory.Produce();
-            
+
             builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
             builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));
         }

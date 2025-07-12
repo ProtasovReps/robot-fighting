@@ -1,5 +1,4 @@
 ﻿using System;
-using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
 using Interface;
@@ -9,7 +8,8 @@ namespace FiniteStateMachine.Factory
 {
     public class BotStateMachineFactory : StateMachineFactory<IBotStateMachine>
     {
-        public BotStateMachineFactory(BotInputReader botInput) : base(botInput)
+        public BotStateMachineFactory(BotInputReader botInput)
+            : base(botInput)
         {
         }
 
@@ -20,6 +20,7 @@ namespace FiniteStateMachine.Factory
                 new IdleState(),
                 new MoveLeftState(),
                 new MoveRightState(),
+                new HittedState()
             };
         }
 
@@ -35,9 +36,9 @@ namespace FiniteStateMachine.Factory
         protected override void InitializeConditionTransition(ConditionBuilder builder,
             CharacterStateMachine stateMachine)
         {
-            Func<Unit, bool> idleCondition = builder.Build((ConditionType.Stay, true));
-            Func<Unit, bool> moveLeftCondition = builder.Build((ConditionType.MoveLeft, true));
-            Func<Unit, bool> moveRightCondition = builder.Build((ConditionType.MoveRight, true));
+            Func<Unit, bool> idleCondition = builder.Build((typeof(IdleState), true));
+            Func<Unit, bool> moveLeftCondition = builder.Build((typeof(MoveLeftState), true));
+            Func<Unit, bool> moveRightCondition = builder.Build((typeof(MoveRightState), true));
 
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, float>(InputReader.Direction, idleCondition)
