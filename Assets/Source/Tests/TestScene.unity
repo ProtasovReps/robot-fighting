@@ -376,17 +376,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.000001, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0.0000038146973}
---- !u!114 &575991674 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1582464566641025659, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-  m_PrefabInstance: {fileID: 6410829735138439431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &605839551
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,16 +1003,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 312660780}
     - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-      propertyPath: <HitDuration>k__BackingField
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-      propertyPath: <AnimatedCharacter>k__BackingField
-      value: 
-      objectReference: {fileID: 575991674}
-    - target: {fileID: 4617473264512631198, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-      propertyPath: <Delay>k__BackingField
-      value: 0.6
+      propertyPath: <StunDuration>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1065,10 +1046,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5086699733892058580, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-      propertyPath: <Delay>k__BackingField
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 6212048862872474625, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1101,6 +1078,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 690814726097243318, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <Delay>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 690814726097243318, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <Damage>k__BackingField
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1451224401875884415, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <Delay>k__BackingField
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3584024037642806566, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: _target
       value: 
@@ -1111,11 +1100,11 @@ PrefabInstance:
       objectReference: {fileID: 1408251866}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <HitDuration>k__BackingField
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
-      propertyPath: <StartHealthValue>k__BackingField
-      value: 80
+      propertyPath: <StunDuration>k__BackingField
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8659470325079013316, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: m_Name

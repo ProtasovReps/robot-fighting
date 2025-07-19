@@ -3,10 +3,10 @@ using Reflex.Attributes;
 
 namespace FightingSystem
 {
-    public class PlayerAttacker : Attacker
+    public class BotAttacker : Attacker
     {
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine)
+        private void Inject(IBotStateMachine stateMachine)
         {
             SubscribeStateMachine(stateMachine);
         }

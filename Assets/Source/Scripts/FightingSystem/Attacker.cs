@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Extensions;
+using FiniteStateMachine.States;
 using Interface;
+using R3;
 using UnityEngine;
 
 namespace FightingSystem
@@ -10,41 +14,43 @@ namespace FightingSystem
     public abstract class Attacker : MonoBehaviour, IExecutable
     {
         private Dictionary<IAttack, Spherecaster> _attacks;
+        private CancellationTokenSource _cancellationTokenSource;
 
         public bool IsExecuting { get; private set; }
 
-        public void Initialize(Dictionary<IAttack, Spherecaster> attacks)
+        public void SetAttacks(Dictionary<IAttack, Spherecaster> attacks)
         {
             if (attacks == null)
-            {
                 throw new ArgumentNullException(nameof(attacks));
-            }
 
             _attacks = attacks;
         }
 
-        protected void Attack(Type state)
+        protected void SubscribeStateMachine(IStateMachine stateMachine)
+        {
+            if (stateMachine == null)
+                throw new ArgumentNullException(nameof(stateMachine));
+            
+            stateMachine.CurrentState
+                .Where(state => state is AttackState)
+                .Subscribe(state => Attack(state.Type))
+                .AddTo(this);
+            
+            stateMachine.CurrentState
+                .Where(state => state.Type == typeof(HittedState))
+                .Subscribe(_ => CancelAttack())
+                .AddTo(this);
+        }
+        
+        private void Attack(Type state)
         {
             if (IsExecuting)
-            {
                 return;
-            }
 
-            IAttack attackKey = null;
-                
-            foreach (IAttack attack in _attacks.Keys)
-            {
-                if (attack.RequiredState == state)
-                {
-                    attackKey = attack;
-                    break;
-                }
-            }
+            IAttack attackKey = _attacks.Keys.FirstOrDefault(attack => attack.RequiredState == state);            
 
             if (attackKey == null)
-            {
                 throw new KeyNotFoundException(nameof(attackKey));
-            }
             
             IsExecuting = true;
             AttackDelayed(attackKey, _attacks[attackKey]).Forget();
@@ -52,14 +58,20 @@ namespace FightingSystem
 
         private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
         {
-            await UniTask.WaitForSeconds(attack.Delay);
+            _cancellationTokenSource = new CancellationTokenSource();
+            
+            await UniTask.WaitForSeconds(attack.Delay, cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
             bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
 
             if (isHitted)
-            {
                 attack.ApplyDamage(damageable);
-            }
 
+            CancelAttack();
+        }
+
+        private void CancelAttack()
+        {
+            _cancellationTokenSource?.Cancel();
             IsExecuting = false;
         }
     }

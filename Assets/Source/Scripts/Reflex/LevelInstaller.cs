@@ -25,9 +25,10 @@ namespace Reflex
         {
             UserInput input = new();
             BotMovementInput botMovementInput = new(_botData.ChangeDirectionInterval);
-
+            BotAttackInput botAttackInput = new(_botData.AttackDelay);
+            
             _playerData.PlayerInputReader.Initialize(input);
-            _botData.BotInputReader.Initialize(botMovementInput);
+            _botData.BotInputReader.Initialize(botMovementInput, botAttackInput);
             _playerData.PositionTranslation.Initialize(_playerData.PlayerInputReader);
             _botData.PositionTranslation.Initialize(_botData.BotInputReader);
         }

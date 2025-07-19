@@ -1,5 +1,5 @@
 ﻿using System;
-using CharacterSystem;
+using CharacterSystem.Data;
 using FiniteStateMachine.States;
 using Interface;
 
@@ -8,34 +8,35 @@ namespace FiniteStateMachine.Factory
 {
     public abstract class StateMachineFactory
     {
-        protected StateMachineFactory(IDirectionChangeable inputReader, Fighter fighter)
+        protected StateMachineFactory(IDirectionChangeable inputReader, FighterData fighterData)
         {
             if (inputReader == null)
                 throw new ArgumentNullException(nameof(inputReader));
 
-            if (fighter == null)
-                throw new ArgumentNullException(nameof(fighter));
+            if (fighterData == null)
+                throw new ArgumentNullException(nameof(fighterData));
             
             InputReader = inputReader;
-            Fighter = fighter;
+            FighterData = fighterData;
         }
 
-        protected Fighter Fighter { get; }
+        protected FighterData FighterData { get; }
         protected IDirectionChangeable InputReader { get; }
 
         public IStateMachine Produce()
         {
             IState[] states = GetStates(); // основные стейты здесь должны генерироваться, дополнительные добавлять наследники
-            IStateMachine machine = new CharacterStateMachine(states);
+            CharacterStateMachine machine = new(states);
             ConditionBuilder conditionBuilder = new();
 
             conditionBuilder.Add<IdleState>(_ => InputReader.Direction.CurrentValue == 0);
             conditionBuilder.Add<MoveLeftState>(_ => InputReader.Direction.CurrentValue < 0);
             conditionBuilder.Add<MoveRightState>( _ => InputReader.Direction.CurrentValue > 0);
-            conditionBuilder.Add<HittedState>(_ => Fighter.Stun.IsExecuting);
+            conditionBuilder.Add<HittedState>(_ => FighterData.Fighter.Stun.IsExecuting);
+            conditionBuilder.Add<AttackState>(_ => FighterData.Attacker.IsExecuting);
             
             AddExtraConditions(conditionBuilder);
-            InitializeConditionTransition(conditionBuilder, machine as CharacterStateMachine);
+            InitializeConditionTransition(conditionBuilder, machine);
             return machine;
         }
 

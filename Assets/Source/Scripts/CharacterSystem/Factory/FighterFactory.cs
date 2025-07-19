@@ -25,7 +25,7 @@ namespace CharacterSystem.Factory
         public IStateMachine Produce(AnimationFactory animationFactory)
         {
             Health health = new(_fighterData.StartHealthValue);
-            Stun stun = new(_fighterData.HitDuration, health);
+            Stun stun = new(_fighterData.StunDuration, health);
             
             Dictionary<IAttack, Spherecaster> attacks = new();
             
@@ -36,7 +36,7 @@ namespace CharacterSystem.Factory
                 attacks.Add(attack, data.Spherecaster);
             }
             
-            _fighterData.Attacker.Initialize(attacks);
+            _fighterData.Attacker.SetAttacks(attacks);
             _fighterData.Fighter.Initialize(health, stun);
             _fighterData.HealthView.Initialize(health);
 

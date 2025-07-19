@@ -7,10 +7,13 @@ namespace InputSystem
     public class BotInputReader : MonoBehaviour, IDirectionChangeable
     {
         private BotMovementInput _botMovementInput;
+        private BotAttackInput _botAttackInput;
         private ReactiveProperty<float> _direction;
 
         public ReadOnlyReactiveProperty<float> Direction => _direction;
-
+        public Observable<Unit> UpAttackPressed => _botAttackInput.UpAttack;
+        public Observable<Unit> DownAttackPressed => _botAttackInput.DownAttack;
+        
         private void Awake()
         {
             Observable.EveryUpdate()
@@ -18,9 +21,10 @@ namespace InputSystem
                 .AddTo(this);
         }
 
-        public void Initialize(BotMovementInput botMovementInput)
+        public void Initialize(BotMovementInput botMovementInput, BotAttackInput botAttackInput)
         {
             _botMovementInput = botMovementInput;
+            _botAttackInput = botAttackInput;
             _direction = new ReactiveProperty<float>();
         }
     }

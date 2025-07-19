@@ -3,13 +3,13 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Interface;
 using R3;
-using UnityEngine;
 
 namespace FightingSystem
 {
     public class Stun : IExecutable, IDisposable
     {
         private readonly IDisposable _subscription;
+        private readonly Subject<Unit> _isStunned;
         private readonly float _stunDuration;
 
         private CancellationTokenSource _cancellationTokenSource; 
@@ -34,6 +34,8 @@ namespace FightingSystem
         public void Dispose()
         {
             _subscription.Dispose();
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource?.Dispose();
         }
 
         private void Validate()
@@ -50,7 +52,6 @@ namespace FightingSystem
             _cancellationTokenSource = new CancellationTokenSource();
             await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
             IsExecuting = false;
-            Debug.LogError("Вышел");
         }
     }
 }

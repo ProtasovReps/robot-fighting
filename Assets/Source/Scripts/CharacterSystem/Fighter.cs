@@ -9,7 +9,7 @@ namespace CharacterSystem
     {
         public IDamageable Health { get; private set; }
         public IExecutable Stun { get; private set; }
-
+        
         public void Initialize(Health health, IExecutable stun)
         {
             if (health == null)
