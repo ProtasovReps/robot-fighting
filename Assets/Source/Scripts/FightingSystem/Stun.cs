@@ -9,7 +9,6 @@ namespace FightingSystem
     public class Stun : IExecutable, IDisposable
     {
         private readonly IDisposable _subscription;
-        private readonly Subject<Unit> _isStunned;
         private readonly float _stunDuration;
 
         private CancellationTokenSource _cancellationTokenSource; 
