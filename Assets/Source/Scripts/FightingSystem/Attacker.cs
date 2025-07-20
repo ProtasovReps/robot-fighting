@@ -66,6 +66,7 @@ namespace FightingSystem
             if (isHitted)
                 attack.ApplyDamage(damageable);
 
+            await UniTask.WaitForSeconds(attack.Duration - attack.Delay);
             CancelAttack();
         }
 

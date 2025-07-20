@@ -31,7 +31,7 @@ namespace CharacterSystem.Factory
             
             foreach (AttackData data in _fighterData.Attacks)
             {
-                DefaultAttack attack = new(data.Damage, data.Delay, AttackStateFinder.GetState(data.AttackType));
+                DefaultAttack attack = new(data.Damage, data.Duration, data.Delay, AttackStateFinder.GetState(data.AttackType));
 
                 attacks.Add(attack, data.Spherecaster);
             }

@@ -7,14 +7,16 @@ namespace FightingSystem.Attacks
     {
         private readonly float _damage;
 
-        public DefaultAttack(float damage, float delay, Type requiredState)
+        public DefaultAttack(float damage, float duration, float delay, Type requiredState)
         {
             _damage = damage;
             Delay = delay;
+            Duration = duration;
             RequiredState = requiredState;
         }
 
-        public float Delay { get; } 
+        public float Delay { get; }
+        public float Duration { get; }
         public Type RequiredState { get; }
 
         public void ApplyDamage(IDamageable damageable)
