@@ -64,6 +64,15 @@ namespace InputSystem
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a109a1f-8c78-40e9-9b95-f118b0cf5591"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +196,17 @@ namespace InputSystem
                     ""action"": ""Kick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6ab22cf-378b-4783-b3c4-2ddfc9f5a0cc"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -222,6 +242,7 @@ namespace InputSystem
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
             m_Player_Punch = m_Player.FindAction("Punch", throwIfNotFound: true);
             m_Player_Kick = m_Player.FindAction("Kick", throwIfNotFound: true);
+            m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -287,6 +308,7 @@ namespace InputSystem
         private readonly InputAction m_Player_Jump;
         private readonly InputAction m_Player_Punch;
         private readonly InputAction m_Player_Kick;
+        private readonly InputAction m_Player_Block;
         public struct PlayerActions
         {
             private @UserInput m_Wrapper;
@@ -295,6 +317,7 @@ namespace InputSystem
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputAction @Punch => m_Wrapper.m_Player_Punch;
             public InputAction @Kick => m_Wrapper.m_Player_Kick;
+            public InputAction @Block => m_Wrapper.m_Player_Block;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ namespace InputSystem
                 @Kick.started += instance.OnKick;
                 @Kick.performed += instance.OnKick;
                 @Kick.canceled += instance.OnKick;
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -332,6 +358,9 @@ namespace InputSystem
                 @Kick.started -= instance.OnKick;
                 @Kick.performed -= instance.OnKick;
                 @Kick.canceled -= instance.OnKick;
+                @Block.started -= instance.OnBlock;
+                @Block.performed -= instance.OnBlock;
+                @Block.canceled -= instance.OnBlock;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -373,6 +402,7 @@ namespace InputSystem
             void OnJump(InputAction.CallbackContext context);
             void OnPunch(InputAction.CallbackContext context);
             void OnKick(InputAction.CallbackContext context);
+            void OnBlock(InputAction.CallbackContext context);
         }
     }
 }

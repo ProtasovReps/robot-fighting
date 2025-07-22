@@ -10,11 +10,14 @@ namespace InputSystem
         private Subject<Unit> _jumpPressed;
         private Subject<Unit> _punchPressed;
         private Subject<Unit> _kickPressed;
+        private Subject<Unit> _blockPressed;
         private ReactiveProperty<float> _direction;
 
         public Observable<Unit> JumpPressed => _jumpPressed;
         public Observable<Unit> PunchPressed => _punchPressed;
         public Observable<Unit> KickPressed => _kickPressed;
+        public Observable<Unit> BlockPressed => _blockPressed;
+        
         public ReadOnlyReactiveProperty<float> Direction => _direction;
 
         private void Awake()
@@ -26,6 +29,7 @@ namespace InputSystem
             _input.Player.Jump.performed += _ => _jumpPressed.OnNext(Unit.Default);
             _input.Player.Punch.performed += _ => _punchPressed.OnNext(Unit.Default);
             _input.Player.Kick.performed += _ => _kickPressed.OnNext(Unit.Default);
+            _input.Player.Block.performed += _ => _blockPressed.OnNext(Unit.Default);
         }
 
         private void OnDestroy()
@@ -39,6 +43,7 @@ namespace InputSystem
             _jumpPressed = new Subject<Unit>();
             _punchPressed = new Subject<Unit>();
             _kickPressed = new Subject<Unit>();
+            _blockPressed = new Subject<Unit>();
             _direction = new ReactiveProperty<float>();
             _input.Enable();
         }

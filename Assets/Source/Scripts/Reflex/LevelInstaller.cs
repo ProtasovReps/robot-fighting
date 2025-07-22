@@ -1,7 +1,9 @@
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
+using FiniteStateMachine;
 using FiniteStateMachine.Factory;
+using FiniteStateMachine.Transitions.Factory;
 using HealthSystem;
 using InputSystem;
 using Interface;
@@ -26,7 +28,7 @@ namespace Reflex
             UserInput input = new();
             BotMovementInput botMovementInput = new(_botData.ChangeDirectionInterval);
             BotAttackInput botAttackInput = new(_botData.AttackDelay);
-            
+
             _playerData.PlayerInputReader.Initialize(input);
             _botData.BotInputReader.Initialize(botMovementInput, botAttackInput);
             _playerData.PositionTranslation.Initialize(_playerData.PlayerInputReader);
@@ -36,10 +38,14 @@ namespace Reflex
         private void InstallFighters(ContainerBuilder builder)
         {
             AnimationFactory animationFactory = new();
-            PlayerFactory playerFactory = new(_playerData);
-            BotFactory botFactory = new(_botData);
-            IStateMachine playerStateMachine = playerFactory.Produce(animationFactory);
-            IStateMachine botStateMachine = botFactory.Produce(animationFactory);
+            CharacterStateMachine playerStateMachine = new PlayerStateMachineFactory().Produce();
+            CharacterStateMachine botStateMachine = new BotStateMachineFactory().Produce();
+
+            PlayerData playerData = new PlayerFactory().Produce(_playerData, animationFactory, playerStateMachine);
+            BotData botData = new BotFactory().Produce(_botData, animationFactory, botStateMachine);
+
+            new PlayerTransitionFactory(playerData).InstallMachine(playerStateMachine);
+            new BotTransitionFactory(botData).InstallMachine(botStateMachine);
 
             builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
             builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));

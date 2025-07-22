@@ -1,7 +1,7 @@
 ﻿using System;
 using Interface;
 
-namespace FiniteStateMachine
+namespace FiniteStateMachine.Transitions
 {
     public class Transition<TTargetState>
         where TTargetState : IState

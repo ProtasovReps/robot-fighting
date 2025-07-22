@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using Extensions;
@@ -12,40 +11,26 @@ namespace CharacterSystem.Factory
 {
     public abstract class FighterFactory
     {
-        private readonly FighterData _fighterData;
-        
-        protected FighterFactory(FighterData fighterData)
+        protected FighterData Produce(FighterData fighterData, AnimationFactory animationFactory, IStateMachine stateMachine)
         {
-            if (fighterData == null)
-                throw new ArgumentNullException(nameof(fighterData));
-
-            _fighterData = fighterData;
-        }
-        
-        public IStateMachine Produce(AnimationFactory animationFactory)
-        {
-            Health health = new(_fighterData.StartHealthValue);
-            Stun stun = new(_fighterData.StunDuration, health);
-            
+            Health health = new(fighterData.StartHealthValue);
+            Stun stun = new(fighterData.StunDuration, health);
+            Block block = new(fighterData.BlockDuration, stateMachine);
             Dictionary<IAttack, Spherecaster> attacks = new();
             
-            foreach (AttackData data in _fighterData.Attacks)
+            foreach (AttackData data in fighterData.Attacks)
             {
                 DefaultAttack attack = new(data.Damage, data.Duration, data.Delay, AttackStateFinder.GetState(data.AttackType));
 
                 attacks.Add(attack, data.Spherecaster);
             }
             
-            _fighterData.Attacker.SetAttacks(attacks);
-            _fighterData.Fighter.Initialize(health, stun);
-            _fighterData.HealthView.Initialize(health);
-
-            IStateMachine stateMachine = GetStateMachine();
+            fighterData.Attacker.SetAttacks(attacks);
+            fighterData.HealthView.Initialize(health);
+            fighterData.Fighter.Initialize(health, stun, block);
             
-            animationFactory.Produce(_fighterData.AnimatedCharacter, stateMachine);
-            return stateMachine;
+            animationFactory.Produce(fighterData.AnimatedCharacter, stateMachine);
+            return fighterData;
         }
-
-        protected abstract IStateMachine GetStateMachine();
     }
 }

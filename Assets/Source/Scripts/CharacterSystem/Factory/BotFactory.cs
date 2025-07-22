@@ -1,21 +1,14 @@
-﻿using CharacterSystem.Data;
-using FiniteStateMachine.Factory;
+﻿using AnimationSystem.Factory;
+using CharacterSystem.Data;
 using Interface;
 
 namespace CharacterSystem.Factory
 {
     public class BotFactory : FighterFactory
     {
-        private readonly BotData _botData;
-        
-        public BotFactory(BotData fighterData) : base(fighterData)
+        public BotData Produce(BotData playerData, AnimationFactory animationFactory, IBotStateMachine stateMachine)
         {
-            _botData = fighterData;
-        }
-
-        protected override IStateMachine GetStateMachine()
-        {
-            return new BotStateMachineFactory(_botData).Produce();
+            return base.Produce(playerData, animationFactory, stateMachine) as BotData;
         }
     }
 }

@@ -2,7 +2,7 @@
 using Interface;
 using R3;
 
-namespace FiniteStateMachine
+namespace FiniteStateMachine.Transitions
 {
     public class TransitionInitializer : IDisposable
     {
