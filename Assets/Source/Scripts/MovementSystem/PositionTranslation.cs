@@ -24,20 +24,17 @@ namespace MovementSystem
                 .AddTo(this);
         }
 
-        public void SetInput(IDirectionChangeable directionChangeable)
+        protected void Initialize(IStateMachine stateMachine, IConditionAddable conditionAddable,
+            IDirectionChangeable directionChangeable)
         {
             _directionChangeable = directionChangeable;
-        }
-
-        protected void SetStateMachine(IStateMachine stateMachine, IConditionAddable conditionAddable)
-        {
             _stateMachine = stateMachine;
-            
+
             conditionAddable.Add<IdleState>(_ => _directionChangeable.Direction.CurrentValue == 0);
             conditionAddable.Add<MoveRightState>(_ => _directionChangeable.Direction.CurrentValue > 0);
             conditionAddable.Add<MoveLeftState>(_ => _directionChangeable.Direction.CurrentValue < 0);
         }
-        
+
         private void TranslatePosition(float direction)
         {
             float targetDistance = direction * _moveSpeed * Time.deltaTime;

@@ -1,3 +1,4 @@
+using System;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
@@ -13,59 +14,62 @@ namespace Reflex
 {
     public class LevelInstaller : MonoBehaviour, IInstaller
     {
-        [SerializeField] private PlayerData _playerData;
-        [SerializeField] private BotData _botData;
+        [Header("Player")]
         [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
+        [SerializeField] private PlayerFactory _playerFactory;
+        [SerializeField] private PlayerInputReader _playerInputReader;
+        [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
-        
+        [SerializeField] private BotFactory _botFactory;
+        [SerializeField] private BotInputReader _botInputReader;
+
+        private void Start()
+        {
+            Destroy(gameObject);
+        }
+
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            InstallInput();
-            InstallFighters(containerBuilder);
-        }
-
-        private void InstallInput()
-        {
-            UserInput input = new();
-            BotMovementInput botMovementInput = new(_botData.ChangeDirectionInterval);
-            BotAttackInput botAttackInput = new(_botData.AttackDelay);
-
-            _playerData.PlayerInputReader.Initialize(input);
-            _botData.BotInputReader.Initialize(botMovementInput, botAttackInput);
-            _playerData.PositionTranslation.SetInput(_playerData.PlayerInputReader);
-            _botData.PositionTranslation.SetInput(_botData.BotInputReader);
-        }
-
-        private void InstallFighters(ContainerBuilder builder)
-        {
             AnimationFactory animationFactory = new();
-
-            InstallPlayer(animationFactory, builder);
-            InstallBot(animationFactory, builder);
+            BotData botData = InstallBot(animationFactory, containerBuilder);
+            
+            InstallPlayer(animationFactory, containerBuilder);
+            InstallInput(botData);
         }
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             CharacterStateMachine playerStateMachine = new PlayerStateMachineFactory().Produce();
             ConditionBuilder conditionBuilder = new();
+            _playerFactory.Produce(animationFactory, playerStateMachine, conditionBuilder);
 
-            new PlayerFactory().Produce(_playerData, animationFactory, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
-
+            
             builder.AddSingleton(conditionBuilder, typeof(IPlayerConditionAddable));
             builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
         }
 
-        private void InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
+        private BotData InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             CharacterStateMachine botStateMachine = new BotStateMachineFactory().Produce();
             ConditionBuilder conditionBuilder = new();
+            BotData botData = _botFactory.Produce(animationFactory, botStateMachine, conditionBuilder);
 
-            new BotFactory().Produce(_botData, animationFactory, botStateMachine, conditionBuilder);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
             builder.AddSingleton(conditionBuilder, typeof(IBotConditionAddable));
             builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));
+            return botData;
+        }
+        
+        private void InstallInput(BotData botData)
+        {
+            UserInput input = new();
+            BotMovementInput botMovementInput = new(botData.ChangeDirectionInterval);
+            BotAttackInput botAttackInput = new(botData.AttackDelay);
+
+            _playerInputReader.Initialize(input);
+            _botInputReader.Initialize(botMovementInput, botAttackInput);
         }
     }
 }

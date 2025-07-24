@@ -92,8 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Spherecaster>k__BackingField: {fileID: 3779623479943231234}
-  <Delay>k__BackingField: 1
-  <Damage>k__BackingField: 40
+  <Delay>k__BackingField: 0.6
+  <Duration>k__BackingField: 1
+  <Damage>k__BackingField: 25
   <AttackType>k__BackingField: 1
 --- !u!114 &3779623479943231234
 MonoBehaviour:
@@ -247,7 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Spherecaster>k__BackingField: {fileID: 800771374386270707}
-  <Delay>k__BackingField: 0.5
+  <Delay>k__BackingField: 0.35
+  <Duration>k__BackingField: 0.7
   <Damage>k__BackingField: 20
   <AttackType>k__BackingField: 0
 --- !u!114 &800771374386270707
@@ -277,6 +279,7 @@ GameObject:
   - component: {fileID: 8755169258205420272}
   - component: {fileID: 4969146424332935340}
   - component: {fileID: 4814461825682681044}
+  - component: {fileID: 2533986586423708081}
   m_Layer: 6
   m_Name: Bot
   m_TagString: Untagged
@@ -317,6 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _distanceValidator: {fileID: 3584024037642806566}
+  _botInputReader: {fileID: 6519462337574768723}
 --- !u!114 &4814461825682681044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,16 +336,25 @@ MonoBehaviour:
   _attacks:
   - {fileID: 1451224401875884415}
   - {fileID: 690814726097243318}
-  <Fighter>k__BackingField: {fileID: 326662491509074052}
-  <Attacker>k__BackingField: {fileID: 2417709137288460807}
-  <AnimatedCharacter>k__BackingField: {fileID: 387817395823051735}
-  <HealthView>k__BackingField: {fileID: 0}
   <StartHealthValue>k__BackingField: 80
-  <HitDuration>k__BackingField: 1
-  <BotInputReader>k__BackingField: {fileID: 6519462337574768723}
-  <PositionTranslation>k__BackingField: {fileID: 4969146424332935340}
+  <StunDuration>k__BackingField: 0.8
+  <BlockDuration>k__BackingField: 1
   <ChangeDirectionInterval>k__BackingField: 1
   <AttackDelay>k__BackingField: 1.5
+--- !u!114 &2533986586423708081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659470325079013316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8acce11bf55496c800d93560c625cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetRightPosition: -1
+  _impactTime: 0.5
 --- !u!1001 &2392182077772747584
 PrefabInstance:
   m_ObjectHideFlags: 0

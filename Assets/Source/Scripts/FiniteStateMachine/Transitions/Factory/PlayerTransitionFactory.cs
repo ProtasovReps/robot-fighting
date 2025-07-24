@@ -11,7 +11,7 @@ namespace FiniteStateMachine.Transitions.Factory
         [SerializeField] private PlayerInputReader _inputReader;
 
         protected override void InitializeConditionTransition(
-            ConditionBuilder builder, //нужно подумать, как создать основные условия внутри, а дополнительные собачить в наследниках
+            ConditionBuilder builder, 
             CharacterStateMachine stateMachine)
         {
             Func<Unit, bool> idleCondition = builder.Build(

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3296656519962594719}
   - component: {fileID: 8317237888319817899}
   - component: {fileID: 123863274945531791}
+  - component: {fileID: 7296620159227531177}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 7
   _distanceValidator: {fileID: 8889627051122865410}
+  _playerInputReader: {fileID: 4169665270030267081}
 --- !u!114 &123863274945531791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,15 +84,23 @@ MonoBehaviour:
   _attacks:
   - {fileID: 5086699733892058580}
   - {fileID: 4617473264512631198}
-  <Fighter>k__BackingField: {fileID: 6383702081972704381}
-  <Attacker>k__BackingField: {fileID: 8454669540832127550}
-  <AnimatedCharacter>k__BackingField: {fileID: 1582464566641025659}
-  <HealthView>k__BackingField: {fileID: 0}
   <StartHealthValue>k__BackingField: 100
-  <HitDuration>k__BackingField: 0.1
-  <PlayerInputReader>k__BackingField: {fileID: 4169665270030267081}
-  <PositionTranslation>k__BackingField: {fileID: 8317237888319817899}
-  <Jump>k__BackingField: {fileID: 3296656519962594719}
+  <StunDuration>k__BackingField: 1
+  <BlockDuration>k__BackingField: 1
+--- !u!114 &7296620159227531177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212048862872474625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a458415ae3c4a6cb78779fa8785312e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetRightPosition: 1
+  _impactTime: 0.5
 --- !u!1 &6681849221444632249
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Spherecaster>k__BackingField: {fileID: 8224786430901223397}
   <Delay>k__BackingField: 0.5
+  <Duration>k__BackingField: 1
   <Damage>k__BackingField: 40
   <AttackType>k__BackingField: 1
 --- !u!114 &8224786430901223397
@@ -339,6 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Spherecaster>k__BackingField: {fileID: 1266703821668328363}
   <Delay>k__BackingField: 0.3
+  <Duration>k__BackingField: 0.8
   <Damage>k__BackingField: 20
   <AttackType>k__BackingField: 0
 --- !u!114 &1266703821668328363
