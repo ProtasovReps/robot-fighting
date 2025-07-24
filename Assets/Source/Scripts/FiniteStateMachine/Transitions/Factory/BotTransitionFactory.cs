@@ -1,20 +1,14 @@
 ﻿using System;
-using CharacterSystem.Data;
 using FiniteStateMachine.States;
 using InputSystem;
 using R3;
+using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
     public class BotTransitionFactory : StateTransitionFactory
     {
-        private readonly BotInputReader _botInputReader;
-        
-        public BotTransitionFactory(BotData botData)
-            : base(botData.BotInputReader, botData)
-        {
-            _botInputReader = botData.BotInputReader;
-        }
+        [SerializeField] private BotInputReader _botInputReader;
         
         protected override void InitializeConditionTransition(ConditionBuilder builder,
             CharacterStateMachine stateMachine)

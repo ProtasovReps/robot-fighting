@@ -26,32 +26,34 @@ namespace FightingSystem
             _attacks = attacks;
         }
 
-        protected void SubscribeStateMachine(IStateMachine stateMachine)
+        protected void SubscribeStateMachine(IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));
-            
+
             stateMachine.CurrentState
                 .Where(state => state is AttackState)
                 .Subscribe(state => Attack(state.Type))
                 .AddTo(this);
-            
+
             stateMachine.CurrentState
                 .Where(state => state.Type == typeof(HittedState))
                 .Subscribe(_ => CancelAttack())
                 .AddTo(this);
+
+            conditionAddable.Add<AttackState>(_ => IsExecuting);
         }
-        
+
         private void Attack(Type state)
         {
             if (IsExecuting)
                 return;
 
-            IAttack attackKey = _attacks.Keys.FirstOrDefault(attack => attack.RequiredState == state);            
+            IAttack attackKey = _attacks.Keys.FirstOrDefault(attack => attack.RequiredState == state);
 
             if (attackKey == null)
                 throw new KeyNotFoundException(nameof(attackKey));
-            
+
             IsExecuting = true;
             AttackDelayed(attackKey, _attacks[attackKey]).Forget();
         }
@@ -59,8 +61,9 @@ namespace FightingSystem
         private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
         {
             _cancellationTokenSource = new CancellationTokenSource();
-            
-            await UniTask.WaitForSeconds(attack.Delay, cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+
+            await UniTask.WaitForSeconds(attack.Delay, cancellationToken: _cancellationTokenSource.Token,
+                cancelImmediately: true);
             bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
 
             if (isHitted)

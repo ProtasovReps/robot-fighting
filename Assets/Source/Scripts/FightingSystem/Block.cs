@@ -14,7 +14,7 @@ namespace FightingSystem
 
         private CancellationTokenSource _tokenSource;
         
-        public Block(float blockDuration, IStateMachine stateMachine)
+        public Block(float blockDuration, IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             if (blockDuration <= 0)
                 throw new ArgumentOutOfRangeException(nameof(blockDuration));
@@ -23,6 +23,8 @@ namespace FightingSystem
             _subscription = stateMachine.CurrentState
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
+
+            conditionAddable.Add<BlockState>(_ => IsExecuting);
         }
         
         public bool IsExecuting { get; private set; }

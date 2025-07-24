@@ -20,9 +20,11 @@ namespace MovementSystem
         public bool IsExecuting { get; private set; }
 
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine)
+        private void Inject(IPlayerStateMachine stateMachine, IPlayerConditionAddable conditionAddable)
         {
             _stateMachine = stateMachine;
+
+            conditionAddable.Add<JumpState>(_ => IsExecuting);
         }
 
         private void Start()

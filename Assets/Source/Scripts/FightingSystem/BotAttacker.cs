@@ -6,9 +6,9 @@ namespace FightingSystem
     public class BotAttacker : Attacker
     {
         [Inject]
-        private void Inject(IBotStateMachine stateMachine)
+        private void Inject(IBotStateMachine stateMachine, IBotConditionAddable conditionAddable)
         {
-            SubscribeStateMachine(stateMachine);
+            SubscribeStateMachine(stateMachine, conditionAddable);
         }
     }
 }

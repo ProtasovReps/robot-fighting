@@ -6,9 +6,9 @@ namespace FightingSystem
     public class PlayerAttacker : Attacker
     {
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine)
+        private void Inject(IPlayerStateMachine stateMachine, IPlayerConditionAddable conditionAddable)
         {
-            SubscribeStateMachine(stateMachine);
+            SubscribeStateMachine(stateMachine, conditionAddable);
         }
     }
 }

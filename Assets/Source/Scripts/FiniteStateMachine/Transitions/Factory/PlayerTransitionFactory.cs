@@ -1,33 +1,19 @@
 ﻿using System;
-using CharacterSystem.Data;
 using FiniteStateMachine.States;
 using InputSystem;
 using R3;
+using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
     public class PlayerTransitionFactory : StateTransitionFactory
     {
-        private readonly PlayerInputReader _inputReader;
-        private readonly PlayerData _playerData;
-
-        public PlayerTransitionFactory(PlayerData playerData)
-            : base(playerData.PlayerInputReader, playerData)
-        {
-            if (playerData == null)
-                throw new ArgumentNullException(nameof(playerData));
-
-            _playerData = playerData;
-            _inputReader = playerData.PlayerInputReader;
-        }
+        [SerializeField] private PlayerInputReader _inputReader;
 
         protected override void InitializeConditionTransition(
             ConditionBuilder builder, //нужно подумать, как создать основные условия внутри, а дополнительные собачить в наследниках
             CharacterStateMachine stateMachine)
         {
-            AddCondition<JumpState>(_ => _playerData.Jump.IsExecuting);
-            AddCondition<BlockState>(_ => _playerData.Fighter.Block.IsExecuting);
-            
             Func<Unit, bool> idleCondition = builder.Build(
                 (typeof(IdleState), true),
                 (typeof(JumpState), false),

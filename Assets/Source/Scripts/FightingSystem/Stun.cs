@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using FiniteStateMachine.States;
 using Interface;
 using R3;
 
@@ -13,7 +14,7 @@ namespace FightingSystem
 
         private CancellationTokenSource _cancellationTokenSource; 
         
-        public Stun(float stunDuration, IValueChangeable valueChangeable)
+        public Stun(float stunDuration, IValueChangeable valueChangeable, IConditionAddable conditionAddable)
         {
             if (stunDuration <= 0)
                 throw new ArgumentOutOfRangeException(nameof(stunDuration));
@@ -21,11 +22,16 @@ namespace FightingSystem
             if (valueChangeable == null)
                 throw new ArgumentNullException(nameof(valueChangeable));
 
+            if (conditionAddable == null)
+                throw new ArgumentNullException(nameof(conditionAddable));
+            
             _stunDuration = stunDuration;
             _subscription = valueChangeable.CurrentValue
                 .Pairwise()
                 .Where(pair => pair.Current < pair.Previous)
                 .Subscribe(_ => Validate());
+            
+            conditionAddable.Add<HittedState>(_ => IsExecuting);
         }
 
         public bool IsExecuting { get; private set; }

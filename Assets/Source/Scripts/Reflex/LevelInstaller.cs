@@ -4,7 +4,6 @@ using CharacterSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
-using HealthSystem;
 using InputSystem;
 using Interface;
 using Reflex.Core;
@@ -16,7 +15,9 @@ namespace Reflex
     {
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private BotData _botData;
-
+        [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
+        [SerializeField] private BotTransitionFactory _botTransitionFactory;
+        
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             InstallInput();
@@ -31,23 +32,39 @@ namespace Reflex
 
             _playerData.PlayerInputReader.Initialize(input);
             _botData.BotInputReader.Initialize(botMovementInput, botAttackInput);
-            _playerData.PositionTranslation.Initialize(_playerData.PlayerInputReader);
-            _botData.PositionTranslation.Initialize(_botData.BotInputReader);
+            _playerData.PositionTranslation.SetInput(_playerData.PlayerInputReader);
+            _botData.PositionTranslation.SetInput(_botData.BotInputReader);
         }
 
         private void InstallFighters(ContainerBuilder builder)
         {
             AnimationFactory animationFactory = new();
+
+            InstallPlayer(animationFactory, builder);
+            InstallBot(animationFactory, builder);
+        }
+
+        private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
+        {
             CharacterStateMachine playerStateMachine = new PlayerStateMachineFactory().Produce();
-            CharacterStateMachine botStateMachine = new BotStateMachineFactory().Produce();
+            ConditionBuilder conditionBuilder = new();
 
-            PlayerData playerData = new PlayerFactory().Produce(_playerData, animationFactory, playerStateMachine);
-            BotData botData = new BotFactory().Produce(_botData, animationFactory, botStateMachine);
+            new PlayerFactory().Produce(_playerData, animationFactory, playerStateMachine, conditionBuilder);
+            _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
 
-            new PlayerTransitionFactory(playerData).InstallMachine(playerStateMachine);
-            new BotTransitionFactory(botData).InstallMachine(botStateMachine);
-
+            builder.AddSingleton(conditionBuilder, typeof(IPlayerConditionAddable));
             builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
+        }
+
+        private void InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
+        {
+            CharacterStateMachine botStateMachine = new BotStateMachineFactory().Produce();
+            ConditionBuilder conditionBuilder = new();
+
+            new BotFactory().Produce(_botData, animationFactory, botStateMachine, conditionBuilder);
+            _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
+            
+            builder.AddSingleton(conditionBuilder, typeof(IBotConditionAddable));
             builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));
         }
     }

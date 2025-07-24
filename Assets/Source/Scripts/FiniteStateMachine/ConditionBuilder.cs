@@ -6,14 +6,14 @@ using Unit = R3.Unit;
 
 namespace FiniteStateMachine
 {
-    public class ConditionBuilder
+    public class ConditionBuilder : IPlayerConditionAddable, IBotConditionAddable
     {
         private readonly Dictionary<Type, Func<Unit, bool>> _conditions = new();
 
         public void Add<TKeyState>(Func<Unit, bool> condition) where TKeyState : IState
         {
             Type newKey = typeof(TKeyState);
-            
+
             if (_conditions.ContainsKey(newKey))
                 throw new ArgumentException(nameof(newKey));
 

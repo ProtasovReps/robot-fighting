@@ -11,24 +11,25 @@ namespace CharacterSystem.Factory
 {
     public abstract class FighterFactory
     {
-        protected FighterData Produce(FighterData fighterData, AnimationFactory animationFactory, IStateMachine stateMachine)
+        protected FighterData Produce(FighterData fighterData, AnimationFactory animationFactory,
+            IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             Health health = new(fighterData.StartHealthValue);
-            Stun stun = new(fighterData.StunDuration, health);
-            Block block = new(fighterData.BlockDuration, stateMachine);
+            Stun stun = new(fighterData.StunDuration, health, conditionAddable);
+            Block block = new(fighterData.BlockDuration, stateMachine, conditionAddable);
             Dictionary<IAttack, Spherecaster> attacks = new();
-            
+
             foreach (AttackData data in fighterData.Attacks)
             {
-                DefaultAttack attack = new(data.Damage, data.Duration, data.Delay, AttackStateFinder.GetState(data.AttackType));
+                DefaultAttack attack = new(data.Damage, data.Duration, data.Delay,
+                    AttackStateFinder.GetState(data.AttackType));
 
                 attacks.Add(attack, data.Spherecaster);
             }
-            
+
             fighterData.Attacker.SetAttacks(attacks);
             fighterData.HealthView.Initialize(health);
             fighterData.Fighter.Initialize(health, stun, block);
-            
             animationFactory.Produce(fighterData.AnimatedCharacter, stateMachine);
             return fighterData;
         }
