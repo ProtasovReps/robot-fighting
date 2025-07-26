@@ -1,4 +1,4 @@
-﻿using System;
+﻿using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
 using R3;
@@ -14,49 +14,26 @@ namespace FiniteStateMachine.Transitions.Factory
             ConditionBuilder builder, 
             CharacterStateMachine stateMachine)
         {
-            Func<Unit, bool> idleCondition = builder.Build(
-                (typeof(IdleState), true),
-                (typeof(JumpState), false),
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            Func<Unit, bool> moveLeftCondition = builder.Build(
-                (typeof(MoveLeftState), true),
-                (typeof(JumpState), false),
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            Func<Unit, bool> moveRightCondition = builder.Build(
-                (typeof(MoveRightState), true),
-                (typeof(JumpState), false),
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            Func<Unit, bool> moveJumpCondition = builder.Build(
-                (typeof(IdleState), false),
-                (typeof(JumpState), true),
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            Func<Unit, bool> jumpCondition = builder.Build(
-                (typeof(JumpState), false),
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            Func<Unit, bool> attackCondition = builder.Build(
-                (typeof(AttackState), false),
-                (typeof(HittedState), false));
-            ;
-            Func<Unit, bool> hittedCondition = builder.Build((typeof(HittedState), true));
-            Func<Unit, bool> blockCondition = builder.Build((typeof(BlockState), true));
+            builder.Reset<JumpState>(false);
+            builder.Reset<AttackState>(false);
+            
+            builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
+            builder.Build<MoveJumpState, IdleState>(false);
+            
+            builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
+            builder.BuildGlobal<HittedState>(false, typeof(HittedState));
+            builder.BuildGlobal<AttackState>(false, typeof(AttackState));
 
-            new TransitionInitializer(stateMachine) // disposeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                .InitializeTransition<IdleState, float>(_inputReader.Direction, idleCondition)
-                .InitializeTransition<MoveLeftState, float>(_inputReader.Direction, moveLeftCondition)
-                .InitializeTransition<MoveRightState, float>(_inputReader.Direction, moveRightCondition)
-                .InitializeTransition<JumpState,
-                    Unit>(_inputReader.JumpPressed, jumpCondition) // пока так, чтобы не ломалось из-за разницы с ботом 
-                .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, moveJumpCondition)
-                .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, attackCondition)
-                .InitializeTransition<KickState, Unit>(_inputReader.KickPressed, attackCondition)
-                .InitializeTransition<HittedState,
-                    float>(_inputReader.Direction, hittedCondition) // не должно быть из Direction
-                .InitializeTransition<BlockState, Unit>(_inputReader.BlockPressed, blockCondition);
+            new TransitionInitializer(stateMachine) // dispose
+                .InitializeTransition<IdleState, float>(_inputReader.Direction, builder.Get<IdleState>())
+                .InitializeTransition<MoveLeftState, float>(_inputReader.Direction, builder.Get<MoveLeftState>())
+                .InitializeTransition<MoveRightState, float>(_inputReader.Direction, builder.Get<MoveRightState>())
+                .InitializeTransition<JumpState, Unit>(_inputReader.JumpPressed, builder.Get<JumpState>())
+                .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, builder.Get<MoveJumpState>())
+                .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, builder.Get<AttackState>())
+                .InitializeTransition<KickState, Unit>(_inputReader.KickPressed, builder.Get<AttackState>())
+                .InitializeTransition<HittedState, float>(_inputReader.Direction, builder.Get<HittedState>()); // не должно быть из Direction
+            // .InitializeTransition<BlockState, Unit>(_inputReader.BlockPressed);
         }
     }
 }

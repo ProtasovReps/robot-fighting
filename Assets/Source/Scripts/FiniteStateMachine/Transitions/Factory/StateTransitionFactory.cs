@@ -1,4 +1,5 @@
 ﻿using System;
+using FiniteStateMachine.Conditions;
 using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory

@@ -1,8 +1,8 @@
-using System;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
 using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
 using InputSystem;
