@@ -16,6 +16,7 @@ namespace FiniteStateMachine.Transitions.Factory
         {
             builder.Reset<JumpState>(false);
             builder.Reset<AttackState>(false);
+            builder.Reset<BlockState>(false);
             
             builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
             builder.Build<MoveJumpState, IdleState>(false);
@@ -23,6 +24,7 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
             builder.BuildGlobal<HittedState>(false, typeof(HittedState));
             builder.BuildGlobal<AttackState>(false, typeof(AttackState));
+            builder.BuildGlobal<BlockState>(false, typeof(BlockState));
 
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, float>(_inputReader.Direction, builder.Get<IdleState>())
@@ -32,8 +34,8 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, builder.Get<MoveJumpState>())
                 .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<KickState, Unit>(_inputReader.KickPressed, builder.Get<AttackState>())
-                .InitializeTransition<HittedState, float>(_inputReader.Direction, builder.Get<HittedState>()); // не должно быть из Direction
-            // .InitializeTransition<BlockState, Unit>(_inputReader.BlockPressed);
+                .InitializeTransition<HittedState, float>(_inputReader.Direction, builder.Get<HittedState>())// не должно быть из Direction
+                .InitializeTransition<BlockState, Unit>(_inputReader.BlockPressed, builder.Get<BlockState>());
         }
     }
 }
