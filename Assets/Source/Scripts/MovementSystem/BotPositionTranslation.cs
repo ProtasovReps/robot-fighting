@@ -1,5 +1,6 @@
-﻿using InputSystem;
-using Interface;
+﻿using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
+using InputSystem;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace MovementSystem
         [SerializeField] private BotInputReader _botInputReader;
         
         [Inject]
-        private void Inject(IBotStateMachine stateMachine, IBotConditionAddable conditionAddable)
+        private void Inject(BotStateMachine stateMachine, BotConditionBuilder conditionAddable)
         {
             Initialize(stateMachine, conditionAddable, _botInputReader);
         }

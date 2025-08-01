@@ -1,4 +1,6 @@
 using Cysharp.Threading.Tasks;
+using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using Interface;
 using R3;
@@ -20,7 +22,7 @@ namespace MovementSystem
         public bool IsExecuting { get; private set; }
 
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine, IPlayerConditionAddable conditionAddable)
+        private void Inject(PlayerStateMachine stateMachine, PlayerConditionBuilder conditionAddable)
         {
             _stateMachine = stateMachine;
 

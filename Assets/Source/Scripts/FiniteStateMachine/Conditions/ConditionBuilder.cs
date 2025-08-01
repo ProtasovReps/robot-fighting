@@ -7,7 +7,7 @@ using Unit = R3.Unit;
 
 namespace FiniteStateMachine.Conditions
 {
-    public class ConditionBuilder : IPlayerConditionAddable, IBotConditionAddable
+    public class ConditionBuilder : IConditionAddable
     {
         private readonly Dictionary<Type, Func<Unit, bool>> _bareConditions = new();
         private readonly Dictionary<Type, Condition> _buildedConditions = new();

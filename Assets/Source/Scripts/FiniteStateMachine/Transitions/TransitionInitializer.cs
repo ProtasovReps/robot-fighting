@@ -6,10 +6,10 @@ namespace FiniteStateMachine.Transitions
 {
     public class TransitionInitializer : IDisposable
     {
-        private readonly CharacterStateMachine _machine;
+        private readonly StateMachine _machine;
         private readonly CompositeDisposable _disposables;
 
-        public TransitionInitializer(CharacterStateMachine stateMachine)
+        public TransitionInitializer(StateMachine stateMachine)
         {
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));

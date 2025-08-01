@@ -39,27 +39,35 @@ namespace Reflex
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
-            CharacterStateMachine playerStateMachine = new PlayerStateMachineFactory().Produce();
-            ConditionBuilder conditionBuilder = new();
+            IState[] states = new PlayerStateFactory().Produce();
+            PlayerStateMachine playerStateMachine = new(states);
+            PlayerConditionBuilder conditionBuilder = new();
+            
             _playerFactory.Produce(animationFactory, playerStateMachine, conditionBuilder);
-
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
-            builder.AddSingleton(conditionBuilder, typeof(IPlayerConditionAddable));
-            builder.AddSingleton(playerStateMachine, typeof(IPlayerStateMachine));
+            builder.AddSingleton(conditionBuilder);
+            builder.AddSingleton(playerStateMachine);
         }
 
         private BotData InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
         {
-            CharacterStateMachine botStateMachine = new BotStateMachineFactory().Produce();
-            ConditionBuilder conditionBuilder = new();
+            IState[] states = new BotStateFactory().Produce();
+            BotStateMachine botStateMachine = new(states);
+            BotConditionBuilder conditionBuilder = new();
             BotData botData = _botFactory.Produce(animationFactory, botStateMachine, conditionBuilder);
 
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
-            builder.AddSingleton(conditionBuilder, typeof(IBotConditionAddable));
-            builder.AddSingleton(botStateMachine, typeof(IBotStateMachine));
+            builder.AddSingleton(conditionBuilder);
+            builder.AddSingleton(botStateMachine);
             return botData;
+        }
+
+        private void InstallBotInput(ContainerBuilder builder)
+        {
+            ConditionBuilder conditionBuilder = new();
+            // builder.AddSingleton(conditionBuilder, )
         }
         
         private void InstallInput(BotData botData)

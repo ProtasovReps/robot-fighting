@@ -3,7 +3,7 @@ using Interface;
 
 namespace FiniteStateMachine.Factory
 {
-    public class BotStateMachineFactory : StateMachineFactory
+    public class PlayerStateFactory : StateFactory
     {
         protected override IState[] GetStates()
         {
@@ -13,10 +13,12 @@ namespace FiniteStateMachine.Factory
                 new MoveLeftState(),
                 new MoveRightState(),
                 new HittedState(),
+                new JumpState(),
+                new MoveJumpState(),
                 new PunchState(),
-                new KickState()
+                new KickState(),
+                new BlockState()
             };
         }
-       
     }
 }

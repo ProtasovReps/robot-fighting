@@ -1,5 +1,6 @@
-﻿using InputSystem;
-using Interface;
+﻿using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
+using InputSystem;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace MovementSystem
         [SerializeField] private PlayerInputReader _playerInputReader;
         
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine, IPlayerConditionAddable conditionAddable)
+        private void Inject(PlayerStateMachine stateMachine, PlayerConditionBuilder conditionAddable)
         {
             Initialize(stateMachine, conditionAddable, _playerInputReader);
         }

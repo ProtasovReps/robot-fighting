@@ -6,9 +6,9 @@ namespace FiniteStateMachine.Transitions
     public class Transition<TTargetState>
         where TTargetState : IState
     {
-        private readonly CharacterStateMachine _machine;
+        private readonly StateMachine _machine;
 
-        public Transition(CharacterStateMachine machine)
+        public Transition(StateMachine machine)
         {
             if (machine == null)
                 throw new ArgumentNullException(nameof(machine));

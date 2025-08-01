@@ -1,4 +1,5 @@
-﻿using Interface;
+﻿using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
 using Reflex.Attributes;
 
 namespace FightingSystem
@@ -6,7 +7,7 @@ namespace FightingSystem
     public class BotAttacker : Attacker
     {
         [Inject]
-        private void Inject(IBotStateMachine stateMachine, IBotConditionAddable conditionAddable)
+        private void Inject(BotStateMachine stateMachine, BotConditionBuilder conditionAddable)
         {
             SubscribeStateMachine(stateMachine, conditionAddable);
         }

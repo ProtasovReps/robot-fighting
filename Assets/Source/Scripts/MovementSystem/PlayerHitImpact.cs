@@ -1,4 +1,4 @@
-﻿using Interface;
+﻿using FiniteStateMachine;
 using Reflex.Attributes;
 
 namespace MovementSystem
@@ -6,7 +6,7 @@ namespace MovementSystem
     public class PlayerHitImpact : HitImpact
     {
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine)
+        private void Inject(PlayerStateMachine stateMachine)
         {
             Initialize(stateMachine);
         }

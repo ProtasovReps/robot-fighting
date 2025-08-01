@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace FiniteStateMachine
 {
-    public class CharacterStateMachine : IPlayerStateMachine, IBotStateMachine
+    public class StateMachine : IStateMachine
     {
         private readonly IState[] _states;
         private readonly ReactiveProperty<IState> _currentState;
 
-        public CharacterStateMachine(IState[] states)
+        protected StateMachine(IState[] states)
         {
             if (states == null)
                 throw new ArgumentNullException(nameof(states));

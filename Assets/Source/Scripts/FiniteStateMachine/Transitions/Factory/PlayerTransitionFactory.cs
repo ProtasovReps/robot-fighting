@@ -12,7 +12,7 @@ namespace FiniteStateMachine.Transitions.Factory
 
         protected override void InitializeConditionTransition(
             ConditionBuilder builder, 
-            CharacterStateMachine stateMachine)
+            StateMachine stateMachine)
         {
             builder.Reset<JumpState>(false);
             builder.Reset<AttackState>(false);

@@ -1,4 +1,5 @@
-﻿using Interface;
+﻿using FiniteStateMachine;
+using FiniteStateMachine.Conditions;
 using Reflex.Attributes;
 
 namespace FightingSystem
@@ -6,7 +7,7 @@ namespace FightingSystem
     public class PlayerAttacker : Attacker
     {
         [Inject]
-        private void Inject(IPlayerStateMachine stateMachine, IPlayerConditionAddable conditionAddable)
+        private void Inject(PlayerStateMachine stateMachine, PlayerConditionBuilder conditionAddable)
         {
             SubscribeStateMachine(stateMachine, conditionAddable);
         }

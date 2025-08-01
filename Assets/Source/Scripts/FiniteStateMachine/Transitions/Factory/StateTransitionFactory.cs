@@ -6,7 +6,7 @@ namespace FiniteStateMachine.Transitions.Factory
 {
     public abstract class StateTransitionFactory : MonoBehaviour
     {
-        private CharacterStateMachine _stateMachine;
+        private StateMachine _stateMachine;
         private ConditionBuilder _builder;
         
         private void Start()
@@ -20,12 +20,12 @@ namespace FiniteStateMachine.Transitions.Factory
             InitializeConditionTransition(_builder, _stateMachine);
         }
 
-        public void Initialize(CharacterStateMachine stateMachine, ConditionBuilder conditionBuilder)
+        public void Initialize(StateMachine stateMachine, ConditionBuilder conditionBuilder)
         {
             _stateMachine = stateMachine;
             _builder = conditionBuilder;
         }
 
-        protected abstract void InitializeConditionTransition(ConditionBuilder builder, CharacterStateMachine stateMachine);
+        protected abstract void InitializeConditionTransition(ConditionBuilder builder, StateMachine stateMachine);
     }
 }

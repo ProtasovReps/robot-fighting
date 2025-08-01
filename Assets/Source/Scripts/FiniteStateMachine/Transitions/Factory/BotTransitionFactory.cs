@@ -11,7 +11,7 @@ namespace FiniteStateMachine.Transitions.Factory
         [SerializeField] private BotInputReader _botInputReader;
         
         protected override void InitializeConditionTransition(ConditionBuilder builder,
-            CharacterStateMachine stateMachine)
+            StateMachine stateMachine)
         {
             builder.Reset<AttackState>(false);
             builder.BuildGlobal<HittedState>(false, typeof(HittedState));
