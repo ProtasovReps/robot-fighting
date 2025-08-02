@@ -11,12 +11,12 @@ using UnityEngine;
 
 namespace FightingSystem
 {
-    public abstract class Attacker : MonoBehaviour, IExecutable
+    public abstract class Attacker : MonoBehaviour, IContinuous
     {
         private Dictionary<IAttack, Spherecaster> _attacks;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public bool IsExecuting { get; private set; }
+        public bool IsContinuing { get; private set; }
 
         public void SetAttacks(Dictionary<IAttack, Spherecaster> attacks)
         {
@@ -41,12 +41,12 @@ namespace FightingSystem
                 .Subscribe(_ => CancelAttack())
                 .AddTo(this);
 
-            conditionAddable.Add<AttackState>(_ => IsExecuting);
+            conditionAddable.Add<AttackState>(_ => IsContinuing);
         }
 
         private void Attack(Type state)
         {
-            if (IsExecuting)
+            if (IsContinuing)
                 return;
 
             IAttack attackKey = _attacks.Keys.FirstOrDefault(attack => attack.RequiredState == state);
@@ -54,7 +54,7 @@ namespace FightingSystem
             if (attackKey == null)
                 throw new KeyNotFoundException(nameof(attackKey));
 
-            IsExecuting = true;
+            IsContinuing = true;
             AttackDelayed(attackKey, _attacks[attackKey]).Forget();
         }
 
@@ -76,7 +76,7 @@ namespace FightingSystem
         private void CancelAttack()
         {
             _cancellationTokenSource?.Cancel();
-            IsExecuting = false;
+            IsContinuing = false;
         }
     }
 }

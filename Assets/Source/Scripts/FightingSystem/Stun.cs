@@ -7,7 +7,7 @@ using R3;
 
 namespace FightingSystem
 {
-    public class Stun : IExecutable, IDisposable
+    public class Stun : IContinuous, IDisposable
     {
         private readonly IDisposable _subscription;
         private readonly float _stunDuration;
@@ -31,10 +31,10 @@ namespace FightingSystem
                 .Where(pair => pair.Current < pair.Previous)
                 .Subscribe(_ => Validate());
             
-            conditionAddable.Add<HittedState>(_ => IsExecuting);
+            conditionAddable.Add<HittedState>(_ => IsContinuing);
         }
 
-        public bool IsExecuting { get; private set; }
+        public bool IsContinuing { get; private set; }
 
         public void Dispose()
         {
@@ -45,10 +45,10 @@ namespace FightingSystem
 
         private void Validate()
         {
-            if (IsExecuting)
+            if (IsContinuing)
                 _cancellationTokenSource.Cancel();
 
-            IsExecuting = true;
+            IsContinuing = true;
             Execute().Forget();
         }
 
@@ -56,7 +56,7 @@ namespace FightingSystem
         {
             _cancellationTokenSource = new CancellationTokenSource();
             await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
-            IsExecuting = false;
+            IsContinuing = false;
         }
     }
 }

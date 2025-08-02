@@ -9,7 +9,10 @@ namespace FiniteStateMachine.Factory
         {
             return new IState[]
             {
-                new PlayerNearbyState()
+                new NothingNearbyState(),
+                new WallNearbyState(),
+                new OpponentNearbyState(),
+                new WallOpponentNearbyState()
             };
         }
     }

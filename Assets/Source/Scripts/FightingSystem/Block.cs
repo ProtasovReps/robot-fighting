@@ -7,7 +7,7 @@ using R3;
 
 namespace FightingSystem
 {
-    public class Block : IExecutable, IDisposable
+    public class Block : IContinuous, IDisposable
     {
         private readonly float _blockDuration;
         private readonly IDisposable _subscription;
@@ -24,10 +24,10 @@ namespace FightingSystem
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
 
-            conditionAddable.Add<BlockState>(_ => IsExecuting);
+            conditionAddable.Add<BlockState>(_ => IsContinuing);
         }
         
-        public bool IsExecuting { get; private set; }
+        public bool IsContinuing { get; private set; }
 
         public void Dispose()
         {
@@ -39,9 +39,9 @@ namespace FightingSystem
         private async UniTaskVoid Execute()
         {
             _tokenSource = new CancellationTokenSource();
-            IsExecuting = true;
+            IsContinuing = true;
             await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token, cancelImmediately: true);
-            IsExecuting = false;
+            IsContinuing = false;
         }
     }
 }

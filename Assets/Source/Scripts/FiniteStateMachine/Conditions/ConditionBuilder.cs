@@ -16,7 +16,7 @@ namespace FiniteStateMachine.Conditions
             where TKeyState : IState
         {
             Type newKey = typeof(TKeyState);
-
+            
             if (_bareConditions.ContainsKey(newKey))
             {
                 throw new ArgumentException(nameof(newKey));
@@ -54,7 +54,7 @@ namespace FiniteStateMachine.Conditions
             condition.Reset(bareCondition, isExecuting);
         }
 
-        public void Build<TBuildableCondition, TBareCondition>(bool isExecuting)
+        public void Build<TBuildableCondition, TBareCondition>(bool isExecuting = true)
             where TBuildableCondition : IState
             where TBareCondition : IState
         {

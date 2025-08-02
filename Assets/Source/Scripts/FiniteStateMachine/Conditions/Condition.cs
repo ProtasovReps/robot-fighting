@@ -7,6 +7,9 @@ namespace FiniteStateMachine.Conditions
     {
         public Condition(Func<Unit, bool> condition)
         {
+            if (condition == null)
+                throw new ArgumentNullException(nameof(condition));
+            
             Current = condition;
         }
 

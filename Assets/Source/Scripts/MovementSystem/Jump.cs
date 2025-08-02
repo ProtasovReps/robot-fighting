@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace MovementSystem
 {
-    public class Jump : MonoBehaviour, IExecutable
+    public class Jump : MonoBehaviour, IContinuous
     {
         [SerializeField] private float _jumpHeight;
         [SerializeField] private float _jumpTime;
@@ -19,14 +19,14 @@ namespace MovementSystem
         private Transform _transform;
         private IStateMachine _stateMachine;
 
-        public bool IsExecuting { get; private set; }
+        public bool IsContinuing { get; private set; }
 
         [Inject]
         private void Inject(PlayerStateMachine stateMachine, PlayerConditionBuilder conditionAddable)
         {
             _stateMachine = stateMachine;
 
-            conditionAddable.Add<JumpState>(_ => IsExecuting);
+            conditionAddable.Add<JumpState>(_ => IsContinuing);
         }
 
         private void Start()
@@ -41,10 +41,10 @@ namespace MovementSystem
 
         private void OnJumpPressed()
         {
-            if (IsExecuting)
+            if (IsContinuing)
                 return;
 
-            IsExecuting = true;
+            IsContinuing = true;
             TranslateUp().Forget();
         }
 
@@ -74,7 +74,7 @@ namespace MovementSystem
                 await UniTask.Yield();
             }
 
-            IsExecuting = false;
+            IsContinuing = false;
         }
     }
 }

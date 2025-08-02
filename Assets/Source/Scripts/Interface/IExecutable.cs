@@ -1,7 +1,9 @@
-﻿namespace Interface
+﻿using R3;
+
+namespace Interface
 {
     public interface IExecutable
     {
-        bool IsExecuting { get; }
+        Observable<Unit> Executed { get; }
     }
 }

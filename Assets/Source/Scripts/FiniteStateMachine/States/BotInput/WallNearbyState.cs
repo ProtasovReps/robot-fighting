@@ -1,6 +1,6 @@
 ﻿namespace FiniteStateMachine.States
 {
-    public class PlayerNearbyState : State
+    public class WallNearbyState : State
     {
     }
 }
