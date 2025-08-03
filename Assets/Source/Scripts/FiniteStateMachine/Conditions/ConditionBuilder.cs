@@ -68,7 +68,7 @@ namespace FiniteStateMachine.Conditions
         {
             foreach (var conditionPair in _buildedConditions)
             {
-                if (excludedConditions.Contains(conditionPair.Key))
+                if (excludedConditions.Contains(conditionPair.Key) || conditionPair.Key == typeof(TBareCondition))
                 {
                     continue;
                 }

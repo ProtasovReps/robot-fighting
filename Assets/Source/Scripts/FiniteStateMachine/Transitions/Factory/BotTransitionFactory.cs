@@ -14,8 +14,8 @@ namespace FiniteStateMachine.Transitions.Factory
             StateMachine stateMachine)
         {
             builder.Reset<AttackState>(false);
-            builder.BuildGlobal<HittedState>(false, typeof(HittedState));
-            builder.BuildGlobal<AttackState>(false, typeof(HittedState), typeof(AttackState));
+            builder.BuildGlobal<HittedState>(false);
+            builder.BuildGlobal<AttackState>(false, typeof(HittedState));
             
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, float>(_botInputReader.Direction, builder.Get<IdleState>())

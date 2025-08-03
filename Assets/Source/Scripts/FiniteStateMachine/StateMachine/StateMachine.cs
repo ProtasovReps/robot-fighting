@@ -1,5 +1,6 @@
 ﻿using System;
 using Extensions.Exceptions;
+using FiniteStateMachine.States;
 using Interface;
 using R3;
 using UnityEngine;
@@ -33,7 +34,14 @@ namespace FiniteStateMachine
                 throw new StateNotFoundException(nameof(newState));
 
             _currentState.OnNext(state);
-            Debug.Log(state); // убрать потом
+
+            if (state.Type == typeof(NothingNearbyState)
+                || state.Type == typeof(OpponentNearbyState) 
+                || state.Type == typeof(WallNearbyState)
+                || state.Type == typeof(WallOpponentNearbyState))
+            {
+                Debug.Log(state); // убрать потом
+            }
         }
     }
 }

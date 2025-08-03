@@ -22,9 +22,9 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Build<MoveJumpState, IdleState>(false);
             
             builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
-            builder.BuildGlobal<HittedState>(false, typeof(HittedState));
-            builder.BuildGlobal<AttackState>(false, typeof(AttackState));
-            builder.BuildGlobal<BlockState>(false, typeof(BlockState));
+            builder.BuildGlobal<HittedState>(false);
+            builder.BuildGlobal<AttackState>(false);
+            builder.BuildGlobal<BlockState>(false);
 
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, float>(_inputReader.Direction, builder.Get<IdleState>())

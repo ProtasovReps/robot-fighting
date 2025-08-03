@@ -16,6 +16,9 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Reset<NothingNearbyState>(false);
             builder.Build<NothingNearbyState, OpponentNearbyState>(false);
 
+            builder.Build<WallNearbyState, OpponentNearbyState>(false);
+            builder.Build<OpponentNearbyState, WallNearbyState>(false);
+            
             new TransitionInitializer(stateMachine)
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
