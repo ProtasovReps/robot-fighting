@@ -2,29 +2,29 @@
 using R3;
 using UnityEngine;
 
-namespace InputSystem
+namespace InputSystem.Bot
 {
     public class BotInputReader : MonoBehaviour, IDirectionChangeable
     {
-        private BotMovementInput _botMovementInput;
-        private BotAttackInput _botAttackInput;
+        private BotMovement _botMovement;
+        private BotAttack _botAttack;
         private ReactiveProperty<float> _direction;
 
         public ReadOnlyReactiveProperty<float> Direction => _direction;
-        public Observable<Unit> UpAttackPressed => _botAttackInput.UpAttack;
-        public Observable<Unit> DownAttackPressed => _botAttackInput.DownAttack;
+        public Observable<Unit> UpAttackPressed => _botAttack.UpAttack;
+        public Observable<Unit> DownAttackPressed => _botAttack.DownAttack;
         
         private void Awake()
         {
             Observable.EveryUpdate()
-                .Subscribe(_ => _direction.OnNext(_botMovementInput.Direction))
+                .Subscribe(_ => _direction.OnNext(_botMovement.Direction))
                 .AddTo(this);
         }
 
-        public void Initialize(BotMovementInput botMovementInput, BotAttackInput botAttackInput)
+        public void Initialize(BotMovement botMovement, BotAttack botAttack)
         {
-            _botMovementInput = botMovementInput;
-            _botAttackInput = botAttackInput;
+            _botMovement = botMovement;
+            _botAttack = botAttack;
             _direction = new ReactiveProperty<float>();
         }
     }

@@ -5,9 +5,9 @@ namespace FiniteStateMachine.Factory
 {
     public class BotInputStateFactory : StateFactory
     {
-        protected override IState[] GetStates()
+        protected override State[] GetStates()
         {
-            return new IState[]
+            return new State[]
             {
                 new NothingNearbyState(),
                 new WallNearbyState(),

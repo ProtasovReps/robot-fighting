@@ -1,6 +1,6 @@
 ﻿using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
-using InputSystem;
+using InputSystem.Bot;
 using Reflex.Attributes;
 using UnityEngine;
 

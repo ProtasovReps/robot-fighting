@@ -1,9 +1,10 @@
+using FiniteStateMachine.States;
 using R3;
 
 namespace Interface
 {
     public interface IStateMachine
     {
-        ReadOnlyReactiveProperty<IState> CurrentState { get; }
+        ReadOnlyReactiveProperty<State> CurrentState { get; }
     }
 }

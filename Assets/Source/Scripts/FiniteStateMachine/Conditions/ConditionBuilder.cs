@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Extensions.Exceptions;
+using FiniteStateMachine.States;
 using Interface;
 using Unit = R3.Unit;
 
@@ -13,7 +14,7 @@ namespace FiniteStateMachine.Conditions
         private readonly Dictionary<Type, Condition> _buildedConditions = new();
 
         public void Add<TKeyState>(Func<Unit, bool> condition)
-            where TKeyState : IState
+            where TKeyState : State
         {
             Type newKey = typeof(TKeyState);
             
@@ -31,13 +32,13 @@ namespace FiniteStateMachine.Conditions
         }
 
         public Func<Unit, bool> Get<TKeyState>()
-            where TKeyState : IState
+            where TKeyState : State
         {
             return GetBuilded<TKeyState>().Current;
         }
         
         public Func<Unit, bool> GetBare<TCondition>()
-            where TCondition : IState
+            where TCondition : State
         {
             Type searchedCondition = typeof(TCondition);
 
@@ -46,7 +47,7 @@ namespace FiniteStateMachine.Conditions
         }
 
         public void Reset<TBuildableCondition>(bool isExecuting)
-            where TBuildableCondition : IState
+            where TBuildableCondition : State
         {
             Condition condition = GetBuilded<TBuildableCondition>();
             Func<Unit, bool> bareCondition = GetBare<TBuildableCondition>();
@@ -55,8 +56,8 @@ namespace FiniteStateMachine.Conditions
         }
 
         public void Build<TBuildableCondition, TBareCondition>(bool isExecuting = true)
-            where TBuildableCondition : IState
-            where TBareCondition : IState
+            where TBuildableCondition : State
+            where TBareCondition : State
         {
             Condition buildableCondition = GetBuilded<TBuildableCondition>();
 
@@ -64,7 +65,7 @@ namespace FiniteStateMachine.Conditions
         }
 
         public void BuildGlobal<TBareCondition>(bool isExecuting, params Type[] excludedConditions)
-            where TBareCondition : IState
+            where TBareCondition : State
         {
             foreach (var conditionPair in _buildedConditions)
             {
@@ -78,7 +79,7 @@ namespace FiniteStateMachine.Conditions
         }
        
         private Condition GetBuilded<TCondition>()
-            where TCondition : IState
+            where TCondition : State
         {
             Type searchedCondition = typeof(TCondition);
 

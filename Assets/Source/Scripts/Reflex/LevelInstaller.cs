@@ -7,7 +7,7 @@ using FiniteStateMachine.Factory;
 using FiniteStateMachine.States;
 using FiniteStateMachine.Transitions.Factory;
 using InputSystem;
-using Interface;
+using InputSystem.Bot;
 using Reflex.Core;
 using UnityEngine;
 
@@ -42,7 +42,7 @@ namespace Reflex
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
-            IState[] states = new PlayerStateFactory().Produce();
+            State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
             
@@ -55,7 +55,7 @@ namespace Reflex
 
         private BotData InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
         {
-            IState[] states = new BotStateFactory().Produce();
+            State[] states = new BotStateFactory().Produce();
             BotStateMachine botStateMachine = new(states);
             BotConditionBuilder conditionBuilder = new();
             BotData botData = _botFactory.Produce(animationFactory, botStateMachine, conditionBuilder);
@@ -69,24 +69,31 @@ namespace Reflex
 
         private void InstallBotInput(BotData botData, ContainerBuilder builder)
         {
-            IState[] states = new BotInputStateFactory().Produce();
+            State[] states = new BotInputStateFactory().Produce();
             BotInputStateMachine stateMachine = new(states);
             BotInputConditionBuilder conditionBuilder = new();
-            BotMovementInput botMovementInput = new(botData.ChangeDirectionInterval, stateMachine);
-            BotAttackInput botAttackInput = new(botData.AttackDelay);
-
-            new BotInputPicker<NothingNearbyState>(stateMachine, botMovementInput);
-            new BotInputPicker<WallNearbyState>(stateMachine, botMovementInput);
-            new BotInputPicker<OpponentNearbyState>(stateMachine, botMovementInput, botAttackInput);
-            new BotInputPicker<WallOpponentNearbyState>(stateMachine, botAttackInput);
             
-            _botInputReader.Initialize(botMovementInput, botAttackInput);
+            BotMovement botMovement = new();
+            BotAttack botAttack = new();
+            // это вынести в фабрику
+            BotAction leftMove = new(botMovement.MoveLeft, botData.MoveDuration);
+            BotAction rightMove = new(botMovement.MoveRight, botData.MoveDuration);
+            BotAction inPlace = new(botMovement.Stop, botData.MoveDuration);
+            BotAction upAttack = new(botAttack.AttackUp, botData.AttackDelay);
+            BotAction downAttack = new(botAttack.AttackDown, botData.AttackDelay);
+            
+            new BotNothingNearbyInput(stateMachine, botMovement, leftMove, rightMove, inPlace);
+            new BotSoloInput<WallNearbyState>(stateMachine, rightMove);
+            new BotRandomInput<OpponentNearbyState>(stateMachine, leftMove, upAttack, downAttack);
+            new BotRandomInput<WallOpponentNearbyState>(stateMachine, upAttack, downAttack);
+            
+            _botInputReader.Initialize(botMovement, botAttack);
             _botInputTransitionFactory.Initialize(stateMachine, conditionBuilder);
             
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(stateMachine);
         }
-        
+
         private void InstallPlayerInput()
         {
             UserInput input = new();

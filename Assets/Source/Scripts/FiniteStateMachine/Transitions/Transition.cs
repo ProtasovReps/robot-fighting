@@ -1,10 +1,10 @@
 ﻿using System;
-using Interface;
+using FiniteStateMachine.States;
 
 namespace FiniteStateMachine.Transitions
 {
     public class Transition<TTargetState>
-        where TTargetState : IState
+        where TTargetState : State
     {
         private readonly StateMachine _machine;
 

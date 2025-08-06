@@ -1,11 +1,12 @@
 ﻿using System;
+using FiniteStateMachine.States;
 using Interface;
 using UnityEngine;
 
 namespace AnimationSystem
 {
     public class TriggerAnimation<TState> : CharacterAnimation
-        where TState : IState
+        where TState : State
     {
         private readonly int _animationHash;
         

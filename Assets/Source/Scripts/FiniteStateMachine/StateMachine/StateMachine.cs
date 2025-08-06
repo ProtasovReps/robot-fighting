@@ -9,10 +9,10 @@ namespace FiniteStateMachine
 {
     public class StateMachine : IStateMachine
     {
-        private readonly IState[] _states;
-        private readonly ReactiveProperty<IState> _currentState;
+        private readonly State[] _states;
+        private readonly ReactiveProperty<State> _currentState;
 
-        protected StateMachine(IState[] states)
+        protected StateMachine(State[] states)
         {
             if (states == null)
                 throw new ArgumentNullException(nameof(states));
@@ -21,14 +21,14 @@ namespace FiniteStateMachine
                 throw new ArgumentOutOfRangeException(nameof(states));
 
             _states = states;
-            _currentState = new ReactiveProperty<IState>(states[0]);
+            _currentState = new ReactiveProperty<State>(states[0]);
         }
 
-        public ReadOnlyReactiveProperty<IState> CurrentState => _currentState;
+        public ReadOnlyReactiveProperty<State> CurrentState => _currentState;
 
         public void Enter(Type newState)
         {
-            IState state = Array.Find(_states, state => state.Type == newState);
+            State state = Array.Find(_states, state => state.Type == newState);
 
             if (state == null)
                 throw new StateNotFoundException(nameof(newState));

@@ -1,5 +1,5 @@
 ﻿using System;
-using Interface;
+using FiniteStateMachine.States;
 using R3;
 
 namespace FiniteStateMachine.Transitions
@@ -26,7 +26,7 @@ namespace FiniteStateMachine.Transitions
         public TransitionInitializer InitializeTransition<TTargetState, T>(
             Observable<T> observable,
             Func<Unit, bool> condition)
-            where TTargetState : IState
+            where TTargetState : State
         {
             var transition = new Transition<TTargetState>(_machine);
 

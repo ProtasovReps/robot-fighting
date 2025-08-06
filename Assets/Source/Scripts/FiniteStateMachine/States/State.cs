@@ -1,9 +1,8 @@
 ﻿using System;
-using Interface;
 
 namespace FiniteStateMachine.States
 {
-    public abstract class State : IState
+    public abstract class State
     {
         protected State()
         {

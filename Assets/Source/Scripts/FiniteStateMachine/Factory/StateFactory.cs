@@ -1,14 +1,14 @@
-﻿using Interface;
+﻿using FiniteStateMachine.States;
 
 namespace FiniteStateMachine.Factory
 {
     public abstract class StateFactory
     {
-        public IState[] Produce()
+        public State[] Produce()
         {
             return GetStates();
         }
     
-        protected abstract IState[] GetStates();
+        protected abstract State[] GetStates();
     }
 }

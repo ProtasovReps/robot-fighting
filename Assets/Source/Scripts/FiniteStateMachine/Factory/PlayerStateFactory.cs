@@ -1,13 +1,12 @@
 ﻿using FiniteStateMachine.States;
-using Interface;
 
 namespace FiniteStateMachine.Factory
 {
     public class PlayerStateFactory : StateFactory
     {
-        protected override IState[] GetStates()
+        protected override State[] GetStates()
         {
-            return new IState[]
+            return new State[]
             {
                 new IdleState(),
                 new MoveLeftState(),

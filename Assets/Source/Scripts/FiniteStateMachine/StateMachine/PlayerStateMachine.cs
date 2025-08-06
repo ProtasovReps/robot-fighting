@@ -1,10 +1,10 @@
-﻿using Interface;
+﻿using FiniteStateMachine.States;
 
 namespace FiniteStateMachine
 {
     public class PlayerStateMachine : StateMachine
     {
-        public PlayerStateMachine(IState[] states) : base(states)
+        public PlayerStateMachine(State[] states) : base(states)
         {
         }
     }

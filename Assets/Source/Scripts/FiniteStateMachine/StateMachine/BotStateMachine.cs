@@ -1,10 +1,10 @@
-﻿using Interface;
+﻿using FiniteStateMachine.States;
 
 namespace FiniteStateMachine
 {
     public class BotStateMachine : StateMachine
     {
-        public BotStateMachine(IState[] states) : base(states)
+        public BotStateMachine(State[] states) : base(states)
         {
         }
     }

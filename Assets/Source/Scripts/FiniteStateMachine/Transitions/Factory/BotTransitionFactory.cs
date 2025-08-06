@@ -1,6 +1,7 @@
 ﻿using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
+using InputSystem.Bot;
 using R3;
 using UnityEngine;
 
