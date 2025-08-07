@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CameraFollowSystem
 {
-    public class FollowingCamera : MonoBehaviour
+    public class FollowingCamera : MonoBehaviour 
     {
         [SerializeField] private Transform _firstFighter;
         [SerializeField] private Transform _secondFighter;

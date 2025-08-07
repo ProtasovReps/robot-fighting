@@ -7,29 +7,25 @@ using R3;
 
 namespace FightingSystem
 {
-    public class Stun : IContinuous, IDisposable
+    public class Hit : IContinuous, IDisposable
     {
         private readonly IDisposable _subscription;
         private readonly float _stunDuration;
-
-        private CancellationTokenSource _cancellationTokenSource; 
+        private readonly HitReader _hitReader;
         
-        public Stun(float stunDuration, IValueChangeable valueChangeable, IConditionAddable conditionAddable)
+        private CancellationTokenSource _cancellationTokenSource;
+
+        public Hit(float stunDuration, HitReader hitReader, IConditionAddable conditionAddable)
         {
             if (stunDuration <= 0)
                 throw new ArgumentOutOfRangeException(nameof(stunDuration));
 
-            if (valueChangeable == null)
-                throw new ArgumentNullException(nameof(valueChangeable));
-
             if (conditionAddable == null)
                 throw new ArgumentNullException(nameof(conditionAddable));
-            
+
             _stunDuration = stunDuration;
-            _subscription = valueChangeable.CurrentValue
-                .Pairwise()
-                .Where(pair => pair.Current < pair.Previous)
-                .Subscribe(_ => Validate());
+            _subscription = hitReader.Hitted
+                .Subscribe(_ => TakeHit());
             
             conditionAddable.Add<HittedState>(_ => IsContinuing);
         }
@@ -43,19 +39,25 @@ namespace FightingSystem
             _cancellationTokenSource?.Dispose();
         }
 
-        private void Validate()
+        private void TakeHit()
         {
-            if (IsContinuing)
-                _cancellationTokenSource.Cancel();
+            Validate();
 
             IsContinuing = true;
             Execute().Forget();
+        }
+        
+        private void Validate()
+        {
+            IsContinuing = false;
+            _cancellationTokenSource?.Cancel();
         }
 
         private async UniTaskVoid Execute()
         {
             _cancellationTokenSource = new CancellationTokenSource();
-            await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+            await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _cancellationTokenSource.Token,
+                cancelImmediately: true);
             IsContinuing = false;
         }
     }

@@ -4,14 +4,14 @@ using Interface;
 
 namespace InputSystem.Bot
 {
-    public class BotSoloInput<TTargetState> : BotInput
+    public class BotSoloInput<TTargetState> : BotInput<TTargetState>
     where TTargetState : State
 
     {
         private readonly BotAction _botAction;
         
         public BotSoloInput(IStateMachine stateMachine, BotAction botAction)
-            : base(stateMachine, typeof(TTargetState))
+            : base(stateMachine)
         {
             if (botAction == null)
                 throw new ArgumentNullException(nameof(botAction));

@@ -75,7 +75,7 @@ namespace Reflex
             
             BotMovement botMovement = new();
             BotAttack botAttack = new();
-            // это вынести в фабрику
+            
             BotAction leftMove = new(botMovement.MoveLeft, botData.MoveDuration);
             BotAction rightMove = new(botMovement.MoveRight, botData.MoveDuration);
             BotAction inPlace = new(botMovement.Stop, botData.MoveDuration);

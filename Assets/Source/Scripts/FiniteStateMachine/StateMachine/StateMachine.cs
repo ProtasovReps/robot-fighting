@@ -34,14 +34,7 @@ namespace FiniteStateMachine
                 throw new StateNotFoundException(nameof(newState));
 
             _currentState.OnNext(state);
-
-            if (state.Type == typeof(NothingNearbyState)
-                || state.Type == typeof(OpponentNearbyState) 
-                || state.Type == typeof(WallNearbyState)
-                || state.Type == typeof(WallOpponentNearbyState))
-            {
-                Debug.Log(state); // убрать потом
-            }
+            Debug.Log(state); // убрать
         }
     }
 }

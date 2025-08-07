@@ -149,7 +149,7 @@ MonoBehaviour:
   <Spherecaster>k__BackingField: {fileID: 8224786430901223397}
   <Delay>k__BackingField: 0.5
   <Duration>k__BackingField: 1
-  <Damage>k__BackingField: 40
+  <Damage>k__BackingField: 25
   <AttackType>k__BackingField: 1
 --- !u!114 &8224786430901223397
 MonoBehaviour:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _validDistance: 2
+  _minDistance: 0
 --- !u!1 &7536632989696843230
 GameObject:
   m_ObjectHideFlags: 0

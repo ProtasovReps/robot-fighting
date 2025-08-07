@@ -1,4 +1,5 @@
-﻿using FiniteStateMachine.Conditions;
+﻿using FightingSystem;
+using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
 using R3;
@@ -9,7 +10,8 @@ namespace FiniteStateMachine.Transitions.Factory
     public class PlayerTransitionFactory : StateTransitionFactory
     {
         [SerializeField] private PlayerInputReader _inputReader;
-
+        [SerializeField] private HitReader _hitReader;
+        
         protected override void InitializeConditionTransition(
             ConditionBuilder builder, 
             StateMachine stateMachine)
@@ -23,7 +25,7 @@ namespace FiniteStateMachine.Transitions.Factory
             
             builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
             builder.BuildGlobal<HittedState>(false);
-            builder.BuildGlobal<AttackState>(false);
+            builder.BuildGlobal<AttackState>(false, typeof(HittedState));
             builder.BuildGlobal<BlockState>(false);
 
             new TransitionInitializer(stateMachine) // dispose
@@ -34,7 +36,7 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveJumpState, float>(_inputReader.Direction, builder.Get<MoveJumpState>())
                 .InitializeTransition<PunchState, Unit>(_inputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<KickState, Unit>(_inputReader.KickPressed, builder.Get<AttackState>())
-                .InitializeTransition<HittedState, float>(_inputReader.Direction, builder.Get<HittedState>())// не должно быть из Direction
+                .InitializeTransition<HittedState, Unit>(_hitReader.Hitted, builder.Get<HittedState>())
                 .InitializeTransition<BlockState, Unit>(_inputReader.BlockPressed, builder.Get<BlockState>());
         }
     }

@@ -5,13 +5,13 @@ using Random = UnityEngine.Random;
 
 namespace InputSystem.Bot
 {
-    public class BotRandomInput<TTargetState> : BotInput
+    public class BotRandomInput<TTargetState> : BotInput<TTargetState>
     where TTargetState : State
     {
         private readonly BotAction[] _botActions;
         
         public BotRandomInput(IStateMachine stateMachine, params BotAction[] botActions)
-            : base(stateMachine, typeof(TTargetState))
+            : base(stateMachine)
         {
             if (botActions == null)
                 throw new ArgumentNullException(nameof(botActions));

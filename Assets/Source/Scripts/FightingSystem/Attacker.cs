@@ -55,13 +55,12 @@ namespace FightingSystem
                 throw new KeyNotFoundException(nameof(attackKey));
 
             IsContinuing = true;
+            _cancellationTokenSource = new CancellationTokenSource();
             AttackDelayed(attackKey, _attacks[attackKey]).Forget();
         }
 
         private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
         {
-            _cancellationTokenSource = new CancellationTokenSource();
-
             await UniTask.WaitForSeconds(attack.Delay, cancellationToken: _cancellationTokenSource.Token,
                 cancelImmediately: true);
             bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
