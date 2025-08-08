@@ -1058,6 +1058,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5395424422640995673}
+  - component: {fileID: 576025512226384594}
+  - component: {fileID: 3030404802780428558}
   m_Layer: 0
   m_Name: TR Pelvis
   m_TagString: Untagged
@@ -1083,6 +1085,39 @@ Transform:
   - {fileID: 9158642852475297624}
   m_Father: {fileID: 8599935095971967747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &576025512226384594
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112327470210468354}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.64, y: 0.54, z: 0.52}
+  m_Center: {x: 0.39, y: 0.04, z: 0}
+--- !u!114 &3030404802780428558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112327470210468354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ba8bc6337c484789d8009434b15edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5246539373664124162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,6 +1339,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2178754645173468750}
+  - component: {fileID: 915417507716457287}
+  - component: {fileID: 7548931109079390432}
   m_Layer: 0
   m_Name: TR Spine1
   m_TagString: Untagged
@@ -1327,6 +1364,39 @@ Transform:
   - {fileID: 1401616207155801901}
   m_Father: {fileID: 9158642852475297624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &915417507716457287
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885395194076991977}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.61, y: 0.5, z: 0.57}
+  m_Center: {x: -0.06, y: 0.06, z: 0}
+--- !u!114 &7548931109079390432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885395194076991977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73f5f6103c34680af4f7592e7c74beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6134519328928891485
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1533,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7349343746878986908}
-  - component: {fileID: 6697383267584986061}
   m_Layer: 0
   m_Name: MrMock
   m_TagString: Untagged
@@ -1491,27 +1560,6 @@ Transform:
   - {fileID: 3532718129008104643}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -154.022, z: 0}
---- !u!65 &6697383267584986061
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6707389324209408961}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.31, y: 1.62, z: 0.29}
-  m_Center: {x: 0, y: 0.79, z: 0}
 --- !u!1 &6891147207917717659
 GameObject:
   m_ObjectHideFlags: 0

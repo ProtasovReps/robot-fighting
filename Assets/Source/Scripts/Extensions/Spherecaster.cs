@@ -1,4 +1,4 @@
-﻿using CharacterSystem;
+﻿using CharacterSystem.FighterParts;
 using Interface;
 using UnityEngine;
 
@@ -29,10 +29,10 @@ namespace Extensions
             if (hits == 0)
                 return false;
 
-            if (_hits[0].transform.TryGetComponent(out Fighter fighter) == false)
+            if (_hits[0].transform.TryGetComponent(out IDamageable foundDamageable) == false)
                 return false;
 
-            damageable = fighter.Health;
+            damageable = foundDamageable;
             return true;
         }
 

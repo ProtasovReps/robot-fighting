@@ -2,11 +2,9 @@
 
 namespace Extensions.Exceptions
 {
-    public class StateNotFoundException : ArgumentException
+    public class StateNotFoundException : NullReferenceException
     {
-        private const string ExceptionMessage = "State not found";
-
-        public StateNotFoundException(string paramName) : base(ExceptionMessage, paramName)
+        public StateNotFoundException(string paramName) : base(paramName)
         {
         }
     }
