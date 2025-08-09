@@ -27,8 +27,11 @@ namespace InputSystem.Bot
             };
 
             _subscription = stateMachine.CurrentState
-                .Subscribe(state => _lastState = state.Type);
-            
+                .Pairwise()
+                .Where(pair => pair.Previous != null)
+                .Subscribe(pair => _lastState = pair.Previous.Type);
+
+            ResetLastState();
             _botMovement = botMovement;
         }
 
@@ -51,7 +54,13 @@ namespace InputSystem.Bot
             if (_lastState == typeof(WallNearbyState) && _botMovement.Direction == Directions.Right)
                 direction = Directions.Right;
                 
+            ResetLastState();
             return _directions[direction];
+        }
+
+        private void ResetLastState()
+        {
+            _lastState = typeof(NothingNearbyState);
         }
     }
 }
