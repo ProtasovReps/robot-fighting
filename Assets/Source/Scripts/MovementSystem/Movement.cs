@@ -28,7 +28,7 @@ namespace MovementSystem
         private void Start()
         {
             _moveInput.Value
-                .Where(_ => _stateMachine.CurrentState.CurrentValue is MoveState)
+                .Where(_ => _stateMachine.Value.CurrentValue is MoveState)
                 .Subscribe(_positionTranslation.TranslatePosition)
                 .AddTo(this);
         }

@@ -20,13 +20,13 @@ namespace InputSystem.Bot
             _subscriptions = new CompositeDisposable(2);
             Type targetState = typeof(TTargetState);
 
-            stateMachine.CurrentState
+            stateMachine.Value
                 .DelaySubscription(TimeSpan.FromSeconds(SubscriptionDelay))
                 .Where(state => state.Type == targetState)
                 .Subscribe(_ => Activate())
                 .AddTo(_subscriptions);
 
-            stateMachine.CurrentState
+            stateMachine.Value
                 .Pairwise()
                 .Where(pair => pair.Previous.Type == targetState
                                && pair.Current.Type != targetState)

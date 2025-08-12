@@ -20,7 +20,7 @@ namespace FightingSystem
 
         protected void Initialize(IStateMachine stateMachine)
         {
-            stateMachine.CurrentState
+            stateMachine.Value
                 .Where(state => state.Type == typeof(HittedState))
                 .Subscribe(_ => Impact().Forget())
                 .AddTo(this);

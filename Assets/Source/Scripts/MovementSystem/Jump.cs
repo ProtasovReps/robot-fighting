@@ -33,7 +33,7 @@ namespace MovementSystem
         {
             _transform = transform;
             _startHeight = _transform.position.y;
-            _stateMachine.CurrentState
+            _stateMachine.Value
                 .Where(state => state.Type == typeof(JumpState))
                 .Subscribe(_ => OnJumpPressed())
                 .AddTo(this);

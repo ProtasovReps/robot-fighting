@@ -1,15 +1,14 @@
 using System;
 using Interface;
-using R3;
 using UnityEngine;
+using R3;
 
 namespace AnimationSystem
 {
     public abstract class CharacterAnimation : IDisposable
     {
         private readonly IStateMachine _stateMachine;
-        private readonly Animator _animator;
-        
+
         private IDisposable _subscription;
 
         protected CharacterAnimation(IStateMachine stateMachine, Animator animator)
@@ -21,19 +20,19 @@ namespace AnimationSystem
                 throw new ArgumentNullException(nameof(animator));
 
             _stateMachine = stateMachine;
-            _animator = animator;
+            Animator = animator;
         }
 
-        protected Animator Animator => _animator;
+        protected Animator Animator { get; }
 
-        public void Dispose() // диспозер должен быть
+        public void Dispose()
         {
             _subscription.Dispose();
         }
 
         public void Subscribe()
         {
-            _subscription = _stateMachine.CurrentState
+            _subscription = _stateMachine.Value
                 .Where(state => state.Type == GetRequiredState())
                 .Subscribe(_ => Animate());
         }

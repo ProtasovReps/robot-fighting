@@ -26,7 +26,7 @@ namespace InputSystem.Bot
                 { Directions.InPlace, inPlace }
             };
 
-            _subscription = stateMachine.CurrentState
+            _subscription = stateMachine.Value
                 .Pairwise()
                 .Where(pair => pair.Previous != null)
                 .Subscribe(pair => _lastState = pair.Previous.Type);

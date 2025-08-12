@@ -20,7 +20,7 @@ namespace FightingSystem
                 throw new ArgumentOutOfRangeException(nameof(blockDuration));
             
             _blockDuration = blockDuration;
-            _subscription = stateMachine.CurrentState
+            _subscription = stateMachine.Value
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
 

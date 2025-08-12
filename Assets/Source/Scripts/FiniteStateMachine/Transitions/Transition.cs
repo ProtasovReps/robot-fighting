@@ -18,7 +18,7 @@ namespace FiniteStateMachine.Transitions
 
         public void Transit()
         {
-            if (_machine.CurrentState.CurrentValue.Type == typeof(TTargetState))
+            if (_machine.Value.CurrentValue.Type == typeof(TTargetState))
                 return;
 
             _machine.Enter(typeof(TTargetState));

@@ -31,12 +31,12 @@ namespace FightingSystem
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));
 
-            stateMachine.CurrentState
+            stateMachine.Value
                 .Where(state => state is AttackState)
                 .Subscribe(state => Attack(state.Type))
                 .AddTo(this);
 
-            stateMachine.CurrentState
+            stateMachine.Value
                 .Where(state => state.Type == typeof(HittedState))
                 .Subscribe(_ => CancelAttack())
                 .AddTo(this);

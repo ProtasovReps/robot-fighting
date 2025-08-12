@@ -1,10 +1,8 @@
 using FiniteStateMachine.States;
-using R3;
 
 namespace Interface
 {
-    public interface IStateMachine
+    public interface IStateMachine : IValueChangeable<State>
     {
-        ReadOnlyReactiveProperty<State> CurrentState { get; }
     }
 }

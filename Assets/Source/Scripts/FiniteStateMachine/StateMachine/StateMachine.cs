@@ -24,7 +24,7 @@ namespace FiniteStateMachine
             _currentState = new ReactiveProperty<State>(states[0]);
         }
 
-        public ReadOnlyReactiveProperty<State> CurrentState => _currentState;
+        public ReadOnlyReactiveProperty<State> Value => _currentState;
 
         public void Enter(Type newState)
         {
