@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Extensions
 {
-    public class DistanceValidationInitializer : MonoBehaviour
+    public class DistanceValidationInitializer : MonoBehaviour // возмонжо уберется
     {
         [SerializeField] private DistanceValidator _opponentDistanceValidator;
         [SerializeField] private DistanceValidator _wallDistanceValidator;

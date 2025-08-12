@@ -1,7 +1,7 @@
 ﻿using FiniteStateMachine;
 using Reflex.Attributes;
 
-namespace MovementSystem
+namespace FightingSystem
 {
     public class PlayerHitImpact : HitImpact
     {

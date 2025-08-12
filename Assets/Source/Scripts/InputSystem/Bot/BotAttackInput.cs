@@ -2,12 +2,12 @@
 
 namespace InputSystem.Bot
 {
-    public class BotAttack
+    public class BotAttackInput
     {
         private readonly Subject<Unit> _upAttack;
         private readonly Subject<Unit> _downAttack;
         
-        public BotAttack()
+        public BotAttackInput()
         {
             _upAttack = new Subject<Unit>();
             _downAttack = new Subject<Unit>();

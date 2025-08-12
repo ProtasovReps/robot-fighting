@@ -2,8 +2,8 @@
 
 namespace Interface
 {
-    public interface IValueChangeable
+    public interface IValueChangeable<T>
     {
-        ReadOnlyReactiveProperty<float> CurrentValue { get; }
+        ReadOnlyReactiveProperty<T> Value { get; }
     }
 }

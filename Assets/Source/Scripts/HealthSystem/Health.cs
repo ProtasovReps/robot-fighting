@@ -4,7 +4,7 @@ using R3;
 
 namespace HealthSystem
 {
-    public class Health : IValueChangeable, IDamageable
+    public class Health : IValueChangeable<float>, IDamageable
     {
         private readonly ReactiveProperty<float> _currentValue;
         
@@ -16,7 +16,7 @@ namespace HealthSystem
             _currentValue = new ReactiveProperty<float>(startValue);
         }
         
-        public ReadOnlyReactiveProperty<float> CurrentValue => _currentValue;
+        public ReadOnlyReactiveProperty<float> Value => _currentValue;
         
         public void AcceptDamage(float damage)
         {

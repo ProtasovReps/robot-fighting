@@ -4,9 +4,9 @@ using Interface;
 using R3;
 using UnityEngine;
 
-namespace MovementSystem
+namespace FightingSystem
 {
-    public abstract class HitImpact : MonoBehaviour
+    public abstract class HitImpact : MonoBehaviour // убрать в fightingSystem
     {
         [SerializeField] private float _targetRightPosition;
         [SerializeField] private float _impactTime;

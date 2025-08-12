@@ -10,9 +10,9 @@ namespace FightingSystem
 
         public Observable<Unit> Hitted => _hitted;
 
-        public void Initialize(IValueChangeable health)
+        public void Initialize(IValueChangeable<float> health)
         {
-            health.CurrentValue
+            health.Value
                 .Pairwise()
                 .Where(pair => pair.Current < pair.Previous)
                 .Subscribe(_ => _hitted.OnNext(Unit.Default))

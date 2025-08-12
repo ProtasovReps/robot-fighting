@@ -54,9 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4633893747449466056}
   - component: {fileID: 3296656519962594719}
-  - component: {fileID: 8317237888319817899}
   - component: {fileID: 123863274945531791}
   - component: {fileID: 7296620159227531177}
+  - component: {fileID: 4801546836152252330}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -77,7 +77,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1398456107283670589}
   - {fileID: 5550587219918791172}
   - {fileID: 7941875976654055876}
   - {fileID: 6096621510576252494}
@@ -99,21 +98,6 @@ MonoBehaviour:
   _jumpHeight: 2.5
   _jumpTime: 0.15
   _fallSpeed: 0.3
---- !u!114 &8317237888319817899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6212048862872474625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42ebaf5dab44b3aa04687eeb7b3e7d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 7
-  _distanceValidator: {fileID: 8889627051122865410}
-  _playerInputReader: {fileID: 4169665270030267081}
 --- !u!114 &123863274945531791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +116,7 @@ MonoBehaviour:
   <StartHealthValue>k__BackingField: 100
   <StunDuration>k__BackingField: 1
   <BlockDuration>k__BackingField: 1
+  <MoveSpeed>k__BackingField: 0
 --- !u!114 &7296620159227531177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +131,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetRightPosition: 1
   _impactTime: 0.5
+--- !u!114 &4801546836152252330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212048862872474625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5b7c2f01824705955b24ddc5f9e9d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6681849221444632249
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,50 +253,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10b31406cf65426b9941dc4046b70c91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &7438076230764133104
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1398456107283670589}
-  - component: {fileID: 4169665270030267081}
-  m_Layer: 0
-  m_Name: InputReader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1398456107283670589
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7438076230764133104}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4633893747449466056}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4169665270030267081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7438076230764133104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de67e2930b516e47b46c0e16721ac98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7520746157409650008

@@ -5,30 +5,30 @@ using R3;
 
 namespace InputSystem.Bot
 {
-    public abstract class BotInput<TTargetState> : IDisposable
-    where TTargetState : State
+    public abstract class BotActionExecutor<TTargetState> : IDisposable
+        where TTargetState : State
     {
         private const float SubscriptionDelay = 0.5f;
-        
+
         private readonly CompositeDisposable _subscriptions;
-        
+
         private IDisposable _currentSubscription;
         private BotAction _currentAction;
-        
-        protected BotInput(IStateMachine stateMachine)
+
+        protected BotActionExecutor(IStateMachine stateMachine)
         {
             _subscriptions = new CompositeDisposable(2);
             Type targetState = typeof(TTargetState);
-            
+
             stateMachine.CurrentState
-                .DelaySubscription(TimeSpan.FromSeconds(SubscriptionDelay)) 
+                .DelaySubscription(TimeSpan.FromSeconds(SubscriptionDelay))
                 .Where(state => state.Type == targetState)
                 .Subscribe(_ => Activate())
                 .AddTo(_subscriptions);
 
             stateMachine.CurrentState
                 .Pairwise()
-                .Where(pair => pair.Previous.Type == targetState 
+                .Where(pair => pair.Previous.Type == targetState
                                && pair.Current.Type != targetState)
                 .Subscribe(_ => Deactivate())
                 .AddTo(_subscriptions);
@@ -41,13 +41,13 @@ namespace InputSystem.Bot
         }
 
         protected abstract BotAction GetAction();
-        
+
         private void Activate()
         {
             _currentAction = GetAction();
             _currentSubscription = _currentAction.Executed
                 .Subscribe(_ => Reactivate());
-            
+
             _currentAction.Activate();
         }
 
@@ -56,7 +56,7 @@ namespace InputSystem.Bot
             Deactivate();
             Activate();
         }
-        
+
         private void Deactivate()
         {
             _currentSubscription?.Dispose();

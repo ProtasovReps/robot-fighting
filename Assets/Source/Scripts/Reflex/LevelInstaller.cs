@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
+using Extensions;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
@@ -8,8 +10,11 @@ using FiniteStateMachine.States;
 using FiniteStateMachine.Transitions.Factory;
 using InputSystem;
 using InputSystem.Bot;
+using Interface;
+using MovementSystem;
 using Reflex.Core;
 using UnityEngine;
+using BotMovement = MovementSystem.BotMovement;
 
 namespace Reflex
 {
@@ -18,13 +23,15 @@ namespace Reflex
         [Header("Player")]
         [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
         [SerializeField] private PlayerFactory _playerFactory;
-        [SerializeField] private PlayerInputReader _playerInputReader;
+        [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
+        [SerializeField] private PlayerMovement _playerMovement;
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotInputTransitionFactory _botInputTransitionFactory;
         [SerializeField] private BotFactory _botFactory;
-        [SerializeField] private BotInputReader _botInputReader;
-
+        [SerializeField] private BotMovement _botMovement;
+        [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
+        
         private void Start()
         {
             Destroy(gameObject);
@@ -33,24 +40,29 @@ namespace Reflex
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             AnimationFactory animationFactory = new();
-            BotData botData = InstallBot(animationFactory, containerBuilder);
             
-            InstallPlayer(animationFactory, containerBuilder);
-            InstallBotInput(botData, containerBuilder);
-            InstallPlayerInput();
+            BotData botData = InstallBot(animationFactory, containerBuilder);
+            PlayerData playerData = InstallPlayer(animationFactory, containerBuilder);
+
+            IMoveInput botMoveInput = InstallBotInput(botData, containerBuilder);
+            IMoveInput playerMoveInput = InstallPlayerInput(playerData, containerBuilder);
+            
+            InstallBotMovement(botData, botMoveInput);
+            InstallPlayerMovement(playerData, playerMoveInput);
         }
 
-        private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
+        private PlayerData InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
             
-            _playerFactory.Produce(animationFactory, playerStateMachine, conditionBuilder);
+            PlayerData playerData = _playerFactory.Produce(animationFactory, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
+            return playerData;
         }
 
         private BotData InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
@@ -67,38 +79,70 @@ namespace Reflex
             return botData;
         }
 
-        private void InstallBotInput(BotData botData, ContainerBuilder builder)
+        private IMoveInput InstallBotInput(BotData botData, ContainerBuilder builder)
         {
             State[] states = new BotInputStateFactory().Produce();
             BotInputStateMachine stateMachine = new(states);
             BotInputConditionBuilder conditionBuilder = new();
             
-            BotMovement botMovement = new();
-            BotAttack botAttack = new();
+            BotMoveInput botMoveInput = new();
+            BotAttackInput botAttackInput = new();
+            Dictionary<int, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
+            ValidatedInput validatedBotInput = new(botData.transform, botMoveInput, directions);
             
-            BotAction leftMove = new(botMovement.MoveLeft, botData.MoveDuration);
-            BotAction rightMove = new(botMovement.MoveRight, botData.MoveDuration);
-            BotAction inPlace = new(botMovement.Stop, botData.MoveDuration);
-            BotAction upAttack = new(botAttack.AttackUp, botData.AttackDelay);
-            BotAction downAttack = new(botAttack.AttackDown, botData.AttackDelay);
-            
-            new BotNothingNearbyInput(stateMachine, botMovement, leftMove, rightMove, inPlace);
-            new BotSoloInput<WallNearbyState>(stateMachine, rightMove);
-            new BotRandomInput<OpponentNearbyState>(stateMachine, leftMove, upAttack, downAttack);
-            new BotRandomInput<WallOpponentNearbyState>(stateMachine, upAttack, downAttack);
-            
-            _botInputReader.Initialize(botMovement, botAttack);
             _botInputTransitionFactory.Initialize(stateMachine, conditionBuilder);
             
+            InstallBotActions(botMoveInput, botAttackInput, botData, stateMachine);
+
+            builder.AddSingleton(botMoveInput);
+            builder.AddSingleton(botAttackInput);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(stateMachine);
+            return validatedBotInput;
         }
 
-        private void InstallPlayerInput()
+        private void InstallBotActions(
+            BotMoveInput moveInput,
+            BotAttackInput attackInput, 
+            BotData botData,
+            BotInputStateMachine stateMachine)
+        {  
+            BotAction leftMove = new(moveInput.MoveLeft, botData.MoveDuration);
+            BotAction rightMove = new(moveInput.MoveRight, botData.MoveDuration);
+            BotAction inPlace = new(moveInput.Stop, botData.MoveDuration);
+            BotAction upAttack = new(attackInput.AttackUp, botData.AttackDelay);
+            BotAction downAttack = new(attackInput.AttackDown, botData.AttackDelay);
+            
+            new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
+            new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
+            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, leftMove, upAttack, downAttack);
+            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, upAttack, downAttack);
+        }
+
+        private IMoveInput InstallPlayerInput(PlayerData playerData, ContainerBuilder builder)
         {
             UserInput input = new();
+            PlayerMoveInputReader moveInputReader = new(input);
+            PlayerAttackInputReader attackInputReader = new(input);
+            Dictionary<int, DistanceValidator> directions = _playerDirectionValidationFactory.Produce();
+            ValidatedInput validatedInput = new(playerData.transform, moveInputReader, directions);
             
-            _playerInputReader.Initialize(input);
+            input.Enable(); // управление инпутом в другое место
+            builder.AddSingleton(moveInputReader);
+            builder.AddSingleton(attackInputReader);
+            return validatedInput;
+        }
+
+        private void InstallPlayerMovement(PlayerData fighterData, IMoveInput moveInput)
+        {
+            PositionTranslation positionTranslation = new(fighterData.transform, fighterData.MoveSpeed);
+            _playerMovement.Initialize(moveInput, positionTranslation);
+        }
+        
+        private void InstallBotMovement(BotData fighterData, IMoveInput moveInput)
+        {
+            PositionTranslation positionTranslation = new(fighterData.transform, fighterData.MoveSpeed);
+            _botMovement.Initialize(moveInput, positionTranslation);
         }
     }
 }

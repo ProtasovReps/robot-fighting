@@ -7,16 +7,16 @@ using R3;
 
 namespace InputSystem.Bot
 {
-    public class BotNothingNearbyInput : BotRandomInput<NothingNearbyState>
+    public class BotNothingNearbyActionExecutor : BotRandomActionExecutor<NothingNearbyState>
     {
         private readonly IDisposable _subscription;
         private readonly Dictionary<int, BotAction> _directions;
-        private readonly BotMovement _botMovement;
+        private readonly BotMoveInput _botMoveInput;
 
         private Type _lastState;
 
-        public BotNothingNearbyInput(
-            IStateMachine stateMachine, BotMovement botMovement, BotAction left, BotAction right, BotAction inPlace)
+        public BotNothingNearbyActionExecutor(
+            IStateMachine stateMachine, BotMoveInput botMoveInput, BotAction left, BotAction right, BotAction inPlace)
             : base(stateMachine, left, right, inPlace)
         {
             _directions = new Dictionary<int, BotAction>(3)
@@ -32,7 +32,7 @@ namespace InputSystem.Bot
                 .Subscribe(pair => _lastState = pair.Previous.Type);
 
             ResetLastState();
-            _botMovement = botMovement;
+            _botMoveInput = botMoveInput;
         }
 
         public override void Dispose()
@@ -48,10 +48,10 @@ namespace InputSystem.Bot
 
             int direction = 0;
 
-            if (_lastState == typeof(OpponentNearbyState) && _botMovement.Direction == Directions.Left)
+            if (_lastState == typeof(OpponentNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Left)
                 direction = Directions.Left;
 
-            if (_lastState == typeof(WallNearbyState) && _botMovement.Direction == Directions.Right)
+            if (_lastState == typeof(WallNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
                 direction = Directions.Right;
                 
             ResetLastState();

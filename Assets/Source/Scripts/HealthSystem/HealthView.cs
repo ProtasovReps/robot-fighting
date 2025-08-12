@@ -9,9 +9,9 @@ namespace HealthSystem
     {
         [SerializeField] private TMP_Text _text;
 
-        public void Initialize(IValueChangeable valueChangeable)
+        public void Initialize(IValueChangeable<float> valueChangeable)
         {
-            valueChangeable.CurrentValue
+            valueChangeable.Value
                 .Subscribe(UpdateValue)
                 .AddTo(this);
         }
