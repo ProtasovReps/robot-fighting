@@ -11,7 +11,8 @@ namespace FiniteStateMachine.Factory
                 new IdleState(),
                 new MoveLeftState(),
                 new MoveRightState(),
-                new HittedState(),
+                new UpHittedState(),
+                new DownHittedState(),
                 new PunchState(),
                 new KickState()
             };

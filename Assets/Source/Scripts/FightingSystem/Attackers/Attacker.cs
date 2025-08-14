@@ -37,7 +37,7 @@ namespace FightingSystem
                 .AddTo(this);
 
             stateMachine.Value
-                .Where(state => state.Type == typeof(HittedState))
+                .Where(state => state is HittedState)
                 .Subscribe(_ => CancelAttack())
                 .AddTo(this);
 

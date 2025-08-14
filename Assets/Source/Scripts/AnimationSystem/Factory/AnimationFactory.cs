@@ -16,7 +16,8 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<MoveRightState>(stateMachine, animatedCharacter.Animator, AnimationHashes.MoveRight),
                 new TriggerAnimation<PunchState>(stateMachine, animatedCharacter.Animator, AnimationHashes.ArmAttack),
                 new TriggerAnimation<KickState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegAttack),
-                new TriggerAnimation<HittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Hit),
+                new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.HeadHit),
+                new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegsHit),
                 new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block)
             };
 

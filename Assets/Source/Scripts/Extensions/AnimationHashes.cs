@@ -10,7 +10,8 @@ namespace Extensions
         public static readonly int Jump = Animator.StringToHash(nameof(Jump));
         public static readonly int ArmAttack = Animator.StringToHash(nameof(ArmAttack));
         public static readonly int LegAttack = Animator.StringToHash(nameof(LegAttack));
-        public static readonly int Hit = Animator.StringToHash(nameof(Hit));
+        public static readonly int HeadHit = Animator.StringToHash(nameof(HeadHit));
+        public static readonly int LegsHit = Animator.StringToHash(nameof(LegsHit));
         public static readonly int Block = Animator.StringToHash(nameof(Block));
     }
 }

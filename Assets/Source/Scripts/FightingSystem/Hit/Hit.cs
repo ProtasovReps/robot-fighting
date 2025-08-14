@@ -1,33 +1,26 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using FiniteStateMachine.States;
 using Interface;
 using R3;
 
 namespace FightingSystem
 {
-    public class Hit : IContinuous, IDisposable
+    public abstract class Hit : IContinuous, IDisposable
     {
-        private readonly IDisposable _subscription;
         private readonly float _stunDuration;
-        private readonly HitReader _hitReader;
-        
+        private readonly IDisposable _subscription;
+
         private CancellationTokenSource _cancellationTokenSource;
 
-        public Hit(float stunDuration, HitReader hitReader, IConditionAddable conditionAddable)
+        protected Hit(float stunDuration, Observable<Unit> observable)
         {
             if (stunDuration <= 0)
                 throw new ArgumentOutOfRangeException(nameof(stunDuration));
 
-            if (conditionAddable == null)
-                throw new ArgumentNullException(nameof(conditionAddable));
-
             _stunDuration = stunDuration;
-            _subscription = hitReader.Hitted
+            _subscription = observable
                 .Subscribe(_ => TakeHit());
-            
-            conditionAddable.Add<HittedState>(_ => IsContinuing);
         }
 
         public bool IsContinuing { get; private set; }
@@ -46,7 +39,7 @@ namespace FightingSystem
             IsContinuing = true;
             Execute().Forget();
         }
-        
+
         private void Validate()
         {
             IsContinuing = false;

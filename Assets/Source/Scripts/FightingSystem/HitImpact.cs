@@ -1,14 +1,12 @@
 ﻿using Cysharp.Threading.Tasks;
-using FiniteStateMachine.States;
-using Interface;
 using R3;
 using UnityEngine;
 
 namespace FightingSystem
 {
-    public abstract class HitImpact : MonoBehaviour // убрать в fightingSystem
+    public class HitImpact : MonoBehaviour // также может не быть монобехом
     {
-        [SerializeField] private float _targetRightPosition;
+        [SerializeField] private float _targetRightPosition; // разная сила в зависимости от урона?
         [SerializeField] private float _impactTime;
 
         private Transform _transform;
@@ -18,10 +16,9 @@ namespace FightingSystem
             _transform = transform;
         }
 
-        protected void Initialize(IStateMachine stateMachine)
+        public void Initialize(HitReader hitReader)
         {
-            stateMachine.Value
-                .Where(state => state.Type == typeof(HittedState))
+            hitReader.Hitted
                 .Subscribe(_ => Impact().Forget())
                 .AddTo(this);
         }

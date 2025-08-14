@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using AnimationSystem;
-using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.FighterParts;
 using Extensions;
@@ -17,17 +15,15 @@ namespace CharacterSystem.Factory
         [SerializeField] private Attacker _attacker;
         [SerializeField] private HealthView _healthView; // может быть это стоит отделить
         [SerializeField] private FighterPart[] _fighterParts;
-        [SerializeField] private AnimatedCharacter _animatedCharacter; // также это
         [SerializeField] private FighterData _fighterData;
         [SerializeField] private HitReader _hitReader;
-
-        protected FighterData Produce(AnimationFactory animationFactory,
-            IStateMachine stateMachine, IConditionAddable conditionAddable)
+        [SerializeField] private HitImpact _hitImpact;
+        
+        protected FighterData Produce(IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             Health health = new(_fighterData.StartHealthValue);
             Dictionary<IAttack, Spherecaster> attacks = new();
 
-            new Hit(_fighterData.StunDuration, _hitReader, conditionAddable);
             new Block(_fighterData.BlockDuration, stateMachine, conditionAddable);
 
             foreach (AttackData data in _fighterData.Attacks)
@@ -38,15 +34,19 @@ namespace CharacterSystem.Factory
                 attacks.Add(attack, data.Spherecaster);
             }
 
-            for (int i = 0; i < _fighterParts.Length; i++)
+            foreach (FighterPart fighterPart in _fighterParts)
             {
-                _fighterParts[i].Initialize(health);
+                fighterPart.Initialize(health);
             }
 
-            _hitReader.Initialize(health);
+            _hitReader.Initialize();
+            _hitImpact.Initialize(_hitReader);
+
+            new UpHit(_fighterData.StunDuration, _hitReader, conditionAddable);
+            new DownHit(_fighterData.StunDuration, _hitReader, conditionAddable); // нужно разные Duration
+
             _attacker.SetAttacks(attacks);
             _healthView.Initialize(health);
-            animationFactory.Produce(_animatedCharacter, stateMachine);
             return _fighterData;
         }
     }

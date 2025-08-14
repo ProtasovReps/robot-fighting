@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AnimationSystem;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
@@ -25,12 +26,14 @@ namespace Reflex
         [SerializeField] private PlayerFactory _playerFactory;
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
         [SerializeField] private PlayerMovement _playerMovement;
+        [SerializeField] private AnimatedCharacter _playerAnimatedCharacter;
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotInputTransitionFactory _botInputTransitionFactory;
         [SerializeField] private BotFactory _botFactory;
         [SerializeField] private BotMovement _botMovement;
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
+        [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
         
         private void Start()
         {
@@ -41,42 +44,40 @@ namespace Reflex
         {
             AnimationFactory animationFactory = new();
             
-            BotData botData = InstallBot(animationFactory, containerBuilder);
-            PlayerData playerData = InstallPlayer(animationFactory, containerBuilder);
-
-            IMoveInput botMoveInput = InstallBotInput(botData, containerBuilder);
-            IMoveInput playerMoveInput = InstallPlayerInput(playerData, containerBuilder);
-            
-            InstallBotMovement(botData, botMoveInput);
-            InstallPlayerMovement(playerData, playerMoveInput);
+            InstallBot(animationFactory, containerBuilder);
+            InstallPlayer(animationFactory, containerBuilder);
         }
 
-        private PlayerData InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
+        private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
+            PlayerData playerData = _playerFactory.Produce(playerStateMachine, conditionBuilder);
+            IMoveInput moveInput = InstallPlayerInput(playerData, builder);
             
-            PlayerData playerData = _playerFactory.Produce(animationFactory, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
+            InstallPlayerMovement(playerData, moveInput);
+            InstallAnimations(animationFactory, _playerAnimatedCharacter, playerStateMachine);
             
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
-            return playerData;
         }
 
-        private BotData InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
+        private void InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             State[] states = new BotStateFactory().Produce();
             BotStateMachine botStateMachine = new(states);
             BotConditionBuilder conditionBuilder = new();
-            BotData botData = _botFactory.Produce(animationFactory, botStateMachine, conditionBuilder);
+            BotData botData = _botFactory.Produce(botStateMachine, conditionBuilder);
+            IMoveInput moveInput = InstallBotInput(botData, builder);
 
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
+            InstallBotMovement(botData, moveInput);
+            InstallAnimations(animationFactory, _botAnimatedCharacter, botStateMachine);
             
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(botStateMachine);
-            return botData;
         }
 
         private IMoveInput InstallBotInput(BotData botData, ContainerBuilder builder)
@@ -143,6 +144,14 @@ namespace Reflex
         {
             PositionTranslation positionTranslation = new(fighterData.transform, fighterData.MoveSpeed);
             _botMovement.Initialize(moveInput, positionTranslation);
+        }
+        
+        private void InstallAnimations(
+            AnimationFactory animationFactory, 
+            AnimatedCharacter animatedCharacter, 
+            IStateMachine stateMachine)
+        {
+            animationFactory.Produce(animatedCharacter, stateMachine);
         }
     }
 }

@@ -11,7 +11,8 @@ namespace FightingSystem
     {
         private readonly float _blockDuration;
         private readonly IDisposable _subscription;
-
+        // private readonly Collider _collider;
+        
         private CancellationTokenSource _tokenSource;
         
         public Block(float blockDuration, IStateMachine stateMachine, IConditionAddable conditionAddable)
@@ -23,11 +24,11 @@ namespace FightingSystem
             _subscription = stateMachine.Value
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
-
+            
             conditionAddable.Add<BlockState>(_ => IsContinuing);
         }
-        
-        public bool IsContinuing { get; private set; }
+
+        public bool IsContinuing => false; //
 
         public void Dispose()
         {
@@ -39,9 +40,9 @@ namespace FightingSystem
         private async UniTaskVoid Execute()
         {
             _tokenSource = new CancellationTokenSource();
-            IsContinuing = true;
+            //_collider.enabled = false;
             await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token, cancelImmediately: true);
-            IsContinuing = false;
+            //_collider.enabled = true;
         }
     }
 }

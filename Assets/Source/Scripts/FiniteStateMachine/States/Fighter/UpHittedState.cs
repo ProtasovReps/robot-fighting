@@ -1,6 +1,6 @@
 ﻿namespace FiniteStateMachine.States
 {
-    public class StunState : State
+    public class UpHittedState : HittedState
     {
     }
 }

@@ -34,8 +34,9 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Build<MoveJumpState, IdleState>(false);
             
             builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
-            builder.BuildGlobal<HittedState>(false);
-            builder.BuildGlobal<AttackState>(false, typeof(HittedState));
+            builder.BuildGlobal<UpHittedState>(false, typeof(DownHittedState));
+            builder.BuildGlobal<DownHittedState>(false, typeof(UpHittedState));
+            builder.BuildGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
             builder.BuildGlobal<BlockState>(false);
 
             new TransitionInitializer(stateMachine) // dispose
@@ -46,7 +47,8 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveJumpState, int>(_moveInput.Value, builder.Get<MoveJumpState>())
                 .InitializeTransition<PunchState, Unit>(_attackInputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<KickState, Unit>(_attackInputReader.KickPressed, builder.Get<AttackState>())
-                .InitializeTransition<HittedState, Unit>(_hitReader.Hitted, builder.Get<HittedState>())
+                .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
+                .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
                 .InitializeTransition<BlockState, Unit>(_attackInputReader.BlockPressed, builder.Get<BlockState>());
         }
     }
