@@ -1,4 +1,4 @@
-﻿using FightingSystem;
+﻿using DamageCalculationSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
@@ -37,7 +37,7 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.BuildGlobal<UpHittedState>(false, typeof(DownHittedState));
             builder.BuildGlobal<DownHittedState>(false, typeof(UpHittedState));
             builder.BuildGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
-            builder.BuildGlobal<BlockState>(false);
+            builder.BuildGlobal<BlockState>(false, typeof(DownHittedState));
 
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, int>(_moveInput.Value, builder.Get<IdleState>())

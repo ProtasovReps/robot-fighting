@@ -1,7 +1,7 @@
 ﻿using FiniteStateMachine.States;
 using Interface;
 
-namespace FightingSystem
+namespace DamageCalculationSystem
 {
     public class UpHit : Hit
     {

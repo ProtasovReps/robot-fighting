@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Interface;
 using R3;
 
-namespace FightingSystem
+namespace DamageCalculationSystem
 {
     public abstract class Hit : IContinuous, IDisposable
     {

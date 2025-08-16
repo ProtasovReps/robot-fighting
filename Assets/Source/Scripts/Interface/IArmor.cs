@@ -1,7 +1,6 @@
 ﻿namespace Interface
 {
-    public interface IArmor
+    public interface IArmor : IDamageable
     {
-        float ValidateDamage(float damage);
     }
 }

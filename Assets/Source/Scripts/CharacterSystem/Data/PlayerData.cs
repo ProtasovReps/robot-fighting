@@ -1,6 +1,6 @@
 ﻿namespace CharacterSystem.Data
 {
-    public class PlayerData : FighterData
+    public sealed class PlayerData : FighterData
     {
     }
 }

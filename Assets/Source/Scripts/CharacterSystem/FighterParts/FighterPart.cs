@@ -1,34 +1,25 @@
-using System;
-using HealthSystem;
 using Interface;
 using R3;
-using UnityEngine;
 
 namespace CharacterSystem.FighterParts
 {
-    public abstract class FighterPart : MonoBehaviour, IDamageable
+    public abstract class FighterPart : IDamageable
     {
-        private Health _health;
-        private Subject<Unit> _hitted;
-        
-        public Observable<Unit> Hitted => _hitted;
-        
-        public void Initialize(Health health)
+        private readonly IDamageable _damageable;
+        private readonly Subject<float> _hitted;
+
+        protected FighterPart(IDamageable damageable)
         {
-            if (health == null)
-                throw new ArgumentNullException(nameof(health));
-
-            _health = health;
-            _hitted = new Subject<Unit>();
+            _hitted = new Subject<float>();
+            _damageable = damageable;
         }
-
+        
+        public Observable<float> Hitted => _hitted;
+        
         public void AcceptDamage(float damage)
         {
-            damage = ValidateDamage(damage);
-            _health.AcceptDamage(damage);
-            _hitted.OnNext(Unit.Default);
+            _hitted.OnNext(damage);
+            _damageable.AcceptDamage(damage);
         }
-
-        protected abstract float ValidateDamage(float damage);
     }
 }

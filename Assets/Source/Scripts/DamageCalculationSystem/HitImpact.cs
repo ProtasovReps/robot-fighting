@@ -2,7 +2,7 @@
 using R3;
 using UnityEngine;
 
-namespace FightingSystem
+namespace DamageCalculationSystem
 {
     public class HitImpact : MonoBehaviour // также может не быть монобехом
     {

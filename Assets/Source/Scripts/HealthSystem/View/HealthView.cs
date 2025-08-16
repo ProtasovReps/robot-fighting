@@ -1,17 +1,19 @@
-using Interface;
 using R3;
+using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
 namespace HealthSystem
 {
-    public class HealthView : MonoBehaviour
+    public class HealthView<T> : MonoBehaviour
+        where T : Health
     {
         [SerializeField] private TMP_Text _text;
 
-        public void Initialize(IValueChangeable<float> valueChangeable)
+        [Inject]
+        private void Inject(T health)
         {
-            valueChangeable.Value
+            health.Value
                 .Subscribe(UpdateValue)
                 .AddTo(this);
         }

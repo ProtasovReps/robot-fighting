@@ -1,4 +1,4 @@
-﻿using FightingSystem;
+﻿using DamageCalculationSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem.Bot;

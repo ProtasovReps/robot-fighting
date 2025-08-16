@@ -4,31 +4,44 @@ using Cysharp.Threading.Tasks;
 using FiniteStateMachine.States;
 using Interface;
 using R3;
+using UnityEngine;
 
 namespace FightingSystem
 {
-    public class Block : IContinuous, IDisposable
+    public class Block : IContinuous, IDisposable, IDamageable
     {
         private readonly float _blockDuration;
+        private readonly float _blockValue; //
         private readonly IDisposable _subscription;
-        // private readonly Collider _collider;
-        
+        private readonly IDamageable _damageable;
+
         private CancellationTokenSource _tokenSource;
-        
-        public Block(float blockDuration, IStateMachine stateMachine, IConditionAddable conditionAddable)
+
+        public Block(
+            float blockDuration,
+            float blockValue,
+            IDamageable damageable,
+            IStateMachine stateMachine,
+            IConditionAddable conditionAddable)
         {
             if (blockDuration <= 0)
                 throw new ArgumentOutOfRangeException(nameof(blockDuration));
+
+            if (blockValue <= 0)
+                throw new ArgumentOutOfRangeException(nameof(blockValue));
             
             _blockDuration = blockDuration;
+            _blockValue = blockValue;
+            _damageable = damageable;
+            
             _subscription = stateMachine.Value
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
-            
+
             conditionAddable.Add<BlockState>(_ => IsContinuing);
         }
 
-        public bool IsContinuing => false; //
+        public bool IsContinuing { get; private set; }
 
         public void Dispose()
         {
@@ -36,13 +49,23 @@ namespace FightingSystem
             _tokenSource?.Dispose();
             _subscription.Dispose();
         }
-        
+
+        public void AcceptDamage(float damage)
+        {
+            if (IsContinuing)
+                damage = Mathf.Clamp(damage - _blockValue, 0, damage);
+
+            _damageable.AcceptDamage(damage);
+        }
+
         private async UniTaskVoid Execute()
         {
             _tokenSource = new CancellationTokenSource();
-            //_collider.enabled = false;
-            await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token, cancelImmediately: true);
-            //_collider.enabled = true;
+            
+            IsContinuing = true;
+            await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token,
+                cancelImmediately: true);
+            IsContinuing = false;
         }
     }
 }
