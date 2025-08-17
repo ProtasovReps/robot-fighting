@@ -13,5 +13,6 @@ namespace Extensions
         public static readonly int HeadHit = Animator.StringToHash(nameof(HeadHit));
         public static readonly int LegsHit = Animator.StringToHash(nameof(LegsHit));
         public static readonly int Block = Animator.StringToHash(nameof(Block));
+        public static readonly int WalkSpeed = Animator.StringToHash(nameof(WalkSpeed));
     }
 }

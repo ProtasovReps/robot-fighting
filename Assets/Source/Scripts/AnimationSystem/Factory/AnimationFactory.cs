@@ -1,12 +1,18 @@
-﻿using Extensions;
+﻿using CharacterSystem.Data;
+using Extensions;
 using FiniteStateMachine.States;
 using Interface;
+using MovementSystem;
 
 namespace AnimationSystem.Factory
 {
     public class AnimationFactory
     {
-        public void Produce(AnimatedCharacter animatedCharacter, IStateMachine stateMachine)
+        public void Produce(
+            AnimatedCharacter animatedCharacter,
+            IStateMachine stateMachine,
+            FighterData fighterData,
+            PositionTranslation positionTranslation)
         {
             var animations = new CharacterAnimation[]
             {
@@ -21,6 +27,9 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block)
             };
 
+            new AnimationDurationChanger(animatedCharacter.Animator, stateMachine, fighterData);
+            new MoveAnimationSpeed(animatedCharacter.Animator,positionTranslation,fighterData.MoveSpeed);
+            
             animatedCharacter.Initialize(animations);
         }
     }

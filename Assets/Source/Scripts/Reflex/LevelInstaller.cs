@@ -66,9 +66,10 @@ namespace Reflex
             _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
-            InstallPlayerMovement(moveInput);
-            InstallAnimations(animationFactory, _playerAnimatedCharacter, playerStateMachine);
-
+            PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
+            
+            animationFactory.Produce(_playerAnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
+            
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
@@ -86,8 +87,9 @@ namespace Reflex
             _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
-            InstallBotMovement(moveInput);
-            InstallAnimations(animationFactory, _botAnimatedCharacter, botStateMachine);
+            PositionTranslation positionTranslation = InstallBotMovement(moveInput);
+            
+            animationFactory.Produce(_botAnimatedCharacter, botStateMachine, _botData, positionTranslation);
 
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
@@ -147,24 +149,18 @@ namespace Reflex
             return validatedInput;
         }
 
-        private void InstallPlayerMovement(IMoveInput moveInput)
+        private PositionTranslation InstallPlayerMovement(IMoveInput moveInput)
         {
             PositionTranslation positionTranslation = new(_playerData.transform, _playerData.MoveSpeed);
             _playerMovement.Initialize(moveInput, positionTranslation);
+            return positionTranslation;
         }
         
-        private void InstallBotMovement(IMoveInput moveInput)
+        private PositionTranslation InstallBotMovement(IMoveInput moveInput)
         {
             PositionTranslation positionTranslation = new(_botData.transform, _botData.MoveSpeed);
             _botMovement.Initialize(moveInput, positionTranslation);
-        }
-        
-        private void InstallAnimations(
-            AnimationFactory animationFactory, 
-            AnimatedCharacter animatedCharacter, 
-            IStateMachine stateMachine)
-        {
-            animationFactory.Produce(animatedCharacter, stateMachine);
+            return positionTranslation;
         }
     }
 }
