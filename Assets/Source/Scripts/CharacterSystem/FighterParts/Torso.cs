@@ -4,7 +4,7 @@ namespace CharacterSystem.FighterParts
 {
     public class Torso : FighterPart
     {
-        public Torso(IDamageable damageable)
+        public Torso(IDamageable<float> damageable)
             : base(damageable)
         {
         }

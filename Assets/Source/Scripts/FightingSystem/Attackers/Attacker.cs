@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Extensions;
+using Extensions.Exceptions;
+using FightingSystem.Attacks;
 using FiniteStateMachine.States;
 using Interface;
 using R3;
@@ -13,12 +13,12 @@ namespace FightingSystem
 {
     public abstract class Attacker : MonoBehaviour, IContinuous
     {
-        private Dictionary<IAttack, Spherecaster> _attacks;
+        private Dictionary<Type, Attack> _attacks;
         private CancellationTokenSource _cancellationTokenSource;
 
         public bool IsContinuing { get; private set; }
 
-        public void SetAttacks(Dictionary<IAttack, Spherecaster> attacks)
+        public void SetAttacks(Dictionary<Type, Attack> attacks)
         {
             if (attacks == null)
                 throw new ArgumentNullException(nameof(attacks));
@@ -26,14 +26,14 @@ namespace FightingSystem
             _attacks = attacks;
         }
 
-        protected void SubscribeStateMachine(IStateMachine stateMachine, IConditionAddable conditionAddable)
+        protected void Subscribe(IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));
 
             stateMachine.Value
                 .Where(state => state is AttackState)
-                .Subscribe(state => Attack(state.Type))
+                .Subscribe(state => PrepareAttack(state.Type))
                 .AddTo(this);
 
             stateMachine.Value
@@ -44,31 +44,23 @@ namespace FightingSystem
             conditionAddable.Add<AttackState>(_ => IsContinuing);
         }
 
-        private void Attack(Type state)
+        private void PrepareAttack(Type state)
         {
             if (IsContinuing)
                 return;
 
-            IAttack attackKey = _attacks.Keys.FirstOrDefault(attack => attack.RequiredState == state);
-
-            if (attackKey == null)
-                throw new KeyNotFoundException(nameof(attackKey));
+            if (_attacks.ContainsKey(state) == false)
+                throw new StateNotFoundException(nameof(state));
 
             IsContinuing = true;
             _cancellationTokenSource = new CancellationTokenSource();
-            AttackDelayed(attackKey, _attacks[attackKey]).Forget();
+            
+            AttackDelayed(_attacks[state]).Forget();
         }
 
-        private async UniTaskVoid AttackDelayed(IAttack attack, Spherecaster spherecaster)
+        private async UniTaskVoid AttackDelayed(Attack attack)
         {
-            await UniTask.WaitForSeconds(attack.Delay, cancellationToken: _cancellationTokenSource.Token,
-                cancelImmediately: true);
-            bool isHitted = spherecaster.TryFindDamageable(out IDamageable damageable);
-
-            if (isHitted)
-                attack.ApplyDamage(damageable);
-
-            await UniTask.WaitForSeconds(attack.Duration - attack.Delay);
+            await attack.Launch(_cancellationTokenSource);
             CancelAttack();
         }
 

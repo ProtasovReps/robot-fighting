@@ -9,7 +9,7 @@ namespace FightingSystem
         [Inject]
         private void Inject(BotStateMachine stateMachine, BotConditionBuilder conditionAddable)
         {
-            SubscribeStateMachine(stateMachine, conditionAddable);
+            Subscribe(stateMachine, conditionAddable);
         }
     }
 }

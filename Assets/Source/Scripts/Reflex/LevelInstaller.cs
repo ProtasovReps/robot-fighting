@@ -3,7 +3,8 @@ using AnimationSystem;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using CharacterSystem.Factory;
-using DamageCalculationSystem;
+using Cysharp.Threading.Tasks.Triggers;
+using HitSystem;
 using Extensions;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
@@ -62,7 +63,7 @@ namespace Reflex
             PlayerHealth health = new(_playerData.StartHealthValue);
             IMoveInput moveInput = InstallPlayerInput(builder);
             
-             _playerAttackFactory.Produce(_playerData);
+             _playerAttackFactory.Produce();
             _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
@@ -83,7 +84,7 @@ namespace Reflex
             BotHealth health = new(_botData.StartHealthValue);
             IMoveInput moveInput = InstallBotInput(builder);
 
-            _botAttackFactory.Produce(_botData);
+            _botAttackFactory.Produce();
             _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
@@ -103,16 +104,16 @@ namespace Reflex
             BotInputConditionBuilder conditionBuilder = new();
             
             BotMoveInput botMoveInput = new();
-            BotAttackInput botAttackInput = new();
+            BotFightInput botFightInput = new();
             Dictionary<int, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
             ValidatedInput validatedBotInput = new(_botData.transform, botMoveInput, directions);
             
             _botInputTransitionFactory.Initialize(stateMachine, conditionBuilder);
             
-            InstallBotActions(botMoveInput, botAttackInput, stateMachine);
+            InstallBotActions(botMoveInput, botFightInput, stateMachine);
 
             builder.AddSingleton(botMoveInput);
-            builder.AddSingleton(botAttackInput);
+            builder.AddSingleton(botFightInput);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(stateMachine);
             return validatedBotInput;
@@ -120,19 +121,21 @@ namespace Reflex
 
         private void InstallBotActions(
             BotMoveInput moveInput,
-            BotAttackInput attackInput, 
+            BotFightInput fightInput, 
             BotInputStateMachine stateMachine)
-        {  
+        {  //Скорее всего в отдельный класс, тк у разных ботов будут разные действия
             BotAction leftMove = new(moveInput.MoveLeft, _botData.MoveDuration);
             BotAction rightMove = new(moveInput.MoveRight, _botData.MoveDuration);
             BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration);
-            BotAction upAttack = new(attackInput.AttackUp, _botData.AttackDelay);
-            BotAction downAttack = new(attackInput.AttackDown, _botData.AttackDelay);
-            
+            BotAction upAttack = new(fightInput.AttackUp, _botData.AttackDelay); // не attackDelay, скорее UpAttackDuration брать
+            BotAction downAttack = new(fightInput.AttackDown, _botData.AttackDelay);
+            BotAction block = new(fightInput.BlockAttack, _botData.BlockDuration);
+            BotAction special = new(fightInput.AttackSpecial, _botData.AttackDelay);
+             
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
             new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
-            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, leftMove, upAttack, downAttack);
-            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, upAttack, downAttack);
+            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, special);
+            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special, block);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder)

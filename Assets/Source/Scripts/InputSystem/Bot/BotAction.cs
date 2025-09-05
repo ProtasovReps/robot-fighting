@@ -2,12 +2,13 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using R3;
-using Random = UnityEngine.Random;
 
 namespace InputSystem.Bot
 {
     public class BotAction : IDisposable
     {
+        private const float DurationError = 0.3f;
+        
         private readonly Action _action;
         private readonly float _duration;
         private readonly Subject<Unit> _executed;

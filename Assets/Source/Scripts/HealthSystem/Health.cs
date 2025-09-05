@@ -4,11 +4,11 @@ using R3;
 
 namespace HealthSystem
 {
-    public class Health : IValueChangeable<float>, IDamageable
+    public class Health : IValueChangeable<float>, IDamageable<float>
     {
         private readonly ReactiveProperty<float> _currentValue;
         
-        public Health(float startValue)
+        protected Health(float startValue)
         {
             if (startValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startValue));

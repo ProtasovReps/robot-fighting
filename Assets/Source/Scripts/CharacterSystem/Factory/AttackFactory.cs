@@ -1,30 +1,41 @@
-﻿using System.Collections.Generic;
-using CharacterSystem.Data;
-using Extensions;
+﻿using System;
+using System.Collections.Generic;
 using FightingSystem;
 using FightingSystem.Attacks;
-using Interface;
+using ImplantSystem;
+using ImplantSystem.AttackImplants;
 using UnityEngine;
 
 namespace CharacterSystem.Factory
 {
-    public abstract class AttackFactory<TData> : MonoBehaviour
-        where TData : FighterData
+    public abstract class AttackFactory : MonoBehaviour
     {
+        [SerializeField] private ImplantPlaceHolder[] _implantPlaceHolders;
+        [SerializeField] private AttackImplant[] _attackImplants; // берется из инвентаря
         [SerializeField] private Attacker _attacker;
-
-        public void Produce(TData fighterData)
+        [SerializeField] private LayerMask _opponentLayer;
+        
+        // вообще, для каждой части тела должен быть один имплант, поэтому потом добавить и для специальной атаки
+        public void Produce() 
         {
-            Dictionary<IAttack, Spherecaster> attacks = new();
+            Dictionary<Type, Attack> attacks = new();
 
-            foreach (AttackData data in fighterData.Attacks)
+            for (int i = 0; i < _implantPlaceHolders.Length; i++)
             {
-                DefaultAttack attack = new(data.Damage, data.Duration, data.Delay, 
-                    AttackStateFinder.GetState(data.AttackType));
+                ImplantPlaceHolder placeHolder = _implantPlaceHolders[i];
 
-                attacks.Add(attack, data.Spherecaster);
+                for (int j = 0; j < _attackImplants.Length; j++) // будет выглядеть иначе, если 1 плейсхолдер 1 имплант
+                {
+                    if(placeHolder.IsValidImplant(_attackImplants[j]) == false)
+                        continue;
+
+                    AttackImplant attackImplant = Instantiate(_attackImplants[j]);
+                    
+                    placeHolder.SetImplant(attackImplant);
+                    attacks.Add(attackImplant.RequiredState, attackImplant.GetAttack(_opponentLayer));
+                }
             }
-
+            
             _attacker.SetAttacks(attacks);
         }
     }

@@ -9,7 +9,7 @@ namespace FightingSystem
         [Inject]
         private void Inject(PlayerStateMachine stateMachine, PlayerConditionBuilder conditionAddable)
         {
-            SubscribeStateMachine(stateMachine, conditionAddable);
+            Subscribe(stateMachine, conditionAddable);
         }
     }
 }

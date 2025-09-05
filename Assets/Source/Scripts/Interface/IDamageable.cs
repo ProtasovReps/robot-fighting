@@ -1,7 +1,7 @@
 namespace Interface
 {
-    public interface IDamageable
+    public interface IDamageable<in T>
     {
-        void AcceptDamage(float damage);
+        void AcceptDamage(T damage);
     }
 }

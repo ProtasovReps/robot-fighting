@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using FightingSystem.Attacks;
 using FiniteStateMachine.States;
 using Interface;
 using R3;
@@ -8,19 +9,19 @@ using UnityEngine;
 
 namespace FightingSystem
 {
-    public class Block : IContinuous, IDisposable, IDamageable
+    public class Block : IContinuous, IDisposable, IDamageable<Damage>
     {
         private readonly float _blockDuration;
-        private readonly float _blockValue; //
+        private readonly float _blockValue;
         private readonly IDisposable _subscription;
-        private readonly IDamageable _damageable;
+        private readonly IDamageable<Damage> _damageable;
 
         private CancellationTokenSource _tokenSource;
 
         public Block(
             float blockDuration,
             float blockValue,
-            IDamageable damageable,
+            IDamageable<Damage> damageable,
             IStateMachine stateMachine,
             IConditionAddable conditionAddable)
         {
@@ -29,11 +30,11 @@ namespace FightingSystem
 
             if (blockValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(blockValue));
-            
+
             _blockDuration = blockDuration;
             _blockValue = blockValue;
             _damageable = damageable;
-            
+
             _subscription = stateMachine.Value
                 .Where(state => state.Type == typeof(BlockState))
                 .Subscribe(_ => Execute().Forget());
@@ -50,10 +51,13 @@ namespace FightingSystem
             _subscription.Dispose();
         }
 
-        public void AcceptDamage(float damage)
+        public void AcceptDamage(Damage damage)
         {
             if (IsContinuing)
-                damage = Mathf.Clamp(damage - _blockValue, 0, damage);
+            {
+                float reducedDamageValue = Mathf.Clamp(damage.Value - _blockValue, 0, damage.Value);
+                damage = new Damage(reducedDamageValue, damage.ImpulseForce, damage.Type);
+            }
 
             _damageable.AcceptDamage(damage);
         }
@@ -61,7 +65,7 @@ namespace FightingSystem
         private async UniTaskVoid Execute()
         {
             _tokenSource = new CancellationTokenSource();
-            
+
             IsContinuing = true;
             await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token,
                 cancelImmediately: true);

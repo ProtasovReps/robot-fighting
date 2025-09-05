@@ -1,4 +1,4 @@
-﻿using DamageCalculationSystem;
+﻿using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem.Bot;
@@ -13,31 +13,36 @@ namespace FiniteStateMachine.Transitions.Factory
         [SerializeField] private HitReader _hitReader;
         
         private BotMoveInput _botMoveInput;
-        private BotAttackInput _botAttackInput;
+        private BotFightInput _botFightInput;
         
         [Inject]
-        private void Inject(BotMoveInput botMoveInput, BotAttackInput botAttackInput)
+        private void Inject(BotMoveInput botMoveInput, BotFightInput botFightInput)
         {
             _botMoveInput = botMoveInput;
-            _botAttackInput = botAttackInput;
+            _botFightInput = botFightInput;
         }
         
         protected override void InitializeConditionTransition(ConditionBuilder builder,
             StateMachine stateMachine)
         {
+            builder.Reset<BlockState>(false);
             builder.Reset<AttackState>(false);
+            
             builder.BuildGlobal<UpHittedState>(false, typeof(DownHittedState));
             builder.BuildGlobal<DownHittedState>(false, typeof(UpHittedState));
             builder.BuildGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
-            
+            builder.BuildGlobal<BlockState>(false, typeof(DownHittedState));
+        
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, int>(_botMoveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<MoveLeftState, int>(_botMoveInput.Value, builder.Get<MoveLeftState>())
                 .InitializeTransition<MoveRightState, int>(_botMoveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
-                .InitializeTransition<PunchState, Unit>(_botAttackInput.UpAttack, builder.Get<AttackState>())
-                .InitializeTransition<KickState, Unit>(_botAttackInput.DownAttack, builder.Get<AttackState>());
+                .InitializeTransition<UpAttackState, Unit>(_botFightInput.UpAttack, builder.Get<AttackState>())
+                .InitializeTransition<DownAttackState, Unit>(_botFightInput.DownAttack, builder.Get<AttackState>())
+                .InitializeTransition<SpecialAttackState, Unit>(_botFightInput.SpecialAttack, builder.Get<AttackState>())
+                .InitializeTransition<BlockState, Unit>(_botFightInput.Block, builder.Get<BlockState>());
         }
     }
 }

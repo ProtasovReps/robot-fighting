@@ -1,4 +1,4 @@
-﻿using DamageCalculationSystem;
+﻿using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
@@ -45,8 +45,8 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveRightState, int>(_moveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<JumpState, Unit>(_moveInput.JumpPressed, builder.Get<JumpState>())
                 .InitializeTransition<MoveJumpState, int>(_moveInput.Value, builder.Get<MoveJumpState>())
-                .InitializeTransition<PunchState, Unit>(_attackInputReader.PunchPressed, builder.Get<AttackState>())
-                .InitializeTransition<KickState, Unit>(_attackInputReader.KickPressed, builder.Get<AttackState>())
+                .InitializeTransition<UpAttackState, Unit>(_attackInputReader.PunchPressed, builder.Get<AttackState>())
+                .InitializeTransition<DownAttackState, Unit>(_attackInputReader.KickPressed, builder.Get<AttackState>())
                 .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
                 .InitializeTransition<BlockState, Unit>(_attackInputReader.BlockPressed, builder.Get<BlockState>());

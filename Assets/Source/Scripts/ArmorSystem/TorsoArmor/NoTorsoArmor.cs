@@ -1,4 +1,5 @@
 ﻿using CharacterSystem.FighterParts;
+using FightingSystem;
 using Interface;
 
 namespace ArmorSystem
@@ -12,7 +13,7 @@ namespace ArmorSystem
             _torso = torso;
         }
         
-        public void AcceptDamage(float damage)
+        public void AcceptDamage(Damage damage)
         {
             _torso.AcceptDamage(damage);
         }

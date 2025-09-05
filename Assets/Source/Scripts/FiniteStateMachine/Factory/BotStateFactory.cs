@@ -13,10 +13,11 @@ namespace FiniteStateMachine.Factory
                 new MoveRightState(),
                 new UpHittedState(),
                 new DownHittedState(),
-                new PunchState(),
-                new KickState()
+                new UpAttackState(),
+                new DownAttackState(),
+                new BlockState(),
+                new SpecialAttackState()
             };
         }
-       
     }
 }

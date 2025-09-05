@@ -1,6 +1,8 @@
-﻿namespace Interface
+﻿using FightingSystem;
+
+namespace Interface
 {
-    public interface IArmor : IDamageable
+    public interface IArmor : IDamageable<Damage>
     {
     }
 }

@@ -20,11 +20,12 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<JumpState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Jump),
                 new TriggerAnimation<MoveLeftState>(stateMachine, animatedCharacter.Animator, AnimationHashes.MoveLeft),
                 new TriggerAnimation<MoveRightState>(stateMachine, animatedCharacter.Animator, AnimationHashes.MoveRight),
-                new TriggerAnimation<PunchState>(stateMachine, animatedCharacter.Animator, AnimationHashes.ArmAttack),
-                new TriggerAnimation<KickState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegAttack),
+                new TriggerAnimation<UpAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.ArmAttack),
+                new TriggerAnimation<DownAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegAttack),
                 new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.HeadHit),
                 new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegsHit),
-                new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block)
+                new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block),
+                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Special)
             };
 
             new AnimationDurationChanger(animatedCharacter.Animator, stateMachine, fighterData);

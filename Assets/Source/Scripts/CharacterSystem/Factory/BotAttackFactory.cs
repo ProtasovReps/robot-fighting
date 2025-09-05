@@ -1,8 +1,6 @@
-﻿using CharacterSystem.Data;
-
-namespace CharacterSystem.Factory
+﻿namespace CharacterSystem.Factory
 {
-    public class BotAttackFactory : AttackFactory<BotData>
+    public class BotAttackFactory : AttackFactory
     {
     }
 }

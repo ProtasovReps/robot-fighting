@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1042255071323623143
+--- !u!1 &1241850004010214926
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,64 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8620490841312719473}
-  - component: {fileID: 690814726097243318}
-  - component: {fileID: 3779623479943231234}
-  m_Layer: 0
-  m_Name: LegAttack
+  - component: {fileID: 3209738989642592159}
+  - component: {fileID: 2689881653038861166}
+  m_Layer: 6
+  m_Name: ColliderSwitcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8620490841312719473
+--- !u!4 &3209738989642592159
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042255071323623143}
+  m_GameObject: {fileID: 1241850004010214926}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.42, y: 0.52, z: -0.12}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3925118154992243158}
+  m_Father: {fileID: 8755169258205420272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &690814726097243318
+--- !u!114 &2689881653038861166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042255071323623143}
+  m_GameObject: {fileID: 1241850004010214926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e40dcbada14c7499a3977aa010c946, type: 3}
+  m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Spherecaster>k__BackingField: {fileID: 3779623479943231234}
-  <Delay>k__BackingField: 0.6
-  <Duration>k__BackingField: 1
-  <Damage>k__BackingField: 25
-  <AttackType>k__BackingField: 1
---- !u!114 &3779623479943231234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042255071323623143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a0b4f813f49ecbbd8318626929741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _searchedLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _radius: 0.32
+  _colliders:
+  - {fileID: 4685436810858008136}
+  - {fileID: 7541820703180735600}
 --- !u!1 &1330324210486073242
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,9 +252,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3442718644559946464}
-  - {fileID: 8620490841312719473}
+  m_Children: []
   m_Father: {fileID: 8755169258205420272}
   m_LocalEulerAnglesHint: {x: 0, y: -28.875, z: 0}
 --- !u!114 &2417709137288460807
@@ -288,72 +267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1d74dfb8d43402fa120c734685b5ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7697217901696929547
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3442718644559946464}
-  - component: {fileID: 1451224401875884415}
-  - component: {fileID: 800771374386270707}
-  m_Layer: 0
-  m_Name: ArmAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3442718644559946464
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7697217901696929547}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.28, y: 3.3200002, z: -0.16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3925118154992243158}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1451224401875884415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7697217901696929547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e40dcbada14c7499a3977aa010c946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Spherecaster>k__BackingField: {fileID: 800771374386270707}
-  <Delay>k__BackingField: 0.35
-  <Duration>k__BackingField: 0.7
-  <Damage>k__BackingField: 20
-  <AttackType>k__BackingField: 0
---- !u!114 &800771374386270707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7697217901696929547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a0b4f813f49ecbbd8318626929741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _searchedLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _radius: 0.4
 --- !u!1 &8659470325079013316
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +300,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4930940605203985441}
+  - {fileID: 3209738989642592159}
   - {fileID: 4957515272790903260}
   - {fileID: 3925118154992243158}
   m_Father: {fileID: 0}
@@ -403,15 +317,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c563470db2944331b4f7a8dbaa694a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attacks:
-  - {fileID: 1451224401875884415}
-  - {fileID: 690814726097243318}
   <StartHealthValue>k__BackingField: 100
   <StunDuration>k__BackingField: 0.8
   <DownStunDuration>k__BackingField: 0.7
   <BlockDuration>k__BackingField: 1
   <BlockValue>k__BackingField: 30
-  <MoveSpeed>k__BackingField: 5
+  <MoveSpeed>k__BackingField: 8.5
   <MoveDuration>k__BackingField: 1
   <AttackDelay>k__BackingField: 1
 --- !u!114 &5126417679251285239
@@ -438,7 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b47d7ca7234aec98854d676adca059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetRightPosition: -1.5
+  _bound: {fileID: 0}
+  _hitForce: -1.5
   _impactTime: 0.8
 --- !u!1001 &2392182077772747584
 PrefabInstance:
