@@ -1,5 +1,5 @@
-﻿using CharacterSystem.FighterParts;
-using FightingSystem;
+﻿using FightingSystem;
+using HitSystem.FighterParts;
 using R3;
 using UnityEngine;
 

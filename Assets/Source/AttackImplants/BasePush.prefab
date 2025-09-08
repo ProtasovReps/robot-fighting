@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4736225869604923889}
-  - component: {fileID: 6401666548699480476}
+  - component: {fileID: -123092390854191189}
   - component: {fileID: 8012214496558000148}
   m_Layer: 0
   m_Name: BasePush
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6401666548699480476
+--- !u!114 &-123092390854191189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,12 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8575800474968087042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c13196ea04948afbb67c269be8aa478, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d4336d34bb04bebab0dea19a49e7383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageData: {fileID: 11400000, guid: 6cca1e38a0710384c839983e3fe24ec4, type: 2}
-  _spherecaster: {fileID: 8012214496558000148}
   _attackData: {fileID: 11400000, guid: e7e810e15cf98b444878bba704738fa9, type: 2}
+  _spherecaster: {fileID: 8012214496558000148}
 --- !u!114 &8012214496558000148
 MonoBehaviour:
   m_ObjectHideFlags: 0

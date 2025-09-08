@@ -1,4 +1,5 @@
 ﻿using System;
+using Extensions;
 using FightingSystem;
 using FightingSystem.Attacks;
 using UnityEngine;
@@ -9,9 +10,10 @@ namespace ImplantSystem.AttackImplants
     {
         [SerializeField] private DamageData _damageData;
         [SerializeField] private AttackData _attackData;
-        
-        public abstract Type RequiredState { get; }
 
+        public abstract Type RequiredState { get; }
+        public abstract AttackPart RequiredPart { get; }
+        
         public Attack GetAttack(LayerMask opponentLayerMask)
         {
             Damage damage = new(_damageData.Damage, _damageData.ImpulseForce, _damageData.Type);

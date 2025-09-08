@@ -1,8 +1,8 @@
 ﻿using ArmorSystem;
 using CharacterSystem.Data;
-using CharacterSystem.FighterParts;
 using FightingSystem;
 using HealthSystem;
+using HitSystem.FighterParts;
 using Interface;
 using UnityEngine;
 

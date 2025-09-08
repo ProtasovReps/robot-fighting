@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
 using CharacterSystem.Data;
-using CharacterSystem.Factory;
-using Cysharp.Threading.Tasks.Triggers;
 using HitSystem;
 using Extensions;
+using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.States;
 using FiniteStateMachine.Transitions.Factory;
 using HealthSystem;
+using ImplantSystem;
 using InputSystem;
 using InputSystem.Bot;
 using Interface;
@@ -32,6 +32,7 @@ namespace Reflex
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private AnimatedCharacter _playerAnimatedCharacter;
         [SerializeField] private PlayerData _playerData;
+        [SerializeField] private ImplantFactory _playerImplantFactory;
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotAttackFactory _botAttackFactory;
@@ -41,6 +42,7 @@ namespace Reflex
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
         [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
         [SerializeField] private BotData _botData;
+        [SerializeField] private ImplantFactory _botImplantFactory;
         
         private void Start()
         {
@@ -62,8 +64,9 @@ namespace Reflex
             PlayerConditionBuilder conditionBuilder = new();
             PlayerHealth health = new(_playerData.StartHealthValue);
             IMoveInput moveInput = InstallPlayerInput(builder);
-            
-             _playerAttackFactory.Produce();
+            ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
+
+            _playerAttackFactory.Produce(placeHolderStash);
             _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
@@ -83,8 +86,9 @@ namespace Reflex
             BotConditionBuilder conditionBuilder = new();
             BotHealth health = new(_botData.StartHealthValue);
             IMoveInput moveInput = InstallBotInput(builder);
+            ImplantPlaceHolderStash placeHolderStash = _botImplantFactory.Produce();
 
-            _botAttackFactory.Produce();
+            _botAttackFactory.Produce(placeHolderStash);
             _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
@@ -134,7 +138,7 @@ namespace Reflex
              
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
             new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
-            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, special);
+            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack);
             new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special, block);
         }
 

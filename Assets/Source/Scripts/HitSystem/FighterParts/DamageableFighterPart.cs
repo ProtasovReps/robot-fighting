@@ -1,15 +1,15 @@
-using FightingSystem;
+﻿using FightingSystem;
 using Interface;
 using R3;
 
-namespace CharacterSystem.FighterParts
+namespace HitSystem.FighterParts
 {
-    public abstract class FighterPart : IDamageable<Damage>
+    public abstract class DamageableFighterPart : FighterPart, IDamageable<Damage>
     {
         private readonly IDamageable<float> _damageable;
         private readonly Subject<Damage> _hitted;
         
-        protected FighterPart(IDamageable<float> damageable)
+        protected DamageableFighterPart(IDamageable<float> damageable)
         {
             _hitted = new Subject<Damage>();
             _damageable = damageable;

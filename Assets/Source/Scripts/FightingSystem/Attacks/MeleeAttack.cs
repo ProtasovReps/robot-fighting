@@ -1,7 +1,7 @@
 ﻿using Extensions;
 using Interface;
 
-namespace FightingSystem.Attacks
+namespace FightingSystem.Attacks.Melee
 {
     public class MeleeAttack : Attack
     {

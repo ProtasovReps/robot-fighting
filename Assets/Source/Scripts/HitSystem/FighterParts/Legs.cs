@@ -1,8 +1,8 @@
 ﻿using Interface;
 
-namespace CharacterSystem.FighterParts
+namespace HitSystem.FighterParts
 {
-    public class Legs : FighterPart
+    public class Legs : DamageableFighterPart
     {
         public Legs(IDamageable<float> damageable)
             : base(damageable)

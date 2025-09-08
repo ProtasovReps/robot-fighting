@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2656529407022810501}
+  - component: {fileID: 305267140853288184}
   - component: {fileID: 9208496942678195419}
-  - component: {fileID: 4671121351583391658}
   m_Layer: 0
   m_Name: BaseHandMeleeAttack
   m_TagString: Untagged
@@ -33,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &305267140853288184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787503099092262169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e6a33b209740e9b5b066175567b5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageData: {fileID: 11400000, guid: 960cb194e31e495418f7ea8a1506baf0, type: 2}
+  _attackData: {fileID: 11400000, guid: 609cabcf34b06304bb0f17047472b6a2, type: 2}
+  _spherecaster: {fileID: 9208496942678195419}
 --- !u!114 &9208496942678195419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,18 +61,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.45
---- !u!114 &4671121351583391658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4787503099092262169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4ed984433344c08c4a210aa82b39e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageData: {fileID: 11400000, guid: 960cb194e31e495418f7ea8a1506baf0, type: 2}
-  _attackData: {fileID: 11400000, guid: 609cabcf34b06304bb0f17047472b6a2, type: 2}
-  _spherecaster: {fileID: 9208496942678195419}

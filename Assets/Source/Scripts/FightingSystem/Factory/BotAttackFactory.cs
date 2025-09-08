@@ -1,4 +1,4 @@
-﻿namespace CharacterSystem.Factory
+﻿namespace FightingSystem.Factory
 {
     public class BotAttackFactory : AttackFactory
     {

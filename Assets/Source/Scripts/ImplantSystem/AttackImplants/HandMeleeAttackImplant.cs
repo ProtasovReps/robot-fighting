@@ -1,18 +1,12 @@
-﻿using Extensions;
-using FightingSystem;
-using FightingSystem.Attacks;
-using UnityEngine;
+﻿using System;
+using Extensions;
+using FiniteStateMachine.States;
 
 namespace ImplantSystem.AttackImplants
 {
-    public class HandMeleeAttackImplant : HandAttackImplant
+    public class HandMeleeAttackImplant : MeleeAttackImplant
     {
-        [SerializeField] private Spherecaster _spherecaster;
-        
-        protected override Attack ConstructAttack(Damage damage, AttackData attackData, LayerMask layerMask)
-        {
-            _spherecaster.Initialize(layerMask);
-            return new MeleeAttack(damage, attackData, _spherecaster);
-        }
+        public override Type RequiredState => typeof(UpAttackState);
+        public override AttackPart RequiredPart => AttackPart.Hands;
     }
 }

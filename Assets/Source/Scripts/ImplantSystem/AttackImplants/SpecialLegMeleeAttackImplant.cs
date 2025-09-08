@@ -4,9 +4,9 @@ using FiniteStateMachine.States;
 
 namespace ImplantSystem.AttackImplants
 {
-    public class LegMeleeAttackImplant : MeleeAttackImplant
+    public class SpecialLegMeleeAttackImplant : MeleeAttackImplant
     {
-        public override Type RequiredState => typeof(DownAttackState);
+        public override Type RequiredState => typeof(SpecialAttackState);
         public override AttackPart RequiredPart => AttackPart.Legs;
     }
 }
