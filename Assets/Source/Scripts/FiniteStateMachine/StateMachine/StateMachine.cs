@@ -34,7 +34,8 @@ namespace FiniteStateMachine
                 throw new StateNotFoundException(nameof(newState));
 
             _currentState.OnNext(state);
-            Debug.Log(state); // убрать
+
+            Debug.Log(state);
         }
     }
 }

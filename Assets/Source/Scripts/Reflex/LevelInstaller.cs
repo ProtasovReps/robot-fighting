@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
@@ -19,6 +20,7 @@ using MovementSystem;
 using Reflex.Core;
 using UnityEngine;
 using BotMovement = MovementSystem.BotMovement;
+using State = FiniteStateMachine.States.State;
 
 namespace Reflex
 {
@@ -116,7 +118,7 @@ namespace Reflex
             
             InstallBotActions(botMoveInput, botFightInput, stateMachine);
 
-            builder.AddSingleton(botMoveInput);
+            builder.AddSingleton(validatedBotInput);
             builder.AddSingleton(botFightInput);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(stateMachine);
@@ -128,6 +130,7 @@ namespace Reflex
             BotFightInput fightInput, 
             BotInputStateMachine stateMachine)
         {  //Скорее всего в отдельный класс, тк у разных ботов будут разные действия
+
             BotAction leftMove = new(moveInput.MoveLeft, _botData.MoveDuration);
             BotAction rightMove = new(moveInput.MoveRight, _botData.MoveDuration);
             BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration);

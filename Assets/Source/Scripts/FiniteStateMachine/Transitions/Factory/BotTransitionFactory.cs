@@ -1,6 +1,7 @@
 ﻿using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
+using InputSystem;
 using InputSystem.Bot;
 using R3;
 using Reflex.Attributes;
@@ -12,11 +13,11 @@ namespace FiniteStateMachine.Transitions.Factory
     {
         [SerializeField] private HitReader _hitReader;
         
-        private BotMoveInput _botMoveInput;
+        private ValidatedInput _botMoveInput;
         private BotFightInput _botFightInput;
         
         [Inject]
-        private void Inject(BotMoveInput botMoveInput, BotFightInput botFightInput)
+        private void Inject(ValidatedInput botMoveInput, BotFightInput botFightInput)
         {
             _botMoveInput = botMoveInput;
             _botFightInput = botFightInput;

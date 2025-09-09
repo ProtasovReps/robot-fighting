@@ -7,8 +7,6 @@ namespace InputSystem.Bot
 {
     public class BotAction : IDisposable
     {
-        private const float DurationError = 0.3f;
-        
         private readonly Action _action;
         private readonly float _duration;
         private readonly Subject<Unit> _executed;
