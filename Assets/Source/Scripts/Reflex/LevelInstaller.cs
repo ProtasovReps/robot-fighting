@@ -133,7 +133,7 @@ namespace Reflex
 
             BotAction leftMove = new(moveInput.MoveLeft, _botData.MoveDuration);
             BotAction rightMove = new(moveInput.MoveRight, _botData.MoveDuration);
-            BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration);
+            BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration / 2f);
             BotAction upAttack = new(fightInput.AttackUp, _botData.AttackDelay); // не attackDelay, скорее UpAttackDuration брать
             BotAction downAttack = new(fightInput.AttackDown, _botData.AttackDelay);
             BotAction block = new(fightInput.BlockAttack, _botData.BlockDuration);
@@ -141,8 +141,8 @@ namespace Reflex
              
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
             new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
-            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack);
-            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special, block);
+            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack, special);
+            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder)
