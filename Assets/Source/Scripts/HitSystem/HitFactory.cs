@@ -30,6 +30,8 @@ namespace HitSystem
             _hitReader.Initialize(torso, legs);
             _hitImpact.Initialize(_hitReader);
 
+            new SuperAttackCharge(_hitReader); // временно, должен быть в другом месте
+            
             new UpHit(_fighterData.StunDuration, _hitReader, conditionAddable);
             new DownHit(_fighterData.DownStunDuration, _hitReader, conditionAddable);
         }
