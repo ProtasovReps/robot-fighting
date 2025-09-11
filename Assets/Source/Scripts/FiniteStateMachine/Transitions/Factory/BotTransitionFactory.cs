@@ -29,10 +29,10 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Reset<BlockState>(false);
             builder.Reset<AttackState>(false);
             
-            builder.BuildGlobal<UpHittedState>(false, typeof(DownHittedState));
-            builder.BuildGlobal<DownHittedState>(false, typeof(UpHittedState));
-            builder.BuildGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
-            builder.BuildGlobal<BlockState>(false, typeof(DownHittedState));
+            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState));
+            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState));
+            builder.MergeGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
+            builder.MergeGlobal<BlockState>(false, typeof(DownHittedState));
         
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, int>(_botMoveInput.Value, builder.Get<IdleState>())

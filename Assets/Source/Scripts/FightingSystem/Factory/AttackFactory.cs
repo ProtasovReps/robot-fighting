@@ -16,7 +16,7 @@ namespace FightingSystem.Factory
         public void Produce(ImplantPlaceHolderStash implantPlaceHolderStash) 
         {
             Dictionary<Type, Attack> attacks = new();
-
+            
             foreach (ImplantPlaceHolder placeHolder in implantPlaceHolderStash.PlaceHolders)
             {
                 foreach (AttackImplant attackImplant in placeHolder.Implants)

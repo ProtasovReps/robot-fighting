@@ -55,7 +55,7 @@ namespace FiniteStateMachine.Conditions
             condition.Reset(bareCondition, isExecuting);
         }
 
-        public void Build<TBuildableCondition, TBareCondition>(bool isExecuting = true)
+        public void Merge<TBuildableCondition, TBareCondition>(bool isExecuting = true)
             where TBuildableCondition : State
             where TBareCondition : State
         {
@@ -64,7 +64,7 @@ namespace FiniteStateMachine.Conditions
             buildableCondition.Add(GetBare<TBareCondition>(), isExecuting);
         }
 
-        public void BuildGlobal<TBareCondition>(bool isExecuting, params Type[] excludedConditions)
+        public void MergeGlobal<TBareCondition>(bool isExecuting, params Type[] excludedConditions)
             where TBareCondition : State
         {
             foreach (var conditionPair in _buildedConditions)

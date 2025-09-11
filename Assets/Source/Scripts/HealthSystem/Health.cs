@@ -13,11 +13,9 @@ namespace HealthSystem
             if (startValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startValue));
 
-            MaxValue = startValue;
-            _currentValue = new ReactiveProperty<float>(MaxValue);
+            _currentValue = new ReactiveProperty<float>(startValue);
         }
         
-        public float MaxValue { get; }
         public ReadOnlyReactiveProperty<float> Value => _currentValue;
         
         public void AcceptDamage(float damage)

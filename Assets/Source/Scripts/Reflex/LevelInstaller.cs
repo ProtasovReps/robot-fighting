@@ -4,6 +4,7 @@ using AnimationSystem.Factory;
 using CharacterSystem.Data;
 using HitSystem;
 using Extensions;
+using FightingSystem;
 using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
@@ -66,9 +67,11 @@ namespace Reflex
             PlayerHealth health = new(_playerData.StartHealthValue);
             IMoveInput moveInput = InstallPlayerInput(builder);
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
+            HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
 
+            new SuperAttackCharge<PlayerConditionBuilder>(hitReader, conditionBuilder);
+            
             _playerAttackFactory.Produce(placeHolderStash);
-            _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);
             
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);

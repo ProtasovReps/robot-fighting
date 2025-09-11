@@ -4,23 +4,27 @@ namespace InputSystem
 {
     public class PlayerAttackInputReader
     {
-        private readonly Subject<Unit> _punchPressed;
-        private readonly Subject<Unit> _kickPressed;
-        private readonly Subject<Unit> _blockPressed;
-        
         public PlayerAttackInputReader(UserInput input)
         {
-            _punchPressed = new Subject<Unit>();
-            _kickPressed = new Subject<Unit>();
-            _blockPressed = new Subject<Unit>();
+            var punchPressed = new Subject<Unit>();
+            var kickPressed = new Subject<Unit>();
+            var blockPressed = new Subject<Unit>();
+            var superPressed = new Subject<Unit>();
+
+            PunchPressed = punchPressed;
+            KickPressed = kickPressed;
+            BlockPressed = blockPressed;
+            SuperPressed = superPressed;
             
-            input.Player.Punch.performed += _ => _punchPressed.OnNext(Unit.Default);
-            input.Player.Kick.performed += _ => _kickPressed.OnNext(Unit.Default);
-            input.Player.Block.performed += _ => _blockPressed.OnNext(Unit.Default);
+            input.Player.Punch.performed += _ => punchPressed.OnNext(Unit.Default);
+            input.Player.Kick.performed += _ => kickPressed.OnNext(Unit.Default);
+            input.Player.Block.performed += _ => blockPressed.OnNext(Unit.Default);
+            input.Player.Super.performed += _ => superPressed.OnNext(Unit.Default);
         }
-        
-        public Observable<Unit> PunchPressed => _punchPressed;
-        public Observable<Unit> KickPressed => _kickPressed;
-        public Observable<Unit> BlockPressed => _blockPressed;
+
+        public Observable<Unit> PunchPressed { get; }
+        public Observable<Unit> KickPressed { get; }
+        public Observable<Unit> BlockPressed { get; }
+        public Observable<Unit> SuperPressed { get; }
     }
 }

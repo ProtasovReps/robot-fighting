@@ -16,7 +16,7 @@ namespace HitSystem
         [SerializeField] private HitImpact _hitImpact;
         [SerializeField] private FighterData _fighterData;
 
-        public void Produce(Health health, IStateMachine stateMachine, IConditionAddable conditionAddable)
+        public HitReader Produce(Health health, IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             var torso = new Torso(health);
             var legs = new Legs(health);
@@ -30,10 +30,10 @@ namespace HitSystem
             _hitReader.Initialize(torso, legs);
             _hitImpact.Initialize(_hitReader);
 
-            new SuperAttackCharge(_hitReader); // временно, должен быть в другом месте
-            
             new UpHit(_fighterData.StunDuration, _hitReader, conditionAddable);
             new DownHit(_fighterData.DownStunDuration, _hitReader, conditionAddable);
+            
+            return _hitReader;
         }
     }
 }

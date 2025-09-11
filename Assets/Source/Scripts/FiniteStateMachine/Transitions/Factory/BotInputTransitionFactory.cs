@@ -10,14 +10,14 @@ namespace FiniteStateMachine.Transitions.Factory
             StateMachine stateMachine)
         {
             builder.Add<WallOpponentNearbyState>(builder.GetBare<WallNearbyState>());
-            builder.Build<WallOpponentNearbyState, OpponentNearbyState>();
+            builder.Merge<WallOpponentNearbyState, OpponentNearbyState>();
 
             builder.Add<NothingNearbyState>(builder.GetBare<WallNearbyState>());
             builder.Reset<NothingNearbyState>(false);
-            builder.Build<NothingNearbyState, OpponentNearbyState>(false);
+            builder.Merge<NothingNearbyState, OpponentNearbyState>(false);
 
-            builder.Build<WallNearbyState, OpponentNearbyState>(false);
-            builder.Build<OpponentNearbyState, WallNearbyState>(false);
+            builder.Merge<WallNearbyState, OpponentNearbyState>(false);
+            builder.Merge<OpponentNearbyState, WallNearbyState>(false);
             
             new TransitionInitializer(stateMachine)
                 .InitializeTransition<WallNearbyState, Unit>(

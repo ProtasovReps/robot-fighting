@@ -31,14 +31,14 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Reset<BlockState>(false);
             
             builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
-            builder.Build<MoveJumpState, IdleState>(false);
+            builder.Merge<MoveJumpState, IdleState>(false);
             
-            builder.BuildGlobal<JumpState>(false, typeof(MoveJumpState), typeof(AttackState));
-            builder.BuildGlobal<UpHittedState>(false, typeof(DownHittedState));
-            builder.BuildGlobal<DownHittedState>(false, typeof(UpHittedState));
-            builder.BuildGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
-            builder.BuildGlobal<BlockState>(false, typeof(DownHittedState));
-
+            builder.MergeGlobal<JumpState>(false, typeof(MoveJumpState));
+            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState));
+            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState));
+            builder.MergeGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
+            builder.MergeGlobal<BlockState>(false, typeof(DownHittedState));
+            
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, int>(_moveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<MoveLeftState, int>(_moveInput.Value, builder.Get<MoveLeftState>())
@@ -47,6 +47,7 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveJumpState, int>(_moveInput.Value, builder.Get<MoveJumpState>())
                 .InitializeTransition<UpAttackState, Unit>(_attackInputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<DownAttackState, Unit>(_attackInputReader.KickPressed, builder.Get<AttackState>())
+                .InitializeTransition<SuperAttackState, Unit>(_attackInputReader.SuperPressed, builder.Get<SuperAttackState>())
                 .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
                 .InitializeTransition<BlockState, Unit>(_attackInputReader.BlockPressed, builder.Get<BlockState>());
