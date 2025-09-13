@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using Interface;
+using R3;
 using UnityEngine;
 
 namespace Extensions
 {
-    public class Timer
+    public class Timer : IContinuous
     {
         private readonly float _targetTime;
-
+        private readonly Subject<Unit> _finallized;        
+        
         private CancellationTokenSource _cancellationTokenSource;
 
         public Timer(float targetTime)
@@ -16,22 +19,30 @@ namespace Extensions
             if (targetTime <= 0f)
                 throw new ArgumentOutOfRangeException(nameof(targetTime));
 
+            _finallized = new Subject<Unit>();
             _targetTime = targetTime;
         }
 
-        public bool IsGoing { get; private set; }
-
-        public void Restart()
+        public bool IsContinuing { get; private set; }
+        public Observable<Unit> Finallized => _finallized;
+        
+        public void Start()
         {
             Cancel();
             Tick().Forget();
         }
-
+        
+        public void Cancel()
+        {
+            _cancellationTokenSource?.Cancel();
+            IsContinuing = false;
+        }
+        
         private async UniTaskVoid Tick()
         {
             _cancellationTokenSource = new CancellationTokenSource();
             float expiredTime = 0f;
-            IsGoing = true;
+            IsContinuing = true;
 
             while (expiredTime < _targetTime && _cancellationTokenSource.IsCancellationRequested == false)
             {
@@ -39,13 +50,8 @@ namespace Extensions
                 await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
             }
 
+            _finallized.OnNext(Unit.Default);
             Cancel();
-        }
-
-        private void Cancel()
-        {
-            _cancellationTokenSource?.Cancel();
-            IsGoing = false;
         }
     }
 }

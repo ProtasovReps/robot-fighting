@@ -32,6 +32,9 @@ namespace FiniteStateMachine.Transitions.Factory
             
             builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
             builder.Merge<MoveJumpState, IdleState>(false);
+
+            builder.Merge<StretchState, IdleState>();
+            builder.Merge<IdleState, StretchState>(false);
             
             builder.MergeGlobal<JumpState>(false, typeof(MoveJumpState));
             builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState));
@@ -41,6 +44,7 @@ namespace FiniteStateMachine.Transitions.Factory
             
             new TransitionInitializer(stateMachine) // dispose
                 .InitializeTransition<IdleState, int>(_moveInput.Value, builder.Get<IdleState>())
+                .InitializeTransition<StretchState, int>(_moveInput.Value, builder.Get<StretchState>())
                 .InitializeTransition<MoveLeftState, int>(_moveInput.Value, builder.Get<MoveLeftState>())
                 .InitializeTransition<MoveRightState, int>(_moveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<JumpState, Unit>(_moveInput.JumpPressed, builder.Get<JumpState>())

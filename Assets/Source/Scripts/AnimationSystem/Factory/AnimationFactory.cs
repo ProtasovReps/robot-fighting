@@ -26,7 +26,8 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.HeadHit),
                 new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegsHit),
                 new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block),
-                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Special)
+                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Special),
+                new TriggerAnimation<StretchState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Stretch)
             };
 
             new AnimationDurationChanger(animatedCharacter.Animator, stateMachine, fighterData);

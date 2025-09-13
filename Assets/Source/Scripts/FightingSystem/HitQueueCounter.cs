@@ -39,10 +39,10 @@ namespace FightingSystem
 
         private void Count()
         {
-            if (_timer.IsGoing == false)
+            if (_timer.IsContinuing == false)
             {
                 Reset();
-                _timer.Restart();
+                _timer.Start();
             }
 
             _hitCount++;

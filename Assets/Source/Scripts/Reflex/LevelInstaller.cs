@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
+using CharacterSystem;
 using CharacterSystem.Data;
 using HitSystem;
 using Extensions;
@@ -70,6 +71,7 @@ namespace Reflex
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
 
             new SuperAttackCharge<PlayerConditionBuilder>(hitReader, conditionBuilder);
+            new Stretch(playerStateMachine, conditionBuilder);
             
             _playerAttackFactory.Produce(placeHolderStash);
             _playerTransitionFactory.Initialize(playerStateMachine, conditionBuilder);

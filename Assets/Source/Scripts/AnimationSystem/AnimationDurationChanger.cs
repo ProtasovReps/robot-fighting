@@ -23,10 +23,9 @@ namespace AnimationSystem
         {
             _stateDurations = new Dictionary<Type, float>
             {
-                { typeof(IdleState), DefaultAnimatorSpeed },
                 { typeof(UpHittedState), fighterData.StunDuration },
                 { typeof(DownHittedState), fighterData.DownStunDuration },
-                // а также скорость передвижения, ударов и тд
+                { typeof(BlockState), fighterData.BlockDuration}
             };
 
             _animator = animator;
