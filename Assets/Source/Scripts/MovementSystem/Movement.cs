@@ -31,6 +31,11 @@ namespace MovementSystem
                 .Where(_ => _stateMachine.Value.CurrentValue is MoveState)
                 .Subscribe(_positionTranslation.TranslatePosition)
                 .AddTo(this);
+
+            _stateMachine.Value
+                .Where(value => value.Type == typeof(IdleState))
+                .Subscribe(_ => _positionTranslation.ResetSpeed())
+                .AddTo(this);
         }
 
         public void Initialize(IMoveInput moveInput, PositionTranslation positionTranslation)
