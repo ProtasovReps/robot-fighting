@@ -8,7 +8,8 @@ namespace FiniteStateMachine.Transitions.Factory
     {
         private StateMachine _stateMachine;
         private ConditionBuilder _builder;
-        
+        private IDisposable _disposable;
+
         private void Start()
         {
             if (_stateMachine == null)
@@ -16,8 +17,16 @@ namespace FiniteStateMachine.Transitions.Factory
 
             if (_builder == null)
                 throw new ArgumentNullException(nameof(_builder));
+
+            var initializer = new TransitionInitializer(_stateMachine);
             
-            InitializeConditionTransition(_builder, _stateMachine);
+            InitializeConditionTransition(_builder, initializer);
+            _disposable = initializer;
+        }
+
+        private void OnDestroy()
+        {
+            _disposable?.Dispose();
         }
 
         public void Initialize(StateMachine stateMachine, ConditionBuilder conditionBuilder)
@@ -26,6 +35,7 @@ namespace FiniteStateMachine.Transitions.Factory
             _builder = conditionBuilder;
         }
 
-        protected abstract void InitializeConditionTransition(ConditionBuilder builder, StateMachine stateMachine);
+        protected abstract void InitializeConditionTransition(ConditionBuilder builder,
+            TransitionInitializer initializer);
     }
 }

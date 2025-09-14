@@ -1,29 +1,29 @@
 using System;
 using Interface;
 using R3;
+using UnityEngine;
 
 namespace HealthSystem
 {
     public class Health : IValueChangeable<float>, IDamageable<float>
     {
-        private readonly ReactiveProperty<float> _currentValue;
+        private readonly ReactiveProperty<float> _value;
         
         protected Health(float startValue)
         {
             if (startValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startValue));
 
-            _currentValue = new ReactiveProperty<float>(startValue);
+            _value = new ReactiveProperty<float>(startValue);
         }
         
-        public ReadOnlyReactiveProperty<float> Value => _currentValue;
+        public ReadOnlyReactiveProperty<float> Value => _value;
         
         public void AcceptDamage(float damage)
         {
-            if (damage < 0)
-                throw new ArgumentOutOfRangeException(nameof(damage));
-
-            _currentValue.OnNext(_currentValue.Value - damage);
+            float clampedDamage = Mathf.Clamp(damage, 0, _value.CurrentValue);
+            
+            _value.OnNext(_value.Value - clampedDamage);
         }
     }
 }

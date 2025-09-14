@@ -1,4 +1,6 @@
-﻿using HitSystem;
+﻿using FightingSystem;
+using FightingSystem.Dying;
+using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
@@ -14,35 +16,38 @@ namespace FiniteStateMachine.Transitions.Factory
 
         private PlayerMoveInputReader _moveInput;
         private PlayerAttackInputReader _attackInputReader;
-        
+        private PlayerDeath _death;
+
         [Inject]
-        private void Inject(PlayerMoveInputReader moveInput, PlayerAttackInputReader attackInputReader)
+        private void Inject(PlayerMoveInputReader moveInput, PlayerAttackInputReader attackInputReader, PlayerDeath death)
         {
             _moveInput = moveInput;
             _attackInputReader = attackInputReader;
+            _death = death;
         }
-        
+
         protected override void InitializeConditionTransition(
-            ConditionBuilder builder, 
-            StateMachine stateMachine)
+            ConditionBuilder builder,
+            TransitionInitializer initializer)
         {
             builder.Reset<JumpState>(false);
             builder.Reset<AttackState>(false);
             builder.Reset<BlockState>(false);
-            
+
             builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
             builder.Merge<MoveJumpState, IdleState>(false);
 
             builder.Merge<StretchState, IdleState>();
             builder.Merge<IdleState, StretchState>(false);
-            
+
+            builder.MergeGlobal<DeathState>(false);
             builder.MergeGlobal<JumpState>(false, typeof(MoveJumpState));
-            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState));
-            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState));
+            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState), typeof(DeathState));
+            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState), typeof(DeathState));
             builder.MergeGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
             builder.MergeGlobal<BlockState>(false, typeof(DownHittedState));
-            
-            new TransitionInitializer(stateMachine) // dispose
+
+            initializer
                 .InitializeTransition<IdleState, int>(_moveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<StretchState, int>(_moveInput.Value, builder.Get<StretchState>())
                 .InitializeTransition<MoveLeftState, int>(_moveInput.Value, builder.Get<MoveLeftState>())
@@ -51,10 +56,13 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveJumpState, int>(_moveInput.Value, builder.Get<MoveJumpState>())
                 .InitializeTransition<UpAttackState, Unit>(_attackInputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<DownAttackState, Unit>(_attackInputReader.KickPressed, builder.Get<AttackState>())
-                .InitializeTransition<SuperAttackState, Unit>(_attackInputReader.SuperPressed, builder.Get<SuperAttackState>())
+                .InitializeTransition<SuperAttackState, Unit>(_attackInputReader.SuperPressed,
+                    builder.Get<SuperAttackState>())
                 .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
-                .InitializeTransition<BlockState, Unit>(_attackInputReader.BlockPressed, builder.Get<BlockState>());
+                .InitializeTransition<BlockState, Unit>(_attackInputReader.BlockPressed, builder.Get<BlockState>())
+                .InitializeTransition<UpDeathState, Unit>(_death.UpDeath, builder.Get<DeathState>())
+                .InitializeTransition<DownDeathState, Unit>(_death.DownDeath, builder.Get<DeathState>());
         }
     }
 }

@@ -7,7 +7,7 @@ namespace FiniteStateMachine.Transitions.Factory
     public class BotInputTransitionFactory : StateTransitionFactory
     {
         protected override void InitializeConditionTransition(ConditionBuilder builder,
-            StateMachine stateMachine)
+            TransitionInitializer initializer)
         {
             builder.Add<WallOpponentNearbyState>(builder.GetBare<WallNearbyState>());
             builder.Merge<WallOpponentNearbyState, OpponentNearbyState>();
@@ -19,7 +19,7 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Merge<WallNearbyState, OpponentNearbyState>(false);
             builder.Merge<OpponentNearbyState, WallNearbyState>(false);
             
-            new TransitionInitializer(stateMachine)
+            initializer
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
                 .InitializeTransition<OpponentNearbyState, Unit>(

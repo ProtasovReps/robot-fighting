@@ -17,5 +17,7 @@ namespace Extensions
         public static readonly int WalkSpeed = Animator.StringToHash(nameof(WalkSpeed));
         public static readonly int Special = Animator.StringToHash(nameof(Special));
         public static readonly int Stretch = Animator.StringToHash(nameof(Stretch));
+        public static readonly int UpDeath = Animator.StringToHash(nameof(UpDeath));
+        public static readonly int DownDeath = Animator.StringToHash(nameof(DownDeath));
     }
 }

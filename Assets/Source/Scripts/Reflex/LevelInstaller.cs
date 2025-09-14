@@ -6,6 +6,7 @@ using CharacterSystem.Data;
 using HitSystem;
 using Extensions;
 using FightingSystem;
+using FightingSystem.Dying;
 using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
@@ -47,11 +48,6 @@ namespace Reflex
         [SerializeField] private BotData _botData;
         [SerializeField] private ImplantFactory _botImplantFactory;
         
-        private void Start()
-        {
-            Destroy(gameObject);
-        }
-
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             AnimationFactory animationFactory = new();
@@ -80,6 +76,7 @@ namespace Reflex
             
             animationFactory.Produce(_playerAnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
             
+            builder.AddSingleton(new PlayerDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
@@ -93,15 +90,16 @@ namespace Reflex
             BotHealth health = new(_botData.StartHealthValue);
             IMoveInput moveInput = InstallBotInput(builder);
             ImplantPlaceHolderStash placeHolderStash = _botImplantFactory.Produce();
+            HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
 
             _botAttackFactory.Produce(placeHolderStash);
-            _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
             
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
             
             animationFactory.Produce(_botAnimatedCharacter, botStateMachine, _botData, positionTranslation);
 
+            builder.AddSingleton(new BotDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(botStateMachine);

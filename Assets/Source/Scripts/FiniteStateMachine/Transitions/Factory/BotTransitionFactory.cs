@@ -1,4 +1,5 @@
-﻿using HitSystem;
+﻿using FightingSystem.Dying;
+using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
@@ -15,26 +16,29 @@ namespace FiniteStateMachine.Transitions.Factory
         
         private ValidatedInput _botMoveInput;
         private BotFightInput _botFightInput;
+        private BotDeath _death;
         
         [Inject]
-        private void Inject(ValidatedInput botMoveInput, BotFightInput botFightInput)
+        private void Inject(ValidatedInput botMoveInput, BotFightInput botFightInput, BotDeath death)
         {
             _botMoveInput = botMoveInput;
             _botFightInput = botFightInput;
+            _death = death;
         }
         
         protected override void InitializeConditionTransition(ConditionBuilder builder,
-            StateMachine stateMachine)
+            TransitionInitializer initializer)
         {
             builder.Reset<BlockState>(false);
             builder.Reset<AttackState>(false);
             
-            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState));
-            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState));
+            builder.MergeGlobal<DeathState>(false);
+            builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState), typeof(DeathState));
+            builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState), typeof(DeathState));
             builder.MergeGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
             builder.MergeGlobal<BlockState>(false, typeof(DownHittedState));
-        
-            new TransitionInitializer(stateMachine) // dispose
+
+            initializer
                 .InitializeTransition<IdleState, int>(_botMoveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<MoveLeftState, int>(_botMoveInput.Value, builder.Get<MoveLeftState>())
                 .InitializeTransition<MoveRightState, int>(_botMoveInput.Value, builder.Get<MoveRightState>())
@@ -42,8 +46,11 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
                 .InitializeTransition<UpAttackState, Unit>(_botFightInput.UpAttack, builder.Get<AttackState>())
                 .InitializeTransition<DownAttackState, Unit>(_botFightInput.DownAttack, builder.Get<AttackState>())
-                .InitializeTransition<SpecialAttackState, Unit>(_botFightInput.SpecialAttack, builder.Get<AttackState>())
-                .InitializeTransition<BlockState, Unit>(_botFightInput.Block, builder.Get<BlockState>());
+                .InitializeTransition<SpecialAttackState, Unit>(_botFightInput.SpecialAttack,
+                    builder.Get<AttackState>())
+                .InitializeTransition<BlockState, Unit>(_botFightInput.Block, builder.Get<BlockState>())
+                .InitializeTransition<UpDeathState, Unit>(_death.UpDeath, builder.Get<DeathState>())
+                .InitializeTransition<DownDeathState, Unit>(_death.DownDeath, builder.Get<DeathState>());
         }
     }
 }

@@ -18,7 +18,7 @@ namespace FiniteStateMachine.Transitions
             _disposables = new CompositeDisposable();
         }
 
-        public void Dispose() // диспозер нужен
+        public void Dispose()
         {
             _disposables?.Dispose();
         }
