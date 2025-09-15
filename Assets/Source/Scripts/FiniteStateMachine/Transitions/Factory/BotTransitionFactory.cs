@@ -36,7 +36,7 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.MergeGlobal<UpHittedState>(false, typeof(DownHittedState), typeof(DeathState));
             builder.MergeGlobal<DownHittedState>(false, typeof(UpHittedState), typeof(DeathState));
             builder.MergeGlobal<AttackState>(false, typeof(UpHittedState), typeof(DownHittedState));
-            builder.MergeGlobal<BlockState>(false, typeof(DownHittedState));
+            builder.MergeGlobal<BlockState>(false, typeof(DownHittedState), typeof(DeathState));
 
             initializer
                 .InitializeTransition<IdleState, int>(_botMoveInput.Value, builder.Get<IdleState>())
