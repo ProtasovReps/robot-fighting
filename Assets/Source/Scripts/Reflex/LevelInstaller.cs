@@ -158,6 +158,7 @@ namespace Reflex
             input.Enable(); // управление инпутом в другое место
             builder.AddSingleton(moveInputReader);
             builder.AddSingleton(attackInputReader);
+            builder.AddSingleton(input);
             return validatedInput;
         }
 
