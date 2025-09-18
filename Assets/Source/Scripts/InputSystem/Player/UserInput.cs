@@ -223,7 +223,7 @@ namespace InputSystem
                     ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Super"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
