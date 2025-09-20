@@ -76,7 +76,7 @@ namespace Reflex
             animationFactory.Produce(_playerAnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
             
             builder.AddSingleton(new PlayerDeath(hitReader, health, conditionBuilder));
-            builder.AddSingleton(new SuperAttackCharge(hitReader, conditionBuilder));
+            builder.AddSingleton(new SuperAttackCharge(hitReader, playerStateMachine, conditionBuilder));
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
