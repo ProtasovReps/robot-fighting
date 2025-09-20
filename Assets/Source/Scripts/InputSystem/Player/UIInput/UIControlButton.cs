@@ -1,3 +1,4 @@
+using System;
 using InputSystem;
 using Reflex.Attributes;
 using UnityEngine.EventSystems;
@@ -8,7 +9,9 @@ public abstract class UIControlButton : OnScreenControl, IPointerDownHandler, IP
 {
     private const float ActiveActionValue = 1f;
     
-    private string _сontrolPath;
+    protected override string controlPathInternal { get; set; }
+    protected abstract int ControlIndex { get; }
+    protected abstract string ActionName { get; }
 
     [Inject]
     private void Inject(UserInput userInput)
@@ -25,16 +28,7 @@ public abstract class UIControlButton : OnScreenControl, IPointerDownHandler, IP
     {
         SendValueToControl(ActiveActionValue);
     }
-
-    protected override string controlPathInternal
-    {
-        get => _сontrolPath;
-        set => _сontrolPath = value;
-    }
-
-    protected abstract int ControlIndex { get; }
-    protected abstract string ActionName { get; }
-    
+   
     private void SetupControlPath(UserInput userInput)
     {
         InputActionMap actionMap = userInput.Player.Get();
@@ -49,9 +43,14 @@ public abstract class UIControlButton : OnScreenControl, IPointerDownHandler, IP
             }
         }
 
-        string device = newAction.controls[ControlIndex].device.name;
-        string name = newAction.controls[ControlIndex].name;
+        if (newAction == null)
+        {
+            throw new ArgumentNullException(nameof(newAction));
+        }
         
-        _сontrolPath = $"<{device}>/{name}";
+        string device = newAction.controls[ControlIndex].device.name;
+        string actionName = newAction.controls[ControlIndex].name;
+        
+        controlPathInternal = $"<{device}>/{actionName}";
     }
 }
