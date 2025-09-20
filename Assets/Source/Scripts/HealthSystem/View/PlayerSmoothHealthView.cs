@@ -1,6 +1,6 @@
 ﻿namespace HealthSystem
 {
-    public class PlayerSmoothHealthView : SmoothHealthView<PlayerHealth>
+    public class PlayerSmoothHealthView : FloatValueChangeableView<PlayerHealth>
     {
     }
 }

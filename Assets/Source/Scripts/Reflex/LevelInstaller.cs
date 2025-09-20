@@ -66,7 +66,6 @@ namespace Reflex
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
 
-            new SuperAttackCharge<PlayerConditionBuilder>(hitReader, conditionBuilder);
             new Stretch(playerStateMachine, conditionBuilder);
             
             _playerAttackFactory.Produce(placeHolderStash);
@@ -77,6 +76,7 @@ namespace Reflex
             animationFactory.Produce(_playerAnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
             
             builder.AddSingleton(new PlayerDeath(hitReader, health, conditionBuilder));
+            builder.AddSingleton(new SuperAttackCharge(hitReader, conditionBuilder));
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);

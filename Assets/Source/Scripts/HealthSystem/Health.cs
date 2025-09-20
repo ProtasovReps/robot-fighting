@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace HealthSystem
 {
-    public class Health : IValueChangeable<float>, IDamageable<float>
+    public class Health : IFloatValueChangeable, IDamageable<float>
     {
         private readonly ReactiveProperty<float> _value;
         
@@ -14,10 +14,12 @@ namespace HealthSystem
             if (startValue <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startValue));
 
-            _value = new ReactiveProperty<float>(startValue);
+            MaxValue = startValue;
+            _value = new ReactiveProperty<float>(MaxValue);
         }
         
         public ReadOnlyReactiveProperty<float> Value => _value;
+        public float MaxValue { get; }
         
         public void AcceptDamage(float damage)
         {

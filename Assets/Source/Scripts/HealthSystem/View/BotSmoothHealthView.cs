@@ -1,6 +1,6 @@
 ﻿namespace HealthSystem
 {
-    public class BotSmoothHealthView : SmoothHealthView<BotHealth>
+    public class BotSmoothHealthView : FloatValueChangeableView<BotHealth>
     {
     }
 }
