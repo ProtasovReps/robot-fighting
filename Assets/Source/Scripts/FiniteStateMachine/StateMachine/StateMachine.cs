@@ -35,10 +35,7 @@ namespace FiniteStateMachine
 
             _currentState.OnNext(state);
 
-            if (state is DeathState)
-            {
-                Debug.Log(state);
-            }
+                // Debug.Log(state);
         }
     }
 }

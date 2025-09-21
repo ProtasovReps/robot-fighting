@@ -1,8 +1,9 @@
 using R3;
 using UnityEngine;
 
-namespace CameraFollowSystem
+namespace CameraEffectSystem
 {
+    [RequireComponent(typeof(Camera))]
     public class FollowingCamera : MonoBehaviour 
     {
         [SerializeField] private Transform _firstFighter;

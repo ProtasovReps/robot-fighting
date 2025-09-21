@@ -1216,6 +1216,7 @@ GameObject:
   - component: {fileID: 1685808800}
   - component: {fileID: 1685808799}
   - component: {fileID: 1685808802}
+  - component: {fileID: 1685808803}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1315,6 +1316,19 @@ MonoBehaviour:
   _minCameraDistance: 9
   _followSpeed: 3
   _zoomSpeed: 2
+--- !u!114 &1685808803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685808798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a73d9249ba405497fe357d2e403f3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _strength: 0.07
 --- !u!1 &1755773517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2136,7 @@ PrefabInstance:
       objectReference: {fileID: 1997515902}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.1941576
+      value: 3.41
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
