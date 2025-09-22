@@ -475,6 +475,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3637415911028212324, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+      propertyPath: _legImplantPlaceHolder
+      value: 
+      objectReference: {fileID: 4433223989468998152}
+    - target: {fileID: 3637415911028212324, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+      propertyPath: _handImplantPlaceHolder
+      value: 
+      objectReference: {fileID: 3955836928463897820}
     - target: {fileID: 3747101506765583007, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -719,6 +727,28 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 387817395823051735}
   m_SourcePrefab: {fileID: 100100000, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+--- !u!114 &3955836928463897820 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1717921320723142556, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+  m_PrefabInstance: {fileID: 2392182077772747584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4433223989468998152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2069198789632686408, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+  m_PrefabInstance: {fileID: 2392182077772747584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4543781428017016078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2178754645173468750, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}

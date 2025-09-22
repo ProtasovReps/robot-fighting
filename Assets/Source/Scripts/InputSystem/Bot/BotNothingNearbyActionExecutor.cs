@@ -48,11 +48,11 @@ namespace InputSystem.Bot
 
             int direction = 0;
 
-            if (_lastState == typeof(OpponentNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Left)
-                direction = Directions.Left;
-
-            if (_lastState == typeof(WallNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
+            if (_lastState == typeof(OpponentNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
                 direction = Directions.Right;
+
+            if (_lastState == typeof(WallNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Left)
+                direction = Directions.Left;
                 
             ResetLastState();
             return _directions[direction];

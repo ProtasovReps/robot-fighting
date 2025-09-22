@@ -142,7 +142,7 @@ namespace Reflex
             BotAction special = new(fightInput.AttackSpecial, _botData.AttackDelay); // special duration
              
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
-            new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
+            new BotSoloActionExecutor<WallNearbyState>(stateMachine, leftMove);
             new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack, special);
             new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special);
         }

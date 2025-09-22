@@ -35,7 +35,8 @@ namespace FiniteStateMachine
 
             _currentState.OnNext(state);
 
-                // Debug.Log(state);
+            if(state is NothingNearbyState || state is OpponentNearbyState || state is WallNearbyState || state is WallOpponentNearbyState)
+                Debug.Log(state);
         }
     }
 }
