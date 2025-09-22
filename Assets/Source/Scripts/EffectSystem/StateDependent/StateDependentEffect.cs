@@ -4,29 +4,25 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace CameraEffectSystem
+namespace EffectSystem
 {
-    public class DeathEffect : MonoBehaviour // очень похожи с CameraEffect, поэтому можно объединить под одним родителем
+    public abstract class StateDependentEffect<TState> : MonoBehaviour
+    where TState : State
     {
-        [SerializeField, Range(0.1f, 1f)] private float _targetTimeScale; 
-        
         [Inject]
         private void Inject(BotStateMachine botStateMachine, PlayerStateMachine playerStateMachine)
         {
             Observable<State> botHitted = botStateMachine.Value
-                .Where(value => value is DeathState); 
+                .Where(value => value is TState); 
             
             Observable<State> playerHitted = playerStateMachine.Value
-                .Where(value => value is DeathState);
+                .Where(value => value is TState);
 
             Observable.Merge(botHitted, playerHitted)
                 .Subscribe(_ => Apply())
                 .AddTo(this);
         }
 
-        private void Apply()
-        {
-            Time.timeScale = _targetTimeScale;
-        }
+        protected abstract void Apply();
     }
 }

@@ -1,7 +1,7 @@
 using R3;
 using UnityEngine;
 
-namespace CameraEffectSystem
+namespace EffectSystem
 {
     [RequireComponent(typeof(Camera))]
     public class FollowingCamera : MonoBehaviour 
