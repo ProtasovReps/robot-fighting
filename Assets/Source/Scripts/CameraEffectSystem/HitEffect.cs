@@ -7,7 +7,7 @@ using R3;
 namespace CameraEffectSystem
 {
     [RequireComponent(typeof(Camera))]
-    public class CameraHitEffect : MonoBehaviour
+    public class HitEffect : MonoBehaviour
     {
         [SerializeField, Range(0.01f, 0.1f)] private float _strength;
         

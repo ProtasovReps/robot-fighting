@@ -3,7 +3,7 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace UI
+namespace UI.Button
 {
     public class ButtonEnableSwitcher<T> : MonoBehaviour
     where T : IFloatValueChangeable

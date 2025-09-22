@@ -135,11 +135,11 @@ namespace Reflex
 
             BotAction leftMove = new(moveInput.MoveLeft, _botData.MoveDuration);
             BotAction rightMove = new(moveInput.MoveRight, _botData.MoveDuration);
-            BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration / 2f);
+            BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration / 2f); // idleDuration
             BotAction upAttack = new(fightInput.AttackUp, _botData.AttackDelay); // не attackDelay, скорее UpAttackDuration брать
-            BotAction downAttack = new(fightInput.AttackDown, _botData.AttackDelay);
+            BotAction downAttack = new(fightInput.AttackDown, _botData.AttackDelay);// downDuration
             BotAction block = new(fightInput.BlockAttack, _botData.BlockDuration);
-            BotAction special = new(fightInput.AttackSpecial, _botData.AttackDelay);
+            BotAction special = new(fightInput.AttackSpecial, _botData.AttackDelay); // special duration
              
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
             new BotSoloActionExecutor<WallNearbyState>(stateMachine, rightMove);
