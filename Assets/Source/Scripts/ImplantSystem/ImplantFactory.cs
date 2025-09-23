@@ -9,7 +9,7 @@ namespace ImplantSystem
     {
         [Header("Потом из сейва получать")]
         [SerializeField] private AttackImplant[] _attackImplants;
-        [SerializeField] private ImplantPlaceHolderStash _placeHolderStash;
+        [SerializeField] private ImplantPlaceHolderStash _placeHolderStash; // получать из сейва SkinInfo
 
         public ImplantPlaceHolderStash Produce()
         {

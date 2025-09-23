@@ -34,7 +34,7 @@ namespace Reflex
         [SerializeField] private HitFactory _playerHitFactory;
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
         [SerializeField] private PlayerMovement _playerMovement;
-        [SerializeField] private AnimatedCharacter _playerAnimatedCharacter;
+        [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // получать через SkinInfo, через сейв
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private ImplantFactory _playerImplantFactory;
         [Header("Bot")]

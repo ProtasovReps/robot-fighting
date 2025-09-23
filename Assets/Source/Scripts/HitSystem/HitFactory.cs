@@ -10,7 +10,7 @@ namespace HitSystem
 {
     public class HitFactory : MonoBehaviour
     {
-        [SerializeField] private HitCollider _upHitCollider;
+        [SerializeField] private HitCollider _upHitCollider; // их получать из сейва SkinInfo
         [SerializeField] private HitCollider _downHitCollider;
         [SerializeField] private HitReader _hitReader;
         [SerializeField] private HitImpact _hitImpact;
