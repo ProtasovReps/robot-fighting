@@ -1,3 +1,4 @@
+using System;
 using R3;
 using UnityEngine;
 
@@ -18,10 +19,11 @@ namespace EffectSystem
         private void Awake()
         {
             _transform = transform;
-            
-            Observable.EveryUpdate()
-                .Subscribe(_ => Animate())
-                .AddTo(this);
+        }
+
+        private void LateUpdate()
+        {
+            Animate();
         }
 
         private void Animate()
