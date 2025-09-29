@@ -10,5 +10,6 @@ namespace CharacterSystem.Data
         [field: SerializeField] [field: Min(1f)] public float BlockDuration { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float BlockValue { get; private set; }
         [field: SerializeField] [field: Min(0.5f)] public float MoveSpeed { get; private set; }
+        [field: SerializeField] public SkinData SkinData { get; private set; }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1305920945362661429}
   - component: {fileID: 3949580494966667668}
   m_Layer: 7
-  m_Name: HitEffect
+  m_Name: HitParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitReader: {fileID: 2735485832074729409}
-  _upEffect: {fileID: 5594213462329296579}
-  _downEffect: {fileID: 5923371106650962754}
+  _fighterData: {fileID: 123863274945531791}
 --- !u!1 &5844785053076724885
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +162,7 @@ MonoBehaviour:
   <BlockDuration>k__BackingField: 1
   <BlockValue>k__BackingField: 40
   <MoveSpeed>k__BackingField: 8
+  <SkinData>k__BackingField: {fileID: 0}
 --- !u!114 &7296620159227531177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3522344211303536503, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+      propertyPath: <AnimatedCharacter>k__BackingField
+      value: 
+      objectReference: {fileID: 1582464566641025659}
     - target: {fileID: 3533283623848858437, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -586,16 +590,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1582464566641025659}
   m_SourcePrefab: {fileID: 100100000, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
---- !u!198 &5594213462329296579 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5074299683275355547, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
-  m_PrefabInstance: {fileID: 849257474633085784}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5923371106650962754 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6484375937334347802, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
-  m_PrefabInstance: {fileID: 849257474633085784}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6258952494519842969 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6707389324209408961, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}

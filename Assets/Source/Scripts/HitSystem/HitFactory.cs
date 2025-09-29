@@ -10,8 +10,6 @@ namespace HitSystem
 {
     public class HitFactory : MonoBehaviour
     {
-        [SerializeField] private HitCollider _upHitCollider; // их получать из сейва SkinInfo
-        [SerializeField] private HitCollider _downHitCollider;
         [SerializeField] private HitReader _hitReader;
         [SerializeField] private HitImpact _hitImpact;
         [SerializeField] private FighterData _fighterData;
@@ -24,8 +22,8 @@ namespace HitSystem
             var legsArmor = new NoLegsArmor(legs);
             var block = new Block(_fighterData.BlockDuration, _fighterData.BlockValue, torsoArmor, stateMachine, conditionAddable);//
 
-            _upHitCollider.Initialize(block);
-            _downHitCollider.Initialize(legsArmor);
+            _fighterData.SkinData.ColliderStash.UpCollider.Initialize(block);
+            _fighterData.SkinData.ColliderStash.DownCollider.Initialize(legsArmor);
             
             _hitReader.Initialize(torso, legs);
             _hitImpact.Initialize(_hitReader);

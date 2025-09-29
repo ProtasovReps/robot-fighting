@@ -34,7 +34,6 @@ namespace Reflex
         [SerializeField] private HitFactory _playerHitFactory;
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
         [SerializeField] private PlayerMovement _playerMovement;
-        [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // получать через SkinInfo, через сейв
         [SerializeField] private PlayerData _playerData;
         [SerializeField] private ImplantFactory _playerImplantFactory;
         [Header("Bot")]
@@ -44,7 +43,6 @@ namespace Reflex
         [SerializeField] private BotInputTransitionFactory _botInputTransitionFactory;
         [SerializeField] private BotMovement _botMovement;
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
-        [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
         [SerializeField] private BotData _botData;
         [SerializeField] private ImplantFactory _botImplantFactory;
         
@@ -73,7 +71,7 @@ namespace Reflex
             
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
             
-            animationFactory.Produce(_playerAnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
+            animationFactory.Produce(_playerData.SkinData.AnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
             
             builder.AddSingleton(new PlayerDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(new SuperAttackCharge(hitReader, playerStateMachine, conditionBuilder));
@@ -97,7 +95,7 @@ namespace Reflex
             
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
             
-            animationFactory.Produce(_botAnimatedCharacter, botStateMachine, _botData, positionTranslation);
+            animationFactory.Produce(_botData.SkinData.AnimatedCharacter, botStateMachine, _botData, positionTranslation);
 
             builder.AddSingleton(new BotDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(health);

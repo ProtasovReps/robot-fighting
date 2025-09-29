@@ -1,8 +1,10 @@
-using HitSystem;
 using UnityEngine;
 
-public class HitColliderStash : MonoBehaviour
+namespace HitSystem
 {
-    [field: SerializeField] public HitCollider UpCollider { get; private set; }
-    [field: SerializeField] public HitCollider DownCollider { get; private set; }
+    public class HitColliderStash : MonoBehaviour
+    {
+        [field: SerializeField] public HitCollider UpCollider { get; private set; }
+        [field: SerializeField] public HitCollider DownCollider { get; private set; }
+    }
 }

@@ -1783,6 +1783,7 @@ GameObject:
   - component: {fileID: 8123920443769637717}
   - component: {fileID: 446340045579036767}
   - component: {fileID: 455739598504319420}
+  - component: {fileID: 4930865136641427452}
   - component: {fileID: 389738931209369180}
   - component: {fileID: 3131225752128996816}
   m_Layer: 6
@@ -1847,6 +1848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ColliderStash>k__BackingField: {fileID: 455739598504319420}
+  <HitEffectStash>k__BackingField: {fileID: 4930865136641427452}
   <PlaceholderStash>k__BackingField: {fileID: 389738931209369180}
   <AnimatedCharacter>k__BackingField: {fileID: 3131225752128996816}
 --- !u!114 &455739598504319420
@@ -1863,6 +1865,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <UpCollider>k__BackingField: {fileID: 3896602907631857997}
   <DownCollider>k__BackingField: {fileID: 1106782083226262493}
+--- !u!114 &4930865136641427452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074839647184674851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574c5c21a42410f4eb9814e1293c5cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <UpParticleEffect>k__BackingField: {fileID: 9080168848392467434}
+  <DownParticleEffect>k__BackingField: {fileID: 4441047643709265942}
 --- !u!114 &389738931209369180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,6 +2681,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 456411205902380862, guid: 510273fa3ee343947b185d7e40fd3174, type: 3}
   m_PrefabInstance: {fileID: 4320283412575918340}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &4441047643709265942 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 456411205888229650, guid: 510273fa3ee343947b185d7e40fd3174, type: 3}
+  m_PrefabInstance: {fileID: 4320283412575918340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8671191695196025592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2749,5 +2770,10 @@ PrefabInstance:
 --- !u!4 &9080168848378322374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 456411205902380862, guid: 510273fa3ee343947b185d7e40fd3174, type: 3}
+  m_PrefabInstance: {fileID: 8671191695196025592}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &9080168848392467434 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 456411205888229650, guid: 510273fa3ee343947b185d7e40fd3174, type: 3}
   m_PrefabInstance: {fileID: 8671191695196025592}
   m_PrefabAsset: {fileID: 0}

@@ -1,4 +1,5 @@
 ﻿using System;
+using CharacterSystem.Data;
 using FiniteStateMachine;
 using FiniteStateMachine.States;
 using R3;
@@ -9,7 +10,7 @@ namespace FightingSystem
 {
     public class SpecialAttackColliderSwitcher : MonoBehaviour
     {
-        [SerializeField] private Collider[] _colliders;
+        [SerializeField] private BotData _botData;
 
         [Inject]
         private void Inject(BotStateMachine botStateMachine)
@@ -30,18 +31,14 @@ namespace FightingSystem
         
         private void EnableColliders()
         {
-            for (int i = 0; i < _colliders.Length; i++)
-            {
-                _colliders[i].enabled = true;
-            }
+            _botData.SkinData.ColliderStash.UpCollider.enabled = true;
+            _botData.SkinData.ColliderStash.DownCollider.enabled = true;
         }
 
         private void DisableColliders()
         {
-            for (int i = 0; i < _colliders.Length; i++)
-            {
-                _colliders[i].enabled = false;
-            }
+            _botData.SkinData.ColliderStash.UpCollider.enabled = false;
+            _botData.SkinData.ColliderStash.DownCollider.enabled = false;
         }
     }
 }
