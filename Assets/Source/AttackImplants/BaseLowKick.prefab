@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 279859701242447137}
   - component: {fileID: 1796480475097305953}
   m_Layer: 0
-  m_Name: BaseLegAttack
+  m_Name: BaseLowKick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageData: {fileID: 11400000, guid: 67c64ad38188b754386ced99a80a9ddf, type: 2}
   _attackData: {fileID: 11400000, guid: 1bbcaa18a17ff9e46a5b1b61ee3c4a06, type: 2}
+  <AnimationClip>k__BackingField: {fileID: 7400000, guid: 54033521a9c6d164c89bd2d1aee1702c, type: 2}
   _spherecaster: {fileID: 1796480475097305953}
 --- !u!114 &1796480475097305953
 MonoBehaviour:

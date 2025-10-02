@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
@@ -45,7 +46,7 @@ namespace Reflex
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
         [SerializeField] private BotData _botData;
         [SerializeField] private ImplantFactory _botImplantFactory;
-        
+
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             AnimationFactory animationFactory = new();
@@ -63,6 +64,7 @@ namespace Reflex
             IMoveInput moveInput = InstallPlayerInput(builder);
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
+            AttackAnimationOverrider animationOverrider = new(_playerData.SkinData.AnimatedCharacter.Animator);
 
             new Stretch(playerStateMachine, conditionBuilder);
             
@@ -72,7 +74,8 @@ namespace Reflex
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
             
             animationFactory.Produce(_playerData.SkinData.AnimatedCharacter, playerStateMachine, _playerData, positionTranslation);
-            
+            animationOverrider.Override(placeHolderStash);
+           
             builder.AddSingleton(new PlayerDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(new SuperAttackCharge(hitReader, playerStateMachine, conditionBuilder));
             builder.AddSingleton(health);
@@ -89,6 +92,7 @@ namespace Reflex
             IMoveInput moveInput = InstallBotInput(builder);
             ImplantPlaceHolderStash placeHolderStash = _botImplantFactory.Produce();
             HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
+            AttackAnimationOverrider animationOverrider = new(_botData.SkinData.AnimatedCharacter.Animator);
 
             _botAttackFactory.Produce(placeHolderStash);
             _botTransitionFactory.Initialize(botStateMachine, conditionBuilder);
@@ -96,6 +100,7 @@ namespace Reflex
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
             
             animationFactory.Produce(_botData.SkinData.AnimatedCharacter, botStateMachine, _botData, positionTranslation);
+            animationOverrider.Override(placeHolderStash);
 
             builder.AddSingleton(new BotDeath(hitReader, health, conditionBuilder));
             builder.AddSingleton(health);

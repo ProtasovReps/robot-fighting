@@ -8,9 +8,11 @@ namespace ImplantSystem.AttackImplants
 {
     public abstract class AttackImplant : MonoBehaviour
     {
-        [SerializeField] private DamageData _damageData;
-        [SerializeField] private AttackData _attackData;
-
+        [SerializeField] private DamageData _damageData; 
+        [SerializeField] private AttackData _attackData;// AnimationClip, а раздаваться именно событие
+        
+        [field: SerializeField] public AnimationClip AnimationClip { get; private set; } // temp
+        
         public abstract Type RequiredState { get; }
         public abstract AttackPart RequiredPart { get; }
         
