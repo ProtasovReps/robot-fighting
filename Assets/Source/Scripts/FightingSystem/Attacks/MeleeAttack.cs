@@ -8,7 +8,7 @@ namespace FightingSystem.Attacks.Melee
         private readonly Spherecaster _spherecaster;
 
         public MeleeAttack(Damage damage, float delay, float duration, Spherecaster spherecaster)
-            : base(damage, delay, duration)
+            : base(damage, duration, delay)
         {
             _spherecaster = spherecaster;
         }
