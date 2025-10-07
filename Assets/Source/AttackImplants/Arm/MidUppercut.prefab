@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 305267140853288184}
   - component: {fileID: 9208496942678195419}
   m_Layer: 0
-  m_Name: Uppercut
+  m_Name: MidUppercut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageData: {fileID: 11400000, guid: 960cb194e31e495418f7ea8a1506baf0, type: 2}
-  _attackData: {fileID: 11400000, guid: 992e0fc30f6c40b4b8aba897b3ed0665, type: 2}
+  _attackData: {fileID: 11400000, guid: c8dfba3e67c579f4dad0717d616a1955, type: 2}
   _spherecaster: {fileID: 9208496942678195419}
 --- !u!114 &9208496942678195419
 MonoBehaviour:
@@ -60,4 +60,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a0b4f813f49ecbbd8318626929741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.8
+  _radius: 0.6
