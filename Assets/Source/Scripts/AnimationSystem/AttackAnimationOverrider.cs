@@ -29,7 +29,6 @@ namespace AnimationSystem
                 { typeof(UpAttackState), AnimationHashes.ArmAttack },
                 { typeof(DownAttackState), AnimationHashes.LegAttack },
                 { typeof(SuperAttackState), AnimationHashes.Super },
-                { typeof(SpecialAttackState), AnimationHashes.Special }
             };
         }
 
@@ -41,6 +40,9 @@ namespace AnimationSystem
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {
+                    if (_requiredHashes.ContainsKey(implant.RequiredState) == false)
+                        continue;
+                        
                     int animationID = GetAnimationID(_requiredHashes[implant.RequiredState]);
                     string animationName = overrideController.animationClips[animationID].name;
                     
