@@ -8,14 +8,14 @@ namespace ImplantSystem.AttackImplants
 {
     public abstract class AttackImplant : MonoBehaviour
     {
-        [SerializeField] private DamageData _damageData;
+        [SerializeField] private DamageData _damageData; // использовать по другому
         [SerializeField] private AttackData _attackData;
 
         public abstract Type RequiredState { get; }
         public abstract AttackPart RequiredPart { get; }
         public AnimationClip AnimationClip => _attackData.Clip;
         
-        public Attack GetAttack(LayerMask opponentLayerMask)
+        public Attack GetAttack(LayerMask opponentLayerMask) // вот сюда прокидывать данные атаки
         {
             Damage damage = new(_damageData.Damage, _damageData.ImpulseForce, _damageData.Type);
             return ConstructAttack(damage, _attackData.Delay, _attackData.Duration, opponentLayerMask);

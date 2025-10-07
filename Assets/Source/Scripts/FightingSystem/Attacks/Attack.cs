@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace FightingSystem.Attacks
 {
@@ -26,10 +27,9 @@ namespace FightingSystem.Attacks
         public async UniTask Launch(CancellationTokenSource tokenSource)
         {
             await UniTask.WaitForSeconds(_startDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);
-            Execute(_damage);
-            await UniTask.WaitForSeconds(_endDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);
+            await Execute(_damage, _endDelay, tokenSource.Token);
         }
 
-        protected abstract void Execute(Damage damage);
+        protected abstract UniTask Execute(Damage damage, float duration, CancellationToken token);
     }
 }

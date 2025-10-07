@@ -1,5 +1,8 @@
-﻿using Extensions;
+﻿using System.Threading;
+using Cysharp.Threading.Tasks;
+using Extensions;
 using Interface;
+using UnityEngine;
 
 namespace FightingSystem.Attacks.Melee
 {
@@ -13,12 +16,22 @@ namespace FightingSystem.Attacks.Melee
             _spherecaster = spherecaster;
         }
 
-        protected override void Execute(Damage damage)
+        protected override async UniTask Execute(Damage damage, float duration, CancellationToken token)
         {
-            if (_spherecaster.TryFindDamageable(out IDamageable<Damage> damageable) == false)
-                return;
+            float elapsedTime = 0f;
+            bool isHitted = false;
             
-            damageable.AcceptDamage(damage);
+            while (elapsedTime < duration)
+            {
+                if (_spherecaster.TryFindDamageable(out IDamageable<Damage> damageable) && isHitted == false)
+                {
+                    damageable.AcceptDamage(damage);
+                    isHitted = true;
+                }
+
+                elapsedTime += Time.deltaTime;
+                await UniTask.Yield(cancellationToken: token, cancelImmediately: true);
+            }
         }
     }
 }
