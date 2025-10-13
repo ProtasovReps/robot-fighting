@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace FightingSystem.Attacks
 {
     public abstract class Attack
     {
-        private readonly Damage _damage;
         private readonly float _startDelay;
         private readonly float _endDelay;
         
-        protected Attack(Damage damage, float duration, float startDelay)
+        protected Attack(float duration, float startDelay)
         {
             if (startDelay <= 0)
                 throw new ArgumentOutOfRangeException(nameof(startDelay));
@@ -19,17 +17,16 @@ namespace FightingSystem.Attacks
             if (duration <= startDelay)
                 throw new ArgumentOutOfRangeException(nameof(duration));
             
-            _damage = damage;
             _startDelay = startDelay;
             _endDelay = duration - _startDelay;
         }
-
+        
         public async UniTask Launch(CancellationTokenSource tokenSource)
         {
             await UniTask.WaitForSeconds(_startDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);
-            await Execute(_damage, _endDelay, tokenSource.Token);
+            await Execute(tokenSource.Token, _endDelay);
         }
 
-        protected abstract UniTask Execute(Damage damage, float duration, CancellationToken token);
+        protected abstract UniTask Execute(CancellationToken token, float duration);
     }
 }

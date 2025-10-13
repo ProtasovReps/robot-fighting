@@ -15,12 +15,12 @@ namespace ImplantSystem.AttackImplants
         public abstract AttackPart RequiredPart { get; }
         public AnimationClip AnimationClip => _attackData.Clip;
         
-        public Attack GetAttack(LayerMask opponentLayerMask) // вот сюда прокидывать данные атаки
+        public Attack GetAttack(LayerMask opponentLayerMask) // вот сюда прокидывать данные урона
         {
             Damage damage = new(_damageData.Damage, _damageData.ImpulseForce, _damageData.Type);
-            return ConstructAttack(damage, _attackData.Delay, _attackData.Duration, opponentLayerMask);
+            return ConstructAttack(damage, _attackData.Duration, _attackData.Delay, opponentLayerMask);
         }
 
-        protected abstract Attack ConstructAttack(Damage damage, float delay, float duration, LayerMask layerMask);
+        protected abstract Attack ConstructAttack(Damage damage, float duration, float delay, LayerMask layerMask);
     }
 }
