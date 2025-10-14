@@ -770,6 +770,10 @@ PrefabInstance:
       propertyPath: _attackImplants.Array.data[0]
       value: 
       objectReference: {fileID: 1146817297587855082, guid: a104180206fa24541b1cabdfefdcf906, type: 3}
+    - target: {fileID: 3671294012799409419, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackImplants.Array.data[1]
+      value: 
+      objectReference: {fileID: 8171211511175535574, guid: dd1bbe7155e45aa46867c637e88b2a21, type: 3}
     - target: {fileID: 4154943886894565715, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _hitReader
       value: 
@@ -946,7 +950,7 @@ PrefabInstance:
       objectReference: {fileID: 1841578791}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.28
+      value: -5.7665763
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1161,6 +1165,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5985330620628985182}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <AttackDelay>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <MoveDuration>k__BackingField
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <StunDuration>k__BackingField
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -1178,7 +1194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8755169258205420272, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 7.06
       objectReference: {fileID: 0}
     - target: {fileID: 8755169258205420272, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1268,6 +1284,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1244373544}
+    - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
       value: 
@@ -1318,7 +1338,7 @@ PrefabInstance:
       objectReference: {fileID: 1244373544}
     - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _minDistance
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

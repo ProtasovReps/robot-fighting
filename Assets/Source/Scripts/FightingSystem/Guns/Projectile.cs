@@ -10,19 +10,14 @@ namespace FightingSystem.Guns
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private Spherecaster _spherecaster;
-
+        [SerializeField] private float _lifeTime;
+        
         private Subject<Projectile> _executed;
         private CancellationTokenSource _cancellationTokenSource;
         private Damage _damage;
         
         public Observable<Projectile> Executed => _executed;
-        
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent<PullableObjectReleaseTrigger>(out _))
-                _executed.OnNext(this);
-        }
-        
+
         public void Initialize(LayerMask opponentLayer, Damage damage)
         {
             _executed = new Subject<Projectile>();
@@ -42,20 +37,33 @@ namespace FightingSystem.Guns
         {
             _cancellationTokenSource.Cancel();
         }
-        
+
         private async UniTaskVoid CheckCollision()
         {
+            float elapsedTime = 0f;
+            
             while (_cancellationTokenSource.IsCancellationRequested == false)
             {
                 if (_spherecaster.TryFindDamageable(out IDamageable<Damage> damageable))
                 {
                     damageable.AcceptDamage(_damage);
-                    _executed.OnNext(this);
+                    InvokeExecuted();
                     return;
                 }
 
+                if (elapsedTime >= _lifeTime)
+                {
+                    InvokeExecuted();
+                }
+
+                elapsedTime += Time.deltaTime;
                 await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
             }
+        }
+
+        private void InvokeExecuted()
+        {
+            _executed.OnNext(this);
         }
     }
 }
