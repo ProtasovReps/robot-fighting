@@ -5,6 +5,7 @@
         Default,
         Fire,
         Electricity,
-        Plasma
+        Plasma,
+        DarkMatter
     }
 }

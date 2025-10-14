@@ -233,6 +233,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6125631759070539985, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
   m_PrefabInstance: {fileID: 8186925265064222896}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &856347502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+  m_PrefabInstance: {fileID: 8087746753432169523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &900528520 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7598593405359229620, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
@@ -643,6 +654,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffac9b1d7c196be469bccafae9f03dd6, type: 3}
+--- !u!1001 &3563189569294337332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2596435331539545320, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_Name
+      value: DownElectricityGunAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.155
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094529217077322379, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
 --- !u!4 &3833023166570675991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1534649999029812947, guid: 0c1b8eebf097c4e4285572823ad112c3, type: 3}
@@ -771,6 +839,14 @@ PrefabInstance:
       propertyPath: _placeHolderStash
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3671294012799409419, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackImplants.Array.data[0]
+      value: 
+      objectReference: {fileID: 305267140853288184, guid: 23c5767566eeb0349889c0be485d5ee9, type: 3}
+    - target: {fileID: 3671294012799409419, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackImplants.Array.data[1]
+      value: 
+      objectReference: {fileID: 462757570340761799, guid: 4e953e829d3a1eb4ebcc9852c4bca638, type: 3}
     - target: {fileID: 4154943886894565715, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _hitReader
       value: 
@@ -799,6 +875,10 @@ PrefabInstance:
       propertyPath: _wallDistanceValidator
       value: 
       objectReference: {fileID: 1755773519}
+    - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackDistanceValidator
+      value: 
+      objectReference: {fileID: 856347502}
     - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _opponentDistanceValidator
       value: 
@@ -1228,6 +1308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1244373544}
+    - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1537,3 +1625,4 @@ SceneRoots:
   - {fileID: 8186925265064222896}
   - {fileID: 605839554}
   - {fileID: 6738872520666392942}
+  - {fileID: 3563189569294337332}

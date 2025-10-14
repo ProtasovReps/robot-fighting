@@ -861,6 +861,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1755773519}
     - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackDistanceValidator
+      value: 
+      objectReference: {fileID: 1357853083}
+    - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _opponentDistanceValidator
       value: 
       objectReference: {fileID: 1357853083}
@@ -1306,7 +1310,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7314744317105885594, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}

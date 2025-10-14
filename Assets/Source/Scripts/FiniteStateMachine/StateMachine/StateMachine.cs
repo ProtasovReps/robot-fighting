@@ -35,7 +35,7 @@ namespace FiniteStateMachine
 
             _currentState.OnNext(state);
 
-            if(state is NothingNearbyState || state is OpponentNearbyState || state is WallNearbyState || state is WallOpponentNearbyState)
+            if(state is NothingNearbyState || state is OpponentNearbyState || state is WallNearbyState || state is WallOpponentNearbyState || state is ValidAttackDistanceState)
                 Debug.Log(state);
         }
     }
