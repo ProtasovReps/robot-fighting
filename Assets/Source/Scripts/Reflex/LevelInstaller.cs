@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
@@ -147,7 +146,8 @@ namespace Reflex
             new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
             new BotSoloActionExecutor<WallNearbyState>(stateMachine, leftMove);
             new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack, special);
-            new BotRandomActionExecutor<WallOpponentNearbyState>(stateMachine, special);
+            new BotRandomActionExecutor<ValidAttackDistanceState>(stateMachine, upAttack, downAttack);
+            new BotSoloActionExecutor<WallOpponentNearbyState>(stateMachine, special);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder)

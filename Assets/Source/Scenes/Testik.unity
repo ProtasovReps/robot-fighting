@@ -228,6 +228,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b31406cf65426b9941dc4046b70c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &717543285 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+  m_PrefabInstance: {fileID: 8087746753432169523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &724020607 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6125631759070539985, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
@@ -788,6 +799,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1755773519}
     - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _attackDistanceValidator
+      value: 
+      objectReference: {fileID: 717543285}
+    - target: {fileID: 5545188739934254998, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _opponentDistanceValidator
       value: 
       objectReference: {fileID: 1357853083}
@@ -931,7 +946,7 @@ PrefabInstance:
       objectReference: {fileID: 1841578791}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.6802673
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1296,6 +1311,14 @@ PrefabInstance:
     - target: {fileID: 7365381163480312548, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1244373544}
+    - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

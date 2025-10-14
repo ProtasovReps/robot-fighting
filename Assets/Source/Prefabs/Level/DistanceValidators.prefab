@@ -32,6 +32,7 @@ Transform:
   - {fileID: 5415066731400012490}
   - {fileID: 4868642161051389687}
   - {fileID: 5746607396817033278}
+  - {fileID: 126164890260057198}
   - {fileID: 3626562496089001644}
   - {fileID: 3995959087763423809}
   - {fileID: 4110537183763411616}
@@ -237,6 +238,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 3995959087763423809}
   _minDistance: 5
+--- !u!1 &7314744317105885594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 126164890260057198}
+  - component: {fileID: 7450392590714137185}
+  m_Layer: 0
+  m_Name: AttackDistanceValidator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &126164890260057198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314744317105885594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7365381163480312548}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7450392590714137185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314744317105885594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _minDistance: 3
 --- !u!1 &7852710009052927931
 GameObject:
   m_ObjectHideFlags: 0

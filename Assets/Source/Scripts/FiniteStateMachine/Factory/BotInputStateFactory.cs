@@ -1,5 +1,4 @@
 ﻿using FiniteStateMachine.States;
-using Interface;
 
 namespace FiniteStateMachine.Factory
 {
@@ -12,7 +11,8 @@ namespace FiniteStateMachine.Factory
                 new NothingNearbyState(),
                 new WallNearbyState(),
                 new OpponentNearbyState(),
-                new WallOpponentNearbyState()
+                new WallOpponentNearbyState(),
+                new ValidAttackDistanceState()
             };
         }
     }

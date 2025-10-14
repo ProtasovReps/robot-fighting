@@ -18,6 +18,9 @@ namespace FiniteStateMachine.Transitions.Factory
 
             builder.Merge<WallNearbyState, OpponentNearbyState>(false);
             builder.Merge<OpponentNearbyState, WallNearbyState>(false);
+
+            builder.Merge<ValidAttackDistanceState, OpponentNearbyState>(false);
+            builder.Merge<NothingNearbyState, ValidAttackDistanceState>(false);
             
             initializer
                 .InitializeTransition<WallNearbyState, Unit>(
@@ -27,7 +30,9 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<NothingNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<NothingNearbyState>())
                 .InitializeTransition<WallOpponentNearbyState, Unit>(
-                    Observable.EveryUpdate(), builder.Get<WallOpponentNearbyState>());
+                    Observable.EveryUpdate(), builder.Get<WallOpponentNearbyState>())
+                .InitializeTransition<ValidAttackDistanceState, Unit>(
+                    Observable.EveryUpdate(), builder.Get<ValidAttackDistanceState>());
         }
     }
 }
