@@ -20,6 +20,7 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Merge<OpponentNearbyState, WallNearbyState>(false);
 
             builder.Merge<ValidAttackDistanceState, OpponentNearbyState>(false);
+            builder.Merge<ValidAttackDistanceState, WallOpponentNearbyState>(false);
             builder.Merge<NothingNearbyState, ValidAttackDistanceState>(false);
             
             initializer
