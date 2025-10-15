@@ -265,6 +265,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
   m_PrefabInstance: {fileID: 6410829735138439431}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1348933610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+  m_PrefabInstance: {fileID: 3943031622602484709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac16aa324304f2886bd8b2786b75a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1357853083 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
@@ -274,6 +285,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501384169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+  m_PrefabInstance: {fileID: 3943031622602484709}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652f4ec947c74cd2ba4eda8c67cf20ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!20 &1685808800 stripped
@@ -377,6 +399,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &95663286235305398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8522606997752222339, guid: e9d1531fe481c3d44b66585e21f588c4, type: 3}
+  m_PrefabInstance: {fileID: 3103774854872583136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb64072c9814ba89649d47f6263496a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &937621209231623657 stripped
@@ -744,6 +777,22 @@ PrefabInstance:
       propertyPath: _downHitCollider
       value: 
       objectReference: {fileID: 6410829735138439434}
+    - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _upAttackImplant
+      value: 
+      objectReference: {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
+    - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _placeHolderStash
+      value: 
+      objectReference: {fileID: 1174257008}
+    - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _downAttackImplant
+      value: 
+      objectReference: {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
+    - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _superAttackImplant
+      value: 
+      objectReference: {fileID: 2637998666284659495, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
     - target: {fileID: 1417841561429495828, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: m_Name
       value: LevelInstaller
@@ -813,9 +862,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6410829735138439433}
     - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _botImplantFactory
+      value: 
+      objectReference: {fileID: 1501384169}
+    - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _botAnimatedCharacter
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _playerImplantFactory
+      value: 
+      objectReference: {fileID: 1348933610}
     - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _playerAnimatedCharacter
       value: 
@@ -836,6 +893,22 @@ PrefabInstance:
       propertyPath: _attackImplants.Array.data[1]
       value: 
       objectReference: {fileID: 279859701242447137, guid: ca44ffc143caec5488e3b2010ba61741, type: 3}
+    - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _upAttackImplant
+      value: 
+      objectReference: {fileID: 305267140853288184, guid: 23c5767566eeb0349889c0be485d5ee9, type: 3}
+    - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _placeHolderStash
+      value: 
+      objectReference: {fileID: 95663286235305398}
+    - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _downAttackImplant
+      value: 
+      objectReference: {fileID: 279859701242447137, guid: ca44ffc143caec5488e3b2010ba61741, type: 3}
+    - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _specialAttackImplant
+      value: 
+      objectReference: {fileID: -123092390854191189, guid: 15a92f107002a6740bcde6f4f0e77364, type: 3}
     - target: {fileID: 4154943886894565715, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _hitReader
       value: 

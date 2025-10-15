@@ -14,6 +14,7 @@ using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
 using HealthSystem;
 using ImplantSystem;
+using ImplantSystem.Factory;
 using InputSystem;
 using InputSystem.Bot;
 using InputSystem.Bot.Factory;
@@ -35,7 +36,7 @@ namespace Reflex
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerData _playerData;
-        [SerializeField] private ImplantFactory _playerImplantFactory;
+        [SerializeField] private PlayerImplantFactory _playerImplantFactory;
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotAttackFactory _botAttackFactory;
@@ -44,7 +45,7 @@ namespace Reflex
         [SerializeField] private BotMovement _botMovement;
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
         [SerializeField] private BotData _botData;
-        [SerializeField] private ImplantFactory _botImplantFactory;
+        [SerializeField] private BotImplantFactory _botImplantFactory;
         [SerializeField] private ActionFactory _botActionFactory;
 
         public void InstallBindings(ContainerBuilder containerBuilder)

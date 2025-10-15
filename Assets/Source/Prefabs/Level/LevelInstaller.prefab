@@ -121,7 +121,7 @@ MonoBehaviour:
   _playerDirectionValidationFactory: {fileID: 4449645429874149044}
   _playerMovement: {fileID: 0}
   _playerData: {fileID: 0}
-  _playerImplantFactory: {fileID: 7768288639738415509}
+  _playerImplantFactory: {fileID: 0}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
   _botHitFactory: {fileID: 7192326786253084433}
@@ -129,7 +129,7 @@ MonoBehaviour:
   _botMovement: {fileID: 0}
   _botDirectionValidationFactory: {fileID: 5535057053801991396}
   _botData: {fileID: 0}
-  _botImplantFactory: {fileID: 3671294012799409419}
+  _botImplantFactory: {fileID: 0}
   _botActionFactory: {fileID: 9182618352828704245}
 --- !u!1 &1764151761344835433
 GameObject:
@@ -368,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2011379515507645360}
-  - component: {fileID: 7768288639738415509}
+  - component: {fileID: 744518419117872782}
   m_Layer: 0
   m_Name: PlayerImplantFactory
   m_TagString: Untagged
@@ -391,7 +391,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3293776013892293829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7768288639738415509
+--- !u!114 &744518419117872782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,14 +400,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4034335696706647003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba680b8b3d49418f897771a851e533e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ac16aa324304f2886bd8b2786b75a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackImplants:
-  - {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
-  - {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
-  - {fileID: 2637998666284659495, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
-  _fighterData: {fileID: 0}
+  _upAttackImplant: {fileID: 0}
+  _downAttackImplant: {fileID: 0}
+  _superAttackImplant: {fileID: 0}
+  _placeHolderStash: {fileID: 0}
 --- !u!1 &4122987826340231935
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4640780780397426480}
-  - component: {fileID: 3671294012799409419}
+  - component: {fileID: 3895106535269503460}
   m_Layer: 0
   m_Name: BotImplantFactory
   m_TagString: Untagged
@@ -486,7 +485,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3293776013892293829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3671294012799409419
+--- !u!114 &3895106535269503460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,14 +494,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4695981026008949586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba680b8b3d49418f897771a851e533e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 652f4ec947c74cd2ba4eda8c67cf20ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackImplants:
-  - {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
-  - {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
-  - {fileID: -123092390854191189, guid: 15a92f107002a6740bcde6f4f0e77364, type: 3}
-  _fighterData: {fileID: 0}
+  _upAttackImplant: {fileID: 0}
+  _downAttackImplant: {fileID: 0}
+  _specialAttackImplant: {fileID: 0}
+  _placeHolderStash: {fileID: 0}
 --- !u!1 &5096074298767707608
 GameObject:
   m_ObjectHideFlags: 0
