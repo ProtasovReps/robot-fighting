@@ -3,9 +3,9 @@ using FiniteStateMachine.States;
 using Interface;
 using R3;
 
-namespace InputSystem.Bot
+namespace InputSystem.Bot.Executor
 {
-    public abstract class BotActionExecutor<TTargetState> : IDisposable
+    public abstract class ActionExecutor<TTargetState> : IDisposable
         where TTargetState : State
     {
         private const float SubscriptionDelay = 0.5f;
@@ -15,7 +15,7 @@ namespace InputSystem.Bot
         private IDisposable _currentSubscription;
         private BotAction _currentAction;
 
-        protected BotActionExecutor(IStateMachine stateMachine)
+        protected ActionExecutor(IStateMachine stateMachine)
         {
             _subscriptions = new CompositeDisposable(2);
             Type targetState = typeof(TTargetState);

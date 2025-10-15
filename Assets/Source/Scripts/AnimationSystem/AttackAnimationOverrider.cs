@@ -26,9 +26,9 @@ namespace AnimationSystem
 
             _requiredHashes = new Dictionary<Type, int>
             {
-                { typeof(UpAttackState), AnimationHashes.ArmAttack },
-                { typeof(DownAttackState), AnimationHashes.LegAttack },
-                { typeof(SuperAttackState), AnimationHashes.Super },
+                { typeof(UpAttackState), MotionHashes.ArmAttack },
+                { typeof(DownAttackState), MotionHashes.LegAttack },
+                { typeof(SuperAttackState), MotionHashes.Super },
             };
         }
 

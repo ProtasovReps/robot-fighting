@@ -16,20 +16,20 @@ namespace AnimationSystem.Factory
         {
             var animations = new CharacterAnimation[]
             {
-                new TriggerAnimation<IdleState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Idle),
-                new TriggerAnimation<JumpState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Jump),
-                new TriggerAnimation<MoveLeftState>(stateMachine, animatedCharacter.Animator, AnimationHashes.MoveLeft),
-                new TriggerAnimation<MoveRightState>(stateMachine, animatedCharacter.Animator, AnimationHashes.MoveRight),
-                new TriggerAnimation<UpAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.ArmAttack),
-                new TriggerAnimation<DownAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegAttack),
-                new TriggerAnimation<SuperAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Super),
-                new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.HeadHit),
-                new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, AnimationHashes.LegsHit),
-                new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Block),
-                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Special),
-                new TriggerAnimation<StretchState>(stateMachine, animatedCharacter.Animator, AnimationHashes.Stretch),
-                new TriggerAnimation<UpDeathState>(stateMachine, animatedCharacter.Animator, AnimationHashes.UpDeath),
-                new TriggerAnimation<DownDeathState>(stateMachine, animatedCharacter.Animator, AnimationHashes.DownDeath)
+                new TriggerAnimation<IdleState>(stateMachine, animatedCharacter.Animator, MotionHashes.Idle),
+                new TriggerAnimation<JumpState>(stateMachine, animatedCharacter.Animator, MotionHashes.Jump),
+                new TriggerAnimation<MoveLeftState>(stateMachine, animatedCharacter.Animator, MotionHashes.MoveLeft),
+                new TriggerAnimation<MoveRightState>(stateMachine, animatedCharacter.Animator, MotionHashes.MoveRight),
+                new TriggerAnimation<UpAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.ArmAttack),
+                new TriggerAnimation<DownAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.LegAttack),
+                new TriggerAnimation<SuperAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.Super),
+                new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, MotionHashes.HeadHit),
+                new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, MotionHashes.LegsHit),
+                new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, MotionHashes.Block),
+                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.Special),
+                new TriggerAnimation<StretchState>(stateMachine, animatedCharacter.Animator, MotionHashes.Stretch),
+                new TriggerAnimation<UpDeathState>(stateMachine, animatedCharacter.Animator, MotionHashes.UpDeath),
+                new TriggerAnimation<DownDeathState>(stateMachine, animatedCharacter.Animator, MotionHashes.DownDeath)
             };
 
             new AnimationDurationChanger(animatedCharacter.Animator, stateMachine, fighterData);

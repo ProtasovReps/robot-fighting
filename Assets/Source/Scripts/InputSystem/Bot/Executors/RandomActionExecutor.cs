@@ -3,14 +3,14 @@ using FiniteStateMachine.States;
 using Interface;
 using Random = UnityEngine.Random;
 
-namespace InputSystem.Bot
+namespace InputSystem.Bot.Executor
 {
-    public class BotRandomActionExecutor<TTargetState> : BotActionExecutor<TTargetState>
+    public class RandomActionExecutor<TTargetState> : ActionExecutor<TTargetState>
         where TTargetState : State
     {
         private readonly BotAction[] _botActions;
 
-        public BotRandomActionExecutor(IStateMachine stateMachine, params BotAction[] botActions)
+        public RandomActionExecutor(IStateMachine stateMachine, params BotAction[] botActions)
             : base(stateMachine)
         {
             if (botActions == null)

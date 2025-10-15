@@ -32,7 +32,7 @@ namespace AnimationSystem
         {
             float mappedSpeed = speed.Remap(0, _maxMoveSpeed, 0, MaxAnimatorSpeed);
 
-            _animator.SetFloat(AnimationHashes.WalkSpeed, mappedSpeed);
+            _animator.SetFloat(MotionHashes.WalkSpeed, mappedSpeed);
         }
     }
 }

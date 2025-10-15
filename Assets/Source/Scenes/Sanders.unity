@@ -150,6 +150,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &158707532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2736714847070003156, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+  m_PrefabInstance: {fileID: 3943031622602484709}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &158707533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158707532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e1d527b2df49a8a708f8f00133e9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &605839551
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +768,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6410829735138439433}
     - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _botActionFactory
+      value: 
+      objectReference: {fileID: 158707533}
+    - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _botAnimatedCharacter
       value: 
       objectReference: {fileID: 0}
@@ -842,10 +863,14 @@ PrefabInstance:
       propertyPath: _attacker
       value: 
       objectReference: {fileID: 714131439}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9182618352828704245, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2736714847070003156, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 158707533}
   m_SourcePrefab: {fileID: 100100000, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
 --- !u!4 &4412089117716397444 stripped
 Transform:
@@ -1207,6 +1232,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1244373544}
+    - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
       value: 

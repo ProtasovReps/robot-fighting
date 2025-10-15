@@ -15,7 +15,7 @@ namespace Extensions
         [Inject]
         private void Inject(BotInputConditionBuilder conditionBuilder)
         {
-            conditionBuilder.Add<OpponentNearbyState>(_ =>
+            conditionBuilder.Add<PlayerNearbyState>(_ =>
                 _opponentDistanceValidator.IsValidDistance(_transform.position) == false);
             
             conditionBuilder.Add<WallNearbyState>(_ =>

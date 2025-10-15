@@ -10,7 +10,7 @@ namespace FiniteStateMachine.Factory
             {
                 new NothingNearbyState(),
                 new WallNearbyState(),
-                new OpponentNearbyState(),
+                new PlayerNearbyState(),
                 new WallOpponentNearbyState(),
                 new ValidAttackDistanceState()
             };

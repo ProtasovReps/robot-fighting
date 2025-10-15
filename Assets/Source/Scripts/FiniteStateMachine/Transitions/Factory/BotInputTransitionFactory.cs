@@ -10,24 +10,24 @@ namespace FiniteStateMachine.Transitions.Factory
             TransitionInitializer initializer)
         {
             builder.Add<WallOpponentNearbyState>(builder.GetBare<WallNearbyState>());
-            builder.Merge<WallOpponentNearbyState, OpponentNearbyState>();
+            builder.Merge<WallOpponentNearbyState, PlayerNearbyState>();
 
             builder.Add<NothingNearbyState>(builder.GetBare<WallNearbyState>());
             builder.Reset<NothingNearbyState>(false);
-            builder.Merge<NothingNearbyState, OpponentNearbyState>(false);
+            builder.Merge<NothingNearbyState, PlayerNearbyState>(false);
 
-            builder.Merge<WallNearbyState, OpponentNearbyState>(false);
-            builder.Merge<OpponentNearbyState, WallNearbyState>(false);
+            builder.Merge<WallNearbyState, PlayerNearbyState>(false);
+            builder.Merge<PlayerNearbyState, WallNearbyState>(false);
 
-            builder.Merge<ValidAttackDistanceState, OpponentNearbyState>(false);
+            builder.Merge<ValidAttackDistanceState, PlayerNearbyState>(false);
             builder.Merge<ValidAttackDistanceState, WallOpponentNearbyState>(false);
             builder.Merge<NothingNearbyState, ValidAttackDistanceState>(false);
             
             initializer
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
-                .InitializeTransition<OpponentNearbyState, Unit>(
-                    Observable.EveryUpdate(), builder.Get<OpponentNearbyState>())
+                .InitializeTransition<PlayerNearbyState, Unit>(
+                    Observable.EveryUpdate(), builder.Get<PlayerNearbyState>())
                 .InitializeTransition<NothingNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<NothingNearbyState>())
                 .InitializeTransition<WallOpponentNearbyState, Unit>(

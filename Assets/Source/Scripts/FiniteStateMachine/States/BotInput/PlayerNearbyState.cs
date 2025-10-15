@@ -1,6 +1,6 @@
 ﻿namespace FiniteStateMachine.States
 {
-    public class OpponentNearbyState : State
+    public class PlayerNearbyState : State
     {
     }
 }

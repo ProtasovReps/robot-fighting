@@ -88,6 +88,7 @@ Transform:
   - {fileID: 3279515431764918886}
   - {fileID: 2011379515507645360}
   - {fileID: 4640780780397426480}
+  - {fileID: 3977744879053827545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2840784180280606752
@@ -119,7 +120,6 @@ MonoBehaviour:
   _playerHitFactory: {fileID: 408215370995603233}
   _playerDirectionValidationFactory: {fileID: 4449645429874149044}
   _playerMovement: {fileID: 0}
-  _playerAnimatedCharacter: {fileID: 0}
   _playerData: {fileID: 0}
   _playerImplantFactory: {fileID: 7768288639738415509}
   _botTransitionFactory: {fileID: 1878525661922352557}
@@ -128,9 +128,9 @@ MonoBehaviour:
   _botInputTransitionFactory: {fileID: 7464478066620195132}
   _botMovement: {fileID: 0}
   _botDirectionValidationFactory: {fileID: 5535057053801991396}
-  _botAnimatedCharacter: {fileID: 0}
   _botData: {fileID: 0}
   _botImplantFactory: {fileID: 3671294012799409419}
+  _botActionFactory: {fileID: 9182618352828704245}
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +220,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitReader: {fileID: 0}
+--- !u!1 &2736714847070003156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3977744879053827545}
+  - component: {fileID: 9182618352828704245}
+  m_Layer: 0
+  m_Name: BotActionFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3977744879053827545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736714847070003156}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3293776013892293829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9182618352828704245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736714847070003156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aca5a11562d4138abb8ea3da545a18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3693738321867190502
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5440cf8e601459191a809ecef73f50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upHitCollider: {fileID: 0}
-  _downHitCollider: {fileID: 0}
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
   _fighterData: {fileID: 0}
@@ -365,7 +407,7 @@ MonoBehaviour:
   - {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
   - {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
   - {fileID: 2637998666284659495, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
-  _placeHolderStash: {fileID: 0}
+  _fighterData: {fileID: 0}
 --- !u!1 &4122987826340231935
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +502,7 @@ MonoBehaviour:
   - {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
   - {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
   - {fileID: -123092390854191189, guid: 15a92f107002a6740bcde6f4f0e77364, type: 3}
-  _placeHolderStash: {fileID: 0}
+  _fighterData: {fileID: 0}
 --- !u!1 &5096074298767707608
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _opponentDistanceValidator: {fileID: 0}
+  _attackDistanceValidator: {fileID: 0}
   _wallDistanceValidator: {fileID: 0}
   _transform: {fileID: 0}
 --- !u!1 &8492080479402674424
@@ -600,8 +643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5440cf8e601459191a809ecef73f50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upHitCollider: {fileID: 0}
-  _downHitCollider: {fileID: 0}
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
   _fighterData: {fileID: 0}

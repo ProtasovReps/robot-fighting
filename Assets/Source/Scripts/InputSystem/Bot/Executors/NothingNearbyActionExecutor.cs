@@ -5,9 +5,9 @@ using FiniteStateMachine.States;
 using Interface;
 using R3;
 
-namespace InputSystem.Bot
+namespace InputSystem.Bot.Executor
 {
-    public class BotNothingNearbyActionExecutor : BotRandomActionExecutor<NothingNearbyState>
+    public class NothingNearbyActionExecutor : RandomActionExecutor<NothingNearbyState>
     {
         private readonly IDisposable _subscription;
         private readonly Dictionary<int, BotAction> _directions;
@@ -15,7 +15,7 @@ namespace InputSystem.Bot
 
         private Type _lastState;
 
-        public BotNothingNearbyActionExecutor(
+        public NothingNearbyActionExecutor(
             IStateMachine stateMachine, BotMoveInput botMoveInput, BotAction left, BotAction right, BotAction inPlace)
             : base(stateMachine, left, right, inPlace)
         {
@@ -48,7 +48,7 @@ namespace InputSystem.Bot
 
             int direction = 0;
 
-            if (_lastState == typeof(OpponentNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
+            if (_lastState == typeof(PlayerNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
                 direction = Directions.Right;
 
             if (_lastState == typeof(WallNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Left)

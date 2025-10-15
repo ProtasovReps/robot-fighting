@@ -11,12 +11,12 @@ using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
-using FiniteStateMachine.States;
 using FiniteStateMachine.Transitions.Factory;
 using HealthSystem;
 using ImplantSystem;
 using InputSystem;
 using InputSystem.Bot;
+using InputSystem.Bot.Factory;
 using Interface;
 using MovementSystem;
 using Reflex.Core;
@@ -45,6 +45,7 @@ namespace Reflex
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
         [SerializeField] private BotData _botData;
         [SerializeField] private ImplantFactory _botImplantFactory;
+        [SerializeField] private ActionFactory _botActionFactory;
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
@@ -129,25 +130,11 @@ namespace Reflex
             return validatedBotInput;
         }
 
-        private void InstallBotActions(
-            BotMoveInput moveInput,
-            BotFightInput fightInput, 
-            BotInputStateMachine stateMachine)
-        {  //Скорее всего в отдельный класс, тк у разных ботов будут разные действия
-
-            BotAction leftMove = new(moveInput.MoveLeft, _botData.MoveDuration);
-            BotAction rightMove = new(moveInput.MoveRight, _botData.MoveDuration);
-            BotAction inPlace = new(moveInput.Stop, _botData.MoveDuration / 2f); // idleDuration
-            BotAction upAttack = new(fightInput.AttackUp, _botData.AttackDelay); // не attackDelay, скорее UpAttackDuration брать
-            BotAction downAttack = new(fightInput.AttackDown, _botData.AttackDelay);// downDuration
-            BotAction block = new(fightInput.BlockAttack, _botData.BlockDuration);
-            BotAction special = new(fightInput.AttackSpecial, _botData.AttackDelay); // special duration
-             
-            new BotNothingNearbyActionExecutor(stateMachine, moveInput, leftMove, rightMove, inPlace);
-            new BotSoloActionExecutor<WallNearbyState>(stateMachine, leftMove);
-            new BotRandomActionExecutor<OpponentNearbyState>(stateMachine, block, upAttack, downAttack, special);
-            new BotRandomActionExecutor<ValidAttackDistanceState>(stateMachine, upAttack, downAttack);
-            new BotSoloActionExecutor<WallOpponentNearbyState>(stateMachine, special);
+        private void InstallBotActions(BotMoveInput moveInput, BotFightInput fightInput, BotInputStateMachine machine)
+        {
+            ActionStash stash = new(moveInput, fightInput, _botData);
+            
+            _botActionFactory.InstallActions(stash, moveInput, machine);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder)

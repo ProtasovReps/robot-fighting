@@ -1,16 +1,15 @@
 ﻿using System;
 using FiniteStateMachine.States;
 using Interface;
-using UnityEngine;
 
-namespace InputSystem.Bot
+namespace InputSystem.Bot.Executor
 {
-    public class BotSoloActionExecutor<TTargetState> : BotActionExecutor<TTargetState>
+    public class SoloActionExecutor<TTargetState> : ActionExecutor<TTargetState>
         where TTargetState : State
     {
         private readonly BotAction _botAction;
 
-        public BotSoloActionExecutor(IStateMachine stateMachine, BotAction botAction)
+        public SoloActionExecutor(IStateMachine stateMachine, BotAction botAction)
             : base(stateMachine)
         {
             if (botAction == null)

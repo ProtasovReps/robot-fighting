@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Extensions
 {
-    public static class AnimationHashes
+    public static class MotionHashes
     {
         public static readonly int Idle = Animator.StringToHash(nameof(Idle));
         public static readonly int MoveLeft = Animator.StringToHash(nameof(MoveLeft));
