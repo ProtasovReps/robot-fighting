@@ -20,8 +20,8 @@ namespace ImplantSystem
             
             for (int i = 0; i < _attackImplants.Length; i++)
             {
-                AttackPart requiredPlaceholder = _attackImplants[i].RequiredPart;
-                ImplantPlaceHolder placeHolder = stash.Get(requiredPlaceholder);
+                AttackPart requiredPart = _attackImplants[i].RequiredPart;
+                ImplantPlaceHolder placeHolder = stash.Get(requiredPart);
                 AttackImplant newImplant = Instantiate(_attackImplants[i]);
                 
                 placeHolder.SetImplant(newImplant);
