@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CharacterSystem.Data;
+using CharacterSystem.Parameters;
 using FiniteStateMachine.States;
 using Interface;
 using UnityEngine;
@@ -19,13 +19,13 @@ namespace AnimationSystem
         public AnimationDurationChanger(
             Animator animator,
             IStateMachine stateMachine,
-            FighterData fighterData)
+            FighterParameters fighterParameters)
         {
             _stateDurations = new Dictionary<Type, float>
             {
-                { typeof(UpHittedState), fighterData.StunDuration },
-                { typeof(DownHittedState), fighterData.DownStunDuration },
-                { typeof(BlockState), fighterData.BlockDuration}
+                { typeof(UpHittedState), fighterParameters.StunDuration },
+                { typeof(DownHittedState), fighterParameters.DownStunDuration },
+                { typeof(BlockState), fighterParameters.BlockDuration}
             };
 
             _animator = animator;

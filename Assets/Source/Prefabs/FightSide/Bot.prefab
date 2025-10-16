@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _botData: {fileID: 4814461825682681044}
+  _hitColliderStash: {fileID: 0}
 --- !u!1 &3436288265220649339
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,6 @@ MonoBehaviour:
   <BlockDuration>k__BackingField: 1
   <BlockValue>k__BackingField: 30
   <MoveSpeed>k__BackingField: 8.5
-  <SkinData>k__BackingField: {fileID: 0}
   <MoveDuration>k__BackingField: 1
   <AttackDelay>k__BackingField: 1
 --- !u!114 &5126417679251285239
@@ -227,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5614998443950865375}
-  - component: {fileID: 6874819434155705621}
+  - component: {fileID: 3884694032593354642}
   m_Layer: 7
   m_Name: HitParticles
   m_TagString: Untagged
@@ -250,7 +249,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8755169258205420272}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6874819434155705621
+--- !u!114 &3884694032593354642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,8 +258,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8714096457638188125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33efb63531d14025a646026fa265aa47, type: 3}
+  m_Script: {fileID: 11500000, guid: 648eb61217814dcb8fe402c014b13267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hitReader: {fileID: 469982315641386245}
-  _fighterData: {fileID: 4814461825682681044}
+  _hitEffectStash: {fileID: 0}

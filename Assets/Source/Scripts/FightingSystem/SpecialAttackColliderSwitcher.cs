@@ -1,7 +1,7 @@
 ﻿using System;
-using CharacterSystem.Data;
 using FiniteStateMachine;
 using FiniteStateMachine.States;
+using HitSystem;
 using R3;
 using Reflex.Attributes;
 using UnityEngine;
@@ -10,8 +10,8 @@ namespace FightingSystem
 {
     public class SpecialAttackColliderSwitcher : MonoBehaviour
     {
-        [SerializeField] private BotData _botData;
-
+        [SerializeField] private HitColliderStash _hitColliderStash;
+        
         [Inject]
         private void Inject(BotStateMachine botStateMachine)
         {
@@ -31,14 +31,14 @@ namespace FightingSystem
         
         private void EnableColliders()
         {
-            _botData.SkinData.ColliderStash.UpCollider.enabled = true;
-            _botData.SkinData.ColliderStash.DownCollider.enabled = true;
+            _hitColliderStash.UpCollider.enabled = true;
+            _hitColliderStash.DownCollider.enabled = true;
         }
 
         private void DisableColliders()
         {
-            _botData.SkinData.ColliderStash.UpCollider.enabled = false;
-            _botData.SkinData.ColliderStash.DownCollider.enabled = false;
+            _hitColliderStash.UpCollider.enabled = false;
+            _hitColliderStash.DownCollider.enabled = false;
         }
     }
 }

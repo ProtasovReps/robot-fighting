@@ -1,8 +1,9 @@
-﻿using CharacterSystem.Data;
+﻿using CharacterSystem.Parameters;
 using Extensions;
 using FiniteStateMachine.States;
 using Interface;
 using MovementSystem;
+using UnityEngine;
 
 namespace AnimationSystem.Factory
 {
@@ -10,30 +11,31 @@ namespace AnimationSystem.Factory
     {
         public void Produce(
             AnimatedCharacter animatedCharacter,
+            Animator animator,
             IStateMachine stateMachine,
-            FighterData fighterData,
+            FighterParameters fighterParameters,
             PositionTranslation positionTranslation)
         {
             var animations = new CharacterAnimation[]
             {
-                new TriggerAnimation<IdleState>(stateMachine, animatedCharacter.Animator, MotionHashes.Idle),
-                new TriggerAnimation<JumpState>(stateMachine, animatedCharacter.Animator, MotionHashes.Jump),
-                new TriggerAnimation<MoveLeftState>(stateMachine, animatedCharacter.Animator, MotionHashes.MoveLeft),
-                new TriggerAnimation<MoveRightState>(stateMachine, animatedCharacter.Animator, MotionHashes.MoveRight),
-                new TriggerAnimation<UpAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.ArmAttack),
-                new TriggerAnimation<DownAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.LegAttack),
-                new TriggerAnimation<SuperAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.Super),
-                new TriggerAnimation<UpHittedState>(stateMachine, animatedCharacter.Animator, MotionHashes.HeadHit),
-                new TriggerAnimation<DownHittedState>(stateMachine, animatedCharacter.Animator, MotionHashes.LegsHit),
-                new TriggerAnimation<BlockState>(stateMachine, animatedCharacter.Animator, MotionHashes.Block),
-                new TriggerAnimation<SpecialAttackState>(stateMachine, animatedCharacter.Animator, MotionHashes.Special),
-                new TriggerAnimation<StretchState>(stateMachine, animatedCharacter.Animator, MotionHashes.Stretch),
-                new TriggerAnimation<UpDeathState>(stateMachine, animatedCharacter.Animator, MotionHashes.UpDeath),
-                new TriggerAnimation<DownDeathState>(stateMachine, animatedCharacter.Animator, MotionHashes.DownDeath)
+                new TriggerAnimation<IdleState>(stateMachine, animator, MotionHashes.Idle),
+                new TriggerAnimation<JumpState>(stateMachine, animator, MotionHashes.Jump),
+                new TriggerAnimation<MoveLeftState>(stateMachine, animator, MotionHashes.MoveLeft),
+                new TriggerAnimation<MoveRightState>(stateMachine, animator, MotionHashes.MoveRight),
+                new TriggerAnimation<UpAttackState>(stateMachine, animator, MotionHashes.ArmAttack),
+                new TriggerAnimation<DownAttackState>(stateMachine, animator, MotionHashes.LegAttack),
+                new TriggerAnimation<SuperAttackState>(stateMachine, animator, MotionHashes.Super),
+                new TriggerAnimation<UpHittedState>(stateMachine, animator, MotionHashes.HeadHit),
+                new TriggerAnimation<DownHittedState>(stateMachine, animator, MotionHashes.LegsHit),
+                new TriggerAnimation<BlockState>(stateMachine, animator, MotionHashes.Block),
+                new TriggerAnimation<SpecialAttackState>(stateMachine, animator, MotionHashes.Special),
+                new TriggerAnimation<StretchState>(stateMachine, animator, MotionHashes.Stretch),
+                new TriggerAnimation<UpDeathState>(stateMachine, animator, MotionHashes.UpDeath),
+                new TriggerAnimation<DownDeathState>(stateMachine, animator, MotionHashes.DownDeath)
             };
 
-            new AnimationDurationChanger(animatedCharacter.Animator, stateMachine, fighterData);
-            new MoveAnimationSpeed(animatedCharacter.Animator,positionTranslation,fighterData.MoveSpeed);
+            new AnimationDurationChanger(animator, stateMachine, fighterParameters);
+            new MoveAnimationSpeed(animator, positionTranslation,fighterParameters.MoveSpeed);
             
             animatedCharacter.Initialize(animations);
         }

@@ -5,7 +5,7 @@ namespace AnimationSystem
 {
     public class AnimatedCharacter : MonoBehaviour
     {
-        [field: SerializeField] public Animator Animator { get; private set; }
+        [SerializeField] private Animator _animator;
 
         private CharacterAnimation[] _animations;
 

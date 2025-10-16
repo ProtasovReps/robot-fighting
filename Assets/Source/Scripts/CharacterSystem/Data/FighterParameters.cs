@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace CharacterSystem.Data
+namespace CharacterSystem.Parameters
 {
-    public abstract class FighterData : MonoBehaviour
+    public abstract class FighterParameters : MonoBehaviour
     {
         [field: SerializeField] [field: Min(1f)] public float StartHealthValue { get; private set; }
         [field: SerializeField] [field: Min(0.1f)] public float StunDuration { get; private set; }
@@ -10,6 +10,5 @@ namespace CharacterSystem.Data
         [field: SerializeField] [field: Min(1f)] public float BlockDuration { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float BlockValue { get; private set; }
         [field: SerializeField] public float MoveSpeed { get; private set; }
-        [field: SerializeField] public SkinData SkinData { get; private set; }
     }
 }

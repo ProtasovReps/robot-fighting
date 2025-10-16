@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HitSystem
 {
-    public class HitImpact : MonoBehaviour // также может не быть монобехом
+    public class HitImpact : MonoBehaviour
     {
         private const int LeftImpactDirection = -1;
         private const int RightImpactDirection = 1;
@@ -31,9 +31,9 @@ namespace HitSystem
         private async UniTaskVoid Impact(float impulseForce)
         {
             float boundOffset = Mathf.Abs(_transform.position.x - _bound.transform.position.x);
-            Vector3 targetPosition = _transform.position +
-                                     Vector3.right * _impactDirection * Mathf.Clamp(impulseForce , 0, boundOffset);
-            
+            float clampedTargetPosition = Mathf.Clamp(impulseForce, 0, boundOffset);
+            Vector3 targetPosition = _transform.position + Vector3.right * _impactDirection * clampedTargetPosition;
+
             float expiredTime = 0f;
 
             while (expiredTime < _impactTime)

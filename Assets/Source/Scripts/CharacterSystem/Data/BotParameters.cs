@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace CharacterSystem.Data
+namespace CharacterSystem.Parameters
 {
-    public class BotData : FighterData
+    public class BotParameters : FighterParameters
     {
         [field: SerializeField] public float MoveDuration { get; private set; }
         [field: SerializeField] [field: Min(1)] public float AttackDelay { get; private set; }

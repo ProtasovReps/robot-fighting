@@ -2,12 +2,11 @@
 using HitSystem;
 using UnityEngine;
 
-namespace CharacterSystem.Data
+namespace CharacterSystem.Parameters
 {
     public class SkinData : MonoBehaviour
     {
-        [field: SerializeField] public HitColliderStash ColliderStash { get; private set; }
-        [field: SerializeField] public HitEffectStash HitEffectStash { get; private set; }
-        [field: SerializeField] public AnimatedCharacter AnimatedCharacter { get; private set; }
+        [field: SerializeField] public HitEffectStash HitEffectStash { get; private set; } // убрать
+        [field: SerializeField] public AnimatedCharacter AnimatedCharacter { get; private set; } // убрать
     }
 }

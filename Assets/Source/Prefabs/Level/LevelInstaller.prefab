@@ -117,20 +117,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerTransitionFactory: {fileID: 4154943886894565715}
   _playerAttackFactory: {fileID: 8826331469460263196}
-  _playerHitFactory: {fileID: 408215370995603233}
+  _playerHitFactory: {fileID: 2036093214915605278}
   _playerDirectionValidationFactory: {fileID: 4449645429874149044}
   _playerMovement: {fileID: 0}
-  _playerData: {fileID: 0}
+  _playerParameters: {fileID: 0}
   _playerImplantFactory: {fileID: 0}
+  _playerAnimator: {fileID: 0}
+  _playerAnimatedCharacter: {fileID: 0}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
-  _botHitFactory: {fileID: 7192326786253084433}
+  _botHitFactory: {fileID: 5552862501096592642}
   _botInputTransitionFactory: {fileID: 7464478066620195132}
   _botMovement: {fileID: 0}
   _botDirectionValidationFactory: {fileID: 5535057053801991396}
-  _botData: {fileID: 0}
+  _botParameters: {fileID: 0}
   _botImplantFactory: {fileID: 0}
   _botActionFactory: {fileID: 9182618352828704245}
+  _botAnimator: {fileID: 0}
+  _botAnimatedCharacter: {fileID: 0}
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499346063154201949}
-  - component: {fileID: 408215370995603233}
+  - component: {fileID: 2036093214915605278}
   m_Layer: 0
   m_Name: PlayerHitFactory
   m_TagString: Untagged
@@ -344,7 +348,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3293776013892293829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &408215370995603233
+--- !u!114 &2036093214915605278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,12 +357,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3965541727533090262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5440cf8e601459191a809ecef73f50c, type: 3}
+  m_Script: {fileID: 11500000, guid: e5351a61e51246089263ec75e142fad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
-  _fighterData: {fileID: 0}
+  _fighterParameters: {fileID: 0}
+  _colliderStash: {fileID: 0}
 --- !u!1 &4034335696706647003
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3279515431764918886}
-  - component: {fileID: 7192326786253084433}
+  - component: {fileID: 5552862501096592642}
   m_Layer: 0
   m_Name: BotHitFactory
   m_TagString: Untagged
@@ -629,7 +634,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3293776013892293829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7192326786253084433
+--- !u!114 &5552862501096592642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -638,12 +643,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8492080479402674424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5440cf8e601459191a809ecef73f50c, type: 3}
+  m_Script: {fileID: 11500000, guid: 97c48f2c6f364a91a93bd7e5876337a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
-  _fighterData: {fileID: 0}
+  _fighterParameters: {fileID: 0}
+  _colliderStash: {fileID: 0}
 --- !u!1 &8857659637372173378
 GameObject:
   m_ObjectHideFlags: 0

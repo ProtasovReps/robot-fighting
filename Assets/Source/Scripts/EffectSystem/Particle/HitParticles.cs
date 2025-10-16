@@ -1,19 +1,19 @@
-﻿using CharacterSystem.Data;
-using HitSystem;
+﻿using HitSystem;
 using R3;
 using UnityEngine;
 
 namespace EffectSystem.Particle
 {
-    public class HitParticles : MonoBehaviour
+    public abstract class HitParticles : MonoBehaviour
     {
         [SerializeField] private HitReader _hitReader;
-        [SerializeField] private FighterData _fighterData;
 
         private void Awake()
         {
-            Subscribe(_hitReader.TorsoHitted, _fighterData.SkinData.HitEffectStash.UpParticleEffect);
-            Subscribe(_hitReader.LegsHitted, _fighterData.SkinData.HitEffectStash.DownParticleEffect);
+            HitEffectStash stash = GetStash();
+            
+            Subscribe(_hitReader.TorsoHitted, stash.UpParticleEffect);
+            Subscribe(_hitReader.LegsHitted, stash.DownParticleEffect);
         }
 
         private void Subscribe(Observable<Unit> observable, ParticleSystem effect)
@@ -22,5 +22,7 @@ namespace EffectSystem.Particle
                 .Subscribe(_ => effect.Play())
                 .AddTo(this);
         }
+
+        protected abstract HitEffectStash GetStash();
     }
 }
