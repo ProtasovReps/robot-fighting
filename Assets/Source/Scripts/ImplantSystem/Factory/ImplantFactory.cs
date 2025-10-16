@@ -1,5 +1,4 @@
-﻿using CharacterSystem.Data;
-using Extensions;
+﻿using Extensions;
 using ImplantSystem.AttackImplants;
 using ImplantSystem.PlaceHolders;
 using UnityEngine;

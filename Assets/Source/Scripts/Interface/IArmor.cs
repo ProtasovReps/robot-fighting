@@ -1,4 +1,4 @@
-﻿using FightingSystem;
+﻿using FightingSystem.AttackDamage;
 
 namespace Interface
 {

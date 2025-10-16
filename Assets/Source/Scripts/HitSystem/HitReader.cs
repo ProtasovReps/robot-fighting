@@ -1,4 +1,4 @@
-﻿using FightingSystem;
+﻿using FightingSystem.AttackDamage;
 using HitSystem.FighterParts;
 using R3;
 using UnityEngine;

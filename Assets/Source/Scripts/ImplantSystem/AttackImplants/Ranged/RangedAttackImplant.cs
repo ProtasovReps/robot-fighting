@@ -1,4 +1,4 @@
-﻿using FightingSystem;
+﻿using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
 using FightingSystem.Guns;
 using UnityEngine;

@@ -1,5 +1,6 @@
 ﻿using Extensions;
 using FightingSystem;
+using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
 using UnityEngine;
 

@@ -1,6 +1,6 @@
 ﻿using System;
 using Extensions;
-using FightingSystem;
+using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
 using UnityEngine;
 
@@ -8,16 +8,16 @@ namespace ImplantSystem.AttackImplants
 {
     public abstract class AttackImplant : MonoBehaviour
     {
-        [SerializeField] private DamageData _damageData; // использовать по другому
+        [SerializeField] private DamageFactory _damageFactory;
         [SerializeField] private AttackData _attackData;
 
         public abstract Type RequiredState { get; }
         public abstract AttackPart RequiredPart { get; }
         public AnimationClip AnimationClip => _attackData.Clip;
         
-        public Attack GetAttack(LayerMask opponentLayerMask) // вот сюда прокидывать данные урона
+        public Attack GetAttack(LayerMask opponentLayerMask, Damage baseDamage)
         {
-            Damage damage = new(_damageData.Damage, _damageData.ImpulseForce, _damageData.Type);
+            Damage damage = _damageFactory.Produce(baseDamage);
             return ConstructAttack(damage, _attackData.Duration, _attackData.Delay, opponentLayerMask);
         }
 

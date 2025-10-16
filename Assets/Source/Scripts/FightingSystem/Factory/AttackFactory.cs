@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
 using ImplantSystem;
 using ImplantSystem.AttackImplants;
@@ -24,7 +25,7 @@ namespace FightingSystem.Factory
                     if (attacks.ContainsKey(attackImplant.RequiredState))
                         throw new ArgumentOutOfRangeException(nameof(attackImplant.RequiredState));
                     
-                    attacks.Add(attackImplant.RequiredState, attackImplant.GetAttack(_opponentLayer));
+                    attacks.Add(attackImplant.RequiredState, attackImplant.GetAttack(_opponentLayer, new Damage(0,0, DamageType.Default))); // заглушка
                 }
             }
             

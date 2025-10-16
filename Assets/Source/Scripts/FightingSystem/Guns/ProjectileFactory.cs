@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FightingSystem.AttackDamage;
+using UnityEngine;
 
 namespace FightingSystem.Guns
 {
