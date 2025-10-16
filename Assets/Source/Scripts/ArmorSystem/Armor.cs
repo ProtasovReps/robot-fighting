@@ -2,24 +2,26 @@
 using FightingSystem.AttackDamage;
 using HitSystem.FighterParts;
 using Interface;
-using UnityEngine;
 
 namespace ArmorSystem
 {
-    public abstract class Armor<TFighterPart> : MonoBehaviour, IDamageable<Damage>
+    public abstract class Armor<TFighterPart> : IDamageable<Damage>
         where TFighterPart : DamageableFighterPart
     {
-        [field: SerializeField] protected float DamageReduceAmount;
-
-        protected TFighterPart FighterPart { get; private set; }
-
-        public void Initialize(TFighterPart fighterPart)
+        public Armor(TFighterPart fighterPart, float damageReduceAmount)
         {
             if (fighterPart == null)
                 throw new ArgumentNullException(nameof(fighterPart));
-            
+
+            if (damageReduceAmount < 0)
+                throw new ArgumentOutOfRangeException(nameof(damageReduceAmount));
+                
+            DamageReduceAmount = damageReduceAmount;
             FighterPart = fighterPart;
         }
+        
+        protected float DamageReduceAmount { get; }
+        protected TFighterPart FighterPart { get; }
         
         public abstract void AcceptDamage(Damage damage);
     }

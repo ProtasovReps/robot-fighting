@@ -1,4 +1,5 @@
 ﻿using ArmorSystem;
+using ArmorSystem.Factory;
 using CharacterSystem.Parameters;
 using FightingSystem;
 using HealthSystem;
@@ -28,18 +29,16 @@ namespace HitSystem
             return _hitReader;
         }
 
-        protected abstract Armor<Torso> GetTorsoArmor();
-        protected abstract Armor<Legs> GetLegsArmor();
+        protected abstract ArmorFactory<Torso> GetTorsoArmorFactory();
+        protected abstract ArmorFactory<Legs> GetLegsArmorFactory();
         protected abstract HitColliderStash GetColliderStash();
 
         private (Armor<Torso> torsoArmor, Armor<Legs> legArmor) GetArmor(Torso torso, Legs legs)
         {
-            Armor<Torso> torsoArmor = GetTorsoArmor();
-            Armor<Legs> legArmor = GetLegsArmor();
-
-            torsoArmor.Initialize(torso);
-            legArmor.Initialize(legs);
-            return (torsoArmor, legArmor);
+            Armor<Torso> torsoArmor = GetTorsoArmorFactory().Produce(torso);
+            Armor<Legs> legsArmor = GetLegsArmorFactory().Produce(legs);
+            
+            return (torsoArmor, legsArmor);
         }
 
         private void InitializeHit(IConditionAddable conditionAddable, Torso torso, Legs legs)

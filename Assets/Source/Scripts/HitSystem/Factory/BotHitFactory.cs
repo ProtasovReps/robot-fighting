@@ -1,4 +1,4 @@
-﻿using ArmorSystem;
+﻿using ArmorSystem.Factory;
 using HitSystem.FighterParts;
 using UnityEngine;
 
@@ -6,18 +6,18 @@ namespace HitSystem
 {
     public class BotHitFactory : HitFactory
     {
-        [SerializeField] private Armor<Torso> _torsoArmor;
-        [SerializeField] private Armor<Legs> _legsArmor;
+        [SerializeField] private ArmorFactory<Torso> _torsoArmor;
+        [SerializeField] private ArmorFactory<Legs> _legsArmor;
         [SerializeField] private HitColliderStash _colliderStash;
 
-        protected override Armor<Torso> GetTorsoArmor()
+        protected override ArmorFactory<Torso> GetTorsoArmorFactory()
         {
-            return Instantiate(_torsoArmor);
+            return _torsoArmor;
         }
 
-        protected override Armor<Legs> GetLegsArmor()
+        protected override ArmorFactory<Legs> GetLegsArmorFactory()
         {
-            return Instantiate(_legsArmor);
+            return _legsArmor;
         }
 
         protected override HitColliderStash GetColliderStash()
