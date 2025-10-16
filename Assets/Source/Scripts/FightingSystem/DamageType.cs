@@ -1,4 +1,4 @@
-﻿namespace FightingSystem.Attacks
+﻿namespace FightingSystem
 {
     public enum DamageType
     {
