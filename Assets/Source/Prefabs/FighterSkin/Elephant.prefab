@@ -560,9 +560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ColliderStash>k__BackingField: {fileID: 2380159707909899155}
   <HitEffectStash>k__BackingField: {fileID: 4398240015938250229}
-  <PlaceholderStash>k__BackingField: {fileID: 4266145980893532036}
   <AnimatedCharacter>k__BackingField: {fileID: 6275953948218538502}
 --- !u!114 &2380159707909899155
 MonoBehaviour:
@@ -618,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 1330604078849943566}
+  _animator: {fileID: 1330604078849943566}
 --- !u!1 &3034912480084933540
 GameObject:
   m_ObjectHideFlags: 0

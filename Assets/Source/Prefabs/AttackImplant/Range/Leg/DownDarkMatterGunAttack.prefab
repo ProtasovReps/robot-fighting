@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94af5994f7ba4ccbbcc2a8c719c0a071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootForce: 10
+  _shootForce: 15
 --- !u!1 &5206369270040279778
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3114554973383123782}
   - component: {fileID: 7496892637806617195}
+  - component: {fileID: 8744049971799520433}
   m_Layer: 0
   m_Name: DownDarkMatterGunAttack
   m_TagString: Untagged
@@ -123,6 +124,7 @@ Transform:
   - {fileID: 6097640134161247399}
   - {fileID: 2071552123308973555}
   - {fileID: 595127350503382977}
+  - {fileID: 1654623346826621281}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7496892637806617195
@@ -137,11 +139,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d39472b5f4bde89741d500c9b0519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageFactory: {fileID: 0}
+  _damageFactory: {fileID: 502456487092807368}
   _attackParameters: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
   _gun: {fileID: 3331316396090072692}
   _projectilePool: {fileID: 9203476664590676029}
   _projectileFactory: {fileID: 8276260962443972071}
+--- !u!114 &8744049971799520433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206369270040279778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Damage>k__BackingField: 60
+  <ImpulseForce>k__BackingField: 1.5
+  <DamageType>k__BackingField: 0
 --- !u!1 &5356264515564747918
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,3 +204,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 7147727757885381327, guid: 569d1a4ff3ac3ea46ac7af7a134d804f, type: 3}
+--- !u!1 &5861288882967067508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654623346826621281}
+  - component: {fileID: 502456487092807368}
+  m_Layer: 0
+  m_Name: DamageFactory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1654623346826621281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861288882967067508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3114554973383123782}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &502456487092807368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861288882967067508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageStats: {fileID: 8744049971799520433}

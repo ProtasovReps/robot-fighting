@@ -2239,7 +2239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8582773247821177583}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.77162457, z: -0, w: 0.63607824}
+  m_LocalRotation: {x: 0, y: -0.77162457, z: 0, w: 0.63607824}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.6000001, y: 2.6, z: 2.6000001}
   m_ConstrainProportionsScale: 0
@@ -2285,9 +2285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ColliderStash>k__BackingField: {fileID: 1246581355818561986}
   <HitEffectStash>k__BackingField: {fileID: 5679599157532645441}
-  <PlaceholderStash>k__BackingField: {fileID: 9193636496699841342}
   <AnimatedCharacter>k__BackingField: {fileID: 5379026763085178898}
 --- !u!114 &1246581355818561986
 MonoBehaviour:
@@ -2343,7 +2341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 5615390123032760536}
+  _animator: {fileID: 5615390123032760536}
 --- !u!1 &8710717441333062486
 GameObject:
   m_ObjectHideFlags: 0
