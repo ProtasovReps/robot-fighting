@@ -8,7 +8,7 @@ namespace InputSystem.Bot.Factory
 {
     public abstract class ActionFactory : MonoBehaviour
     {
-        public void InstallActions(ActionStash stash, BotMoveInput moveInput, StateMachine stateMachine)
+        public void InstallActions(ActionStash stash, BotMoveInput moveInput, BotInputStateMachine stateMachine)
         {
             BotAction leftMove = stash.Get(MotionHashes.MoveLeft);
             BotAction rightMove = stash.Get(MotionHashes.MoveRight);
@@ -20,6 +20,6 @@ namespace InputSystem.Bot.Factory
             AddActions(stash, stateMachine);
         }
         
-        protected abstract void AddActions(ActionStash stash, StateMachine machine);
+        protected abstract void AddActions(ActionStash stash, BotInputStateMachine machine);
     }
 }

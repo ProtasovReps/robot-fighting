@@ -1,4 +1,5 @@
-﻿using FightingSystem.Dying;
+﻿using Extensions;
+using FightingSystem.Dying;
 using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
@@ -29,6 +30,12 @@ namespace FiniteStateMachine.Transitions.Factory
         protected override void InitializeConditionTransition(ConditionBuilder builder,
             TransitionInitializer initializer)
         {
+            Observable<Unit> armAttack = _botFightInput.GetObservable(MotionHashes.ArmAttack);
+            Observable<Unit> legAttack = _botFightInput.GetObservable(MotionHashes.LegAttack);
+            Observable<Unit> special = _botFightInput.GetObservable(MotionHashes.Special);
+            Observable<Unit> super = _botFightInput.GetObservable(MotionHashes.Super);
+            Observable<Unit> block = _botFightInput.GetObservable(MotionHashes.Block);
+            
             builder.Reset<BlockState>(false);
             builder.Reset<AttackState>(false);
             
@@ -44,11 +51,10 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<MoveRightState, int>(_botMoveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<UpHittedState, Unit>(_hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(_hitReader.LegsHitted, builder.Get<DownHittedState>())
-                .InitializeTransition<UpAttackState, Unit>(_botFightInput.UpAttack, builder.Get<AttackState>())
-                .InitializeTransition<DownAttackState, Unit>(_botFightInput.DownAttack, builder.Get<AttackState>())
-                .InitializeTransition<SpecialAttackState, Unit>(_botFightInput.SpecialAttack,
-                    builder.Get<AttackState>())
-                .InitializeTransition<BlockState, Unit>(_botFightInput.Block, builder.Get<BlockState>())
+                .InitializeTransition<UpAttackState, Unit>(armAttack, builder.Get<AttackState>())
+                .InitializeTransition<DownAttackState, Unit>(legAttack, builder.Get<AttackState>())
+                .InitializeTransition<SpecialAttackState, Unit>(special, builder.Get<AttackState>())
+                .InitializeTransition<BlockState, Unit>(block, builder.Get<BlockState>())
                 .InitializeTransition<UpDeathState, Unit>(_death.UpDeath, builder.Get<DeathState>())
                 .InitializeTransition<DownDeathState, Unit>(_death.DownDeath, builder.Get<DeathState>());
         }

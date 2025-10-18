@@ -1,10 +1,14 @@
-﻿using ImplantSystem.AttackImplants;
+﻿using System.Collections.Generic;
+using System.Linq;
+using ImplantSystem.AttackImplants;
 using UnityEngine;
 
 namespace ImplantSystem.Factory
 {
     public class BotImplantFactory : ImplantFactory
     {
+        private readonly List<AttackImplant> _attackImplants = new();
+
         [SerializeField] private AttackImplant _upAttackImplant;
         [SerializeField] private AttackImplant _downAttackImplant;
         [SerializeField] private AttackImplant _specialAttackImplant;
@@ -12,12 +16,20 @@ namespace ImplantSystem.Factory
         
         protected override AttackImplant[] GetImplants()
         {
-            return new[] { _upAttackImplant, _downAttackImplant, _specialAttackImplant };
+            AddImplant(_upAttackImplant);
+            AddImplant(_downAttackImplant);
+            AddImplant(_specialAttackImplant);
+            return _attackImplants.ToArray();
         }
 
         protected override ImplantPlaceHolderStash GetPlaceholderStash()
         {
             return _placeHolderStash;
+        }
+
+        protected void AddImplant(AttackImplant attackImplant)
+        {
+            _attackImplants.Add(attackImplant);
         }
     }
 }

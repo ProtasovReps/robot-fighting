@@ -7,7 +7,7 @@ namespace InputSystem.Bot.Factory
 {
     public class RangeActionFactory : ActionFactory
     {
-        protected override void AddActions(ActionStash stash, StateMachine machine)
+        protected override void AddActions(ActionStash stash, BotInputStateMachine machine)
         {
             BotAction upAttack = stash.Get(MotionHashes.ArmAttack);
             BotAction downAttack = stash.Get(MotionHashes.LegAttack);

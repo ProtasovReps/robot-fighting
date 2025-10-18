@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CharacterSystem.Parameters;
 using Extensions;
 
@@ -10,15 +11,22 @@ namespace InputSystem.Bot
 
         public ActionStash(BotMoveInput moveInput, BotFightInput fightInput, BotParameters botParameters)
         {
+            Action armAttack = fightInput.GetAction(MotionHashes.ArmAttack);
+            Action legAttack = fightInput.GetAction(MotionHashes.LegAttack);
+            Action special = fightInput.GetAction(MotionHashes.Special);
+            Action super = fightInput.GetAction(MotionHashes.Super);
+            Action block = fightInput.GetAction(MotionHashes.Block);
+            
             _actions = new Dictionary<int, BotAction>
             {
                 { MotionHashes.MoveLeft, new(moveInput.MoveLeft, botParameters.MoveDuration) },
                 { MotionHashes.MoveRight, new(moveInput.MoveRight, botParameters.MoveDuration) },
                 { MotionHashes.Idle, new(moveInput.Stop, botParameters.MoveDuration / 2f) }, // idleDuration
-                { MotionHashes.ArmAttack, new(fightInput.AttackUp, botParameters.AttackDelay) }, // не attackDelay, скорее UpAttackDuration брать
-                { MotionHashes.LegAttack, new(fightInput.AttackDown, botParameters.AttackDelay) }, // downDuration
-                { MotionHashes.Block, new(fightInput.BlockAttack, botParameters.BlockDuration) },
-                { MotionHashes.Special, new(fightInput.AttackSpecial, botParameters.AttackDelay) } // special duration
+                { MotionHashes.ArmAttack, new(armAttack, botParameters.AttackDelay) }, // не attackDelay, скорее UpAttackDuration брать
+                { MotionHashes.LegAttack, new(legAttack, botParameters.AttackDelay) }, // downDuration
+                { MotionHashes.Special, new(special, botParameters.AttackDelay) },// special duration
+                { MotionHashes.Super, new(super, botParameters.AttackDelay) }, // super duration
+                { MotionHashes.Block, new(block, botParameters.BlockDuration) }
             };
         }
         

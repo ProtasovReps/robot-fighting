@@ -1,45 +1,42 @@
-﻿using R3;
+﻿using System;
+using System.Collections.Generic;
+using Extensions;
+using R3;
 
 namespace InputSystem.Bot
 {
     public class BotFightInput
     {
-        private readonly Subject<Unit> _upAttack;
-        private readonly Subject<Unit> _downAttack;
-        private readonly Subject<Unit> _block;
-        private readonly Subject<Unit> _specialAttack;
-        
+        private readonly Dictionary<int, Subject<Unit>> _fightInputs;
+
         public BotFightInput()
         {
-            _upAttack = new Subject<Unit>();
-            _downAttack = new Subject<Unit>();
-            _block = new Subject<Unit>();
-            _specialAttack = new Subject<Unit>();
+            _fightInputs = new Dictionary<int, Subject<Unit>>
+            {
+                { MotionHashes.ArmAttack, new Subject<Unit>() },
+                { MotionHashes.LegAttack, new Subject<Unit>() },
+                { MotionHashes.Special, new Subject<Unit>() },
+                { MotionHashes.Super, new Subject<Unit>() },
+                { MotionHashes.Block, new Subject<Unit>() }
+            };
         }
 
-        public Observable<Unit> UpAttack => _upAttack;
-        public Observable<Unit> DownAttack => _downAttack;
-        public Observable<Unit> SpecialAttack => _specialAttack;
-        public Observable<Unit> Block => _block;
-
-        public void AttackUp()
+        public Observable<Unit> GetObservable(int motionHash)
         {
-            _upAttack.OnNext(Unit.Default);
+            ValidateKey(motionHash);
+            return _fightInputs[motionHash].AsObservable();
         }
 
-        public void AttackDown()
+        public Action GetAction(int motionHash)
         {
-            _downAttack.OnNext(Unit.Default);
+            ValidateKey(motionHash);
+            return () => _fightInputs[motionHash].OnNext(Unit.Default);
         }
-        
-        public void AttackSpecial()
+
+        private void ValidateKey(int motionHash)
         {
-            _specialAttack.OnNext(Unit.Default);
-        }
-        
-        public void BlockAttack()
-        {
-            _block.OnNext(Unit.Default);
+            if (_fightInputs.ContainsKey(motionHash) == false)
+                throw new KeyNotFoundException(nameof(motionHash));
         }
     }
 }

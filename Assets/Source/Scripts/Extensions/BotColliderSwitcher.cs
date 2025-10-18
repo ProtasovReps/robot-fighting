@@ -6,25 +6,25 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace FightingSystem
+namespace Extensions
 {
-    public class SpecialAttackColliderSwitcher : MonoBehaviour
+    public class BotColliderSwitcher : MonoBehaviour
     {
         [SerializeField] private HitColliderStash _hitColliderStash;
         
         [Inject]
         private void Inject(BotStateMachine botStateMachine)
         {
-            Type searchedType = typeof(SpecialAttackState);
+            Type specialAttackType = typeof(SpecialAttackState);
             
             botStateMachine.Value
-                .Where(state => state.Type == searchedType)
+                .Where(state => state.Type == specialAttackType)
                 .Subscribe(_ => DisableColliders())
                 .AddTo(this);
 
             botStateMachine.Value
                 .Pairwise()
-                .Where(pair => pair.Previous.Type == searchedType)
+                .Where(pair => pair.Previous.Type == specialAttackType)
                 .Subscribe(_ => EnableColliders())
                 .AddTo(this);
         }
