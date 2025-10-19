@@ -3,19 +3,18 @@ using FiniteStateMachine;
 using FiniteStateMachine.States;
 using InputSystem.Bot.Executor;
 
-namespace InputSystem.Bot.Factory
+namespace InputSystem.Bot.Factory.Boss
 {
-    public class RangeActionFactory : ActionFactory
+    public class RobertActionFactory : ActionFactory
     {
         protected override void AddActions(ActionStash stash, BotInputStateMachine machine)
         {
             BotAction upAttack = stash.Get(MotionHashes.ArmAttack);
+            BotAction super = stash.Get(MotionHashes.Super);
             BotAction downAttack = stash.Get(MotionHashes.LegAttack);
-            BotAction special = stash.Get(MotionHashes.Special);
-            BotAction block = stash.Get(MotionHashes.Block);
             
-            new RandomActionExecutor<PlayerNearbyState>(machine, block, special);
-            new RandomActionExecutor<ValidAttackDistanceState>(machine, upAttack, downAttack);
+            new RandomActionExecutor<PlayerNearbyState>(machine, super, downAttack);
+            new SoloActionExecutor<ValidAttackDistanceState>(machine, upAttack);
         }
     }
 }

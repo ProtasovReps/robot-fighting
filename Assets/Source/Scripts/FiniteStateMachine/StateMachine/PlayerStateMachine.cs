@@ -1,5 +1,4 @@
 ﻿using FiniteStateMachine.States;
-using UnityEngine;
 
 namespace FiniteStateMachine
 {

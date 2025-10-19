@@ -1,20 +1,27 @@
 ﻿using System;
 using FiniteStateMachine.States;
+using FiniteStateMachine.Transitions.Factory;
 using R3;
 
 namespace FiniteStateMachine.Transitions
 {
     public class TransitionInitializer : IDisposable
     {
-        private readonly StateMachine _machine;
+        private readonly TransitionFactory _transitionFactory;
         private readonly CompositeDisposable _disposables;
-
-        public TransitionInitializer(StateMachine stateMachine)
+        private readonly StateMachine _stateMachine;
+        
+        public TransitionInitializer(TransitionFactory transitionFactory, StateMachine stateMachine)
         {
+            if (transitionFactory == null)
+                throw new ArgumentNullException(nameof(transitionFactory));
+
             if (stateMachine == null)
                 throw new ArgumentNullException(nameof(stateMachine));
-
-            _machine = stateMachine;
+            
+            _transitionFactory = transitionFactory;
+            _stateMachine = stateMachine;
+            
             _disposables = new CompositeDisposable();
         }
 
@@ -28,7 +35,7 @@ namespace FiniteStateMachine.Transitions
             Func<Unit, bool> condition)
             where TTargetState : State
         {
-            var transition = new Transition<TTargetState>(_machine);
+            var transition = _transitionFactory.Produce<TTargetState>(_stateMachine);
 
             observable
                 .Select(_ => Unit.Default)

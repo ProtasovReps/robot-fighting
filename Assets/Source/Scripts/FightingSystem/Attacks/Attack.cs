@@ -20,7 +20,7 @@ namespace FightingSystem.Attacks
             _startDelay = startDelay;
             _endDelay = duration - _startDelay;
         }
-        
+
         public async UniTask Launch(CancellationTokenSource tokenSource)
         {
             await UniTask.WaitForSeconds(_startDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);

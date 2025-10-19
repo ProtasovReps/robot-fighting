@@ -3,7 +3,6 @@ using Extensions.Exceptions;
 using FiniteStateMachine.States;
 using Interface;
 using R3;
-using UnityEngine;
 
 namespace FiniteStateMachine
 {
@@ -34,9 +33,6 @@ namespace FiniteStateMachine
                 throw new StateNotFoundException(nameof(newState));
 
             _currentState.OnNext(state);
-
-            if(state is NothingNearbyState || state is PlayerNearbyState || state is WallNearbyState || state is WallOpponentNearbyState || state is ValidAttackDistanceState)
-                Debug.Log(state);
         }
     }
 }

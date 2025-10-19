@@ -51,10 +51,10 @@ namespace FightingSystem
 
             if (_attacks.ContainsKey(state) == false)
                 throw new StateNotFoundException(nameof(state));
-            
+
             IsContinuing = true;
             _cancellationTokenSource = new CancellationTokenSource();
-            
+
             AttackDelayed(_attacks[state]).Forget();
         }
 

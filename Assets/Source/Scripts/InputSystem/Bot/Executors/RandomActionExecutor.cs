@@ -13,8 +13,8 @@ namespace InputSystem.Bot.Executor
         public RandomActionExecutor(IStateMachine stateMachine, params BotAction[] botActions)
             : base(stateMachine)
         {
-            if (botActions == null)
-                throw new ArgumentNullException(nameof(botActions));
+            if (botActions.Length == 0)
+                throw new ArgumentException(nameof(botActions));
 
             _botActions = botActions;
         }

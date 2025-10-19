@@ -3,12 +3,12 @@ using FiniteStateMachine.States;
 
 namespace FiniteStateMachine.Transitions
 {
-    public class Transition<TTargetState>
+    public abstract class Transition<TTargetState>
         where TTargetState : State
     {
         private readonly StateMachine _machine;
 
-        public Transition(StateMachine machine)
+        protected Transition(StateMachine machine)
         {
             if (machine == null)
                 throw new ArgumentNullException(nameof(machine));
@@ -18,10 +18,12 @@ namespace FiniteStateMachine.Transitions
 
         public void Transit()
         {
-            if (_machine.Value.CurrentValue.Type == typeof(TTargetState))
+            if (ValidateState(_machine.Value.CurrentValue) == false)
                 return;
 
             _machine.Enter(typeof(TTargetState));
         }
+
+        protected abstract bool ValidateState(State currentState);
     }
 }

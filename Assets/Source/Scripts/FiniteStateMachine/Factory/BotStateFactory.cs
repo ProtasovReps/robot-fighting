@@ -17,6 +17,7 @@ namespace FiniteStateMachine.Factory
                 new DownAttackState(),
                 new BlockState(),
                 new SpecialAttackState(),
+                new SuperAttackState(),
                 new UpDeathState(),
                 new DownDeathState()
             };

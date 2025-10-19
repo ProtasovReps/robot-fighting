@@ -6,8 +6,7 @@ namespace FiniteStateMachine.Transitions.Factory
 {
     public class BotInputTransitionFactory : StateTransitionFactory
     {
-        protected override void InitializeConditionTransition(ConditionBuilder builder,
-            TransitionInitializer initializer)
+        protected override void InitializeConditions(ConditionBuilder builder)
         {
             builder.Add<WallOpponentNearbyState>(builder.GetBare<WallNearbyState>());
             builder.Merge<WallOpponentNearbyState, PlayerNearbyState>();
@@ -22,8 +21,11 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Merge<ValidAttackDistanceState, PlayerNearbyState>(false);
             builder.Merge<ValidAttackDistanceState, WallOpponentNearbyState>(false);
             builder.Merge<NothingNearbyState, ValidAttackDistanceState>(false);
-            
-            initializer
+        }
+
+        protected override void InstallTransitions(StateMachine stateMachine, ConditionBuilder builder)
+        {
+            new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
                 .InitializeTransition<PlayerNearbyState, Unit>(

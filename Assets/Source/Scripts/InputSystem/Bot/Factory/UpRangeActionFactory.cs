@@ -16,7 +16,6 @@ namespace InputSystem.Bot.Factory
             
             new RandomActionExecutor<PlayerNearbyState>(machine, block, downAttack, special);
             new RandomActionExecutor<ValidAttackDistanceState>(machine, upAttack);
-            new SoloActionExecutor<WallOpponentNearbyState>(machine, special);
         }
     }
 }

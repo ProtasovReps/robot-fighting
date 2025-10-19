@@ -21,7 +21,7 @@ namespace Extensions
                 .Where(state => state.Type == specialAttackType)
                 .Subscribe(_ => DisableColliders())
                 .AddTo(this);
-
+        
             botStateMachine.Value
                 .Pairwise()
                 .Where(pair => pair.Previous.Type == specialAttackType)
@@ -31,14 +31,14 @@ namespace Extensions
         
         private void EnableColliders()
         {
-            _hitColliderStash.UpCollider.enabled = true;
-            _hitColliderStash.DownCollider.enabled = true;
+            _hitColliderStash.UpCollider.gameObject.SetActive(true);
+            _hitColliderStash.DownCollider.gameObject.SetActive(true);
         }
-
+        
         private void DisableColliders()
         {
-            _hitColliderStash.UpCollider.enabled = false;
-            _hitColliderStash.DownCollider.enabled = false;
+            _hitColliderStash.UpCollider.gameObject.SetActive(false);
+            _hitColliderStash.DownCollider.gameObject.SetActive(false);
         }
     }
 }

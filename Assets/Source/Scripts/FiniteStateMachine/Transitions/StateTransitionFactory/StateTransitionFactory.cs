@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
-    public abstract class StateTransitionFactory : MonoBehaviour
+    public abstract class StateTransitionFactory : MonoBehaviour // Disposer должен удалять инициализаторы
     {
-        private StateMachine _stateMachine;
         private ConditionBuilder _builder;
-        private IDisposable _disposable;
+        private StateMachine _stateMachine;
 
         private void Start()
         {
@@ -18,15 +17,7 @@ namespace FiniteStateMachine.Transitions.Factory
             if (_builder == null)
                 throw new ArgumentNullException(nameof(_builder));
 
-            var initializer = new TransitionInitializer(_stateMachine);
-            
-            InitializeConditionTransition(_builder, initializer);
-            _disposable = initializer;
-        }
-
-        private void OnDestroy()
-        {
-            _disposable?.Dispose();
+            InitializeTransitions();
         }
 
         public void Initialize(StateMachine stateMachine, ConditionBuilder conditionBuilder)
@@ -34,8 +25,14 @@ namespace FiniteStateMachine.Transitions.Factory
             _stateMachine = stateMachine;
             _builder = conditionBuilder;
         }
-
-        protected abstract void InitializeConditionTransition(ConditionBuilder builder,
-            TransitionInitializer initializer);
+        
+        protected abstract void InitializeConditions(ConditionBuilder builder);
+        protected abstract void InstallTransitions(StateMachine stateMachine, ConditionBuilder builder);
+        
+        private void InitializeTransitions()
+        {
+            InitializeConditions(_builder);
+            InstallTransitions(_stateMachine, _builder);
+        }
     }
 }

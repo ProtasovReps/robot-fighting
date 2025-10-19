@@ -45,6 +45,7 @@ namespace InputSystem.Bot.Executor
         private void Activate()
         {
             _currentAction = GetAction();
+            
             _currentSubscription = _currentAction.Executed
                 .Subscribe(_ => Reactivate());
 
