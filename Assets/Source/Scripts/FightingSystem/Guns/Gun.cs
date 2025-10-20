@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FightingSystem.Guns
 {
-    public class Gun : MonoBehaviour
+    public class Gun : Shooter
     {
         [SerializeField] private float _shootForce;
         
@@ -25,7 +25,7 @@ namespace FightingSystem.Guns
             _projectilePool = projectilePool;
         }
        
-        public void Shoot()
+        public override void Shoot()
         {
             Projectile projectile = _projectilePool.Get();
             

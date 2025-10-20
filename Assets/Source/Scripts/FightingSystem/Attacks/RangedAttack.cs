@@ -7,20 +7,20 @@ namespace FightingSystem.Attacks
 {
     public class RangedAttack : Attack
     {
-        private readonly Gun _gun;
+        private readonly Shooter _shooter;
         
-        public RangedAttack(float duration, float startDelay, Gun gun)
+        public RangedAttack(float duration, float startDelay, Shooter shooter)
             : base(duration, startDelay)
         {
-            if (gun == null)
-                throw new ArgumentNullException(nameof(gun));
+            if (shooter == null)
+                throw new ArgumentNullException(nameof(shooter));
 
-            _gun = gun;
+            _shooter = shooter;
         }
 
         protected override async UniTask Execute(CancellationToken token, float duration)
         {
-            _gun.Shoot();
+            _shooter.Shoot();
             await UniTask.WaitForSeconds(duration, cancellationToken: token, cancelImmediately: true);
         }
     }
