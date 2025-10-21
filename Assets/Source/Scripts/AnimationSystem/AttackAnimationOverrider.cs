@@ -40,13 +40,15 @@ namespace AnimationSystem
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {
-                    if (_requiredHashes.ContainsKey(implant.RequiredState) == false)
+                    Type attackState = AttackStateComparer.GetAttackState(implant.AttackParameters.RequiredState);
+                    
+                    if (_requiredHashes.ContainsKey(attackState) == false)
                         continue;
                         
-                    int animationID = GetAnimationID(_requiredHashes[implant.RequiredState]);
+                    int animationID = GetAnimationID(_requiredHashes[attackState]);
                     string animationName = overrideController.animationClips[animationID].name;
-                    
-                    overrideController[animationName] = implant.AnimationClip;
+
+                    overrideController[animationName] = implant.AttackParameters.Clip;
                 }
             }
 

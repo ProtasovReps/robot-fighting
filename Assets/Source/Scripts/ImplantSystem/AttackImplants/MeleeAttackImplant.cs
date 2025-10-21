@@ -1,22 +1,18 @@
 ﻿using Extensions;
 using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
-using FightingSystem.Guns;
 using UnityEngine;
 
-namespace ImplantSystem.AttackImplants.Overlap
+namespace ImplantSystem.AttackImplants
 {
-    public abstract class OverlapAttackImplant : AttackImplant
+    public class MeleeAttackImplant : AttackImplant
     {
-        [SerializeField] private Overlaper _overlaper;
         [SerializeField] private Spherecaster _spherecaster;
         
         protected override Attack ConstructAttack(Damage damage, float duration, float delay, LayerMask layerMask)
         {
             _spherecaster.Initialize(layerMask);
-            _overlaper.Initialize(damage, _spherecaster);
-            
-            return new RangedAttack(duration, delay, _overlaper);
+            return new MeleeAttack(duration, delay, damage, _spherecaster);
         }
     }
 }

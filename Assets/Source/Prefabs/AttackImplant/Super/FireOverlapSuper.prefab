@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4736225869604923889}
-  - component: {fileID: 8698878556834210758}
+  - component: {fileID: 2869872605012543046}
   - component: {fileID: 4622113329151341698}
   m_Layer: 0
   m_Name: FireOverlapSuper
@@ -127,7 +127,7 @@ Transform:
   - {fileID: 459088318720306015}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8698878556834210758
+--- !u!114 &2869872605012543046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,11 +136,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8575800474968087042}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b220555ae7445aa813518efc765592c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2958f80da8c74ea78ec3f6606ac85e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 6719883577224122314}
-  _attackParameters: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
+  AttackParameters: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
   _overlaper: {fileID: 6813220050473298452}
   _spherecaster: {fileID: 6430291483255113304}
 --- !u!114 &4622113329151341698
@@ -253,6 +253,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 466822, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19804450, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19809826, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19809840, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19814582, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19826654, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19844724, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19869928, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874164, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19894158, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19894158, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}

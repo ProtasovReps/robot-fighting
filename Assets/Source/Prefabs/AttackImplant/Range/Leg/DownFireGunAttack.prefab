@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6254646243924437017}
-  - component: {fileID: 8171211511175535574}
+  - component: {fileID: 8796985076486456060}
   - component: {fileID: 7570069373384950595}
   m_Layer: 0
   m_Name: DownFireGunAttack
@@ -217,7 +217,7 @@ Transform:
   - {fileID: 4534076757653989218}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8171211511175535574
+--- !u!114 &8796985076486456060
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,11 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7905445255755391439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064d39472b5f4bde89741d500c9b0519, type: 3}
+  m_Script: {fileID: 11500000, guid: 050f1628cdb3446fb78994bf0add38f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 7772344980419299188}
-  _attackParameters: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
+  AttackParameters: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
   _gun: {fileID: 2712511549779150733}
   _projectilePool: {fileID: 4628957210907883047}
   _projectileFactory: {fileID: 5632590411063314363}

@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 43054873975534159}
-  - component: {fileID: 279859701242447137}
+  - component: {fileID: 6633977228299630816}
   - component: {fileID: 1796480475097305953}
   - component: {fileID: 661157479181062540}
   m_Layer: 0
@@ -80,7 +80,7 @@ Transform:
   - {fileID: 6772728803485492520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &279859701242447137
+--- !u!114 &6633977228299630816
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,11 +89,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2370253763122485662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f4f99fd6d0f404db84cdd20d5ac77c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 34ad45d71bf0481aac1b63f89b285bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 3469605694132413390}
-  _attackParameters: {fileID: 11400000, guid: 5a15aba326b178346a0b2561d2242e36, type: 2}
+  AttackParameters: {fileID: 11400000, guid: 5a15aba326b178346a0b2561d2242e36, type: 2}
   _spherecaster: {fileID: 1796480475097305953}
 --- !u!114 &1796480475097305953
 MonoBehaviour:

@@ -16,7 +16,7 @@ namespace ImplantSystem.Factory
             
             for (int i = 0; i < implants.Length; i++)
             {
-                AttackPart requiredPart = implants[i].RequiredPart;
+                AttackPart requiredPart = implants[i].AttackParameters.RequiredPart;
                 ImplantPlaceHolder placeHolder = stash.Get(requiredPart);
                 AttackImplant newImplant = Instantiate(implants[i]);
                 

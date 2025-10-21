@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Extensions;
 using FightingSystem.AttackDamage;
 using FightingSystem.Attacks;
 using ImplantSystem;
@@ -20,12 +21,14 @@ namespace FightingSystem.Factory
             
             foreach (ImplantPlaceHolder placeHolder in implantPlaceHolderStash.PlaceHolders)
             {
-                foreach (AttackImplant attackImplant in placeHolder.Implants)
+                foreach (AttackImplant implant in placeHolder.Implants)
                 {
-                    if (attacks.ContainsKey(attackImplant.RequiredState))
-                        throw new ArgumentOutOfRangeException(nameof(attackImplant.RequiredState));
+                    Type attackState = AttackStateComparer.GetAttackState(implant.AttackParameters.RequiredState);
                     
-                    attacks.Add(attackImplant.RequiredState, attackImplant.GetAttack(_opponentLayer, new Damage(0,0, DamageType.Default))); // заглушка
+                    if (attacks.ContainsKey(attackState))
+                        throw new ArgumentOutOfRangeException(nameof(attackState));
+                    
+                    attacks.Add(attackState, implant.GetAttack(_opponentLayer, new Damage(0,0, DamageType.Default))); // заглушка
                 }
             }
             

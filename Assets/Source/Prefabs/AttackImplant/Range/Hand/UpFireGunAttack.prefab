@@ -144,7 +144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6254646243924437017}
-  - component: {fileID: 1146817297587855082}
+  - component: {fileID: 122043790165357448}
   - component: {fileID: 636293430256229952}
   m_Layer: 0
   m_Name: UpFireGunAttack
@@ -172,7 +172,7 @@ Transform:
   - {fileID: 8934031653445314864}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1146817297587855082
+--- !u!114 &122043790165357448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,11 +181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7905445255755391439}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06348f9682c406ebb8cd056e62d94e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 050f1628cdb3446fb78994bf0add38f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 6897014214794609950}
-  _attackParameters: {fileID: 11400000, guid: b79ab38657660f4499d73f60c466389d, type: 2}
+  AttackParameters: {fileID: 11400000, guid: b79ab38657660f4499d73f60c466389d, type: 2}
   _gun: {fileID: 2712511549779150733}
   _projectilePool: {fileID: 4628957210907883047}
   _projectileFactory: {fileID: 5632590411063314363}

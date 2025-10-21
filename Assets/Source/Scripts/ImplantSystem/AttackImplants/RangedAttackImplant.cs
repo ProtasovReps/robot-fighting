@@ -3,9 +3,9 @@ using FightingSystem.Attacks;
 using FightingSystem.Guns;
 using UnityEngine;
 
-namespace ImplantSystem.AttackImplants.Ranged
+namespace ImplantSystem.AttackImplants
 {
-    public abstract class RangedAttackImplant : AttackImplant
+    public class RangedAttackImplant : AttackImplant
     {
         [SerializeField] private Gun _gun;
         [SerializeField] private ProjectilePool _projectilePool;

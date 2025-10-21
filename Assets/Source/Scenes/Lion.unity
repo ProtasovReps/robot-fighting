@@ -308,7 +308,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2736714847070003156, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
   m_PrefabInstance: {fileID: 3943031622602484709}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1672352481
+--- !u!114 &1672352483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672352478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 372921f7ebfd4a89a0ba80fd08cf8c9f, type: 3}
+  m_Script: {fileID: 11500000, guid: c5613bbae3794c68b633b8ad1806591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!20 &1685808800 stripped
@@ -337,11 +337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3da9e4db1d124d628dc8f1875435f36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upAttackImplant: {fileID: 1146817297587855082, guid: a104180206fa24541b1cabdfefdcf906, type: 3}
-  _downAttackImplant: {fileID: 8171211511175535574, guid: dd1bbe7155e45aa46867c637e88b2a21, type: 3}
-  _specialAttackImplant: {fileID: -123092390854191189, guid: 15a92f107002a6740bcde6f4f0e77364, type: 3}
+  _upAttackImplant: {fileID: 122043790165357448, guid: a104180206fa24541b1cabdfefdcf906, type: 3}
+  _downAttackImplant: {fileID: 8796985076486456060, guid: dd1bbe7155e45aa46867c637e88b2a21, type: 3}
+  _specialAttackImplant: {fileID: 5384147431725337231, guid: 15a92f107002a6740bcde6f4f0e77364, type: 3}
   _placeHolderStash: {fileID: 5985330620628985184}
-  _superAttackImplant: {fileID: 8698878556834210758, guid: 3021a5be6406de946ab7bf9c48d9a239, type: 3}
+  _superAttackImplant: {fileID: 2869872605012543046, guid: 3021a5be6406de946ab7bf9c48d9a239, type: 3}
 --- !u!114 &1755773519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8812430539463863696, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
@@ -762,7 +762,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _upAttackImplant
       value: 
-      objectReference: {fileID: 305267140853288184, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
+      objectReference: {fileID: 2168100214854103689, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _placeHolderStash
       value: 
@@ -770,11 +770,11 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _downAttackImplant
       value: 
-      objectReference: {fileID: 279859701242447137, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
+      objectReference: {fileID: 6340909280457061635, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _superAttackImplant
       value: 
-      objectReference: {fileID: 2637998666284659495, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
+      objectReference: {fileID: 7953322764121576475, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
     - target: {fileID: 1417841561429495828, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: m_Name
       value: LevelInstaller
@@ -882,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _botActionFactory
       value: 
-      objectReference: {fileID: 1672352481}
+      objectReference: {fileID: 1672352483}
     - target: {fileID: 3361006041500974722, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _playerParameters
       value: 
@@ -1038,7 +1038,7 @@ PrefabInstance:
       addedObject: {fileID: 1748739796}
     - targetCorrespondingSourceObject: {fileID: 2736714847070003156, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1672352481}
+      addedObject: {fileID: 1672352483}
   m_SourcePrefab: {fileID: 100100000, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
 --- !u!1001 &5172213015156306594
 PrefabInstance:
@@ -1188,7 +1188,7 @@ PrefabInstance:
       objectReference: {fileID: 1841578791}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.827663
+      value: -13.0615425
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1540,7 +1540,7 @@ PrefabInstance:
       objectReference: {fileID: 1244373544}
     - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _minDistance
-      value: 3.5
+      value: 3.7
       objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
