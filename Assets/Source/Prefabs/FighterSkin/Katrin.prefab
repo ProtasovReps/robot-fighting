@@ -991,6 +991,50 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.3761611, y: -0.01558977, z: -0.0000003501773}
     m_Extent: {x: 0.47637808, y: 0.13835561, z: 0.1899671}
   m_DirtyAABB: 0
+--- !u!1 &2862646598237630120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3098027412409613435}
+  - component: {fileID: 836402117919705854}
+  m_Layer: 0
+  m_Name: UpProjectilePlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3098027412409613435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862646598237630120}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.0098086, z: -0, w: 0.99995196}
+  m_LocalPosition: {x: -0.011766069, y: 1.174, z: 0.59988475}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7687873403621952661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &836402117919705854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2862646598237630120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce2495fd0354a589f483da8b0d82bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2938205722732592216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1158,50 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.31077614, y: -0.013712823, z: -0.0000003054738}
     m_Extent: {x: 0.16134652, y: 0.14072783, z: 0.10506338}
   m_DirtyAABB: 0
+--- !u!1 &3379531240958282561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4906126132839139135}
+  - component: {fileID: 4706601398073201440}
+  m_Layer: 0
+  m_Name: DownProjectilePlaceHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4906126132839139135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379531240958282561}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.0098086, z: -0, w: 0.99995196}
+  m_LocalPosition: {x: -0.012746519, y: 0.6, z: 0.6498751}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7687873403621952661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4706601398073201440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379531240958282561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a56bf1bb25c47b4a3a58aed94c68822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3412115928489723645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1899,8 @@ Transform:
   - {fileID: 6537652045761682314}
   - {fileID: 8057122970647925732}
   - {fileID: 1356269117445750043}
+  - {fileID: 3098027412409613435}
+  - {fileID: 4906126132839139135}
   - {fileID: 14187975265559758}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -102.829, z: 0}
@@ -1889,8 +1979,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb64072c9814ba89649d47f6263496a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _handImplantPlaceHolder: {fileID: 6261179689263536206}
-  _legImplantPlaceHolder: {fileID: 1636781943300825940}
+  _implantPlaceHolders:
+  - {fileID: 6261179689263536206}
+  - {fileID: 1636781943300825940}
+  - {fileID: 836402117919705854}
+  - {fileID: 4706601398073201440}
 --- !u!114 &3131225752128996816
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,8 @@
     public enum AttackPart
     {
         Hands,
-        Legs
+        Legs,
+        UpProjectile,
+        DownProjectile,
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Extensions;
 using ImplantSystem.AttackImplants;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace ImplantSystem.PlaceHolders
     {
         private readonly List<AttackImplant> _implants = new();
 
+        public abstract AttackPart AttackPart { get; }        
         public IEnumerable<AttackImplant> Implants => _implants;
         
         public void SetImplant(AttackImplant implant)

@@ -8,28 +8,37 @@ namespace ImplantSystem
 {
     public class ImplantPlaceHolderStash : MonoBehaviour
     {
-        [SerializeField] private HandImplantPlaceHolder _handImplantPlaceHolder;
-        [SerializeField] private LegImplantPlaceHolder _legImplantPlaceHolder;
+        [SerializeField] private ImplantPlaceHolder[] _implantPlaceHolders;
+        
+        private Dictionary<AttackPart, ImplantPlaceHolder> _placeHolderParts;
 
-        private Dictionary<AttackPart, ImplantPlaceHolder> _placeHolders;
-
-        public IEnumerable<ImplantPlaceHolder> PlaceHolders => _placeHolders.Values;
-
+        public IEnumerable<ImplantPlaceHolder> PlaceHolders => _implantPlaceHolders;
+        
         public void Initialize()
         {
-            _placeHolders = new Dictionary<AttackPart, ImplantPlaceHolder>()
+            _placeHolderParts = new Dictionary<AttackPart, ImplantPlaceHolder>();
+
+            for (int i = 0; i < _implantPlaceHolders.Length; i++)
             {
-                { AttackPart.Hands, _handImplantPlaceHolder },
-                { AttackPart.Legs, _legImplantPlaceHolder }
-            };
+                ImplantPlaceHolder placeHolder = _implantPlaceHolders[i];
+
+                if (_placeHolderParts.ContainsKey(placeHolder.AttackPart))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(placeHolder));
+                }
+                
+                _placeHolderParts.Add(placeHolder.AttackPart, placeHolder);
+            }
         }
 
         public ImplantPlaceHolder Get(AttackPart requiredPart)
         {
-            if (_placeHolders.ContainsKey(requiredPart) == false)
+            if (_placeHolderParts.ContainsKey(requiredPart) == false)
+            {
                 throw new ArgumentException(nameof(requiredPart));
+            }
 
-            return _placeHolders[requiredPart];
+            return _placeHolderParts[requiredPart];
         }
     }
 }
