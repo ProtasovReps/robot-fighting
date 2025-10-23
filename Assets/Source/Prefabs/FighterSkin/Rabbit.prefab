@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 6030985941637283034}
   - component: {fileID: 223466689867246223}
   m_Layer: 0
-  m_Name: Steven
+  m_Name: Rabbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,10 +315,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _implantPlaceHolders:
-  - {fileID: 3915849243347611674}
-  - {fileID: 2509269346840384993}
-  - {fileID: 6571722106868584359}
-  - {fileID: 3598713963961860371}
+  - {fileID: 4306428199745092559}
+  - {fileID: 8749248538559420929}
+  - {fileID: 2527639297708255772}
+  - {fileID: 611713403756006480}
+  - {fileID: 7605870723548346349}
+  - {fileID: 2744461399513485807}
 --- !u!114 &223466689867246223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,7 +942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 257422068417829052}
-  - component: {fileID: 7817817015719335124}
+  - component: {fileID: 4306428199745092559}
   m_Layer: 7
   m_Name: LeftHand
   m_TagString: Untagged
@@ -963,7 +965,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5007497641476679903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7817817015719335124
+--- !u!114 &4306428199745092559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -972,9 +974,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2771257842579862728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 0
 --- !u!1 &2780862204265565684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4357769428717198149}
-  - component: {fileID: 2707644509367832880}
+  - component: {fileID: 611713403756006480}
   m_Layer: 7
   m_Name: RightToe
   m_TagString: Untagged
@@ -1102,7 +1105,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6706054064987337818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2707644509367832880
+--- !u!114 &611713403756006480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1111,9 +1114,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3111613151619379606}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 3
 --- !u!1 &3312888305565024625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,7 +1705,6 @@ Transform:
   - {fileID: 7947896701450746103}
   - {fileID: 6375933738358299821}
   - {fileID: 8323927077433318899}
-  - {fileID: 7729008563872598126}
   m_Father: {fileID: 4462329676890940055}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5313039417789001975
@@ -2117,37 +2120,6 @@ Transform:
   - {fileID: 4357769428717198149}
   m_Father: {fileID: 6889976148270949432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6418871799754437552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7729008563872598126}
-  m_Layer: 0
-  m_Name: WEAPONB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7729008563872598126
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6418871799754437552}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5248506083709727726}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6521656108762851015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8323927077433318899}
-  - component: {fileID: 6571722106868584359}
+  - component: {fileID: 8749248538559420929}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -2310,7 +2282,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5248506083709727726}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6571722106868584359
+--- !u!114 &8749248538559420929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2319,9 +2291,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7544421446974798618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 1
 --- !u!1 &7547026934244051296
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2336,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2448346003313307731}
-  - component: {fileID: 3598713963961860371}
+  - component: {fileID: 2527639297708255772}
   m_Layer: 7
   m_Name: LeftToe
   m_TagString: Untagged
@@ -2386,7 +2359,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8116436203159787675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3598713963961860371
+--- !u!114 &2527639297708255772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2395,9 +2368,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7886167432607204832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 2
 --- !u!1 &7913062925910856788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2678,7 +2652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 702524733831534600}
-  - component: {fileID: 2509269346840384993}
+  - component: {fileID: 2744461399513485807}
   m_Layer: 0
   m_Name: DownProjectilePlaceHolder
   m_TagString: Untagged
@@ -2701,7 +2675,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1534649999029812947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2509269346840384993
+--- !u!114 &2744461399513485807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2710,9 +2684,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8734125212590691410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a56bf1bb25c47b4a3a58aed94c68822, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 5
 --- !u!1 &8968205736184667227
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +2882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7249481465509416800}
-  - component: {fileID: 3915849243347611674}
+  - component: {fileID: 7605870723548346349}
   m_Layer: 0
   m_Name: UpProjectilePlaceHolder
   m_TagString: Untagged
@@ -2930,7 +2905,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1534649999029812947}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3915849243347611674
+--- !u!114 &7605870723548346349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2939,9 +2914,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9048233362103862128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce2495fd0354a589f483da8b0d82bda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 4
 --- !u!1001 &841268301792613153
 PrefabInstance:
   m_ObjectHideFlags: 0

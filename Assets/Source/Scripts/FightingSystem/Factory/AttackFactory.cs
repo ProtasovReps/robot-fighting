@@ -19,7 +19,7 @@ namespace FightingSystem.Factory
         {
             Dictionary<Type, Attack> attacks = new();
             
-            foreach (ImplantPlaceHolder placeHolder in implantPlaceHolderStash.PlaceHolders)
+            foreach (ImplantPlaceHolder placeHolder in implantPlaceHolderStash.ActivePlaceHolders)
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {

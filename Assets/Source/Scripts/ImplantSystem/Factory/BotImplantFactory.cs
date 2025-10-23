@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Extensions;
 using ImplantSystem.AttackImplants;
 using UnityEngine;
 
@@ -7,11 +8,10 @@ namespace ImplantSystem.Factory
     public class BotImplantFactory : ImplantFactory
     {
         private readonly List<AttackImplant> _attackImplants = new();
-
+        
         [SerializeField] private AttackImplant _upAttackImplant;
         [SerializeField] private AttackImplant _downAttackImplant;
         [SerializeField] private AttackImplant _specialAttackImplant;
-        [SerializeField] private ImplantPlaceHolderStash _placeHolderStash;
         
         protected override AttackImplant[] GetImplants()
         {
@@ -21,9 +21,10 @@ namespace ImplantSystem.Factory
             return _attackImplants.ToArray();
         }
 
-        protected override ImplantPlaceHolderStash GetPlaceholderStash()
+        protected override void AddAttackSides(Dictionary<AttackPart, AttackPartSide> partSides)
         {
-            return _placeHolderStash;
+            partSides.Add(AttackPart.Hands, AttackPartSide.RightHand);
+            partSides.Add(AttackPart.Legs, AttackPartSide.LeftLeg);
         }
 
         protected void AddImplant(AttackImplant attackImplant)

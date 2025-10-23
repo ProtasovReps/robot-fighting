@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace ImplantSystem.PlaceHolders
 {
-    public abstract class ImplantPlaceHolder : MonoBehaviour
+    public class ImplantPlaceHolder : MonoBehaviour
     {
         private readonly List<AttackImplant> _implants = new();
+        
+        [field: SerializeField] public AttackPartSide AttackPartSide { get; private set; }     
 
-        public abstract AttackPart AttackPart { get; }        
         public IEnumerable<AttackImplant> Implants => _implants;
         
         public void SetImplant(AttackImplant implant)

@@ -7,10 +7,10 @@ namespace ImplantSystem.Factory
     {
         [SerializeField] private AttackImplant _superAttackImplant;
 
-        protected override ImplantPlaceHolderStash GetPlaceholderStash()
+        protected override AttackImplant[] GetImplants()
         {
             AddImplant(_superAttackImplant);
-            return base.GetPlaceholderStash();
+            return base.GetImplants();
         }
     }
 }

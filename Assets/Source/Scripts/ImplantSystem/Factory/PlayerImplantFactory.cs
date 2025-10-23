@@ -1,4 +1,6 @@
-﻿using ImplantSystem.AttackImplants;
+﻿using System.Collections.Generic;
+using Extensions;
+using ImplantSystem.AttackImplants;
 using UnityEngine;
 
 namespace ImplantSystem.Factory
@@ -8,16 +10,16 @@ namespace ImplantSystem.Factory
         [SerializeField] private AttackImplant _upAttackImplant;
         [SerializeField] private AttackImplant _downAttackImplant;
         [SerializeField] private AttackImplant _superAttackImplant;
-        [SerializeField] private ImplantPlaceHolderStash _placeHolderStash;
-        
+
         protected override AttackImplant[] GetImplants()
         {
             return new[] { _upAttackImplant, _downAttackImplant, _superAttackImplant };
         }
 
-        protected override ImplantPlaceHolderStash GetPlaceholderStash()
+        protected override void AddAttackSides(Dictionary<AttackPart, AttackPartSide> partSides)
         {
-            return _placeHolderStash;
+            partSides.Add(AttackPart.Hands, AttackPartSide.LeftHand);
+            partSides.Add(AttackPart.Legs, AttackPartSide.RightLeg);
         }
     }
 }

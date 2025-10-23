@@ -10,35 +10,50 @@ namespace ImplantSystem
     {
         [SerializeField] private ImplantPlaceHolder[] _implantPlaceHolders;
         
-        private Dictionary<AttackPart, ImplantPlaceHolder> _placeHolderParts;
-
-        public IEnumerable<ImplantPlaceHolder> PlaceHolders => _implantPlaceHolders;
+        private Dictionary<AttackPartSide, ImplantPlaceHolder> _placeHolderSides;
+        private List<ImplantPlaceHolder> _activePlaceHolders;
         
-        public void Initialize()
+        public IEnumerable<ImplantPlaceHolder> ActivePlaceHolders => _activePlaceHolders;
+        
+        public void Initialize(int requiredHoldersCount)
         {
-            _placeHolderParts = new Dictionary<AttackPart, ImplantPlaceHolder>();
-
+            _activePlaceHolders = new List<ImplantPlaceHolder>(requiredHoldersCount);
+            _placeHolderSides = new Dictionary<AttackPartSide, ImplantPlaceHolder>();
+            
             for (int i = 0; i < _implantPlaceHolders.Length; i++)
             {
                 ImplantPlaceHolder placeHolder = _implantPlaceHolders[i];
 
-                if (_placeHolderParts.ContainsKey(placeHolder.AttackPart))
+                if (_placeHolderSides.ContainsKey(placeHolder.AttackPartSide))
                 {
                     throw new ArgumentOutOfRangeException(nameof(placeHolder));
                 }
                 
-                _placeHolderParts.Add(placeHolder.AttackPart, placeHolder);
+                _placeHolderSides.Add(placeHolder.AttackPartSide, placeHolder);
             }
         }
 
-        public ImplantPlaceHolder Get(AttackPart requiredPart)
+        public ImplantPlaceHolder Get(AttackPartSide requiredPartSide)
         {
-            if (_placeHolderParts.ContainsKey(requiredPart) == false)
+            if (_placeHolderSides.ContainsKey(requiredPartSide) == false)
             {
-                throw new ArgumentException(nameof(requiredPart));
+                throw new ArgumentException(nameof(requiredPartSide));
             }
 
-            return _placeHolderParts[requiredPart];
+            ImplantPlaceHolder holder = _placeHolderSides[requiredPartSide];
+            
+            AddActiveHolder(holder);
+            return holder;
+        }
+
+        private void AddActiveHolder(ImplantPlaceHolder placeHolder)
+        {
+            if (_activePlaceHolders.Contains(placeHolder))
+            {
+                return;
+            }
+            
+            _activePlaceHolders.Add(placeHolder);
         }
     }
 }

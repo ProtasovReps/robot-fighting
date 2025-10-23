@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6543759026228300599}
-  - component: {fileID: 2612751176687626133}
+  - component: {fileID: 913437766571311205}
   m_Layer: 7
   m_Name: LeftHand
   m_TagString: Untagged
@@ -98,7 +98,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5047381279559471394}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2612751176687626133
+--- !u!114 &913437766571311205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 341085419027689862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 0
 --- !u!1 &450349491090133877
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,10 +232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _implantPlaceHolders:
-  - {fileID: 6988654845500032036}
-  - {fileID: 431468021020389815}
-  - {fileID: 4152396325491828490}
-  - {fileID: 3937099889103373151}
+  - {fileID: 913437766571311205}
+  - {fileID: 1303463614759113150}
+  - {fileID: 9051208712728370729}
+  - {fileID: 3270728120780249156}
+  - {fileID: 9164466960248949960}
+  - {fileID: 2561447104243902724}
 --- !u!114 &5529252702672206400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3862575045379611578}
-  - component: {fileID: 431468021020389815}
+  - component: {fileID: 2561447104243902724}
   m_Layer: 0
   m_Name: DownProjectilePlaceHolder
   m_TagString: Untagged
@@ -695,7 +698,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4230566165095055211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &431468021020389815
+--- !u!114 &2561447104243902724
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -704,9 +707,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2093142049701702080}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a56bf1bb25c47b4a3a58aed94c68822, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 5
 --- !u!1 &2159292594021102408
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,7 +847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3991802493636332941}
-  - component: {fileID: 4152396325491828490}
+  - component: {fileID: 1303463614759113150}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -866,7 +870,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8477035915288050875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4152396325491828490
+--- !u!114 &1303463614759113150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -875,9 +879,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2827732774320859084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 1
 --- !u!1 &2864130639589890143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1274,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8120294942068547192}
-  - component: {fileID: 2941699054426618948}
+  - component: {fileID: 3270728120780249156}
   m_Layer: 7
   m_Name: RightToe
   m_TagString: Untagged
@@ -1292,7 +1297,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8056116245336339680}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2941699054426618948
+--- !u!114 &3270728120780249156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1301,9 +1306,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5236761569842634127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 3
 --- !u!1 &5501701896921883320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4971223441841116718}
-  - component: {fileID: 3937099889103373151}
+  - component: {fileID: 9051208712728370729}
   m_Layer: 7
   m_Name: LeftToe
   m_TagString: Untagged
@@ -1850,7 +1856,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2383010980715134156}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3937099889103373151
+--- !u!114 &9051208712728370729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1859,9 +1865,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6551426953585471734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 2
 --- !u!1 &7008869326464586276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,7 +2002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648651097993652674}
-  - component: {fileID: 6988654845500032036}
+  - component: {fileID: 9164466960248949960}
   m_Layer: 0
   m_Name: UpProjectilePlaceHolder
   m_TagString: Untagged
@@ -2018,7 +2025,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4230566165095055211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6988654845500032036
+--- !u!114 &9164466960248949960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2027,9 +2034,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7178153634545082534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce2495fd0354a589f483da8b0d82bda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 4
 --- !u!1 &7224171314699191147
 GameObject:
   m_ObjectHideFlags: 0

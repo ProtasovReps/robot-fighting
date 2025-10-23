@@ -36,7 +36,7 @@ namespace AnimationSystem
         {
             AnimatorOverrideController overrideController = new(_animator.runtimeAnimatorController);
             
-            foreach (ImplantPlaceHolder placeHolder in placeHolderStash.PlaceHolders)
+            foreach (ImplantPlaceHolder placeHolder in placeHolderStash.ActivePlaceHolders)
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {

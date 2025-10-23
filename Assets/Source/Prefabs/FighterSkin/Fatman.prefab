@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8735300796438249720}
-  - component: {fileID: 1971837700432805170}
+  - component: {fileID: 7066297516110356828}
   m_Layer: 7
   m_Name: LeftHand
   m_TagString: Untagged
@@ -161,7 +161,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3234776349017415558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1971837700432805170
+--- !u!114 &7066297516110356828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,9 +170,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 161317190449322978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 0
 --- !u!1 &322510202456411732
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2487571554909529573}
-  - component: {fileID: 6634017352924844142}
+  - component: {fileID: 2704717758450362358}
   m_Layer: 7
   m_Name: RightToe
   m_TagString: Untagged
@@ -689,7 +690,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4620751865083136856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6634017352924844142
+--- !u!114 &2704717758450362358
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -698,9 +699,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2506164056554906252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 3
 --- !u!1 &2519062143854472647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,7 +1207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8606982653747620776}
-  - component: {fileID: 5976121842726099294}
+  - component: {fileID: 120559722954307577}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -1228,7 +1230,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 622913067259817377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5976121842726099294
+--- !u!114 &120559722954307577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1237,9 +1239,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3844640996532351919}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7a4c9ff45b34e79b1252e1435c7b5c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 1
 --- !u!1 &3897255629766222210
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2815926955495053460}
-  - component: {fileID: 2670780450190768635}
+  - component: {fileID: 193455878578798712}
   m_Layer: 7
   m_Name: LeftToe
   m_TagString: Untagged
@@ -1401,7 +1404,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4465732083920901311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2670780450190768635
+--- !u!114 &193455878578798712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1410,9 +1413,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4840283884600315669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 2
 --- !u!1 &5034958973127737681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,7 +1489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2094927556366259178}
-  - component: {fileID: 3792067547753004582}
+  - component: {fileID: 3571157306288755231}
   m_Layer: 0
   m_Name: UpProjectilePlaceHolder
   m_TagString: Untagged
@@ -1508,7 +1512,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6337428904099750377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3792067547753004582
+--- !u!114 &3571157306288755231
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1517,9 +1521,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5189542068304349982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce2495fd0354a589f483da8b0d82bda, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 4
 --- !u!1 &5683733714552197242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,7 +2177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1211095029139688242}
-  - component: {fileID: 3365198765221002976}
+  - component: {fileID: 8628080764024440035}
   m_Layer: 0
   m_Name: DownProjectilePlaceHolder
   m_TagString: Untagged
@@ -2195,7 +2200,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6337428904099750377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3365198765221002976
+--- !u!114 &8628080764024440035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2204,9 +2209,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7272302479492094951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a56bf1bb25c47b4a3a58aed94c68822, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cea4aae170e4d0fa835807498706396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AttackPartSide>k__BackingField: 5
 --- !u!1 &7323712159239361713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,10 +2653,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _implantPlaceHolders:
-  - {fileID: 3792067547753004582}
-  - {fileID: 3365198765221002976}
-  - {fileID: 5976121842726099294}
-  - {fileID: 2670780450190768635}
+  - {fileID: 7066297516110356828}
+  - {fileID: 120559722954307577}
+  - {fileID: 193455878578798712}
+  - {fileID: 2704717758450362358}
+  - {fileID: 3571157306288755231}
+  - {fileID: 8628080764024440035}
 --- !u!114 &97607267981788487
 MonoBehaviour:
   m_ObjectHideFlags: 0
