@@ -7,7 +7,7 @@ namespace ImplantSystem.AttackImplants
 {
     public class RangedAttackImplant : AttackImplant
     {
-        [SerializeField] private Gun _gun;
+        [SerializeField] private ProjectileShooter _projectileShooter;
         [SerializeField] private ProjectilePool _projectilePool;
         [SerializeField] private ProjectileFactory _projectileFactory;
         
@@ -15,9 +15,9 @@ namespace ImplantSystem.AttackImplants
         {
             _projectileFactory.Initialize(damage, layerMask);
             _projectilePool.Initialize(_projectileFactory);
-            _gun.Initialize(_projectilePool);
+            _projectileShooter.Initialize(_projectilePool);
             
-            return new RangedAttack(duration, delay, _gun);
+            return new RangedAttack(duration, delay, _projectileShooter);
         }
     }
 }

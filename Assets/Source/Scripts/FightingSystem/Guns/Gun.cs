@@ -1,44 +1,12 @@
-﻿using System.Threading;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FightingSystem.Guns
 {
-    public class Gun : Shooter
+    public class Gun : ProjectileShooter
     {
-        [SerializeField] private float _shootForce;
-        
-        private ProjectilePool _projectilePool;
-        private CancellationTokenSource _cancellationTokenSource;
-        private Vector3 _shootDirection;
-        
-        private void OnDestroy()
+        protected override void TranslateProjectile(Projectile projectile, Vector3 direction, float force)
         {
-            _cancellationTokenSource.Cancel();
-        }
-
-        public void Initialize(ProjectilePool projectilePool)
-        {
-            _cancellationTokenSource = new CancellationTokenSource();
-            _shootDirection = -(Vector3.right * transform.position.x).normalized;
-
-            _projectilePool = projectilePool;
-        }
-       
-        public override void Shoot()
-        {
-            Projectile projectile = _projectilePool.Get();
-            
-            FollowBullet(projectile).Forget();
-        }
-
-        private async UniTaskVoid FollowBullet(Projectile projectile)
-        {
-            while (projectile.gameObject.activeSelf && _cancellationTokenSource.IsCancellationRequested == false)
-            {
-                projectile.transform.position += _shootDirection * _shootForce * Time.deltaTime;
-                await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
-            }
+            projectile.transform.position += direction * force * Time.deltaTime;
         }
     }
 }

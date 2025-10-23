@@ -384,17 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1997515902 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1692911982281280016, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-  m_PrefabInstance: {fileID: 6410829735138439431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69e8b21de7e94fd1b2a73f4fac280b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2030913206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 469982315641386245, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
@@ -951,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _downAttackImplant
       value: 
-      objectReference: {fileID: 455426645133548652, guid: d873b4fcb0ee32248b252cba207c4f8e, type: 3}
+      objectReference: {fileID: 8796985076486456060, guid: 6aba19750b3ab4947943c80431d709e6, type: 3}
     - target: {fileID: 3895106535269503460, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _specialAttackImplant
       value: 
@@ -1076,14 +1065,14 @@ PrefabInstance:
     - target: {fileID: 4157835465965793596, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: _specialImplantPlaceHolder
       value: 
-      objectReference: {fileID: 1997515902}
+      objectReference: {fileID: 0}
     - target: {fileID: 4262879464624432175, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: <AnimatedCharacter>k__BackingField
       value: 
       objectReference: {fileID: 1841578791}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2523487
+      value: -7.552064
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1549,6 +1538,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1244373544}
+    - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
       value: 
@@ -1821,6 +1814,10 @@ PrefabInstance:
       propertyPath: _secondFighter
       value: 
       objectReference: {fileID: 1244373544}
+    - target: {fileID: 8536792972340414803, guid: 4179729982fc96240886974023631bf9, type: 3}
+      propertyPath: _minCameraDistance
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8682284802136905702, guid: 4179729982fc96240886974023631bf9, type: 3}
       propertyPath: m_Name
       value: Main Camera

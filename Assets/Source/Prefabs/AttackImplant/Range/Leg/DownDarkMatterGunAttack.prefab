@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6097640134161247399}
-  - component: {fileID: 3331316396090072692}
+  - component: {fileID: 1327876235675190491}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -77,7 +77,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3114554973383123782}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3331316396090072692
+--- !u!114 &1327876235675190491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,10 +86,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2348431243196956098}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94af5994f7ba4ccbbcc2a8c719c0a071, type: 3}
+  m_Script: {fileID: 11500000, guid: 16abb7b54c82466289ae1225b67d3fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootForce: 15
+  _shootForce: 10
 --- !u!1 &5206369270040279778
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 502456487092807368}
   AttackParameters: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
-  _gun: {fileID: 3331316396090072692}
+  _projectileShooter: {fileID: 1327876235675190491}
   _projectilePool: {fileID: 9203476664590676029}
   _projectileFactory: {fileID: 8276260962443972071}
 --- !u!114 &8744049971799520433

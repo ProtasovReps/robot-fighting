@@ -18,7 +18,7 @@ namespace FightingSystem.Guns
         private Damage _damage;
         
         public Observable<Projectile> Executed => _executed;
-
+        
         public void Initialize(LayerMask opponentLayer, Damage damage)
         {
             _executed = new Subject<Projectile>();
