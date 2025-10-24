@@ -1,6 +1,7 @@
 ﻿using FightingSystem.AttackDamage;
 using Interface;
 using R3;
+using UnityEngine;
 
 namespace HitSystem.FighterParts
 {
@@ -19,6 +20,7 @@ namespace HitSystem.FighterParts
         
         public void AcceptDamage(Damage damage)
         {
+            Debug.Log(damage.Type);
             _hitted.OnNext(damage);
             _damageable.AcceptDamage(damage.Value);
         }

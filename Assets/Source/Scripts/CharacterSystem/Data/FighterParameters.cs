@@ -9,6 +9,6 @@ namespace CharacterSystem.Parameters
         [field: SerializeField] [field: Min(0.1f)] public float DownStunDuration { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float BlockDuration { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float BlockValue { get; private set; }
-        [field: SerializeField] public float MoveSpeed { get; private set; }
+        [field: SerializeField] [field: Min(0.1f)] public float MoveSpeed { get; private set; }
     }
 }
