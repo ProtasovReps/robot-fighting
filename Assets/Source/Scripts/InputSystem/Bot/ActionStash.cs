@@ -21,11 +21,11 @@ namespace InputSystem.Bot
             {
                 { MotionHashes.MoveLeft, new(moveInput.MoveLeft, botParameters.MoveDuration) },
                 { MotionHashes.MoveRight, new(moveInput.MoveRight, botParameters.MoveDuration) },
-                { MotionHashes.Idle, new(moveInput.Stop, botParameters.MoveDuration / 2f) }, // idleDuration
-                { MotionHashes.ArmAttack, new(armAttack, botParameters.AttackDelay) }, // не attackDelay, скорее UpAttackDuration брать
-                { MotionHashes.LegAttack, new(legAttack, botParameters.AttackDelay) }, // downDuration
-                { MotionHashes.Special, new(special, botParameters.AttackDelay) },// special duration
-                { MotionHashes.Super, new(super, botParameters.AttackDelay) }, // super duration
+                { MotionHashes.Idle, new(moveInput.Stop, botParameters.IdleDuration) }, 
+                { MotionHashes.ArmAttack, new(armAttack, botParameters.AttackInputDelay) },
+                { MotionHashes.LegAttack, new(legAttack, botParameters.AttackInputDelay) },
+                { MotionHashes.Special, new(special, botParameters.AttackInputDelay) },
+                { MotionHashes.Super, new(super, botParameters.AttackInputDelay) },
                 { MotionHashes.Block, new(block, botParameters.BlockDuration) }
             };
         }

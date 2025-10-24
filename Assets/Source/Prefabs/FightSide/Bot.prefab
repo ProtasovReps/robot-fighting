@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitColliderStash: {fileID: 0}
 --- !u!1 &3436288265220649339
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +189,8 @@ MonoBehaviour:
   <BlockValue>k__BackingField: 30
   <MoveSpeed>k__BackingField: 8.5
   <MoveDuration>k__BackingField: 1
-  <AttackDelay>k__BackingField: 1
+  <IdleDuration>k__BackingField: 0.5
+  <AttackInputDelay>k__BackingField: 1
 --- !u!114 &5126417679251285239
 MonoBehaviour:
   m_ObjectHideFlags: 0

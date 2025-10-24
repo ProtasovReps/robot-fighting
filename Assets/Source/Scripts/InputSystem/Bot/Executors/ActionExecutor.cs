@@ -28,8 +28,8 @@ namespace InputSystem.Bot.Executor
 
             stateMachine.Value
                 .Pairwise()
-                .Where(pair => pair.Previous.Type == targetState
-                               && pair.Current.Type != targetState)
+                .Where(pair => pair.Previous.Type == targetState)
+                .Where(pair => pair.Current.Type != targetState)
                 .Subscribe(_ => Deactivate())
                 .AddTo(_subscriptions);
         }

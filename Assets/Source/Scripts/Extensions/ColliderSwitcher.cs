@@ -1,5 +1,4 @@
 ﻿using System;
-using FiniteStateMachine;
 using FiniteStateMachine.States;
 using HitSystem;
 using Interface;
@@ -35,14 +34,12 @@ namespace Extensions
         
         private void EnableColliders()
         {
-            Debug.LogError("Включился");
             _colliderStash.UpCollider.gameObject.SetActive(true);
             _colliderStash.DownCollider.gameObject.SetActive(true);
         }
         
         private void DisableColliders()
         {
-            Debug.LogError("Выключился");
             _colliderStash.UpCollider.gameObject.SetActive(false);
             _colliderStash.DownCollider.gameObject.SetActive(false);
         }
