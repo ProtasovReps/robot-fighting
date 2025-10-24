@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1573394282780250280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4763741951518180873}
+  - component: {fileID: 9132891818687117783}
+  m_Layer: 6
+  m_Name: ColliderSwitcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4763741951518180873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573394282780250280}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.8599999, y: 0.009999871, z: -2.015296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4633893747449466056}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9132891818687117783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573394282780250280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitColliderStash: {fileID: 6281758998126703944}
 --- !u!1 &4717041171821147691
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4763741951518180873}
   - {fileID: 1305920945362661429}
   - {fileID: 5550587219918791172}
   - {fileID: 7941875976654055876}
@@ -563,6 +609,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+--- !u!114 &6281758998126703944 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6693582332133967376, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
+  m_PrefabInstance: {fileID: 849257474633085784}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ab00275f87fbc478953dc5e25ba422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7941875976654055876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7349343746878986908, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}

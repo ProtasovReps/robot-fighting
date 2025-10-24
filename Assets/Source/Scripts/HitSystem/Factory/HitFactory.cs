@@ -1,6 +1,7 @@
 ﻿using ArmorSystem;
 using ArmorSystem.Factory;
 using CharacterSystem.Parameters;
+using Extensions;
 using FightingSystem;
 using HealthSystem;
 using HitSystem.FighterParts;
@@ -14,7 +15,8 @@ namespace HitSystem
         [SerializeField] private HitReader _hitReader;
         [SerializeField] private HitImpact _hitImpact;
         [SerializeField] private FighterParameters _fighterParameters;
-
+        [SerializeField] private ColliderSwitcher _colliderSwitcher;
+        
         public HitReader Produce(Health health, IStateMachine machine, IConditionAddable conditionAddable)
         {
             Torso torso = new(health);
@@ -24,12 +26,12 @@ namespace HitSystem
             Block block = new(_fighterParameters.BlockDuration, _fighterParameters.BlockValue,
                 armor.Item1, machine, conditionAddable);
 
-            InitializeColliders(block, armor.Item2);
+            InitializeColliders(block, armor.Item2, machine);
             InitializeHit(conditionAddable, torso, legs);
             return _hitReader;
         }
 
-        protected abstract ArmorFactory<Torso> GetTorsoArmorFactory();
+        protected abstract ArmorFactory<Torso> GetTorsoArmorFactory(); // мб потом до одного genric метода свести
         protected abstract ArmorFactory<Legs> GetLegsArmorFactory();
         protected abstract HitColliderStash GetColliderStash();
 
@@ -50,12 +52,14 @@ namespace HitSystem
             new DownHit(_fighterParameters.DownStunDuration, _hitReader, conditionAddable);
         }
 
-        private void InitializeColliders(Block block, Armor<Legs> legArmor)
+        private void InitializeColliders(Block block, Armor<Legs> legArmor, IStateMachine stateMachine)
         {
             HitColliderStash stash = GetColliderStash();
 
             stash.UpCollider.Initialize(block);
             stash.DownCollider.Initialize(legArmor);
+            
+            _colliderSwitcher.Initialize(stateMachine, stash);
         }
     }
 }
