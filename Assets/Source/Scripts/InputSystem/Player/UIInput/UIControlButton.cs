@@ -21,7 +21,7 @@ public abstract class UIControlButton : OnScreenControl, IPointerDownHandler, IP
     
     public void OnPointerUp(PointerEventData data)
     {
-        SendValueToControl(0.0f);
+        SendValueToControl(0f);
     }
 
     public void OnPointerDown(PointerEventData data)

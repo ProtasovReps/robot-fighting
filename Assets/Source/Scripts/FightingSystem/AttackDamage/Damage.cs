@@ -1,6 +1,4 @@
-﻿using FightingSystem.Attacks;
-
-namespace FightingSystem.AttackDamage
+﻿namespace FightingSystem.AttackDamage
 {
     public struct Damage
     {

@@ -1,5 +1,3 @@
-using System;
-using R3;
 using UnityEngine;
 
 namespace EffectSystem

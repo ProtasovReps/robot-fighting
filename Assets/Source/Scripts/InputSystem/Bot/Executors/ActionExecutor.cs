@@ -9,7 +9,8 @@ namespace InputSystem.Bot.Executor
         where TTargetState : State
     {
         private const float SubscriptionDelay = 0.5f;
-
+        private const int SubscriptionCount = 2;
+        
         private readonly CompositeDisposable _subscriptions;
 
         private IDisposable _currentSubscription;
@@ -17,7 +18,7 @@ namespace InputSystem.Bot.Executor
 
         protected ActionExecutor(IStateMachine stateMachine)
         {
-            _subscriptions = new CompositeDisposable(2);
+            _subscriptions = new CompositeDisposable(SubscriptionCount);
             Type targetState = typeof(TTargetState);
 
             stateMachine.Value
