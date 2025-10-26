@@ -363,17 +363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1841578796 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4262879464624432175, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-  m_PrefabInstance: {fileID: 6410829735138439431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1886662521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
@@ -417,17 +406,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3114184619308988324, guid: e9d1531fe481c3d44b66585e21f588c4, type: 3}
   m_PrefabInstance: {fileID: 3103774854872583136}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &95663286235305396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2940993097443269514, guid: e9d1531fe481c3d44b66585e21f588c4, type: 3}
-  m_PrefabInstance: {fileID: 3103774854872583136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &95663286235305398 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8522606997752222339, guid: e9d1531fe481c3d44b66585e21f588c4, type: 3}
@@ -1134,7 +1112,7 @@ PrefabInstance:
     - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: <SkinData>k__BackingField
       value: 
-      objectReference: {fileID: 1841578796}
+      objectReference: {fileID: 0}
     - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
       value: 64
@@ -1374,7 +1352,51 @@ PrefabInstance:
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <SkinData>k__BackingField
       value: 
-      objectReference: {fileID: 95663286235305396}
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <MoveSpeed>k__BackingField
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BaseDamage>k__BackingField
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BlockValue>k__BackingField
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BaseImpulse>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <IdleDuration>k__BackingField
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <MoveDuration>k__BackingField
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <StunDuration>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BlockDuration>k__BackingField
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <AttackInputDelay>k__BackingField
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <DownStunDuration>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <StartHealthValue>k__BackingField
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
       value: 128

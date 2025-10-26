@@ -379,17 +379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f373c4a94a643419e71efd986abb1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1841578795 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4262879464624432175, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
-  m_PrefabInstance: {fileID: 6410829735138439431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1841578797 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7072284674470799382, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
@@ -486,17 +475,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebb64072c9814ba89649d47f6263496a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &510519338420430459 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 446340045579036767, guid: 657bf8dbbbd0bc04096e67d71125243e, type: 3}
-  m_PrefabInstance: {fileID: 6917252358644605394}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efcdf90b46734cd3901c6b107156fb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &937621209231623657 stripped
@@ -1127,7 +1105,7 @@ PrefabInstance:
     - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: <SkinData>k__BackingField
       value: 
-      objectReference: {fileID: 1841578795}
+      objectReference: {fileID: 0}
     - target: {fileID: 123863274945531791, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
       value: 64
@@ -1475,10 +1453,50 @@ PrefabInstance:
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <SkinData>k__BackingField
       value: 
-      objectReference: {fileID: 510519338420430459}
+      objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BaseDamage>k__BackingField
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BlockValue>k__BackingField
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <DamageType>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BaseImpulse>k__BackingField
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <IdleDuration>k__BackingField
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <MoveDuration>k__BackingField
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BlockDuration>k__BackingField
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <AttackInputDelay>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <DownStunDuration>k__BackingField
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <StartHealthValue>k__BackingField
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
@@ -1625,7 +1643,7 @@ PrefabInstance:
       objectReference: {fileID: 1244373544}
     - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _minDistance
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
