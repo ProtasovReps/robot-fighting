@@ -6,12 +6,11 @@ using FiniteStateMachine.States;
 using InputSystem;
 using InputSystem.Bot;
 using R3;
-using Reflex.Attributes;
 using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
-    public class BotTransitionFactory : StateTransitionFactory
+    public class BotTransitionFactory : StateTransitionFactory<BotStateMachine, BotConditionBuilder>
     {
         [SerializeField] private HitReader _hitReader;
 
@@ -19,8 +18,7 @@ namespace FiniteStateMachine.Transitions.Factory
         private BotFightInput _botFightInput;
         private BotDeath _death;
 
-        [Inject]
-        private void Inject(ValidatedInput botMoveInput, BotFightInput botFightInput, BotDeath death)
+        public void Initialize(ValidatedInput botMoveInput, BotFightInput botFightInput, BotDeath death)
         {
             _botMoveInput = botMoveInput;
             _botFightInput = botFightInput;

@@ -4,12 +4,11 @@ using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using InputSystem;
 using R3;
-using Reflex.Attributes;
 using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
-    public class PlayerTransitionFactory : StateTransitionFactory
+    public class PlayerTransitionFactory : StateTransitionFactory<PlayerStateMachine, PlayerConditionBuilder>
     {
         [SerializeField] private HitReader _hitReader;
 
@@ -17,12 +16,10 @@ namespace FiniteStateMachine.Transitions.Factory
         private PlayerAttackInputReader _attackInputReader;
         private PlayerDeath _death;
 
-        [Inject]
-        private void Inject(PlayerMoveInputReader moveInput, PlayerAttackInputReader attackInputReader,
-            PlayerDeath death)
+        public void Initialize(PlayerMoveInputReader moveInput, PlayerAttackInputReader inputReader, PlayerDeath death)
         {
             _moveInput = moveInput;
-            _attackInputReader = attackInputReader;
+            _attackInputReader = inputReader;
             _death = death;
         }
 

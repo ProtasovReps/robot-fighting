@@ -4,7 +4,7 @@ using R3;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
-    public class BotInputTransitionFactory : StateTransitionFactory
+    public class BotInputTransitionFactory : StateTransitionFactory<BotInputStateMachine, BotInputConditionBuilder>
     {
         protected override void InitializeConditions(ConditionBuilder builder)
         {
