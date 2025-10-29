@@ -1,13 +1,17 @@
 ﻿using System;
+using FightingSystem;
 using FightingSystem.AttackDamage;
 using HitSystem.FighterParts;
 using Interface;
+using UnityEngine;
 
 namespace ArmorSystem
 {
     public abstract class Armor<TFighterPart> : IDamageable<Damage>
         where TFighterPart : DamageableFighterPart
     {
+        private const float NotMatchedTypeReduceValue = 2f;
+        
         public Armor(TFighterPart fighterPart, float damageReduceAmount)
         {
             if (fighterPart == null)
@@ -22,7 +26,20 @@ namespace ArmorSystem
         
         protected float DamageReduceAmount { get; }
         protected TFighterPart FighterPart { get; }
-        
-        public abstract void AcceptDamage(Damage damage);
+
+        public void AcceptDamage(Damage damage)
+        {
+            float newDamageValue = damage.Value - DamageReduceAmount / NotMatchedTypeReduceValue;
+
+            if (IsValidDamageType(damage.Type))
+                newDamageValue = damage.Value - DamageReduceAmount;
+            
+            newDamageValue = Mathf.Clamp(newDamageValue, 0, newDamageValue);
+            damage = new Damage(newDamageValue, damage.ImpulseForce, damage.Type);
+            
+            FighterPart.AcceptDamage(damage);
+        }
+
+        protected abstract bool IsValidDamageType(DamageType damageType);
     }
 }

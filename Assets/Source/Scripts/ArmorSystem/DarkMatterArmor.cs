@@ -3,17 +3,17 @@ using HitSystem.FighterParts;
 
 namespace ArmorSystem
 {
-    public abstract class RustyArmor<TFighterPart> : Armor<TFighterPart>
+    public abstract class DarkMatterArmor<TFighterPart> : Armor<TFighterPart>
         where TFighterPart : DamageableFighterPart
     {
-        protected RustyArmor(TFighterPart fighterPart, float damageReduceAmount)
+        protected DarkMatterArmor(TFighterPart fighterPart, float damageReduceAmount) 
             : base(fighterPart, damageReduceAmount)
         {
         }
 
         protected override bool IsValidDamageType(DamageType damageType)
         {
-            return damageType == DamageType.Default;
+            return true;
         }
     }
 }
