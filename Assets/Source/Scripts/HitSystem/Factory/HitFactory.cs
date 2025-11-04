@@ -22,15 +22,15 @@ namespace HitSystem
             Torso torso = new(health);
             Legs legs = new(health);
             (Armor<Torso>, Armor<Legs>) armor = GetArmor(torso, legs);
-
-            Block block = new(_fighterParameters.BlockDuration, _fighterParameters.BlockValue,
-                armor.Item1, machine, conditionAddable);
+            float blockValue = GetBlockValue();
+            Block block = new(_fighterParameters.BlockDuration, blockValue, armor.Item1, machine, conditionAddable);
 
             InitializeColliders(block, armor.Item2, machine);
             InitializeHit(conditionAddable, torso, legs);
             return _hitReader;
         }
 
+        protected abstract float GetBlockValue();
         protected abstract ArmorFactory<Torso> GetTorsoArmorFactory(); // мб потом до одного genric метода свести
         protected abstract ArmorFactory<Legs> GetLegsArmorFactory();
         protected abstract HitColliderStash GetColliderStash();

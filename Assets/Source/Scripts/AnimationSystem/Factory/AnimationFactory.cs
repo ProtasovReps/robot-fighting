@@ -14,7 +14,8 @@ namespace AnimationSystem.Factory
             Animator animator,
             IStateMachine stateMachine,
             FighterParameters fighterParameters,
-            PositionTranslation positionTranslation)
+            PositionTranslation positionTranslation,
+            float moveSpeed)
         {
             var animations = new CharacterAnimation[]
             {
@@ -35,8 +36,8 @@ namespace AnimationSystem.Factory
             };
 
             new AnimationDurationChanger(animator, stateMachine, fighterParameters);
-            new MoveAnimationSpeed(animator, positionTranslation,fighterParameters.MoveSpeed);
-            
+            new MoveAnimationSpeed(animator, positionTranslation, moveSpeed);
+
             animatedCharacter.Initialize(animations);
         }
     }

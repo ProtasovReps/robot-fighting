@@ -1,4 +1,5 @@
 ﻿using FightingSystem.AttackDamage;
+using YG;
 
 namespace FightingSystem.Factory
 {
@@ -6,7 +7,11 @@ namespace FightingSystem.Factory
     {
         protected override Damage GetBaseDamage()
         {
-            return new Damage(0f, 0f, DamageType.Default); // заглушка
+            float damage = YG2.saves.DamageStat;
+            float impulseForce = YG2.saves.ImpulseForce;
+            DamageType damageType = YG2.saves.DamageType;
+
+            return new Damage(damage, impulseForce, damageType);
         }
     }
 }

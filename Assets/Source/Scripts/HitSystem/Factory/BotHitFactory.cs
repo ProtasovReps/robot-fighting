@@ -1,4 +1,5 @@
 ﻿using ArmorSystem.Factory;
+using CharacterSystem.Parameters;
 using HitSystem.FighterParts;
 using UnityEngine;
 
@@ -9,6 +10,12 @@ namespace HitSystem
         [SerializeField] private ArmorFactory<Torso> _torsoArmor;
         [SerializeField] private ArmorFactory<Legs> _legsArmor;
         [SerializeField] private HitColliderStash _colliderStash;
+        [SerializeField] private BotParameters _botParameters;
+        
+        protected override float GetBlockValue()
+        {
+            return _botParameters.BlockValue;
+        }
 
         protected override ArmorFactory<Torso> GetTorsoArmorFactory()
         {

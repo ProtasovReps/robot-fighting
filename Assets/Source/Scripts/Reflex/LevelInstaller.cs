@@ -22,6 +22,7 @@ using Interface;
 using MovementSystem;
 using Reflex.Core;
 using UnityEngine;
+using YG;
 using BotMovement = MovementSystem.BotMovement;
 using State = FiniteStateMachine.States.State;
 
@@ -66,7 +67,7 @@ namespace Reflex
             State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
-            PlayerHealth health = new(_playerParameters.StartHealthValue);
+            PlayerHealth health = new(YG2.saves.HealthStat);
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
             PlayerDeath death = new(hitReader, health, conditionBuilder);
@@ -79,7 +80,9 @@ namespace Reflex
             
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
             
-            animationFactory.Produce(_playerAnimatedCharacter, _playerAnimator, playerStateMachine, _playerParameters, positionTranslation);
+            animationFactory.Produce(_playerAnimatedCharacter,
+                _playerAnimator, playerStateMachine, _playerParameters, positionTranslation, YG2.saves.SpeedStat);
+            
             animationOverrider.Override(placeHolderStash);
            
             builder.AddSingleton(new SuperAttackCharge(hitReader, playerStateMachine, conditionBuilder));
@@ -104,7 +107,8 @@ namespace Reflex
             
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
             
-            animationFactory.Produce(_botAnimatedCharacter, _botAnimator, botStateMachine, _botParameters, positionTranslation);
+            animationFactory.Produce(_botAnimatedCharacter, 
+                _botAnimator, botStateMachine, _botParameters, positionTranslation, _botParameters.MoveSpeed);
             animationOverrider.Override(placeHolderStash);
 
             builder.AddSingleton(health);
@@ -156,7 +160,7 @@ namespace Reflex
 
         private PositionTranslation InstallPlayerMovement(IMoveInput moveInput)
         {
-            PositionTranslation positionTranslation = new(_playerParameters.transform, _playerParameters.MoveSpeed);
+            PositionTranslation positionTranslation = new(_playerParameters.transform, YG2.saves.SpeedStat);
             _playerMovement.Initialize(moveInput, positionTranslation);
             return positionTranslation;
         }
