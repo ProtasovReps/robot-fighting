@@ -13,7 +13,7 @@ namespace HitSystem
 
         protected override float GetBlockValue()
         {
-            return YG2.saves.BlockValue;
+            return YG2.saves.BlockStat;
         }
 
         protected override ArmorFactory<Torso> GetTorsoArmorFactory()

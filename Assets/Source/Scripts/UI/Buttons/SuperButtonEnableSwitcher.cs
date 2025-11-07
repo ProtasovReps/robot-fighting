@@ -1,6 +1,6 @@
 ﻿using FightingSystem;
 
-namespace UI.Button
+namespace UI.Buttons
 {
     public class SuperButtonEnableSwitcher : ButtonEnableSwitcher<SuperAttackCharge>
     {
