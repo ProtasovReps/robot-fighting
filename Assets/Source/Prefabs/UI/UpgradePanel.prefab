@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3790765928215590533}
+  - component: {fileID: 6371723878609856225}
   - component: {fileID: 5049487165373739273}
   m_Layer: 5
   m_Name: UpgradePanel
@@ -118,6 +119,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6371723878609856225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4141322657215041677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79e2a4deba74077b9a2a659fe4e291f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statUpgradePanel: {fileID: 5049487165373739273}
+  _pointsView: {fileID: 3418933478873424325}
+  _skillPoints: 3
+  _statInfo:
+  - {fileID: 4343496333998534723}
+  - {fileID: 148834761061242827}
+  - {fileID: 8286406458842444286}
+  - {fileID: 2817585735685300644}
 --- !u!114 &5049487165373739273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +156,6 @@ MonoBehaviour:
   - {fileID: 1207369158073105976}
   - {fileID: 3028162405266351646}
   - {fileID: 6480533618687351321}
-  _avaiblePoints: {fileID: 4674860107682138316}
-  _skillPoints: 3
 --- !u!1 &5962935628409950414
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +473,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.20999981
       objectReference: {fileID: 0}
+    - target: {fileID: 974763146516194013, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: m_text
+      value: +0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1968696964651846367, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: _statType
       value: 1
@@ -624,6 +647,14 @@ PrefabInstance:
       propertyPath: _statType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1474389278066411726, guid: fef52859751d82745b118fcea701e46d, type: 3}
+      propertyPath: _upgradeButton
+      value: 
+      objectReference: {fileID: 1207369158073105976}
+    - target: {fileID: 3035957996991786822, guid: fef52859751d82745b118fcea701e46d, type: 3}
+      propertyPath: _upgradeButton
+      value: 
+      objectReference: {fileID: 346645683830805128}
     - target: {fileID: 3188236153285897477, guid: fef52859751d82745b118fcea701e46d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -708,6 +739,10 @@ PrefabInstance:
       propertyPath: _statType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3565938438257049249, guid: fef52859751d82745b118fcea701e46d, type: 3}
+      propertyPath: _upgradeButton
+      value: 
+      objectReference: {fileID: 6480533618687351321}
     - target: {fileID: 6246822277138265924, guid: fef52859751d82745b118fcea701e46d, type: 3}
       propertyPath: m_Name
       value: AllStatInfo
@@ -716,16 +751,64 @@ PrefabInstance:
       propertyPath: _statType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7249084099595103995, guid: fef52859751d82745b118fcea701e46d, type: 3}
+      propertyPath: _upgradeButton
+      value: 
+      objectReference: {fileID: 3028162405266351646}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fef52859751d82745b118fcea701e46d, type: 3}
+--- !u!114 &148834761061242827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1474389278066411726, guid: fef52859751d82745b118fcea701e46d, type: 3}
+  m_PrefabInstance: {fileID: 1614207665175666437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2817585735685300644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3565938438257049249, guid: fef52859751d82745b118fcea701e46d, type: 3}
+  m_PrefabInstance: {fileID: 1614207665175666437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4204165992708567552 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3188236153285897477, guid: fef52859751d82745b118fcea701e46d, type: 3}
   m_PrefabInstance: {fileID: 1614207665175666437}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4343496333998534723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3035957996991786822, guid: fef52859751d82745b118fcea701e46d, type: 3}
+  m_PrefabInstance: {fileID: 1614207665175666437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8286406458842444286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7249084099595103995, guid: fef52859751d82745b118fcea701e46d, type: 3}
+  m_PrefabInstance: {fileID: 1614207665175666437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2278187117255252055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -904,6 +987,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 974763146516194013, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: m_text
+      value: +0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 1968696964651846367, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: _statType
       value: 2
@@ -1065,6 +1152,10 @@ PrefabInstance:
     - target: {fileID: 746409100143055807, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_Color.r
       value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 974763146516194013, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: m_text
+      value: +4
       objectReference: {fileID: 0}
     - target: {fileID: 1968696964651846367, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: _statType

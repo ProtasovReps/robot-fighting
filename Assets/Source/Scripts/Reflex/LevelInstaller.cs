@@ -60,8 +60,8 @@ namespace Reflex
             
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
-
-            containerBuilder.AddSingleton(typeof(CharacterStats));
+            
+            containerBuilder.AddSingleton(typeof(Wallet));
         }
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)

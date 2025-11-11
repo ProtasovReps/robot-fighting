@@ -1,6 +1,5 @@
 ﻿using CharacterSystem;
 using Extensions;
-using Reflex.Attributes;
 using UI.Buttons.StatUpgrade;
 using UnityEngine;
 
@@ -13,16 +12,10 @@ namespace UI.Info
 
         private CharacterStats _stats;
         
-        [Inject]
-        private void Inject(CharacterStats stats)
+        public void Initialize(CharacterStats characterStats)
         {
-            _stats = stats;
-            Subscribe(_stats.Upgraded);
-        }
-        
-        protected override float GetInfo()
-        {
-            return _stats.Get(_statType);
+            _stats = characterStats;
+            Initialize(_stats.Upgraded, () => _stats.Get(_statType));
         }
     }
 }

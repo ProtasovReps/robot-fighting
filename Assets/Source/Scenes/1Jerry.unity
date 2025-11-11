@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3814993804477845259, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5062467249408932817, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1897,19 +1897,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1067242596900214415, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 1067242596900214415, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1067242596900214415, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 3710533169365993715, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710533169365993715, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5266011326932279911, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_Camera
@@ -1917,11 +1921,11 @@ PrefabInstance:
       objectReference: {fileID: 1685808800}
     - target: {fileID: 5871355053477526696, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.58
       objectReference: {fileID: 0}
     - target: {fileID: 5871355053477526696, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8245404816169769569, guid: d5e443b5e32407d449865dec1171fd24, type: 3}
       propertyPath: m_Pivot.x
