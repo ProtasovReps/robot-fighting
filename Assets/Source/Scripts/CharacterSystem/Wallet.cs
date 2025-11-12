@@ -28,8 +28,11 @@ namespace CharacterSystem
         {
             ValidateAmount(amount);
 
+            if (amount > _value.CurrentValue)
+                throw new ArgumentOutOfRangeException(nameof(amount));
+            
             _value.OnNext(_value.CurrentValue - amount);
-            YG2.saves.Money += amount;
+            YG2.saves.Money -= amount;
         }
 
         private void ValidateAmount(int amount)

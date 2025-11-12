@@ -5,6 +5,7 @@ using UnityEngine.UI;
 namespace UI.Buttons
 {
     public abstract class ObservableButton<T> : MonoBehaviour
+    where T : ObservableButton<T>
     {
         private readonly Subject<T> _pressed = new();
 
@@ -14,11 +15,7 @@ namespace UI.Buttons
         
         private void Awake()
         {
-            T observable = GetButton();
-            
-            _button.onClick.AddListener(() => _pressed.OnNext(observable));
+            _button.onClick.AddListener(() => _pressed.OnNext(this as T));
         }
-        
-        protected abstract T GetButton();
     }
 }

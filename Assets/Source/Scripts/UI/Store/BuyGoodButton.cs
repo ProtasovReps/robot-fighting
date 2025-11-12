@@ -12,7 +12,7 @@ namespace UI.Store
         [SerializeField] private Image _rarenessImage;
         
         private GoodView _good;
-
+        
         public void SetGood(GoodView goodView)
         {
             _good = goodView;
@@ -24,11 +24,6 @@ namespace UI.Store
         public GoodView Get()
         {
             return _good;
-        }
-        
-        protected override BuyGoodButton GetButton()
-        {
-            return this;
         }
     }
 }

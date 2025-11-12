@@ -6,7 +6,7 @@ namespace YG
 {
     public partial class SavesYG
     {
-        public int Money = 5;
+        public int Money = 100;
         public float HealthStat = 100;
         public float SpeedStat = 5.5f;
         public float DamageStat = 3.5f;

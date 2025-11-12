@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 3349366652778056699}
   - component: {fileID: 2424375557165314695}
   - component: {fileID: 3234482920394202704}
+  - component: {fileID: 8593378742597073599}
   m_Layer: 5
   m_Name: BuyGoodButton
   m_TagString: Untagged
@@ -365,6 +366,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &8593378742597073599
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006334455531327837}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7111037276196742841
 GameObject:
   m_ObjectHideFlags: 0
