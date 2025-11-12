@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using FightingSystem;
 using UI.Store;
 
 namespace YG
@@ -12,7 +11,6 @@ namespace YG
         public float DamageStat = 3.5f;
         public float BlockStat = 20f;
         public float ImpulseForce = 0.5f;
-        public DamageType DamageType = DamageType.Default;
         public List<Good> Goods = new();
     }
 }

@@ -2,15 +2,13 @@
 {
     public struct Damage
     {
-        public Damage(float value, float impulseForce, DamageType damageType)
+        public Damage(float value, float impulseForce)
         {
             Value = value;
             ImpulseForce = impulseForce;
-            Type = damageType;
         }
         
         public float Value { get; }
         public float ImpulseForce { get; }
-        public DamageType Type { get; }
     }
 }

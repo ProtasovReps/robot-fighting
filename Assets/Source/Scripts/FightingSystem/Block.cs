@@ -56,7 +56,7 @@ namespace FightingSystem
             if (IsContinuing)
             {
                 float reducedDamageValue = Mathf.Clamp(damage.Value - _blockValue, 0, damage.Value);
-                damage = new Damage(reducedDamageValue, damage.ImpulseForce, damage.Type);
+                damage = new Damage(reducedDamageValue, damage.ImpulseForce);
             }
 
             _damageable.AcceptDamage(damage);

@@ -1,5 +1,4 @@
-﻿using FightingSystem;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CharacterSystem.Parameters
 {
@@ -12,7 +11,6 @@ namespace CharacterSystem.Parameters
         [field: SerializeField, Min(0f)] public float BaseImpulse { get; private set; }
         [field: SerializeField] [field: Min(0.1f)] public float MoveSpeed { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float StartHealthValue { get; private set; }
-        [field: SerializeField] public DamageType DamageType { get; private set; }
         [field: SerializeField] [field: Min(1f)] public float BlockValue { get; private set; }
     }
 }

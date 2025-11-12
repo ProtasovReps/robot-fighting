@@ -12,9 +12,8 @@ namespace FightingSystem.Factory
         {
             float damage = _botParameters.BaseDamage;
             float impulse = _botParameters.BaseImpulse;
-            DamageType damageType = _botParameters.DamageType;
 
-            return new Damage(damage, impulse, damageType);
+            return new Damage(damage, impulse);
         }
     }
 }

@@ -9,9 +9,8 @@ namespace FightingSystem.Factory
         {
             float damage = YG2.saves.DamageStat;
             float impulseForce = YG2.saves.ImpulseForce;
-            DamageType damageType = YG2.saves.DamageType;
 
-            return new Damage(damage, impulseForce, damageType);
+            return new Damage(damage, impulseForce);
         }
     }
 }
