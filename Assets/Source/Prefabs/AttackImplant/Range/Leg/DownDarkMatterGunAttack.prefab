@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 502456487092807368}
-  AttackParameters: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
+  <AttackParameters>k__BackingField: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
   _projectileShooter: {fileID: 1327876235675190491}
   _projectilePool: {fileID: 9203476664590676029}
   _projectileFactory: {fileID: 8276260962443972071}
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 60
   <ImpulseForce>k__BackingField: 1.5
-  <DamageType>k__BackingField: 4
 --- !u!1 &5356264515564747918
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 2798504979864175219}
-  AttackParameters: {fileID: 11400000, guid: 1bbcaa18a17ff9e46a5b1b61ee3c4a06, type: 2}
+  <AttackParameters>k__BackingField: {fileID: 11400000, guid: 1bbcaa18a17ff9e46a5b1b61ee3c4a06, type: 2}
   _spherecaster: {fileID: 1796480475097305953}
 --- !u!114 &1796480475097305953
 MonoBehaviour:
@@ -122,4 +122,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 35
   <ImpulseForce>k__BackingField: 3
-  <DamageType>k__BackingField: 0

@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 6719883577224122314}
-  AttackParameters: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
+  <AttackParameters>k__BackingField: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
   _overlaper: {fileID: 6813220050473298452}
   _spherecaster: {fileID: 6430291483255113304}
 --- !u!114 &4622113329151341698
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 50
   <ImpulseForce>k__BackingField: 8
-  <DamageType>k__BackingField: 1
 --- !u!1 &8938069203134541735
 GameObject:
   m_ObjectHideFlags: 0
