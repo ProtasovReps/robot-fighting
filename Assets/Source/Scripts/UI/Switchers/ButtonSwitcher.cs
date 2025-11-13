@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 
-namespace UI.ButtonSwitchers
+namespace UI.Switchers
 {
     public class ButtonSwitcher : MonoBehaviour
     {
         [SerializeField] private float _enabledTransparency;
         [SerializeField] private float _disabledTransparency;
         [SerializeField] private CanvasGroup _group;
-
-        public void Enable()
+        
+        protected void Enable()
         {
             _group.interactable = true;
             _group.alpha = _enabledTransparency;

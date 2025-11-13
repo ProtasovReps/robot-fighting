@@ -1,5 +1,4 @@
-﻿using HitSystem.FighterParts;
-using UnityEngine;
+﻿using UnityEngine;
 using YG;
 
 namespace HitSystem

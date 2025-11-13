@@ -13,5 +13,10 @@ namespace UI.Buttons.StatUpgrade
         {
             stats.Increase(_statType, _upgradeValue);
         }
+
+        protected override StatUpgradeButton GetReturnable()
+        {
+            return this;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using FightingSystem;
 
-namespace UI.ButtonSwitchers
+namespace UI.Switchers
 {
     public class SuperValueChangeableSwitcher : ValueChangeableSwitcher<SuperAttackCharge>
     {

@@ -2,7 +2,7 @@
 using R3;
 using Reflex.Attributes;
 
-namespace UI.ButtonSwitchers
+namespace UI.Switchers
 {
     public class ValueChangeableSwitcher<T> : ButtonSwitcher
     where T : IFloatValueChangeable

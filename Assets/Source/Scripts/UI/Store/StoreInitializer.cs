@@ -1,4 +1,5 @@
 ﻿using CharacterSystem;
+using UI.Buttons;
 using UI.Info;
 using UnityEngine;
 
@@ -8,14 +9,14 @@ namespace UI.Store
     {
         [SerializeField] private Trader _trader;
         [SerializeField] private IntegerView _walletView;
-        [SerializeField] private BuyGoodButton[] _buyGoodButtons;
+        [SerializeField] private BuyObservableButton[] _buyButtons;
         
         private void Awake()
         {
             Wallet wallet = new();
             
             _walletView.Initialize(wallet);
-            _trader.Initialize(wallet, _buyGoodButtons);
+            _trader.Initialize(wallet, _buyButtons);
         }
     }
 }
