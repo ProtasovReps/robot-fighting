@@ -1,15 +1,12 @@
-﻿using Interface;
-using R3;
-using TMPro;
+﻿using TMPro;
+using UI.Store;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Store
+namespace UI.Panel
 {
-    public class BuyGoodPanel : MonoBehaviour
+    public class GoodPanel : SwitchablePanel
     {
-        private readonly Subject<bool> _isEnableSwitched = new();
-        
         [SerializeField] private TMP_Text _name;
         [SerializeField] private TMP_Text _price;
         [SerializeField] private TMP_Text _effect;
@@ -18,9 +15,7 @@ namespace UI.Store
         
         private SellableView _sellableView;
 
-        public Observable<bool> IsEnableSwitched => _isEnableSwitched;
-        
-        public void SetGood(SellableView sellableView)
+        public void Set(SellableView sellableView)
         {
             _name.text = sellableView.Name;
             _price.text = sellableView.Price.ToString();
@@ -30,11 +25,6 @@ namespace UI.Store
             _sellableView = sellableView;
         }
 
-        public void SetEnabled(bool isEnabled)
-        {
-            _isEnableSwitched.OnNext(isEnabled);
-        }
-        
         public SellableView Get()
         {
             return _sellableView;

@@ -1,15 +1,15 @@
-﻿using UI.Store;
+﻿using UI.Panel;
 using UnityEngine;
 
 namespace UI.Buttons
 {
-    public class BuyObservableButton : ObservableButton<BuyGoodPanel>
+    public class BuyObservableButton : ObservableButton<GoodPanel>
     {
-        [SerializeField] private BuyGoodPanel _buyGoodPanel;
+        [SerializeField] private GoodPanel _goodPanel;
         
-        protected override BuyGoodPanel GetReturnable()
+        protected override GoodPanel GetReturnable()
         {
-            return _buyGoodPanel;
+            return _goodPanel;
         }
     }
 }

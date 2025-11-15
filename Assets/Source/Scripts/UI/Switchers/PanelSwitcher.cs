@@ -1,18 +1,18 @@
 ﻿using R3;
-using UI.Store;
+using UI.Panel;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Switchers
 {
-    public class BuyPanelSwitcher : ButtonSwitcher
+    public class PanelSwitcher : ButtonSwitcher
     {
-        [SerializeField] private BuyGoodPanel _buyGoodPanel;
-        [SerializeField] private Image _baughtImage;
+        [SerializeField] private SwitchablePanel _informationalPanel;
+        [SerializeField] private Image _disabledImage;
         
         private void Awake()
         {
-            _buyGoodPanel.IsEnableSwitched
+            _informationalPanel.EnableSwitched
                 .Subscribe(Switch)
                 .AddTo(this);
             
@@ -26,7 +26,7 @@ namespace UI.Switchers
             else
                 Disable();
             
-            _baughtImage.enabled = !isPanelEnabled;
+            _disabledImage.enabled = !isPanelEnabled;
         }
     }
 }

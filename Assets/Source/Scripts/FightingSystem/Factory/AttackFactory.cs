@@ -25,7 +25,7 @@ namespace FightingSystem.Factory
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {
-                    Type attackState = AttackStateComparer.GetAttackState(implant.AttackParameters.RequiredState);
+                    Type attackState = AttackStateComparer.GetAttackState(implant.Parameters.RequiredState);
 
                     if (attacks.ContainsKey(attackState))
                         throw new ArgumentOutOfRangeException(nameof(attackState));

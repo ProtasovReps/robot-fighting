@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Extensions;
 using UI.Store;
 
 namespace YG
@@ -12,5 +13,6 @@ namespace YG
         public float BlockStat = 20f;
         public float ImpulseForce = 0.5f;
         public List<SellableView> Goods = new();
+        public Dictionary<AttackType, ImplantView> SettedImplants = new();
     }
 }

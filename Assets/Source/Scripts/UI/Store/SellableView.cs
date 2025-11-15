@@ -1,5 +1,4 @@
-﻿using Interface;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UI.Store
 {
@@ -10,7 +9,5 @@ namespace UI.Store
         [field: SerializeField] public int Effect { get; private set; }
         [field: SerializeField] public Sprite SellableImage { get; private set; }
         [field: SerializeField] public Sprite Background { get; private set; }
-        
-        public abstract ISellable Sellable { get; }
     }
 }

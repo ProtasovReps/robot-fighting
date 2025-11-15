@@ -22,7 +22,7 @@ namespace ImplantSystem.Factory
 
             for (int i = 0; i < implants.Length; i++)
             {
-                AttackPart requiredPart = implants[i].AttackParameters.RequiredPart;
+                AttackPart requiredPart = implants[i].Parameters.RequiredPart;
                 AttackPartSide requiredPartSide = _attackSides[requiredPart];
                 ImplantPlaceHolder placeHolder = _placeHolderStash.Get(requiredPartSide);
                 AttackImplant newImplant = Instantiate(implants[i]);

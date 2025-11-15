@@ -1,8 +1,7 @@
-﻿using System;
-using CharacterSystem;
-using Interface;
+﻿using CharacterSystem;
 using R3;
 using UI.Buttons;
+using UI.Panel;
 using UnityEngine;
 using YG;
 
@@ -34,9 +33,9 @@ namespace UI.Store
             }
         }
 
-        private void Sell(BuyGoodPanel buyGoodPanel)
+        private void Sell(GoodPanel goodPanel)
         {
-            SellableView sellable = buyGoodPanel.Get();
+            SellableView sellable = goodPanel.Get();
             int price = sellable.Price;
             
             if (_wallet.Value.CurrentValue < price)
@@ -44,7 +43,7 @@ namespace UI.Store
 
             _wallet.Spend(price);
             YG2.saves.Goods.Add(sellable);
-            buyGoodPanel.SetEnabled(false);
+            goodPanel.SetEnable(false);
         }
     }
 }

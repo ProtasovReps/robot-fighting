@@ -40,7 +40,7 @@ namespace AnimationSystem
             {
                 foreach (AttackImplant implant in placeHolder.Implants)
                 {
-                    Type attackState = AttackStateComparer.GetAttackState(implant.AttackParameters.RequiredState);
+                    Type attackState = AttackStateComparer.GetAttackState(implant.Parameters.RequiredState);
                     
                     if (_requiredHashes.ContainsKey(attackState) == false)
                         continue;
@@ -48,7 +48,7 @@ namespace AnimationSystem
                     int animationID = GetAnimationID(_requiredHashes[attackState]);
                     string animationName = overrideController.animationClips[animationID].name;
 
-                    overrideController[animationName] = implant.AttackParameters.Clip;
+                    overrideController[animationName] = implant.Parameters.Clip;
                 }
             }
 
