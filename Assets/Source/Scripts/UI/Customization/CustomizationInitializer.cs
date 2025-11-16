@@ -14,11 +14,15 @@ namespace UI.Customization
         [SerializeField] private EquipedImplant[] _playerEquipments;
         [SerializeField] private IntegerView _walletView;
         [SerializeField] private EquipmentPanelSwitcher _panelSwitcher;
+        [SerializeField] private FighterSkinCustomization _skinCustomization;
         
         private void Awake()
         {
+            Wallet wallet = new();
+            
             _equipmentBag.Initialize();
-            _walletView.Initialize(new Wallet());
+            _walletView.Initialize(wallet);
+            _skinCustomization.Initialize(wallet);
             
             List<EquipButton> equipButtons = new();
 

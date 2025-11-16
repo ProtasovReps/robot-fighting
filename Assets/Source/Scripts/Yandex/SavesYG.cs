@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CharacterSystem;
 using Extensions;
 using UI.Store;
 
@@ -14,5 +15,7 @@ namespace YG
         public float ImpulseForce = 0.5f;
         public List<SellableView> Goods = new();
         public Dictionary<AttackType, ImplantView> SettedImplants = new();
+        public Fighter SettedFighter;
+        public List<Fighter> Fighters = new();
     }
 }

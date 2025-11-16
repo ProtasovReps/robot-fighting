@@ -9,20 +9,13 @@ namespace AnimationSystem
 
         private CharacterAnimation[] _animations;
 
-        private void Start() // не тут подписываться
+        private void OnDestroy()
         {
+            if (_animations == null)
+                return;
+            
             for (int i = 0; i < _animations.Length; i++)
-            {
-                _animations[i].Subscribe();
-            }
-        }
-
-        private void OnDestroy() // отписываться с проверкой на null
-        {
-            for (int i = 0; i < _animations.Length; i++)
-            {
                _animations[i].Dispose();
-            }
         }
 
         public void Initialize(CharacterAnimation[] animations)
@@ -34,6 +27,9 @@ namespace AnimationSystem
                 throw new ArgumentOutOfRangeException(nameof(animations));
 
             _animations = animations;
+            
+            for (int i = 0; i < _animations.Length; i++)
+                _animations[i].Subscribe();
         }
     }
 }
