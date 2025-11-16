@@ -1,10 +1,10 @@
 ﻿using R3;
 using UI.Buttons;
-using UI.Panel;
+using UI.Customization;
 using UnityEngine;
 using YG;
 
-namespace UI.Customization
+namespace UI.Panel
 {
     public class SetupSkinPanel : SwitchablePanel
     {

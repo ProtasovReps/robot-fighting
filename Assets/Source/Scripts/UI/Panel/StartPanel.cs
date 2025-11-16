@@ -2,7 +2,7 @@
 using UI.Buttons;
 using UnityEngine;
 
-namespace UI.Customization
+namespace UI.Panel
 {
     public class StartPanel : MonoBehaviour
     {
