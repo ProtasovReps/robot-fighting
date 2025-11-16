@@ -18,7 +18,7 @@ namespace UI.Panel
         private Wallet _wallet;
         private SkinView _sellectedSkin;
 
-        public Observable<Unit> NotEnoughMoney => _notEnoughMoney;
+        public Observable<Unit> NotEnoughMoney => _notEnoughMoney; // в кошелек
         
         public void Initialize(FighterShowcase fighterShowcase, Wallet wallet)
         {
