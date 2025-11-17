@@ -1,4 +1,5 @@
-﻿using Interface;
+﻿using Ami.BroAudio;
+using Interface;
 using R3;
 using TMPro;
 using UI.Buttons;
@@ -12,7 +13,8 @@ namespace UI.Panel
     {
         [SerializeField] private UnitButton _buyButton;
         [SerializeField] private TMP_Text _price;
-
+        [SerializeField] private SoundID _skinBaughtSound;
+        
         private IMoneySpendable _moneySpendable;
         private SkinView _sellectedSkin;
 
@@ -48,7 +50,8 @@ namespace UI.Panel
             {
                 return;
             }
-            
+
+            BroAudio.Play(_skinBaughtSound);
             YG2.saves.Fighters.Add(_sellectedSkin.Fighter);
             _buyButton.gameObject.SetActive(false);
         }

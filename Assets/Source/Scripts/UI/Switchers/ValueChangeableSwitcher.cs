@@ -4,7 +4,7 @@ using Reflex.Attributes;
 
 namespace UI.Switchers
 {
-    public class ValueChangeableSwitcher<T> : ButtonSwitcher
+    public class ValueChangeableSwitcher<T> : CanvasGroupSwitcher
     where T : IFloatValueChangeable
     {
         private T _valueChangeable;

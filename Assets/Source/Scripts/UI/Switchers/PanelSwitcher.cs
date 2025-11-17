@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UI.Switchers
 {
-    public class PanelSwitcher : ButtonSwitcher
+    public class PanelSwitcher : CanvasGroupSwitcher
     {
         [SerializeField] private SwitchablePanel _informationalPanel;
         [SerializeField] private Image _disabledImage;

@@ -30,7 +30,8 @@ namespace UI.Panel
                 SetEnable(false);
                 return;
             }
-                
+            
+            
             SetEnable(true);
             _skinView = skinView;
         }
