@@ -202,6 +202,10 @@ MonoBehaviour:
   _targetScale: 2
   _duration: 0.5
   _targetColor: {r: 1, g: 0, b: 0, a: 1}
+  _errorSound:
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9480d3f442c6e364db758239bea99950, type: 2}
+    <DebugObject>k__BackingField: {fileID: 2468899359136318995}
 --- !u!1 &3271816188059736883
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,12 +474,12 @@ MonoBehaviour:
   _enabledTransparency: 1
   _disabledTransparency: 0.8
   _group: {fileID: 7478868392857802245}
+  _informationalPanel: {fileID: 7178502679091435069}
+  _disabledImage: {fileID: 2344706289158092407}
   _disableSound:
     ID: 536870913
     _sourceAsset: {fileID: 11400000, guid: 9480d3f442c6e364db758239bea99950, type: 2}
     <DebugObject>k__BackingField: {fileID: 5037379018523439977}
-  _informationalPanel: {fileID: 7178502679091435069}
-  _disabledImage: {fileID: 2344706289158092407}
 --- !u!1 &5400426944815554793
 GameObject:
   m_ObjectHideFlags: 0

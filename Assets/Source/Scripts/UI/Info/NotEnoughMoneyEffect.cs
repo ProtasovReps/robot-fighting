@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
+using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using Interface;
 using R3;
@@ -16,7 +16,8 @@ namespace UI.Info
         [SerializeField] private float _targetScale;
         [SerializeField] private float _duration;
         [SerializeField] private Color _targetColor;
-
+        [SerializeField] private SoundID _errorSound;
+        
         private Color _defaultColor;
         private Vector3 _defaultScale;
         private CancellationTokenSource _tokenSource;
@@ -40,6 +41,8 @@ namespace UI.Info
         {
             if (_tokenSource?.IsCancellationRequested == false)
                 return;
+
+            BroAudio.Play(_errorSound);
             
             _tokenSource = new CancellationTokenSource();
             _moneyAmount.color = _targetColor;
