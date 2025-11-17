@@ -10,6 +10,7 @@ namespace UI.Store
         [SerializeField] private Trader _trader;
         [SerializeField] private IntegerView _walletView;
         [SerializeField] private BuyObservableButton[] _buyButtons;
+        [SerializeField] private NotEnoughMoneyEffect _effect;
         
         private void Awake()
         {
@@ -17,6 +18,7 @@ namespace UI.Store
             
             _walletView.Initialize(wallet);
             _trader.Initialize(wallet, _buyButtons);
+            _effect.Initialize(wallet);
         }
     }
 }

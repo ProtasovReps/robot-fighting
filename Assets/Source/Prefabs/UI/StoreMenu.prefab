@@ -73,6 +73,7 @@ RectTransform:
   - {fileID: 1348645635374130890}
   - {fileID: 6221677659369047805}
   - {fileID: 3881407579855073354}
+  - {fileID: 7014993165979070627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -143,6 +144,58 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1506947526031906855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7014993165979070627}
+  - component: {fileID: 9101897930941516084}
+  m_Layer: 5
+  m_Name: NotEnoughMoneyEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7014993165979070627
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506947526031906855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2221642248216709521}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9101897930941516084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506947526031906855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c148580b1742239259e61955673e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyAmount: {fileID: 8863579654266410599}
+  _targetScale: 2
+  _duration: 0.5
+  _targetColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1775262058885343398
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +254,7 @@ MonoBehaviour:
   _buyButtons:
   - {fileID: 2723977439853782762}
   - {fileID: 1087266670622701079}
+  _effect: {fileID: 9101897930941516084}
 --- !u!114 &6752717047335895392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1422,12 +1476,8 @@ PrefabInstance:
       value: MoneyAmount
       objectReference: {fileID: 0}
     - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1483,11 +1533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 500
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.29999
+      value: -45.950073
       objectReference: {fileID: 0}
     - target: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1520,5 +1570,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb87bd0e580942d89339c573eaae4502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8863579654266410599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1708013409677098459, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
+  m_PrefabInstance: {fileID: 7833404202390252476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,4 +1,4 @@
-﻿using CharacterSystem;
+﻿using Interface;
 using R3;
 using UI.Buttons;
 using UI.Panel;
@@ -11,18 +11,18 @@ namespace UI.Store
     {
         private BuyObservableButton[] _buyButtons;
         private CompositeDisposable _subscriptions;
-        private Wallet _wallet;
+        private IMoneySpendable _moneySpendable;
 
         private void OnDestroy()
         {
             _subscriptions?.Dispose();
         }
 
-        public void Initialize(Wallet wallet, BuyObservableButton[] buyButtons)
+        public void Initialize(IMoneySpendable moneySpendable, BuyObservableButton[] buyButtons)
         {
             _buyButtons = buyButtons;
-            _wallet = wallet;
-            
+            _moneySpendable = moneySpendable;
+
             _subscriptions = new CompositeDisposable(_buyButtons.Length);
 
             for (int i = 0; i < _buyButtons.Length; i++)
@@ -37,11 +37,12 @@ namespace UI.Store
         {
             SellableView sellable = goodPanel.Get();
             int price = sellable.Price;
-            
-            if (_wallet.Value.CurrentValue < price)
-                return;
 
-            _wallet.Spend(price);
+            if (_moneySpendable.TrySpend(price) == false)
+            {
+                return;
+            }
+
             YG2.saves.Goods.Add(sellable);
             goodPanel.SetEnable(false);
         }

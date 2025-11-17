@@ -1,4 +1,4 @@
-﻿using CharacterSystem;
+﻿using Interface;
 using R3;
 using TMPro;
 using UI.Buttons;
@@ -10,19 +10,15 @@ namespace UI.Panel
 {
     public class BuySkinPanel : MonoBehaviour
     {
-        private readonly Subject<Unit> _notEnoughMoney = new();
-        
         [SerializeField] private UnitButton _buyButton;
         [SerializeField] private TMP_Text _price;
 
-        private Wallet _wallet;
+        private IMoneySpendable _moneySpendable;
         private SkinView _sellectedSkin;
 
-        public Observable<Unit> NotEnoughMoney => _notEnoughMoney; // в кошелек
-        
-        public void Initialize(FighterShowcase fighterShowcase, Wallet wallet)
+        public void Initialize(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable)
         {
-            _wallet = wallet;
+            _moneySpendable = moneySpendable;
 
             fighterShowcase.SkinChanged
                 .Subscribe(SetSkin)
@@ -48,13 +44,11 @@ namespace UI.Panel
 
         private void BuySkin()
         {
-            if (_wallet.Value.CurrentValue < _sellectedSkin.Price)
+            if (_moneySpendable.TrySpend(_sellectedSkin.Price) == false)
             {
-                _notEnoughMoney.OnNext(Unit.Default);
                 return;
             }
-
-            _wallet.Spend(_sellectedSkin.Price);
+            
             YG2.saves.Fighters.Add(_sellectedSkin.Fighter);
             _buyButton.gameObject.SetActive(false);
         }

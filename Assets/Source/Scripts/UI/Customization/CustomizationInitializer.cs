@@ -15,6 +15,7 @@ namespace UI.Customization
         [SerializeField] private IntegerView _walletView;
         [SerializeField] private EquipmentPanelSwitcher _panelSwitcher;
         [SerializeField] private FighterSkinCustomization _skinCustomization;
+        [SerializeField] private NotEnoughMoneyEffect _effect;
         
         private void Awake()
         {
@@ -23,6 +24,7 @@ namespace UI.Customization
             _equipmentBag.Initialize();
             _walletView.Initialize(wallet);
             _skinCustomization.Initialize(wallet);
+            _effect.Initialize(wallet);
             
             List<EquipButton> equipButtons = new();
 
