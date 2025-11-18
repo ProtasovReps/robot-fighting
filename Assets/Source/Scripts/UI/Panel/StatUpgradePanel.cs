@@ -1,5 +1,4 @@
-﻿using Ami.BroAudio;
-using CharacterSystem;
+﻿using CharacterSystem;
 using Extensions;
 using UI.Buttons.StatUpgrade;
 using UnityEngine;
@@ -10,8 +9,6 @@ namespace UI.Panel
     public class StatUpgradePanel : MonoBehaviour
     {
         [SerializeField] private StatUpgradeButton[] _upgradeButtons;
-        [SerializeField] private SoundID _upgradeSound;
-        [SerializeField] private SoundID _outOfPointsSound;
         
         private DownCounter _downCounter;
         private CharacterStats _stats;
@@ -33,11 +30,9 @@ namespace UI.Panel
         {
             if (_downCounter.Value.CurrentValue == 0)
             {
-                BroAudio.Play(_outOfPointsSound);
                 return;
             }
 
-            BroAudio.Play(_upgradeSound);
             _downCounter.Tick();
             upgradeButton.Upgrade(_stats);
         }

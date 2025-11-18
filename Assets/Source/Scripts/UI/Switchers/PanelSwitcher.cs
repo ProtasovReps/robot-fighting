@@ -10,7 +10,6 @@ namespace UI.Switchers
     {
         [SerializeField] private SwitchablePanel _informationalPanel;
         [SerializeField] private Image _disabledImage;
-        [SerializeField] private SoundID _disableSound;
 
         private void Awake()
         {
@@ -24,14 +23,9 @@ namespace UI.Switchers
         private void Switch(bool isPanelEnabled)
         {
             if (isPanelEnabled)
-            {
                 Enable();
-            }
             else
-            {
-                BroAudio.Play(_disableSound);
                 Disable();
-            }
 
             _disabledImage.enabled = !isPanelEnabled;
         }

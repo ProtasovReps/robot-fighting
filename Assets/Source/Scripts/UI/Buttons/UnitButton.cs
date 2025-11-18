@@ -4,7 +4,7 @@ namespace UI.Buttons
 {
     public class UnitButton : ObservableButton<Unit> 
     {
-        protected override Unit GetReturnable()
+        protected override Unit Get()
         {
             return Unit.Default;
         }

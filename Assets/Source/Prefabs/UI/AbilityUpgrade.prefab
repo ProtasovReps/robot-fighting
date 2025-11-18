@@ -478,6 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7230131862718141565}
   - component: {fileID: 1968696964651846367}
+  - component: {fileID: 4972669092606854924}
   m_Layer: 5
   m_Name: AbilityUpgrade
   m_TagString: Untagged
@@ -520,3 +521,20 @@ MonoBehaviour:
   _button: {fileID: 4583299235141657336}
   _upgradeValue: 0
   _statType: 0
+--- !u!114 &4972669092606854924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765194375682553567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d277cafe37af41ad86b53b5b2110ffa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9480d3f442c6e364db758239bea99950, type: 2}
+    <DebugObject>k__BackingField: {fileID: 8765194375682553567}
+  _button: {fileID: 4583299235141657336}

@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 3726615270763791405}
   - component: {fileID: 6752717047335895392}
   - component: {fileID: 5850948640252421112}
+  - component: {fileID: 1256898091957679907}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -258,7 +259,7 @@ MonoBehaviour:
   _buyButtons:
   - {fileID: 2723977439853782762}
   - {fileID: 1087266670622701079}
-  _effect: {fileID: 9101897930941516084}
+  _effectInitializer: {fileID: 1256898091957679907}
 --- !u!114 &6752717047335895392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +299,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 6832945851707482517}
-  _buyGoodPanelInitializer: {fileID: 6752717047335895392}
+  _buyGoodPanelInstaller: {fileID: 6752717047335895392}
+--- !u!114 &1256898091957679907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775262058885343398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417ba2050ef04e4e873815d44a3c2c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effect: {fileID: 9101897930941516084}
+  _notEnoughMoneySound: {fileID: 0}
+  _moneySpentSound: {fileID: 0}
 --- !u!1 &2487746623746933873
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,10 +555,6 @@ MonoBehaviour:
   _group: {fileID: 6261621502611709828}
   _informationalPanel: {fileID: 408204009805756}
   _disabledImage: {fileID: 8630821529886297314}
-  _disableSound:
-    ID: 536870912
-    _sourceAsset: {fileID: 11400000, guid: 9480d3f442c6e364db758239bea99950, type: 2}
-    <DebugObject>k__BackingField: {fileID: 5412961665226223903}
 --- !u!1 &6892540105154945179
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,10 +608,6 @@ MonoBehaviour:
   _group: {fileID: 8952738102609284985}
   _informationalPanel: {fileID: 3087867391489591105}
   _disabledImage: {fileID: 6709776572675873823}
-  _disableSound:
-    ID: 536870912
-    _sourceAsset: {fileID: 11400000, guid: 9480d3f442c6e364db758239bea99950, type: 2}
-    <DebugObject>k__BackingField: {fileID: 6892540105154945179}
 --- !u!1 &7830939815069811426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,7 +1363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3755197763221139889, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: StartButton
       objectReference: {fileID: 0}
     - target: {fileID: 5359504680346190476, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
       propertyPath: m_Sprite
@@ -1468,13 +1476,49 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6818126770312950941, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3078610146266254793}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3755197763221139889, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1053210225407853416}
   m_SourcePrefab: {fileID: 100100000, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
 --- !u!224 &3881407579855073354 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6818126770312950941, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
   m_PrefabInstance: {fileID: 7729124247478502615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6872064175291741542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3755197763221139889, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
+  m_PrefabInstance: {fileID: 7729124247478502615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1053210225407853416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872064175291741542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d277cafe37af41ad86b53b5b2110ffa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound:
+    ID: 1073741824
+    _sourceAsset: {fileID: 11400000, guid: e884c85f3072ad748a48741691398de9, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6872064175291741542}
+  _button: {fileID: 8368020405445441648}
+--- !u!114 &8368020405445441648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2261497181705551015, guid: 7fd91ef04ad63e845a5092036a8be303, type: 3}
+  m_PrefabInstance: {fileID: 7729124247478502615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872064175291741542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7833404202390252476
 PrefabInstance:
   m_ObjectHideFlags: 0

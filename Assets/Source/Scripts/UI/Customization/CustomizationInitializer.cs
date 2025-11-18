@@ -3,8 +3,11 @@ using CharacterSystem;
 using UI.Buttons;
 using UI.Info;
 using UI.Panel;
+using UI.Store;
 using UI.Switchers;
 using UnityEngine;
+using YG;
+using YG.Saver;
 
 namespace UI.Customization
 {
@@ -15,16 +18,17 @@ namespace UI.Customization
         [SerializeField] private IntegerView _walletView;
         [SerializeField] private EquipmentPanelSwitcher _panelSwitcher;
         [SerializeField] private FighterSkinCustomization _skinCustomization;
-        [SerializeField] private NotEnoughMoneyEffect _effect;
+        [SerializeField] private MoneyEffectInitializer _effectInitializer;
         
         private void Awake()
         {
-            Wallet wallet = new();
+            Wallet wallet = new(YG2.saves.Money);
+            WalletSaver saver = new(wallet);
             
             _equipmentBag.Initialize();
             _walletView.Initialize(wallet);
             _skinCustomization.Initialize(wallet);
-            _effect.Initialize(wallet);
+            _effectInitializer.Initialize(wallet);
             
             List<EquipButton> equipButtons = new();
 

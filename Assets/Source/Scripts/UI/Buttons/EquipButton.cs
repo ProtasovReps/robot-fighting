@@ -7,7 +7,7 @@ namespace UI.Buttons
     {
         [SerializeField] private EquipmentPanel _equipmentPanel;
         
-        protected override EquipmentPanel GetReturnable()
+        protected override EquipmentPanel Get()
         {
             return _equipmentPanel;
         }

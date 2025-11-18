@@ -61,7 +61,9 @@ namespace Reflex
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
             
-            containerBuilder.AddSingleton(typeof(Wallet));
+            
+            
+            // containerBuilder.AddSingleton(typeof(Wallet)); // ошибка будет
         }
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)

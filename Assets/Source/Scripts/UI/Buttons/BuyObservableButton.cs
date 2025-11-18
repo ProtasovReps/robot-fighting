@@ -7,7 +7,7 @@ namespace UI.Buttons
     {
         [SerializeField] private GoodPanel _goodPanel;
         
-        protected override GoodPanel GetReturnable()
+        protected override GoodPanel Get()
         {
             return _goodPanel;
         }

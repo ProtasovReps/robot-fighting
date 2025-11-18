@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Extensions;
 using R3;
-using YG;
 
 namespace CharacterSystem
 {
@@ -11,15 +10,9 @@ namespace CharacterSystem
         private readonly Dictionary<StatType, float> _stats;
         private readonly Subject<Unit> _upgraded;
         
-        public CharacterStats()
+        public CharacterStats(Dictionary<StatType, float> startStats)
         {
-            _stats = new Dictionary<StatType, float>
-            {
-                { StatType.Health, YG2.saves.HealthStat },
-                { StatType.Damage, YG2.saves.DamageStat },
-                { StatType.Speed, YG2.saves.SpeedStat },
-                { StatType.Block, YG2.saves.BlockStat }
-            };
+            _stats = startStats;
 
             _upgraded = new Subject<Unit>();
         }

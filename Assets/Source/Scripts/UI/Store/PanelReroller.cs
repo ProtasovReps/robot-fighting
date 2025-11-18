@@ -7,7 +7,7 @@ namespace UI.Store
     public class PanelReroller : MonoBehaviour
     {
         [SerializeField] private UnitButton _button;
-        [SerializeField] private BuyGoodPanelInitializer _buyGoodPanelInitializer;
+        [SerializeField] private BuyGoodPanelInstaller _buyGoodPanelInstaller;
 
         private void Awake()
         {
@@ -15,13 +15,14 @@ namespace UI.Store
                 .Subscribe(_ => Reroll())
                 .AddTo(this);
             
-            _buyGoodPanelInitializer.Initialize();
+            _buyGoodPanelInstaller.Initialize();
+            _buyGoodPanelInstaller.Randomize();
         }
 
         private void Reroll()
         {
             // Крутим рекламу, а, как посмотрит, перекручиваем ассортимент
-            _buyGoodPanelInitializer.Initialize();
+            _buyGoodPanelInstaller.Randomize();
         }
     }
 }

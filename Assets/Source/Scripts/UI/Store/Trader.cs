@@ -43,7 +43,7 @@ namespace UI.Store
                 return;
             }
 
-            YG2.saves.Goods.Add(sellable);
+            YG2.saves.SellableViews.Add(sellable);
             goodPanel.SetEnable(false);
         }
     }

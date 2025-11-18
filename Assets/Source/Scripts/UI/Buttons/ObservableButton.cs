@@ -12,11 +12,11 @@ namespace UI.Buttons
 
         public Observable<T> Pressed => _pressed;
 
-        protected abstract T GetReturnable();
+        protected abstract T Get();
         
         private void Awake()
         {
-            T returnable = GetReturnable();
+            T returnable = Get();
             
             _button.onClick.AddListener(() => _pressed.OnNext(returnable));
         }

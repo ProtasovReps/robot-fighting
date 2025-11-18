@@ -13,7 +13,7 @@ namespace YG
         public float DamageStat = 3.5f;
         public float BlockStat = 20f;
         public float ImpulseForce = 0.5f;
-        public List<SellableView> Goods = new();
+        public List<SellableView> SellableViews = new();
         public Dictionary<AttackType, ImplantView> SettedImplants = new();
         public Fighter SettedFighter;
         public List<Fighter> Fighters = new();

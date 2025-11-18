@@ -2,6 +2,8 @@
 using UI.Buttons;
 using UI.Info;
 using UnityEngine;
+using YG;
+using YG.Saver;
 
 namespace UI.Store
 {
@@ -10,15 +12,16 @@ namespace UI.Store
         [SerializeField] private Trader _trader;
         [SerializeField] private IntegerView _walletView;
         [SerializeField] private BuyObservableButton[] _buyButtons;
-        [SerializeField] private NotEnoughMoneyEffect _effect;
+        [SerializeField] private MoneyEffectInitializer _effectInitializer;
         
         private void Awake()
         {
-            Wallet wallet = new();
+            Wallet wallet = new(YG2.saves.Money);
+            WalletSaver walletSaver = new(wallet);
             
             _walletView.Initialize(wallet);
             _trader.Initialize(wallet, _buyButtons);
-            _effect.Initialize(wallet);
+            _effectInitializer.Initialize(wallet);
         }
     }
 }

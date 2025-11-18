@@ -1,30 +1,33 @@
 ﻿using System;
 using Interface;
 using R3;
-using YG;
 
 namespace CharacterSystem
 {
-    public class Wallet : IValueChangeable<int>, IMoneySpendable
+    public class Wallet : IValueChangeable<int>, IMoneySpendable, IMoneyAddable
     {
         private readonly ReactiveProperty<int> _value;
+        private readonly Subject<Unit> _spent;
         private readonly Subject<Unit> _failedSpend;
         
-        public Wallet()
+        public Wallet(int startValue)
         {
-            _value = new ReactiveProperty<int>(YG2.saves.Money);
+            ValidateAmount(startValue);
+            
+            _value = new ReactiveProperty<int>(startValue); 
+            _spent = new Subject<Unit>();
             _failedSpend = new Subject<Unit>();
         }
 
         public ReadOnlyReactiveProperty<int> Value => _value;
+        public Observable<Unit> Spent => _spent;
         public Observable<Unit> FailedSpend => _failedSpend;
-
+        
         public void Add(int amount)
         {
             ValidateAmount(amount);
 
             _value.OnNext(_value.CurrentValue + amount);
-            YG2.saves.Money += amount; // мб отдельно в сейвер
         }
         
         public bool TrySpend(int amount)
@@ -38,7 +41,7 @@ namespace CharacterSystem
             }
             
             _value.OnNext(_value.CurrentValue - amount);
-            YG2.saves.Money -= amount; // мб отдельно в сейвер
+            _spent.OnNext(Unit.Default);
             return true;
         }
 

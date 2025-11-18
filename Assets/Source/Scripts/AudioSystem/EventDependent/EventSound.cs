@@ -8,7 +8,7 @@ namespace AudioSystem.EventDependent
     {
         [SerializeField] private SoundID _soundID;
 
-        private void Awake()
+        private void Start()
         {
             Observable<Unit> observable = GetObservable();
 
