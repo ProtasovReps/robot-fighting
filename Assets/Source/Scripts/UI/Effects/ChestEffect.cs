@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Ami.BroAudio;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace UI.Effect
 {
@@ -6,6 +8,13 @@ namespace UI.Effect
     {
         [SerializeField] private ScaleAnimation _chest;
         [SerializeField] private ScaleAnimation _reward;
-
+        [SerializeField] private SoundID _moneySound;
+        
+        public async UniTaskVoid StartEffect()
+        {
+            await _chest.Play();
+            BroAudio.Play(_moneySound);
+            await _reward.Play();
+        }
     }
 }

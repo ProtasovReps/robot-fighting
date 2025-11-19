@@ -10,10 +10,16 @@ namespace UI.Effect
         [SerializeField] private float _duration;
 
         private CancellationTokenSource _tokenSource;
-
+        private Transform _transform;
+        
         public override bool IsPlaying => _tokenSource != null;
 
-        public override async UniTask Animate(Transform animatable)
+        private void Awake()
+        {
+            _transform = transform;
+        }
+
+        public override async UniTask Play()
         {
             _tokenSource = new CancellationTokenSource();
             
@@ -23,8 +29,8 @@ namespace UI.Effect
             {
                 float newScale = _curve.Evaluate(expiredTime / _duration);
 
-                animatable.localScale = new Vector2(newScale, newScale);
-                expiredTime += Time.deltaTime;
+                _transform.localScale = new Vector2(newScale, newScale);
+                expiredTime += Time.unscaledDeltaTime;
                 await UniTask.Yield(cancellationToken: _tokenSource.Token, cancelImmediately: true);
             }
 

@@ -33,7 +33,7 @@ namespace UI.Effect
             BroAudio.Play(_errorSound);
             
             _moneyAmount.color = _targetColor;
-            await _scaleAnimation.Animate(_moneyAmount.transform);
+            await _scaleAnimation.Play();
             _moneyAmount.color = _defaultColor;
         }
     }

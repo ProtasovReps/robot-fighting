@@ -12,7 +12,7 @@ namespace UI.Effect
             Cancel();
         }
 
-        public abstract UniTask Animate(Transform animatable);
+        public abstract UniTask Play();
         
         protected abstract void Cancel();
     }
