@@ -1,9 +1,8 @@
 ﻿using AudioSystem.EventDependent;
 using CharacterSystem;
-using UI.Info;
 using UnityEngine;
 
-namespace UI.Store
+namespace UI.Effect
 {
     public class MoneyEffectInitializer : MonoBehaviour
     {

@@ -192,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78c148580b1742239259e61955673e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scaleAnimation: {fileID: 886782565063703997}
   _moneyAmount: {fileID: 8863579654266410599}
   _targetScale: 2
-  _duration: 0.5
   _targetColor: {r: 1, g: 0, b: 0, a: 1}
   _errorSound:
     ID: 536870915
@@ -1612,6 +1612,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
+--- !u!114 &886782565063703997 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6988367903605413377, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
+  m_PrefabInstance: {fileID: 7833404202390252476}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6a91f2664b4ba195e085c8e0eac154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1348645635374130890 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}

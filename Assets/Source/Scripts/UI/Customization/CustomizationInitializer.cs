@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using CharacterSystem;
 using UI.Buttons;
+using UI.Effect;
 using UI.Info;
 using UI.Panel;
-using UI.Store;
 using UI.Switchers;
 using UnityEngine;
 using YG;

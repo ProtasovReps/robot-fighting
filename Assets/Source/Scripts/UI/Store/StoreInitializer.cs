@@ -1,5 +1,6 @@
 ﻿using CharacterSystem;
 using UI.Buttons;
+using UI.Effect;
 using UI.Info;
 using UnityEngine;
 using YG;

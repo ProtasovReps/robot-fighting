@@ -2,11 +2,12 @@
 using CharacterSystem;
 using Extensions;
 using UI.Info;
+using UI.Panel;
 using UnityEngine;
 using YG;
 using YG.Saver;
 
-namespace UI.Panel
+namespace UI.VictoryMenu
 {
     public class StatUpgradeInitializer : MonoBehaviour
     {
