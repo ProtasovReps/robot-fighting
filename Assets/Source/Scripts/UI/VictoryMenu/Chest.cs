@@ -26,7 +26,6 @@ namespace UI.VictoryMenu
         public void AddAward()
         {
             _moneyAddable.Add(AwardAmount);
-            Debug.Log("Reward added");
         }
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CharacterSystem;
-using Cysharp.Threading.Tasks;
 using Extensions;
-using FiniteStateMachine;
-using FiniteStateMachine.States;
 using R3;
-using Reflex.Attributes;
 using UI.Effect;
 using UI.Info;
 using UI.Panel;
