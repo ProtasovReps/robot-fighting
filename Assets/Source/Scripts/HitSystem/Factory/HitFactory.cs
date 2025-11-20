@@ -1,7 +1,7 @@
 ﻿using CharacterSystem.Parameters;
 using Extensions;
 using FightingSystem;
-using HealthSystem;
+using CharacterSystem.CharacterHealth;
 using HitSystem.FighterParts;
 using Interface;
 using UnityEngine;
@@ -15,15 +15,21 @@ namespace HitSystem
         [SerializeField] private FighterParameters _fighterParameters;
         [SerializeField] private ColliderSwitcher _colliderSwitcher;
         
-        public HitReader Produce(Health health, IStateMachine machine, IConditionAddable conditionAddable)
+        public HitReader Produce(
+            Health health,
+            IStateMachine machine,
+            IConditionAddable conditionAddable,
+            Disposer disposer)
         {
             Torso torso = new(health);
             Legs legs = new(health);
             float blockValue = GetBlockValue();
             Block block = new(_fighterParameters.BlockDuration, blockValue, torso, machine, conditionAddable);
 
+            disposer.Add(block);
+            
             InitializeColliders(block, legs, machine);
-            InitializeHit(conditionAddable, torso, legs);
+            InitializeHit(conditionAddable, torso, legs, disposer);
             return _hitReader;
         }
 
@@ -31,13 +37,13 @@ namespace HitSystem
         
         protected abstract HitColliderStash GetColliderStash();
 
-        private void InitializeHit(IConditionAddable conditionAddable, Torso torso, Legs legs)
+        private void InitializeHit(IConditionAddable conditionAddable, Torso torso, Legs legs, Disposer disposer)
         {
             _hitReader.Initialize(torso, legs);
             _hitImpact.Initialize(_hitReader);
 
-            new UpHit(_fighterParameters.StunDuration, _hitReader, conditionAddable);
-            new DownHit(_fighterParameters.DownStunDuration, _hitReader, conditionAddable);
+            disposer.Add(new UpHit(_fighterParameters.StunDuration, _hitReader, conditionAddable));
+            disposer.Add(new DownHit(_fighterParameters.DownStunDuration, _hitReader, conditionAddable));
         }
 
         private void InitializeColliders(Block block, Legs legs, IStateMachine stateMachine)

@@ -1,5 +1,5 @@
 ﻿using Extensions;
-using FightingSystem.Dying;
+using CharacterSystem.Dying;
 using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
@@ -42,7 +42,7 @@ namespace FiniteStateMachine.Transitions.Factory
                 false, typeof(DownHittedState), typeof(DeathState));
         }
 
-        protected override void InstallTransitions(StateMachine stateMachine, ConditionBuilder builder)
+        protected override void InstallTransitions(StateMachine machine, ConditionBuilder builder, Disposer disposer)
         {
             Observable<Unit> armAttack = _botFightInput.GetObservable(MotionHashes.ArmAttack);
             Observable<Unit> legAttack = _botFightInput.GetObservable(MotionHashes.LegAttack);
@@ -50,7 +50,7 @@ namespace FiniteStateMachine.Transitions.Factory
             Observable<Unit> super = _botFightInput.GetObservable(MotionHashes.Super);
             Observable<Unit> block = _botFightInput.GetObservable(MotionHashes.Block);
 
-            new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
+            var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), machine)
                 .InitializeTransition<IdleState, int>(
                     _botMoveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<MoveLeftState, int>(
@@ -62,7 +62,7 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<DownDeathState, Unit>(
                     _death.DownDeath, builder.Get<DeathState>());
 
-            new TransitionInitializer(new RepeatableTransitionFactory(), stateMachine) // dispose
+            var repeatableInitializer = new TransitionInitializer(new RepeatableTransitionFactory(), machine)
                 .InitializeTransition<UpAttackState, Unit>(
                     armAttack, builder.Get<AttackState>())
                 .InitializeTransition<DownAttackState, Unit>(
@@ -77,6 +77,9 @@ namespace FiniteStateMachine.Transitions.Factory
                     _hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(
                     _hitReader.LegsHitted, builder.Get<DownHittedState>());
+
+            disposer.Add(soloInitializer);
+            disposer.Add(repeatableInitializer);
         }
     }
 }

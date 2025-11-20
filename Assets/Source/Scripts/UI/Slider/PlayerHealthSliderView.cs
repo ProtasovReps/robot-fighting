@@ -1,4 +1,4 @@
-﻿using HealthSystem;
+﻿using CharacterSystem.CharacterHealth;
 
 namespace UI.SliderView
 {

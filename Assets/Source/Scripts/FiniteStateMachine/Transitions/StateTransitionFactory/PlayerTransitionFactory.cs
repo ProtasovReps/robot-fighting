@@ -1,4 +1,5 @@
-﻿using FightingSystem.Dying;
+﻿using CharacterSystem.Dying;
+using Extensions;
 using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
@@ -36,9 +37,9 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Merge<IdleState, StretchState>(false);
 
             builder.MergeGlobal<DeathState>(false);
-            
+
             builder.MergeGlobal<JumpState>(
-                false, typeof(MoveJumpState), typeof(DeathState), 
+                false, typeof(MoveJumpState), typeof(DeathState),
                 typeof(DownHittedState), typeof(UpHittedState));
             builder.MergeGlobal<UpHittedState>(
                 false, typeof(DownHittedState), typeof(DeathState));
@@ -49,10 +50,10 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.MergeGlobal<BlockState>(
                 false, typeof(DownHittedState), typeof(DeathState));
         }
-        
-          protected override void InstallTransitions(StateMachine stateMachine, ConditionBuilder builder)
+
+        protected override void InstallTransitions(StateMachine machine, ConditionBuilder builder, Disposer disposer)
         {
-            new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
+            var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), machine)
                 .InitializeTransition<IdleState, int>(
                     _moveInput.Value, builder.Get<IdleState>())
                 .InitializeTransition<StretchState, int>(
@@ -70,7 +71,7 @@ namespace FiniteStateMachine.Transitions.Factory
                 .InitializeTransition<DownDeathState, Unit>(
                     _death.DownDeath, builder.Get<DeathState>());
 
-            new TransitionInitializer(new RepeatableTransitionFactory(), stateMachine) // dispose
+            var repeatableInitializer = new TransitionInitializer(new RepeatableTransitionFactory(), machine)
                 .InitializeTransition<UpAttackState, Unit>(
                     _attackInputReader.PunchPressed, builder.Get<AttackState>())
                 .InitializeTransition<DownAttackState, Unit>(
@@ -83,6 +84,9 @@ namespace FiniteStateMachine.Transitions.Factory
                     _hitReader.TorsoHitted, builder.Get<UpHittedState>())
                 .InitializeTransition<DownHittedState, Unit>(
                     _hitReader.LegsHitted, builder.Get<DownHittedState>());
+
+            disposer.Add(soloInitializer);
+            disposer.Add(repeatableInitializer);
         }
     }
 }

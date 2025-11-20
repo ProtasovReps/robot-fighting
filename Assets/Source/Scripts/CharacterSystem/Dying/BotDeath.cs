@@ -1,8 +1,8 @@
-﻿using HealthSystem;
+﻿using CharacterSystem.CharacterHealth;
 using HitSystem;
 using Interface;
 
-namespace FightingSystem.Dying
+namespace CharacterSystem.Dying
 {
     public class BotDeath : Death
     {

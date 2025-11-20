@@ -11,12 +11,14 @@ namespace AnimationSystem.Factory
     {
         public void Produce(
             AnimatedCharacter animatedCharacter,
-            Animator animator,
             IStateMachine stateMachine,
             FighterParameters fighterParameters,
             PositionTranslation positionTranslation,
+            Disposer disposer,
             float moveSpeed)
         {
+            Animator animator = animatedCharacter.Animator;
+            
             var animations = new CharacterAnimation[]
             {
                 new TriggerAnimation<IdleState>(stateMachine, animator, MotionHashes.Idle),
@@ -35,9 +37,17 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<DownDeathState>(stateMachine, animator, MotionHashes.DownDeath)
             };
 
-            new AnimationDurationChanger(animator, stateMachine, fighterParameters);
-            new MoveAnimationSpeed(animator, positionTranslation, moveSpeed);
+            var durationChanger = new AnimationDurationChanger(animator, stateMachine, fighterParameters);
+            var animationSpeed = new MoveAnimationSpeed(animator, positionTranslation, moveSpeed);
 
+            for (int i = 0; i < animations.Length; i++)
+            {
+                disposer.Add(animations[i]);
+            }
+            
+            disposer.Add(durationChanger);
+            disposer.Add(animationSpeed);
+            
             animatedCharacter.Initialize(animations);
         }
     }

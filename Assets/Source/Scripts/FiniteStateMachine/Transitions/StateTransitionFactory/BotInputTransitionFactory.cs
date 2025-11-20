@@ -1,4 +1,5 @@
-﻿using FiniteStateMachine.Conditions;
+﻿using Extensions;
+using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
 using R3;
 
@@ -23,9 +24,12 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Merge<NothingNearbyState, ValidAttackDistanceState>(false);
         }
 
-        protected override void InstallTransitions(StateMachine stateMachine, ConditionBuilder builder)
+        protected override void InstallTransitions(
+            StateMachine stateMachine,
+            ConditionBuilder builder,
+            Disposer disposer)
         {
-            new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
+            var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
                 .InitializeTransition<PlayerNearbyState, Unit>(
@@ -36,6 +40,8 @@ namespace FiniteStateMachine.Transitions.Factory
                     Observable.EveryUpdate(), builder.Get<WallOpponentNearbyState>())
                 .InitializeTransition<ValidAttackDistanceState, Unit>(
                     Observable.EveryUpdate(), builder.Get<ValidAttackDistanceState>());
+
+            disposer.Add(soloInitializer);
         }
     }
 }

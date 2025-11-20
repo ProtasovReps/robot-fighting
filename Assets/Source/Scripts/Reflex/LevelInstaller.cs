@@ -6,13 +6,13 @@ using CharacterSystem.Parameters;
 using HitSystem;
 using Extensions;
 using FightingSystem;
-using FightingSystem.Dying;
+using CharacterSystem.Dying;
 using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
-using HealthSystem;
+using CharacterSystem.CharacterHealth;
 using ImplantSystem;
 using ImplantSystem.Factory;
 using InputSystem;
@@ -38,8 +38,8 @@ namespace Reflex
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerParameters _playerParameters;
         [SerializeField] private PlayerImplantFactory _playerImplantFactory;
-        [SerializeField] private Animator _playerAnimator; // убрать с приходом сейвов
         [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // убрать с приходом сейвов
+        [SerializeField] private Disposer _disposer;
         
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
@@ -51,19 +51,14 @@ namespace Reflex
         [SerializeField] private BotParameters _botParameters;
         [SerializeField] private BotImplantFactory _botImplantFactory;
         [SerializeField] private ActionFactory _botActionFactory;
-        [SerializeField] private Animator _botAnimator;
         [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
         
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             AnimationFactory animationFactory = new();
-            
+
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
-            
-            
-            
-            // containerBuilder.AddSingleton(typeof(Wallet)); // ошибка будет
         }
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
@@ -73,23 +68,26 @@ namespace Reflex
             PlayerConditionBuilder conditionBuilder = new();
             PlayerHealth health = new(YG2.saves.HealthStat);
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
-            HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder);
+            HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);
             PlayerDeath death = new(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
-            AttackAnimationOverrider animationOverrider = new(_playerAnimator);
-
-            new Stretch(playerStateMachine, conditionBuilder);
+            AttackAnimationOverrider animationOverrider = new(_playerAnimatedCharacter.Animator);
+            SuperAttackCharge attackCharge = new(hitReader, playerStateMachine, conditionBuilder);
+            
+            _disposer.Add(death);
+            _disposer.Add(attackCharge);
+            _disposer.Add(new Stretch(playerStateMachine, conditionBuilder));
             
             _playerAttackFactory.Produce(placeHolderStash);
             
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
             
-            animationFactory.Produce(_playerAnimatedCharacter,
-                _playerAnimator, playerStateMachine, _playerParameters, positionTranslation, YG2.saves.SpeedStat);
+            animationFactory.Produce(_playerAnimatedCharacter, 
+                playerStateMachine, _playerParameters, positionTranslation, _disposer, YG2.saves.SpeedStat);
             
             animationOverrider.Override(placeHolderStash);
            
-            builder.AddSingleton(new SuperAttackCharge(hitReader, playerStateMachine, conditionBuilder));
+            builder.AddSingleton(attackCharge);
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
             builder.AddSingleton(playerStateMachine);
@@ -102,17 +100,19 @@ namespace Reflex
             BotConditionBuilder conditionBuilder = new();
             BotHealth health = new(_botParameters.StartHealthValue);
             ImplantPlaceHolderStash placeHolderStash = _botImplantFactory.Produce();
-            HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder);
+            HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder, _disposer);
             BotDeath death = new BotDeath(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallBotInput(builder, death);
-            AttackAnimationOverrider animationOverrider = new(_botAnimator);
+            AttackAnimationOverrider animationOverrider = new(_botAnimatedCharacter.Animator);
 
+            _disposer.Add(death);
+            
             _botAttackFactory.Produce(placeHolderStash);
             
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
             
-            animationFactory.Produce(_botAnimatedCharacter, 
-                _botAnimator, botStateMachine, _botParameters, positionTranslation, _botParameters.MoveSpeed);
+            animationFactory.Produce(_botAnimatedCharacter,
+                botStateMachine, _botParameters, positionTranslation, _disposer, _botParameters.MoveSpeed);
             animationOverrider.Override(placeHolderStash);
 
             builder.AddSingleton(health);
@@ -131,6 +131,9 @@ namespace Reflex
             Dictionary<int, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
             ValidatedInput validatedBotInput = new(_botParameters.transform, botMoveInput, directions);
             
+            _disposer.Add(botMoveInput);
+            _disposer.Add(validatedBotInput);
+            
             InstallBotActions(botMoveInput, botFightInput, stateMachine);
 
             _botTransitionFactory.Initialize(validatedBotInput, botFightInput, death);
@@ -144,7 +147,7 @@ namespace Reflex
         {
             ActionStash stash = new(moveInput, fightInput, _botParameters);
             
-            _botActionFactory.InstallActions(stash, moveInput, machine);
+            _botActionFactory.InstallActions(stash, moveInput, machine, _disposer);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder, PlayerDeath death)
@@ -156,8 +159,12 @@ namespace Reflex
             ValidatedInput validatedInput = new(_playerParameters.transform, moveInputReader, directions);
             
             _playerTransitionFactory.Initialize(moveInputReader, attackInputReader, death);
+
+            _disposer.Add(validatedInput);
+            _disposer.Add(moveInputReader);
+            _disposer.Add(input);
             
-            input.Enable(); // управление инпутом в другое место
+            input.Enable();
             builder.AddSingleton(input);
             return validatedInput;
         }

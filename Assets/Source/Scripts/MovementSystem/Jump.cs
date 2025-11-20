@@ -48,7 +48,6 @@ namespace MovementSystem
             TranslateUp().Forget();
         }
 
-        // может в будущем понадобится добавить CancellationToken для прерывания подъема при получении урона
         private async UniTaskVoid TranslateUp()
         {
             Vector3 targetPosition = _transform.position + _transform.up * _jumpHeight;

@@ -1,4 +1,4 @@
-﻿namespace HealthSystem
+﻿namespace CharacterSystem.CharacterHealth
 {
     public class PlayerHealth : Health
     {

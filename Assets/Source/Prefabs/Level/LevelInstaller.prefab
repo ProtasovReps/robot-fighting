@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65bbb0ce22da4d7386dd2988b4176612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _disposer: {fileID: 8943368177320517145}
   _hitReader: {fileID: 0}
 --- !u!1 &1417841561429495828
 GameObject:
@@ -56,6 +57,7 @@ GameObject:
   - component: {fileID: 3293776013892293829}
   - component: {fileID: 2840784180280606752}
   - component: {fileID: 3361006041500974722}
+  - component: {fileID: 8943368177320517145}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -122,8 +124,8 @@ MonoBehaviour:
   _playerMovement: {fileID: 0}
   _playerParameters: {fileID: 0}
   _playerImplantFactory: {fileID: 0}
-  _playerAnimator: {fileID: 0}
   _playerAnimatedCharacter: {fileID: 0}
+  _disposer: {fileID: 8943368177320517145}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
   _botHitFactory: {fileID: 5552862501096592642}
@@ -133,8 +135,19 @@ MonoBehaviour:
   _botParameters: {fileID: 0}
   _botImplantFactory: {fileID: 0}
   _botActionFactory: {fileID: 9182618352828704245}
-  _botAnimator: {fileID: 0}
   _botAnimatedCharacter: {fileID: 0}
+--- !u!114 &8943368177320517145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417841561429495828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539b51f1d2084715b6d99492582bf093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22fd4085d469486c829b8fa6083ec971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _disposer: {fileID: 8943368177320517145}
 --- !u!1 &1981386646921566959
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96f3f0ea14f34bf2bcb4158acc8bf067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _disposer: {fileID: 8943368177320517145}
   _hitReader: {fileID: 0}
 --- !u!1 &2736714847070003156
 GameObject:
@@ -363,6 +378,7 @@ MonoBehaviour:
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
   _fighterParameters: {fileID: 0}
+  _colliderSwitcher: {fileID: 0}
   _colliderStash: {fileID: 0}
 --- !u!1 &4034335696706647003
 GameObject:
@@ -408,10 +424,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac16aa324304f2886bd8b2786b75a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placeHolderStash: {fileID: 0}
   _upAttackImplant: {fileID: 0}
   _downAttackImplant: {fileID: 0}
   _superAttackImplant: {fileID: 0}
-  _placeHolderStash: {fileID: 0}
 --- !u!1 &4122987826340231935
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,10 +518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652f4ec947c74cd2ba4eda8c67cf20ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _placeHolderStash: {fileID: 0}
   _upAttackImplant: {fileID: 0}
   _downAttackImplant: {fileID: 0}
   _specialAttackImplant: {fileID: 0}
-  _placeHolderStash: {fileID: 0}
 --- !u!1 &5096074298767707608
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +570,7 @@ MonoBehaviour:
   _opponentLayer:
     serializedVersion: 2
     m_Bits: 128
+  _botParameters: {fileID: 0}
 --- !u!1 &6352184114384680760
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +666,9 @@ MonoBehaviour:
   _hitReader: {fileID: 0}
   _hitImpact: {fileID: 0}
   _fighterParameters: {fileID: 0}
+  _colliderSwitcher: {fileID: 0}
   _colliderStash: {fileID: 0}
+  _botParameters: {fileID: 0}
 --- !u!1 &8857659637372173378
 GameObject:
   m_ObjectHideFlags: 0

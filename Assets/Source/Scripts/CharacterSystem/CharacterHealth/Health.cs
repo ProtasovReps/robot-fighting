@@ -3,7 +3,7 @@ using Interface;
 using R3;
 using UnityEngine;
 
-namespace HealthSystem
+namespace CharacterSystem.CharacterHealth
 {
     public class Health : IFloatValueChangeable, IDamageable<float>
     {

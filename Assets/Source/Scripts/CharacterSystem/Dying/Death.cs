@@ -1,11 +1,11 @@
 ﻿using System;
 using FiniteStateMachine.States;
-using HealthSystem;
+using CharacterSystem.CharacterHealth;
 using HitSystem;
 using Interface;
 using R3;
 
-namespace FightingSystem.Dying
+namespace CharacterSystem.Dying
 {
     public abstract class Death : IDisposable
     {

@@ -32,7 +32,6 @@ namespace InputSystem
         public void Dispose()
         {
             _subscription?.Dispose();
-            _direction?.Dispose();
         }
 
         private void SetDirection(int direction)
