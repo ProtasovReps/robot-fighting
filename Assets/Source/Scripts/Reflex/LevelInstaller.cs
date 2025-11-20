@@ -23,6 +23,7 @@ using MovementSystem;
 using Reflex.Core;
 using UnityEngine;
 using YG;
+using YG.Saver;
 using BotMovement = MovementSystem.BotMovement;
 using State = FiniteStateMachine.States.State;
 
@@ -40,6 +41,7 @@ namespace Reflex
         [SerializeField] private PlayerImplantFactory _playerImplantFactory;
         [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // убрать с приходом сейвов
         [SerializeField] private Disposer _disposer;
+        [SerializeField] private ProgressSaver _saver;
         
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
@@ -59,6 +61,7 @@ namespace Reflex
 
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
+            InstallSaves(containerBuilder);
         }
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
@@ -181,6 +184,14 @@ namespace Reflex
             PositionTranslation positionTranslation = new(_botParameters.transform, _botParameters.MoveSpeed);
             _botMovement.Initialize(moveInput, positionTranslation);
             return positionTranslation;
+        }
+
+        private void InstallSaves(ContainerBuilder builder)
+        {
+            LevelSaver levelSaver = new();
+            
+            _saver.Add(levelSaver);
+            builder.AddSingleton(_saver);
         }
     }
 }

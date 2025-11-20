@@ -1,40 +1,17 @@
-﻿using System;
-using Ami.BroAudio;
-using Cysharp.Threading.Tasks;
-using R3;
-using UI.Buttons;
-using UI.Effect;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UI.LevelChange
 {
-    public class CustomizationSceneTransition : MonoBehaviour
+    public class CustomizationSceneTransition : SceneTransition
     {
-        private const float DefaultTimeScale = 1f;
-        
         [SerializeField] private CustomizationSceneName _sceneName;
-        [SerializeField] private UnitButton _unitButton;
-        [SerializeField] private ScaleAnimation _scaleAnimation;
-        
-        private IDisposable _subscription;
 
-        private void Awake()
+        protected override void LoadScene()
         {
-            _subscription = _unitButton.Pressed
-                .Subscribe(_ => Transit().Forget());
-        }
+            string sceneName = _sceneName.ToString();
 
-        private async UniTaskVoid Transit()
-        {
-            _subscription.Dispose();
-
-            string nextSceneName = _sceneName.ToString();
-
-            await _scaleAnimation.Play();
-            Time.timeScale = DefaultTimeScale;
-            BroAudio.Stop(BroAudioType.Music);
-            SceneManager.LoadScene(nextSceneName);
+            SceneManager.LoadScene(sceneName);
         }
     }
 }

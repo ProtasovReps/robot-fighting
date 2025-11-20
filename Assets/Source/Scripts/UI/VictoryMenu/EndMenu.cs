@@ -14,7 +14,7 @@ namespace UI.VictoryMenu
         [SerializeField] private ScaleAnimation _shadowAnimation;
         [SerializeField] private ScaleAnimation _upgradeAnimation;
         [SerializeField] private float _appearDelay;
-
+        
         private IDisposable _subscription;
 
         [Inject]

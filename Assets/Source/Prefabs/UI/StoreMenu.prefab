@@ -209,10 +209,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5447477272839209064}
-  - component: {fileID: 3726615270763791405}
   - component: {fileID: 6752717047335895392}
   - component: {fileID: 5850948640252421112}
-  - component: {fileID: 1256898091957679907}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -242,24 +240,6 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 0}
   m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3726615270763791405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775262058885343398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387a0ac33cc149a5ab77d309e43eeaf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trader: {fileID: 4714647085266170967}
-  _walletView: {fileID: 2504186840966642693}
-  _buyButtons:
-  - {fileID: 2723977439853782762}
-  - {fileID: 1087266670622701079}
-  _effectInitializer: {fileID: 1256898091957679907}
 --- !u!114 &6752717047335895392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,21 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 6832945851707482517}
   _buyGoodPanelInstaller: {fileID: 6752717047335895392}
---- !u!114 &1256898091957679907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775262058885343398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 417ba2050ef04e4e873815d44a3c2c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _effect: {fileID: 9101897930941516084}
-  _notEnoughMoneySound: {fileID: 0}
-  _moneySpentSound: {fileID: 0}
 --- !u!1 &2487746623746933873
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e539c1c62d4442911af59cf83658b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _buyButtons:
+  - {fileID: 2723977439853782762}
+  - {fileID: 1087266670622701079}
 --- !u!1 &8557418195758078701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,17 +1772,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 9079975453344583030, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
   m_PrefabInstance: {fileID: 7833404202390252476}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2504186840966642693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5653564770469795769, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}
-  m_PrefabInstance: {fileID: 7833404202390252476}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb87bd0e580942d89339c573eaae4502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8863579654266410599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1708013409677098459, guid: 23eaddcb3abe065428c82cef802463cf, type: 3}

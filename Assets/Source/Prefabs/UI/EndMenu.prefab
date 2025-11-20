@@ -1918,7 +1918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8716.265, y: 28251.176}
+  m_AnchoredPosition: {x: 25713.105, y: 76921.36}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5835714547662343707
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6788799638220759421}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.8354804
+  m_Size: 0.83575255
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2326,9 +2326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f2c970649724d60b3df60628275b892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: 0
   _unitButton: {fileID: 702564512034103175}
   _scaleAnimation: {fileID: 822735846093629829}
+  _sceneName: 1
 --- !u!1 &8194619283338541979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,7 +2506,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1.0206299
-      value: 1.0636787
+      value: 1.5
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -2971,6 +2971,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionImage
       objectReference: {fileID: 0}
+    - target: {fileID: 3635984185533699315, guid: eee0befabd9b2c54da469b7f5c04e935, type: 3}
+      propertyPath: _duration
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8337269378205643503, guid: eee0befabd9b2c54da469b7f5c04e935, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3350,8 +3354,7 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6371723878609856225, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -2,6 +2,7 @@
 using CharacterSystem;
 using Extensions;
 using R3;
+using Reflex.Attributes;
 using UI.Effect;
 using UI.Info;
 using UI.Panel;
@@ -18,6 +19,14 @@ namespace UI.VictoryMenu
         [SerializeField, Min(1)] private int _skillPoints;
         [SerializeField] private StatInfo[] _statInfo;
         [SerializeField] private AnimatablePanelSwitcher _animatableSwitcher;
+
+        private ProgressSaver _progressSaver;
+        
+        [Inject]
+        private void Inject(ProgressSaver saver)
+        {
+            _progressSaver = saver;
+        }
         
         private void Awake()
         {
@@ -31,11 +40,12 @@ namespace UI.VictoryMenu
             };
 
             CharacterStats stats = new(startStats);
-            CharacterStatSaver saver = new(stats);
+            CharacterStatSaver statSaver = new(stats);
             Observable<Unit> switchMessage = downCounter.Value
                 .Where(value => value == 0)
                 .Select(_ => Unit.Default);
             
+            _progressSaver.Add(statSaver);
             _pointsView.Initialize(downCounter);
             _statUpgradePanel.Initialize(downCounter, stats);
             _animatableSwitcher.Initialize(switchMessage);

@@ -1,6 +1,7 @@
 ﻿using Ami.BroAudio;
 using Interface;
 using R3;
+using Reflex.Attributes;
 using TMPro;
 using UI.Buttons;
 using UI.Customization;
@@ -18,7 +19,8 @@ namespace UI.Panel
         private IMoneySpendable _moneySpendable;
         private SkinView _sellectedSkin;
 
-        public void Initialize(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable)
+        [Inject]
+        private void Inject(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable)
         {
             _moneySpendable = moneySpendable;
 

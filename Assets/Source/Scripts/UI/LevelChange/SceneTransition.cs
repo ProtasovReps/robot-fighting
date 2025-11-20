@@ -1,0 +1,48 @@
+﻿using System;
+using Ami.BroAudio;
+using Cysharp.Threading.Tasks;
+using UI.Buttons;
+using UI.Effect;
+using UnityEngine;
+using R3;
+using Reflex.Attributes;
+using YG.Saver;
+
+namespace UI.LevelChange
+{
+    public abstract class SceneTransition : MonoBehaviour
+    {
+        private const float DefaultTimeScale = 1f;
+        
+        [SerializeField] private UnitButton _unitButton;
+        [SerializeField] private ScaleAnimation _scaleAnimation;
+        
+        private ProgressSaver _progressSaver;
+        private IDisposable _subscription;
+
+        [Inject]
+        private void Inject(ProgressSaver saver)
+        {
+            _progressSaver = saver;
+        }
+        
+        private void Awake()
+        {
+            _subscription = _unitButton.Pressed
+                .Subscribe(_ => Transit().Forget());
+        }
+
+        protected abstract void LoadScene();
+        
+        private async UniTaskVoid Transit()
+        {
+            _subscription.Dispose();
+            _progressSaver.Save();
+            await _scaleAnimation.Play();
+            
+            Time.timeScale = DefaultTimeScale;
+            BroAudio.Stop(BroAudioType.Music);
+            LoadScene();
+        }
+    }
+}

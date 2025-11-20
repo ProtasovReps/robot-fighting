@@ -2,6 +2,7 @@
 using Cysharp.Threading.Tasks;
 using Interface;
 using R3;
+using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
@@ -15,8 +16,9 @@ namespace UI.Effect
         [SerializeField] private SoundID _errorSound;
         
         private Color _defaultColor;
-
-        public void Initialize(IMoneySpendable moneySpendable)
+        
+        [Inject]
+        private void Inject(IMoneySpendable moneySpendable)
         {
             _defaultColor = _moneyAmount.color;
 

@@ -13,6 +13,8 @@ namespace YG
         public float DamageStat = 3.5f;
         public float BlockStat = 20f;
         public float ImpulseForce = 0.5f;
+        public int SceneIndex = 2;
+        public bool IfBeatedGame = false;
         public List<SellableView> SellableViews = new();
         public Dictionary<AttackType, ImplantView> SettedImplants = new();
         public Fighter SettedFighter;

@@ -1,13 +1,15 @@
 ﻿using Interface;
 using R3;
+using Reflex.Attributes;
 
 namespace AudioSystem.EventDependent
 {
     public class NotEnoughMoneySound : EventSound
     {
         private Observable<Unit> _observable;
-        
-        public void Initialize(IMoneySpendable moneySpendable)
+
+        [Inject]
+        private void Inject(IMoneySpendable moneySpendable)
         {
             _observable = moneySpendable.FailedSpend;
         }

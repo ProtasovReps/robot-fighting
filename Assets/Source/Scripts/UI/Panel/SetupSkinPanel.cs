@@ -1,4 +1,5 @@
 ﻿using R3;
+using Reflex.Attributes;
 using UI.Buttons;
 using UI.Customization;
 using UnityEngine;
@@ -11,8 +12,9 @@ namespace UI.Panel
         [SerializeField] private UnitButton _selectButton;
         
         private SkinView _skinView;
-        
-        public void Initialize(FighterShowcase fighterShowcase)
+
+        [Inject]
+        private void Inject(FighterShowcase fighterShowcase)
         {
             fighterShowcase.SkinChanged
                 .Subscribe(SetSkinView)
@@ -22,7 +24,7 @@ namespace UI.Panel
                 .Subscribe(_ => Choose())
                 .AddTo(this);
         }
-
+        
         private void SetSkinView(SkinView skinView)
         {
             if (YG2.saves.SettedFighter == skinView.Fighter)

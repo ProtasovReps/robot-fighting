@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 2840784180280606752}
   - component: {fileID: 3361006041500974722}
   - component: {fileID: 8943368177320517145}
+  - component: {fileID: 3129587235003955599}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -126,6 +127,7 @@ MonoBehaviour:
   _playerImplantFactory: {fileID: 0}
   _playerAnimatedCharacter: {fileID: 0}
   _disposer: {fileID: 8943368177320517145}
+  _saver: {fileID: 3129587235003955599}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
   _botHitFactory: {fileID: 5552862501096592642}
@@ -146,6 +148,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 539b51f1d2084715b6d99492582bf093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3129587235003955599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417841561429495828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019527668bc446b084040ec507361634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1764151761344835433

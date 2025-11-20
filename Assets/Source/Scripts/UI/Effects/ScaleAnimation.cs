@@ -19,7 +19,6 @@ namespace UI.Effect
             _transform = transform;
         }
 
-        [ContextMenu("Test")]
         public override async UniTask Play()
         {
             _tokenSource = new CancellationTokenSource();
