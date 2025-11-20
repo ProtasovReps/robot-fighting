@@ -15,7 +15,6 @@ namespace UI.Store
                 .Subscribe(_ => Reroll())
                 .AddTo(this);
             
-            _buyGoodPanelInstaller.Initialize();
             _buyGoodPanelInstaller.Randomize();
         }
 

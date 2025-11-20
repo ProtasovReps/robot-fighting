@@ -24,6 +24,8 @@ namespace Reflex
 
         private void Awake()
         {
+            _bag.Initialize();
+            InstallButtons();
             _fighterShowcase.Initialize();
         }
 
@@ -31,14 +33,17 @@ namespace Reflex
         {    
             Wallet wallet = new(YG2.saves.Money);
             WalletSaver walletSaver = new(wallet);
+            ImplantSaver implantSaver = new();
+            SkinSaver skinSaver = new();
             
             _progressSaver.Add(walletSaver);
+            _progressSaver.Add(implantSaver);
+            _progressSaver.Add(skinSaver);
             _moneyView.Initialize(wallet);
-            _bag.Initialize();
-            
-            InstallButtons();
             
             containerBuilder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IMoneySpendable));
+            containerBuilder.AddSingleton(implantSaver);
+            containerBuilder.AddSingleton(skinSaver);
             containerBuilder.AddSingleton(_progressSaver);
             containerBuilder.AddSingleton(_fighterShowcase);
         }

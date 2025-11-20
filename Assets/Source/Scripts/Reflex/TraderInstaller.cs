@@ -17,12 +17,15 @@ namespace Reflex
         {
             Wallet wallet = new(YG2.saves.Money);
             WalletSaver walletSaver = new(wallet);
-
+            GoodSaver goodSaver = new();
+            
             _progressSaver.Add(walletSaver);
+            _progressSaver.Add(goodSaver);
             _moneyView.Initialize(wallet);
 
             containerBuilder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IMoneySpendable));
             containerBuilder.AddSingleton(_progressSaver);
+            containerBuilder.AddSingleton(goodSaver);
         }
     }
 }

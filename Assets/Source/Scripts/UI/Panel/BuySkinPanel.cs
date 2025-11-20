@@ -6,7 +6,7 @@ using TMPro;
 using UI.Buttons;
 using UI.Customization;
 using UnityEngine;
-using YG;
+using YG.Saver;
 
 namespace UI.Panel
 {
@@ -18,12 +18,14 @@ namespace UI.Panel
         
         private IMoneySpendable _moneySpendable;
         private SkinView _sellectedSkin;
-
+        private SkinSaver _skinSaver;
+        
         [Inject]
-        private void Inject(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable)
+        private void Inject(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable, SkinSaver skinSaver)
         {
             _moneySpendable = moneySpendable;
-
+            _skinSaver = skinSaver;
+            
             fighterShowcase.SkinChanged
                 .Subscribe(SetSkin)
                 .AddTo(this);
@@ -35,7 +37,7 @@ namespace UI.Panel
 
         private void SetSkin(SkinView skinView)
         {
-            if (YG2.saves.Fighters.Contains(skinView.Fighter))
+            if (_skinSaver.Contains(skinView.Fighter))
             {
                 _buyButton.gameObject.SetActive(false);
                 return;
@@ -54,7 +56,7 @@ namespace UI.Panel
             }
 
             BroAudio.Play(_skinBaughtSound);
-            YG2.saves.Fighters.Add(_sellectedSkin.Fighter);
+            _skinSaver.Add(_sellectedSkin.Fighter);
             _buyButton.gameObject.SetActive(false);
         }
     }

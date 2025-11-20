@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using Reflex.Attributes;
 using UI.Panel;
 using UnityEngine;
-using YG;
+using YG.Saver;
 using Random = UnityEngine.Random;
 
 namespace UI.Store
@@ -12,16 +12,17 @@ namespace UI.Store
         [SerializeField] private GoodPanel[] _buyGoodPanels;
         [SerializeField] private SellableView[] _goods;
 
-        private List<SellableView> _playerSellables;
-        
-        public void Initialize()
+        private GoodSaver _goodSaver;
+
+        [Inject]
+        private void Inject(GoodSaver goodSaver)
         {
             if (_buyGoodPanels.Length > _goods.Length)
                 throw new ArgumentOutOfRangeException(nameof(_buyGoodPanels));
-
-            _playerSellables = YG2.saves.SellableViews;
+            
+            _goodSaver = goodSaver;
         }
-
+        
         public void Randomize()
         {
             SellableView tempSellable;
@@ -45,7 +46,7 @@ namespace UI.Store
         private void CheckPlayerSellables(GoodPanel goodPanel)
         {
             SellableView sellable = goodPanel.Get();
-            bool ifNewItem = _playerSellables.Contains(sellable) == false;
+            bool ifNewItem = _goodSaver.Contains(sellable) == false;
 
             goodPanel.SetEnable(ifNewItem);
         }

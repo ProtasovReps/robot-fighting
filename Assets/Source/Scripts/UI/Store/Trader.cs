@@ -1,11 +1,10 @@
-﻿using System;
-using Interface;
+﻿using Interface;
 using R3;
 using Reflex.Attributes;
 using UI.Buttons;
 using UI.Panel;
 using UnityEngine;
-using YG;
+using YG.Saver;
 
 namespace UI.Store
 {
@@ -15,11 +14,13 @@ namespace UI.Store
         
         private CompositeDisposable _subscriptions;
         private IMoneySpendable _moneySpendable;
-
+        private GoodSaver _goodSaver;
+        
         [Inject]
-        private void Inject(IMoneySpendable moneySpendable)
+        private void Inject(IMoneySpendable moneySpendable, GoodSaver goodSaver)
         {
             _moneySpendable = moneySpendable;
+            _goodSaver = goodSaver;
         }
 
         private void Awake()
@@ -49,7 +50,7 @@ namespace UI.Store
                 return;
             }
 
-            YG2.saves.SellableViews.Add(sellable);
+            _goodSaver.Add(sellable);
             goodPanel.SetEnable(false);
         }
     }

@@ -3,7 +3,7 @@ using Reflex.Attributes;
 using UI.Buttons;
 using UI.Customization;
 using UnityEngine;
-using YG;
+using YG.Saver;
 
 namespace UI.Panel
 {
@@ -12,10 +12,13 @@ namespace UI.Panel
         [SerializeField] private UnitButton _selectButton;
         
         private SkinView _skinView;
-
+        private SkinSaver _skinSaver;
+        
         [Inject]
-        private void Inject(FighterShowcase fighterShowcase)
+        private void Inject(FighterShowcase fighterShowcase, SkinSaver skinSaver)
         {
+            _skinSaver = skinSaver;
+            
             fighterShowcase.SkinChanged
                 .Subscribe(SetSkinView)
                 .AddTo(this);
@@ -27,7 +30,7 @@ namespace UI.Panel
         
         private void SetSkinView(SkinView skinView)
         {
-            if (YG2.saves.SettedFighter == skinView.Fighter)
+            if (_skinSaver.IsSetted(skinView.Fighter))
             {
                 SetEnable(false);
                 return;
@@ -39,7 +42,7 @@ namespace UI.Panel
 
         private void Choose()
         {
-            YG2.saves.SettedFighter = _skinView.Fighter;
+            _skinSaver.Set(_skinView.Fighter);
             SetEnable(false);
         }
     }
