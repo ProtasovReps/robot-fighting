@@ -1,5 +1,6 @@
 ﻿using CharacterSystem;
 using Extensions;
+using Reflex.Attributes;
 using UI.Buttons.StatUpgrade;
 using UnityEngine;
 
@@ -10,12 +11,10 @@ namespace UI.Info
         [SerializeField] private StatUpgradeButton _upgradeButton;
         [SerializeField] private StatType _statType;
 
-        private CharacterStats _stats;
-        
-        public void Initialize(CharacterStats characterStats)
+        [Inject]
+        private void Inject(CharacterStats stats)
         {
-            _stats = characterStats;
-            Initialize(_stats.Upgraded, () => _stats.Get(_statType));
+            Initialize(stats.Upgraded, () => stats.Get(_statType));
         }
     }
 }

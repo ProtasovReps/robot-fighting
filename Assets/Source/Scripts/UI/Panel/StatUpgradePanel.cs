@@ -3,6 +3,7 @@ using Extensions;
 using UI.Buttons.StatUpgrade;
 using UnityEngine;
 using R3;
+using Reflex.Attributes;
 
 namespace UI.Panel
 {
@@ -13,10 +14,15 @@ namespace UI.Panel
         private DownCounter _downCounter;
         private CharacterStats _stats;
 
-        public void Initialize(DownCounter downCounter, CharacterStats stats)
+        [Inject]
+        private void Inject(CharacterStats stats)
+        {
+            _stats = stats;
+        }
+        
+        public void Initialize(DownCounter downCounter)
         {
             _downCounter = downCounter;
-            _stats = stats;
             
             foreach (StatUpgradeButton button in _upgradeButtons)
             {

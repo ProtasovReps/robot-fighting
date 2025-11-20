@@ -1,5 +1,6 @@
 ﻿using System;
 using Interface;
+using Reflex.Attributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,7 +15,8 @@ namespace UI.VictoryMenu
 
         public int AwardAmount { get; private set; }
         
-        public void Initialize(IMoneyAddable moneyAddable)
+        [Inject]
+        private void Inject(IMoneyAddable moneyAddable)
         {
             if (_minAwardValue > _maxAwardValue)
                 throw new ArgumentOutOfRangeException(nameof(_minAwardValue));

@@ -15,8 +15,6 @@ namespace Reflex
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            Debug.Log("ВСИО АКЕЙ");
-
             Wallet wallet = new(YG2.saves.Money);
             WalletSaver walletSaver = new(wallet);
 

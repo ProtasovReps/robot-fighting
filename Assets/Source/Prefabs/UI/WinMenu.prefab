@@ -900,6 +900,7 @@ MonoBehaviour:
   _openButton: {fileID: 4941556022467137125}
   _awardAmount: {fileID: 6958285841991664551}
   _effect: {fileID: 6368969124375467502}
+  _chest: {fileID: 249730525352479663}
 --- !u!114 &8703940799275499248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1503,7 @@ GameObject:
   - component: {fileID: 3817984933184213773}
   - component: {fileID: 1646523406234276454}
   m_Layer: 5
-  m_Name: EndMenu
+  m_Name: WinMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1626,11 +1627,6 @@ MonoBehaviour:
   _statUpgradePanel: {fileID: 14556610950671927}
   _pointsView: {fileID: 7589316448952467195}
   _skillPoints: 3
-  _statInfo:
-  - {fileID: 8820269208065961853}
-  - {fileID: 4913447633117169909}
-  - {fileID: 3810023563745406656}
-  - {fileID: 7006129563027455642}
   _animatableSwitcher: {fileID: 7193430774831249818}
 --- !u!114 &3817984933184213773
 MonoBehaviour:
@@ -1645,9 +1641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moneyAmount: {fileID: 5730605357858590779}
-  _chestPanel: {fileID: 9079667179394586853}
-  _chest: {fileID: 249730525352479663}
-  _multiplyAwardPanel: {fileID: 6140781157246046715}
   _switcher: {fileID: 5095706055596104936}
   _goNextButton: {fileID: 850217243040874033}
 --- !u!114 &1646523406234276454
@@ -1918,7 +1911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25713.105, y: 76921.36}
+  m_AnchoredPosition: {x: 27112.875, y: 82589}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5835714547662343707
@@ -2171,7 +2164,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6788799638220759421}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.83575255
+  m_Size: 0.83386195
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3376,39 +3369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5b24d07ed1493199b784b5c654b8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3810023563745406656 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8286406458842444286, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
-  m_PrefabInstance: {fileID: 5053275158876774206}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4913447633117169909 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 148834761061242827, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
-  m_PrefabInstance: {fileID: 5053275158876774206}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7006129563027455642 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2817585735685300644, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
-  m_PrefabInstance: {fileID: 5053275158876774206}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7589316448952467195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3418933478873424325, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
@@ -3425,17 +3385,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3790765928215590533, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
   m_PrefabInstance: {fileID: 5053275158876774206}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8820269208065961853 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4343496333998534723, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
-  m_PrefabInstance: {fileID: 5053275158876774206}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27498c782f4bd99c688a1c14615bc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9176147978462924723 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4141322657215041677, guid: bafed3a697fbe4a4cb5c5cdd41c3298b, type: 3}
@@ -3740,6 +3689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 5949851925266854527}
   _multipliedAwardText: {fileID: 2272354188654629408}
+  _chest: {fileID: 249730525352479663}
   _multiplier: 3
 --- !u!1001 &5473879781128383807
 PrefabInstance:

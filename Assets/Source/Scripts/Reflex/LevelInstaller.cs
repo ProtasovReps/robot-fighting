@@ -188,10 +188,28 @@ namespace Reflex
 
         private void InstallSaves(ContainerBuilder builder)
         {
+            Dictionary<StatType, float> startStats = new Dictionary<StatType, float>
+            {
+                { StatType.Health, YG2.saves.HealthStat },
+                { StatType.Damage, YG2.saves.DamageStat },
+                { StatType.Speed, YG2.saves.SpeedStat },
+                { StatType.Block, YG2.saves.BlockStat }
+            };
+            
+            Wallet wallet = new(YG2.saves.Money);
+            CharacterStats stats = new(startStats);
+            
             LevelSaver levelSaver = new();
+            WalletSaver walletSaver = new(wallet);
+            CharacterStatSaver statSaver = new(stats);
             
             _saver.Add(levelSaver);
+            _saver.Add(walletSaver);
+            _saver.Add(statSaver);
+            
             builder.AddSingleton(_saver);
+            builder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IValueChangeable<int>));
+            builder.AddSingleton(stats);
         }
     }
 }

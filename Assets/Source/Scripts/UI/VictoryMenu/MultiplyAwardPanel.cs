@@ -10,14 +10,11 @@ namespace UI.VictoryMenu
     {
         [SerializeField] private UnitButton _button;
         [SerializeField] private TMP_Text _multipliedAwardText;
+        [SerializeField] private Chest _chest;
         [SerializeField, Min(1)] private int _multiplier;
         
-        private Chest _chest;
-
-        public void Initialize(Chest chest)
+        private void Awake()
         {
-            _chest = chest;
-            
             _multipliedAwardText.text = (_chest.AwardAmount * _multiplier).ToString();
 
             _button.Pressed
