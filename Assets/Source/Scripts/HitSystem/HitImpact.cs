@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ namespace HitSystem
         [SerializeField] private float _impactTime;
 
         private Transform _transform;
+        private CancellationTokenSource _tokenSource;
         private int _impactDirection;
 
         private void Awake()
@@ -21,8 +24,15 @@ namespace HitSystem
             _impactDirection = _transform.position.x < 0f ? LeftImpactDirection : RightImpactDirection;
         }
 
+        private void OnDestroy()
+        {
+            _tokenSource?.Cancel();
+        }
+
         public void Initialize(HitReader hitReader)
         {
+            _tokenSource = new CancellationTokenSource();
+
             hitReader.Hitted
                 .Subscribe(damage => Impact(damage.ImpulseForce).Forget())
                 .AddTo(this);
@@ -36,13 +46,13 @@ namespace HitSystem
 
             float expiredTime = 0f;
 
-            while (expiredTime < _impactTime)
+            while (expiredTime < _impactTime && _tokenSource.IsCancellationRequested == false)
             {
                 float newPosition = Mathf.Lerp(_transform.position.x, targetPosition.x, expiredTime / _impactTime);
 
                 _transform.position = new Vector3(newPosition, _transform.position.y, _transform.position.z);
                 expiredTime += Time.deltaTime;
-                await UniTask.Yield();
+                await UniTask.Yield(cancellationToken: _tokenSource.Token, cancelImmediately: true);
             }
         }
     }

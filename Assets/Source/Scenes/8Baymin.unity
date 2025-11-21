@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -805,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _downAttackImplant
       value: 
-      objectReference: {fileID: 6340909280457061635, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
+      objectReference: {fileID: 1053372470182530230, guid: 3451a67e4b1426b44b692364c75a1e76, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _superAttackImplant
       value: 
@@ -1034,6 +1034,10 @@ PrefabInstance:
       propertyPath: _torsoArmor
       value: 
       objectReference: {fileID: 11400000, guid: d12a127b9bdac3b49a2a8198283b7199, type: 2}
+    - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _botParameters
+      value: 
+      objectReference: {fileID: 7002616282951017619}
     - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _colliderStash
       value: 

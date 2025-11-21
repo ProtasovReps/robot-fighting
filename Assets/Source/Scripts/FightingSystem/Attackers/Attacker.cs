@@ -18,6 +18,11 @@ namespace FightingSystem
 
         public bool IsContinuing { get; private set; }
 
+        private void OnDestroy()
+        {
+            CancelAttack();
+        }
+
         public void SetAttacks(Dictionary<Type, Attack> attacks)
         {
             if (attacks == null)

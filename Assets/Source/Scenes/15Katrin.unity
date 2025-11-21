@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _upAttackImplant
       value: 
-      objectReference: {fileID: 2168100214854103689, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
+      objectReference: {fileID: 2489875625370911404, guid: 23aaf4f1ecf19b04b8e325204c11e00a, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _placeHolderStash
       value: 
@@ -1042,6 +1042,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d12a127b9bdac3b49a2a8198283b7199, type: 2}
     - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _botParameters
+      value: 
+      objectReference: {fileID: 7002616282951017619}
+    - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _colliderStash
       value: 
       objectReference: {fileID: 6917252358644605396}
@@ -1128,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 1841578791}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.9
+      value: -5.9935403
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1136,11 +1140,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7
+      value: -7.086579
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9848078
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1148,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.17364825
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1160,7 +1164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 4633893747449466056, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1460,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BaseDamage>k__BackingField
@@ -1484,7 +1488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <MoveDuration>k__BackingField
-      value: 0.7
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BlockDuration>k__BackingField
@@ -1492,7 +1496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <AttackInputDelay>k__BackingField
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <DownStunDuration>k__BackingField
@@ -1699,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 1244373544}
     - target: {fileID: 7450392590714137185, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _minDistance
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
