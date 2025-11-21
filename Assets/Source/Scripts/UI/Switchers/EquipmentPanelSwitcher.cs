@@ -13,7 +13,8 @@ namespace UI.Switchers
     {
         [SerializeField] private ImplantView _testImplant1; // mock
         [SerializeField] private ImplantView _testImplant2; // mock
-        
+        [SerializeField] private ImplantView _testImplatn3;
+         
         private readonly Dictionary<AttackType, EquipmentPanel> _equipment = new();
         
         private Dictionary<AttackType, ImplantView> _mockImplants;// mock
@@ -23,7 +24,8 @@ namespace UI.Switchers
             _mockImplants = new Dictionary<AttackType, ImplantView> 
             {
                 { _testImplant1.AttackImplant.Parameters.RequiredState, _testImplant1},
-                { _testImplant2.AttackImplant.Parameters.RequiredState, _testImplant2}
+                { _testImplant2.AttackImplant.Parameters.RequiredState, _testImplant2},
+                { _testImplatn3.AttackImplant.Parameters.RequiredState, _testImplatn3}
             };
                 
             List<EquipmentPanel> activePanels = GetActivePanels(equipmentPanels);

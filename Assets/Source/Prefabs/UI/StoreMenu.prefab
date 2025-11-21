@@ -266,6 +266,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 509badac3c45e1a49a2cf5d669f507b4, type: 2}
   - {fileID: 11400000, guid: e122a2e5a52a34b4fa1b97ece14ecd98, type: 2}
   - {fileID: 11400000, guid: 75c9959c2eb42ab40971cf214371163b, type: 2}
+  - {fileID: 11400000, guid: a399dbf92fb76a44aae92cf4a11cdd3b, type: 2}
+  - {fileID: 11400000, guid: 9cfc090db6d4ba340bf96f48cce972c7, type: 2}
 --- !u!114 &5850948640252421112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,10 +978,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuyGoodPanel
       objectReference: {fileID: 0}
-    - target: {fileID: 6751497934476304228, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 115.916855
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1111,10 +1109,6 @@ PrefabInstance:
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6751497934476304228, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 115.916855
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1332,6 +1326,10 @@ PrefabInstance:
     - target: {fileID: 2902529322897900801, guid: eee0befabd9b2c54da469b7f5c04e935, type: 3}
       propertyPath: m_Name
       value: TransitionImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902529322897900801, guid: eee0befabd9b2c54da469b7f5c04e935, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8337269378205643503, guid: eee0befabd9b2c54da469b7f5c04e935, type: 3}
       propertyPath: m_Pivot.x

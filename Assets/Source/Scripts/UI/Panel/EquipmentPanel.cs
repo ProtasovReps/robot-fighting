@@ -10,7 +10,6 @@ namespace UI.Panel
     public class EquipmentPanel : SwitchablePanel
     {
         [SerializeField] private Image _sellableImage;
-        [SerializeField] private Image _background;
         [SerializeField] private TMP_Text _name;
         
         private ImplantView _implantView;
@@ -18,7 +17,6 @@ namespace UI.Panel
         public void Set(ImplantView implantView)
         {
             _sellableImage.sprite = implantView.SellableImage;
-            _background.sprite = implantView.Background;
             _name.text = implantView.Name;
 
             _implantView = implantView;

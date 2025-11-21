@@ -286,6 +286,7 @@ MonoBehaviour:
   _playerEquipments:
   - {fileID: 1283797991}
   - {fileID: 1641552558}
+  - {fileID: 1849191334}
 --- !u!4 &609974329
 Transform:
   m_ObjectHideFlags: 0
@@ -429,6 +430,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 369208935082528115, guid: 4179729982fc96240886974023631bf9, type: 3}
   m_PrefabInstance: {fileID: 9188487376419417025}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1849191334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8430747370452266757, guid: fa314d23b5b2bf84eb849b1fac845390, type: 3}
+  m_PrefabInstance: {fileID: 6921202481271423341}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991554d485b445a9b074117e5f06ca42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852815720
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864347659545548439, guid: fa314d23b5b2bf84eb849b1fac845390, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0005689062
+      value: -0.00023569797
       objectReference: {fileID: 0}
     - target: {fileID: 3449624982055564496, guid: fa314d23b5b2bf84eb849b1fac845390, type: 3}
       propertyPath: m_AnchorMax.x
@@ -808,6 +820,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -110.32001
       objectReference: {fileID: 0}
+    - target: {fileID: 4276358970650155668, guid: fa314d23b5b2bf84eb849b1fac845390, type: 3}
+      propertyPath: _testImplatn3
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fd73bad15926e8408fb69c462ee820a, type: 2}
     - target: {fileID: 5476468529307542104, guid: fa314d23b5b2bf84eb849b1fac845390, type: 3}
       propertyPath: _moneySpentSound
       value: 

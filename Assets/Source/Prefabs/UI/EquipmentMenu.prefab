@@ -354,6 +354,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 31a87e39e69cdc84785b7d625b342e84, type: 2}
   - {fileID: 11400000, guid: a5741ae51dcfe2a4b9da7a62bf7a1408, type: 2}
   - {fileID: 11400000, guid: 78f5dc398b6ed164ea75237694dc4681, type: 2}
+  - {fileID: 11400000, guid: 0fd73bad15926e8408fb69c462ee820a, type: 2}
+  - {fileID: 11400000, guid: a399dbf92fb76a44aae92cf4a11cdd3b, type: 2}
 --- !u!222 &3184358695963452877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1973,6 +1975,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4082784690043317850}
     m_Modifications:
+    - target: {fileID: 3887663585119793265, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: _tempStartImplantView
+      value: 
+      objectReference: {fileID: 11400000, guid: 0fd73bad15926e8408fb69c462ee820a, type: 2}
     - target: {fileID: 4822210423845520684, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
       propertyPath: m_Name
       value: AttackEquimpentCells

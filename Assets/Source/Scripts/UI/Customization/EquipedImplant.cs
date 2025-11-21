@@ -15,7 +15,6 @@ namespace UI.Customization
     public class EquipedImplant : MonoBehaviour
     {
         [SerializeField] private Image _sellableImage;
-        [SerializeField] private Image _sellableBackground;
         [SerializeField] private TMP_Text _sellableName;
         [SerializeField] private ImplantView _tempStartImplantView;  // Temo!!!!
         [SerializeField] private AttackType _requiredState;
@@ -50,7 +49,6 @@ namespace UI.Customization
             _implantSaver.SetImplant(_requiredState, implantView);
 
             _sellableImage.sprite = implantView.SellableImage;
-            _sellableBackground.sprite = implantView.Background;
             _sellableName.text = implantView.Name;
         }
     }
