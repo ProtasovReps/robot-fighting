@@ -14,7 +14,10 @@ namespace FightingSystem.Guns
         
         private void OnDestroy()
         {
-            Destroy();
+            foreach (Projectile projectile in _projectiles)
+            {
+                projectile.Deactivate();
+            }
         }
 
         public void Initialize(ProjectileFactory projectileFactory)
@@ -62,12 +65,6 @@ namespace FightingSystem.Guns
             projectile.Deactivate();
             projectile.gameObject.SetActive(false);
             _freeProjectiles.Enqueue(projectile);
-        }
-
-        private void Destroy()
-        {
-            foreach (Projectile projectile in _projectiles)
-                Release(projectile);
         }
     }
 }

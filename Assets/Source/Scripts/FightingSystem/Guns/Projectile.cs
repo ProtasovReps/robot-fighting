@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using Extensions;
 using FightingSystem.AttackDamage;
@@ -18,7 +19,7 @@ namespace FightingSystem.Guns
         private Damage _damage;
         
         public Observable<Projectile> Executed => _executed;
-        
+
         public void Initialize(LayerMask opponentLayer, Damage damage)
         {
             _executed = new Subject<Projectile>();
