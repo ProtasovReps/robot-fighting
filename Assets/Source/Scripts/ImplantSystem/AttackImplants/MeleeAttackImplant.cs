@@ -8,11 +8,12 @@ namespace ImplantSystem.AttackImplants
     public class MeleeAttackImplant : AttackImplant
     {
         [SerializeField] private Spherecaster _spherecaster;
-        
-        protected override Attack ConstructAttack(Damage damage, float duration, float delay, LayerMask layerMask)
+
+        protected override Attack Construct(Damage damage, LayerMask layerMask)
         {
             _spherecaster.Initialize(layerMask);
-            return new MeleeAttack(duration, delay, damage, _spherecaster);
+            return new MeleeAttack(
+                Parameters.Duration, Parameters.StartDelay, Parameters.EndDelay, damage, _spherecaster);
         }
     }
 }

@@ -1501,7 +1501,6 @@ GameObject:
   - component: {fileID: 5439632409371150611}
   - component: {fileID: 1125252713621136449}
   - component: {fileID: 3817984933184213773}
-  - component: {fileID: 1646523406234276454}
   m_Layer: 5
   m_Name: WinMenu
   m_TagString: Untagged
@@ -1643,19 +1642,6 @@ MonoBehaviour:
   _moneyAmount: {fileID: 5730605357858590779}
   _switcher: {fileID: 5095706055596104936}
   _goNextButton: {fileID: 850217243040874033}
---- !u!114 &1646523406234276454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3814993804477845259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4ebb20dd8d4280b3fc108354cc768c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nextButton: {fileID: 702564512034103175}
 --- !u!1 &4295859948282843661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1911,7 +1897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27112.875, y: 82589}
+  m_AnchoredPosition: {x: 27263.809, y: 82889.445}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5835714547662343707
@@ -2164,7 +2150,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6788799638220759421}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.83386195
+  m_Size: 0.8351919
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

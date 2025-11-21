@@ -10,13 +10,13 @@ namespace ImplantSystem.AttackImplants
     {
         [SerializeField] private Overlaper _overlaper;
         [SerializeField] private Spherecaster _spherecaster;
-        
-        protected override Attack ConstructAttack(Damage damage, float duration, float delay, LayerMask layerMask)
+
+        protected override Attack Construct(Damage damage, LayerMask layerMask)
         {
             _spherecaster.Initialize(layerMask);
             _overlaper.Initialize(damage, _spherecaster);
-            
-            return new RangedAttack(duration, delay, _overlaper);
+
+            return new RangedAttack(Parameters.Duration, Parameters.StartDelay, Parameters.EndDelay, _overlaper);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace FightingSystem.Attacks
     {
         private readonly Shooter _shooter;
         
-        public RangedAttack(float duration, float startDelay, Shooter shooter)
-            : base(duration, startDelay)
+        public RangedAttack(float duration, float startDelay, float endDelay, Shooter shooter)
+            : base(duration, startDelay, endDelay)
         {
             if (shooter == null)
                 throw new ArgumentNullException(nameof(shooter));

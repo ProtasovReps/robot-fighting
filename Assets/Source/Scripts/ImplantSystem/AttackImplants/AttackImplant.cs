@@ -11,12 +11,12 @@ namespace ImplantSystem.AttackImplants
         
         [field: SerializeField] public AttackParameters Parameters { get; private set; }
 
-        public Attack GetAttack(LayerMask opponentLayerMask, Damage baseDamage)
+        public Attack GetAttack(LayerMask layer, Damage baseDamage)
         {
             Damage damage = _damageFactory.Produce(baseDamage);
-            return ConstructAttack(damage, Parameters.Duration, Parameters.Delay, opponentLayerMask);
+            return Construct(damage, layer);
         }
 
-        protected abstract Attack ConstructAttack(Damage damage, float duration, float delay, LayerMask layerMask);
+        protected abstract Attack Construct(Damage damage, LayerMask layer);
     }
 }
