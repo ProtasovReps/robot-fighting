@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitColliderStash: {fileID: 6281758998126703944}
 --- !u!1 &4717041171821147691
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,12 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84aa69fd1fc469eaa1ced6cd3650784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StartHealthValue>k__BackingField: 100
-  <StunDuration>k__BackingField: 1.2
-  <DownStunDuration>k__BackingField: 1.3
+  <StunDuration>k__BackingField: 1.3
+  <DownStunDuration>k__BackingField: 1.4
   <BlockDuration>k__BackingField: 1
-  <BlockValue>k__BackingField: 40
-  <MoveSpeed>k__BackingField: 8
 --- !u!114 &7296620159227531177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -609,17 +605,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
---- !u!114 &6281758998126703944 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6693582332133967376, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
-  m_PrefabInstance: {fileID: 849257474633085784}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ab00275f87fbc478953dc5e25ba422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7941875976654055876 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7349343746878986908, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}

@@ -1,50 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3591748728123384946
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3512014458266219436}
-  - component: {fileID: 7838728759015591108}
-  m_Layer: 0
-  m_Name: DamageFactory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3512014458266219436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591748728123384946}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2656529407022810501}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7838728759015591108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591748728123384946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _impulseForce: 0
 --- !u!1 &4787503099092262169
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +11,7 @@ GameObject:
   - component: {fileID: 2656529407022810501}
   - component: {fileID: 6980964899592058723}
   - component: {fileID: 9208496942678195419}
+  - component: {fileID: 2359814490502447384}
   m_Layer: 0
   m_Name: MidUppercut
   m_TagString: Untagged
@@ -75,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3512014458266219436}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6980964899592058723
@@ -91,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ad45d71bf0481aac1b63f89b285bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageFactory: {fileID: 7838728759015591108}
+  _damageFactory: {fileID: 2359814490502447384}
   <Parameters>k__BackingField: {fileID: 11400000, guid: c8dfba3e67c579f4dad0717d616a1955, type: 2}
   _spherecaster: {fileID: 9208496942678195419}
 --- !u!114 &9208496942678195419
@@ -106,4 +61,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a0b4f813f49ecbbd8318626929741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.5
+  _radius: 0.45
+--- !u!114 &2359814490502447384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787503099092262169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _impulseForce: 1

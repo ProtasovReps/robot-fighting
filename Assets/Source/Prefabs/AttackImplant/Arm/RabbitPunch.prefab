@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2656529407022810501}
   - component: {fileID: 3745307112051396989}
   - component: {fileID: 9208496942678195419}
+  - component: {fileID: 924744144705244965}
   m_Layer: 0
   m_Name: RabbitPunch
   m_TagString: Untagged
@@ -30,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5553801351868841695}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3745307112051396989
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ad45d71bf0481aac1b63f89b285bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageFactory: {fileID: 4150724721762034357}
+  _damageFactory: {fileID: 924744144705244965}
   <Parameters>k__BackingField: {fileID: 11400000, guid: f6075cef5f9017b4385c4bd9b9086f4f, type: 2}
   _spherecaster: {fileID: 9208496942678195419}
 --- !u!114 &9208496942678195419
@@ -62,48 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.6
---- !u!1 &5202413562613554834
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5553801351868841695}
-  - component: {fileID: 4150724721762034357}
-  m_Layer: 0
-  m_Name: DamageFactory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5553801351868841695
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5202413562613554834}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2656529407022810501}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4150724721762034357
+--- !u!114 &924744144705244965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5202413562613554834}
+  m_GameObject: {fileID: 4787503099092262169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impulseForce: 0
+  _impulseForce: 1.2

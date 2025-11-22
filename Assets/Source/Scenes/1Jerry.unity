@@ -419,11 +419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 190024.14
+      value: 211171.75
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 567311.5
+      value: 629126.4
       objectReference: {fileID: 0}
     - target: {fileID: 1503044863054532524, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_IsActive
@@ -433,10 +433,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1685808800}
-    - target: {fileID: 1599395024595187726, guid: 4844d96c36c2336488938a4409e91247, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2699207725592084070, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
@@ -492,6 +488,10 @@ PrefabInstance:
     - target: {fileID: 5902261256833305830, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6649559733845049055, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -166.40002
       objectReference: {fileID: 0}
     - target: {fileID: 6749333966228753489, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchorMax.y
@@ -871,7 +871,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _upAttackImplant
       value: 
-      objectReference: {fileID: 2168100214854103689, guid: 46c04973f5153c746b19a0d0604701e5, type: 3}
+      objectReference: {fileID: 4387927078362212267, guid: 653eb78d849a0fb48aed4a029afa3928, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _placeHolderStash
       value: 
@@ -879,7 +879,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _downAttackImplant
       value: 
-      objectReference: {fileID: 6340909280457061635, guid: f3555844b0fa96f479f58d362f23f118, type: 3}
+      objectReference: {fileID: 4879009691047609091, guid: ca44ffc143caec5488e3b2010ba61741, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _superAttackImplant
       value: 
@@ -1345,8 +1345,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1841578799}
     - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00044631958
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.028089523
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6327506
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1354,7 +1362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.77435577
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1362,7 +1370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7941875976654055876, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 101
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1542,11 +1550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BaseDamage>k__BackingField
-      value: 20
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BlockValue>k__BackingField
@@ -1557,20 +1565,28 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
-      propertyPath: <MoveDuration>k__BackingField
-      value: 1.4
+      propertyPath: <IdleDuration>k__BackingField
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
-      propertyPath: <BlockDuration>k__BackingField
+      propertyPath: <MoveDuration>k__BackingField
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BlockDuration>k__BackingField
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <AttackInputDelay>k__BackingField
-      value: 2.5
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <DownStunDuration>k__BackingField
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <StartHealthValue>k__BackingField
-      value: 5
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits

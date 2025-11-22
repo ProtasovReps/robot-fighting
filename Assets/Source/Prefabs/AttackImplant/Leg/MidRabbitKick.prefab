@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 43054873975534159}
   - component: {fileID: 4879009691047609091}
   - component: {fileID: 1796480475097305953}
+  - component: {fileID: 4275165103212090035}
   m_Layer: 0
   m_Name: MidRabbitKick
   m_TagString: Untagged
@@ -30,8 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2838001549748966582}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4879009691047609091
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ad45d71bf0481aac1b63f89b285bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageFactory: {fileID: 6693086380070786105}
+  _damageFactory: {fileID: 4275165103212090035}
   <Parameters>k__BackingField: {fileID: 11400000, guid: 0e3f6baf05357564c8d0cee783613dc8, type: 2}
   _spherecaster: {fileID: 1796480475097305953}
 --- !u!114 &1796480475097305953
@@ -61,49 +61,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a0b4f813f49ecbbd8318626929741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.6
---- !u!1 &8782917856702621549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2838001549748966582}
-  - component: {fileID: 6693086380070786105}
-  m_Layer: 0
-  m_Name: DamageFactory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2838001549748966582
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782917856702621549}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 43054873975534159}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6693086380070786105
+  _radius: 0.5
+--- !u!114 &4275165103212090035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782917856702621549}
+  m_GameObject: {fileID: 2370253763122485662}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impulseForce: 0
+  _impulseForce: 0.8

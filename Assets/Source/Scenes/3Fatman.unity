@@ -419,11 +419,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 163781.97
+      value: 171614.17
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 494494.78
+      value: 516220.94
       objectReference: {fileID: 0}
     - target: {fileID: 1599395024595187726, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_Camera
@@ -469,6 +469,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2919056509080467537, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919056509080467537, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919056509080467537, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2919056509080467537, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4515166856230034825, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_Camera
       value: 
@@ -483,6 +499,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902261256833305830, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749333966228753489, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6749333966228753489, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922918039032523802, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6922918039032523802, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7078213328736965697, guid: 4844d96c36c2336488938a4409e91247, type: 3}
@@ -841,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _upAttackImplant
       value: 
-      objectReference: {fileID: 4387927078362212267, guid: 653eb78d849a0fb48aed4a029afa3928, type: 3}
+      objectReference: {fileID: 6980964899592058723, guid: 210f79693cc7055498c19bf3589b1c39, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _placeHolderStash
       value: 
@@ -849,7 +881,7 @@ PrefabInstance:
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _downAttackImplant
       value: 
-      objectReference: {fileID: 455426645133548652, guid: d873b4fcb0ee32248b252cba207c4f8e, type: 3}
+      objectReference: {fileID: 4879009691047609091, guid: ca44ffc143caec5488e3b2010ba61741, type: 3}
     - target: {fileID: 744518419117872782, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _superAttackImplant
       value: 
@@ -1454,11 +1486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <MoveSpeed>k__BackingField
-      value: 5.5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BaseDamage>k__BackingField
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BlockValue>k__BackingField
@@ -1467,6 +1499,10 @@ PrefabInstance:
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <DamageType>k__BackingField
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
+      propertyPath: <BaseImpulse>k__BackingField
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <IdleDuration>k__BackingField
@@ -1486,15 +1522,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <AttackInputDelay>k__BackingField
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <DownStunDuration>k__BackingField
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <StartHealthValue>k__BackingField
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
@@ -1665,6 +1701,10 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1244373544}
+    - target: {fileID: 4169653208689160655, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
+      propertyPath: _minDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4489483072198177088, guid: f60b5b91a30631246ae6ff12cb4f4ec2, type: 3}
       propertyPath: _target
       value: 
