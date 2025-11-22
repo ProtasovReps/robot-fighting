@@ -17,6 +17,7 @@ namespace UI.Effect
         {
             await UniTask.WaitForSeconds(_delay);
             await _animatable.Play();
+            _animatable.gameObject.SetActive(false);
         }
     }
 }

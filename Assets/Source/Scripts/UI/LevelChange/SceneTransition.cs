@@ -38,6 +38,8 @@ namespace UI.LevelChange
         {
             _subscription.Dispose();
             _progressSaver.Save();
+            _scaleAnimation.gameObject.SetActive(true);
+            
             await _scaleAnimation.Play();
             
             Time.timeScale = DefaultTimeScale;

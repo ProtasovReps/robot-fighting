@@ -13,6 +13,8 @@ namespace UI.Effect
         public async UniTaskVoid StartEffect()
         {
             await _chest.Play();
+            _chest.gameObject.SetActive(false);
+            
             BroAudio.Play(_moneySound);
             await _reward.Play();
         }

@@ -456,50 +456,6 @@ Transform:
   - {fileID: 1307125961}
   m_Father: {fileID: 1204246538}
   m_LocalEulerAnglesHint: {x: 13.424, y: -26.897, z: -17.204}
---- !u!1 &479062524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6872064175291741542, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-  m_PrefabInstance: {fileID: 616403035}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &479062526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479062524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00e5992881064f5dbecf6d67134dc7a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 479062529}
---- !u!114 &479062527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479062524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2c970649724d60b3df60628275b892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _unitButton: {fileID: 479062526}
-  _scaleAnimation: {fileID: 1208066502}
-  _sceneName: 0
---- !u!114 &479062529 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8368020405445441648, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-  m_PrefabInstance: {fileID: 616403035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 479062524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &489141648 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2504186840966642693, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
@@ -670,18 +626,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoreMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 1256898091957679907, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-      propertyPath: _moneySpentSound
-      value: 
-      objectReference: {fileID: 798969311}
-    - target: {fileID: 1256898091957679907, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-      propertyPath: _notEnoughMoneySound
-      value: 
-      objectReference: {fileID: 406523663}
-    - target: {fileID: 1348645635374130890, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -149.99994
-      objectReference: {fileID: 0}
     - target: {fileID: 1607623109452494177, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
       propertyPath: m_Camera
       value: 
@@ -769,13 +713,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6872064175291741542, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 479062527}
-    - targetCorrespondingSourceObject: {fileID: 6872064175291741542, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 479062526}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
 --- !u!1 &798969310
 GameObject:
@@ -835,17 +773,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5245375593308391800, guid: 955160d084032a641acacc3357a2e5c4, type: 3}
   m_PrefabInstance: {fileID: 6738872520666392942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1208066502 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5824478859223539247, guid: b6cf73a619fd6764db4c2eb6fd8ffe87, type: 3}
-  m_PrefabInstance: {fileID: 616403035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6a91f2664b4ba195e085c8e0eac154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1264732780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5581716466206026731, guid: 794e5857f4d9fdc4f85fa0129cc0f759, type: 3}

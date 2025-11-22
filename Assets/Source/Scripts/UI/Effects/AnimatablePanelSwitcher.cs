@@ -23,8 +23,9 @@ namespace UI.Effect
         private async UniTaskVoid Switch()
         {
             _subscription.Dispose();
-            
             await _disappearAnimation.Play();
+            
+            _disappearAnimation.gameObject.SetActive(false);
             await _appearAnimation.Play();
         }
     }

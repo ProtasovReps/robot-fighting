@@ -7,6 +7,8 @@ namespace UI.Info
 {
     public abstract class ObservableInfo : MonoBehaviour
     {
+        private const string OutputFormat = "0.#";
+        
         [SerializeField] private TMP_Text _text;
 
         private Func<float> _getInfoFunc;
@@ -24,7 +26,7 @@ namespace UI.Info
 
         private void ShowValue()
         {
-            _text.text = _getInfoFunc().ToString();
+            _text.text = _getInfoFunc().ToString(OutputFormat);
         }
     }
 }

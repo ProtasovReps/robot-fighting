@@ -24,7 +24,7 @@ namespace UI.Effect
             _tokenSource = new CancellationTokenSource();
             
             float expiredTime = 0f;
-
+            
             while (expiredTime < _duration && _tokenSource.IsCancellationRequested == false)
             {
                 float newScale = _curve.Evaluate(expiredTime / _duration);
