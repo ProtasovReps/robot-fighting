@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -716,6 +716,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.041
       objectReference: {fileID: 0}
+    - target: {fileID: 634701870214969583, guid: 8d609136aaa892d4786152044b103a30, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2f41683fec8c222468c51c81c884ccf8, type: 2}
     - target: {fileID: 2930903376239291972, guid: 8d609136aaa892d4786152044b103a30, type: 3}
       propertyPath: m_Name
       value: Baymin
