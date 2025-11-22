@@ -4,7 +4,7 @@ using Reflex.Attributes;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace UI.VictoryMenu
+namespace UI.LevelEnd
 {
     public class Chest : MonoBehaviour
     {

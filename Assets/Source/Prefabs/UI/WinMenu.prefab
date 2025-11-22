@@ -1498,7 +1498,7 @@ GameObject:
   - component: {fileID: 2098152534843058594}
   - component: {fileID: 3161498465346780759}
   - component: {fileID: 4340460786178326039}
-  - component: {fileID: 5439632409371150611}
+  - component: {fileID: 4514689601138994307}
   - component: {fileID: 1125252713621136449}
   - component: {fileID: 3817984933184213773}
   m_Layer: 5
@@ -1554,7 +1554,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &3161498465346780759
 MonoBehaviour:
@@ -1596,7 +1596,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 32
---- !u!114 &5439632409371150611
+--- !u!114 &4514689601138994307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1605,12 +1605,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3814993804477845259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3936dcdd5b744adbaa0d736696de339b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e200003050e4e3fa78cb8376659e3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _shadowAnimation: {fileID: 3353725724953850678}
   _upgradeAnimation: {fileID: 3030605894233354267}
-  _appearDelay: 0.4
+  _appearDelay: 0.2
 --- !u!114 &1125252713621136449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,7 +1897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 34430.574, y: 106456.836}
+  m_AnchoredPosition: {x: 36544.316, y: 113258.01}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &5835714547662343707
@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6788799638220759421}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.8352274
+  m_Size: 0.83501446
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8352941}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
@@ -109,7 +110,6 @@ namespace Reflex
             AttackAnimationOverrider animationOverrider = new(_botAnimatedCharacter.Animator);
 
             _disposer.Add(death);
-            
             _botAttackFactory.Produce(placeHolderStash);
             
             PositionTranslation positionTranslation = InstallBotMovement(moveInput);
@@ -199,11 +199,9 @@ namespace Reflex
             Wallet wallet = new(YG2.saves.Money);
             CharacterStats stats = new(startStats);
             
-            LevelSaver levelSaver = new();
             WalletSaver walletSaver = new(wallet);
             CharacterStatSaver statSaver = new(stats);
             
-            _saver.Add(levelSaver);
             _saver.Add(walletSaver);
             _saver.Add(statSaver);
             

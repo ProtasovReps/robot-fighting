@@ -8,11 +8,6 @@ namespace Extensions
     {
         private readonly List<IDisposable> _disposables = new();
 
-        public void Add(IDisposable disposable)
-        {
-            _disposables.Add(disposable);
-        }
-
         private void OnDestroy()
         {
             if (_disposables.Count == 0)
@@ -22,6 +17,11 @@ namespace Extensions
             {
                 _disposables[i].Dispose();
             }
+        }
+        
+        public void Add(IDisposable disposable)
+        {
+            _disposables.Add(disposable);
         }
     }
 }

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 4622113329151341698}
+  _impulseForce: 0
 --- !u!1 &5695459817376539775
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4736225869604923889}
   - component: {fileID: 2869872605012543046}
-  - component: {fileID: 4622113329151341698}
   m_Layer: 0
   m_Name: FireOverlapSuper
   m_TagString: Untagged
@@ -143,20 +142,6 @@ MonoBehaviour:
   <Parameters>k__BackingField: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
   _overlaper: {fileID: 6813220050473298452}
   _spherecaster: {fileID: 6430291483255113304}
---- !u!114 &4622113329151341698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8575800474968087042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  <ImpulseForce>k__BackingField: 8
 --- !u!1 &8938069203134541735
 GameObject:
   m_ObjectHideFlags: 0

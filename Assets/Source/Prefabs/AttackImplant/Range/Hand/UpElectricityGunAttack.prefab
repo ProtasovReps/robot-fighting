@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 7058229067505600843}
+  _impulseForce: 0
 --- !u!1 &6498882131683339103
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,6 @@ GameObject:
   m_Component:
   - component: {fileID: 738923576321875467}
   - component: {fileID: 404155373715338274}
-  - component: {fileID: 7058229067505600843}
   m_Layer: 0
   m_Name: UpElectricityGunAttack
   m_TagString: Untagged
@@ -234,17 +233,3 @@ MonoBehaviour:
   _shooter: {fileID: 106981983391282909}
   _projectilePool: {fileID: 6824303251460037191}
   _projectileFactory: {fileID: 8349753590618500201}
---- !u!114 &7058229067505600843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6498882131683339103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 35
-  <ImpulseForce>k__BackingField: 1

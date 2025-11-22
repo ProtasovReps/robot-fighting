@@ -4,7 +4,7 @@ using UI.Buttons;
 using UI.Panel;
 using UnityEngine;
 
-namespace UI.VictoryMenu
+namespace UI.LevelEnd
 {
     public class MultiplyAwardPanel : SwitchablePanel
     {

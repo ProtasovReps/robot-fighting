@@ -5,7 +5,7 @@ using UI.Effect;
 using UI.Info;
 using UnityEngine;
 
-namespace UI.VictoryMenu
+namespace UI.LevelEnd
 {
     public class ChestPanelInitializer : MonoBehaviour
     {

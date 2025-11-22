@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 43054873975534159}
   - component: {fileID: 1053372470182530230}
   - component: {fileID: 1796480475097305953}
-  - component: {fileID: 5981723821640145075}
   m_Layer: 0
   m_Name: HighKick
   m_TagString: Untagged
@@ -63,20 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 0.45
---- !u!114 &5981723821640145075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2370253763122485662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 30
-  <ImpulseForce>k__BackingField: 2.5
 --- !u!1 &2474389452972993980
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 5981723821640145075}
+  _impulseForce: 0

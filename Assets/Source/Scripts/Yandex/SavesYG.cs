@@ -8,11 +8,10 @@ namespace YG
     public partial class SavesYG
     {
         public int Money = 600;
-        public float HealthStat = 1000;
+        public float HealthStat = 50;
         public float SpeedStat = 5.5f;
         public float DamageStat = 3.5f;
         public float BlockStat = 20f;
-        public float ImpulseForce = 0.5f;
         public int SceneIndex = 2;
         public bool IfBeatedGame = false;
         public List<SellableView> SellableViews = new();

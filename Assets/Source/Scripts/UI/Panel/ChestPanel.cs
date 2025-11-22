@@ -3,7 +3,7 @@ using R3;
 using TMPro;
 using UI.Buttons;
 using UI.Effect;
-using UI.VictoryMenu;
+using UI.LevelEnd;
 using UnityEngine;
 
 namespace UI.Panel

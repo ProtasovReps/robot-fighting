@@ -5,7 +5,7 @@ using UI.Info;
 using UI.Panel;
 using UnityEngine;
 
-namespace UI.VictoryMenu
+namespace UI.LevelEnd
 {
     public class StatUpgradeInitializer : MonoBehaviour
     {

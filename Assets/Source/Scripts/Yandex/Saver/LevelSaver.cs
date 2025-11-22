@@ -1,4 +1,5 @@
 ﻿using Interface;
+using UnityEngine;
 
 namespace YG.Saver
 {
@@ -6,6 +7,7 @@ namespace YG.Saver
     {
         public void Save()
         {
+            Debug.LogError("Saved");
             ++YG2.saves.SceneIndex;
         }
     }

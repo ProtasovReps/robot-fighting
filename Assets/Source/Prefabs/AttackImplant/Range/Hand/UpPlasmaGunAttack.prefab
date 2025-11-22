@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 5384403277230960022}
+  _impulseForce: 0
 --- !u!1 &1700633871573506979
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +145,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7167566619778196933}
   - component: {fileID: 4860224012720340061}
-  - component: {fileID: 5384403277230960022}
   m_Layer: 0
   m_Name: UpPlasmaGunAttack
   m_TagString: Untagged
@@ -189,20 +188,6 @@ MonoBehaviour:
   _shooter: {fileID: 156076764231679345}
   _projectilePool: {fileID: 7958157243956451433}
   _projectileFactory: {fileID: 7578642048005545871}
---- !u!114 &5384403277230960022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3749255067087773766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 45
-  <ImpulseForce>k__BackingField: 1
 --- !u!1 &7321808526701962996
 GameObject:
   m_ObjectHideFlags: 0

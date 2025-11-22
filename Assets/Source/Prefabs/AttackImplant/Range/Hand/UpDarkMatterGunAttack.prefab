@@ -145,7 +145,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6857415934636860702}
   - component: {fileID: 8059909272861486366}
-  - component: {fileID: 4544176935804030103}
   m_Layer: 0
   m_Name: UpDarkMatterGunAttack
   m_TagString: Untagged
@@ -189,20 +188,6 @@ MonoBehaviour:
   _shooter: {fileID: 8114832381433775911}
   _projectilePool: {fileID: 5822327265602232663}
   _projectileFactory: {fileID: 628160978201598758}
---- !u!114 &4544176935804030103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4222561431788412651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 50
-  <ImpulseForce>k__BackingField: 1
 --- !u!1 &7783781913150878654
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,4 +232,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 4544176935804030103}
+  _impulseForce: 0

@@ -45,7 +45,7 @@ namespace AnimationSystem
                     if (_requiredHashes.ContainsKey(attackState) == false)
                         continue;
                         
-                    int animationID = GetAnimationID(_requiredHashes[attackState]);
+                    int animationID = GetStateID(_requiredHashes[attackState]);
                     string animationName = overrideController.animationClips[animationID].name;
 
                     overrideController[animationName] = implant.Parameters.Clip;
@@ -55,7 +55,7 @@ namespace AnimationSystem
             _animator.runtimeAnimatorController = overrideController;
         }
 
-        private int GetAnimationID(int requiredHash)
+        private int GetStateID(int requiredHash)
         {
             for (int i = 0; i < _stateMachine.states.Length; i++)
             {

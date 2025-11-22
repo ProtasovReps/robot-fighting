@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4736225869604923889}
   - component: {fileID: 7953322764121576475}
   - component: {fileID: 8012214496558000148}
-  - component: {fileID: 4622113329151341698}
   m_Layer: 0
   m_Name: RollHighKickSuper
   m_TagString: Untagged
@@ -63,20 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _radius: 1
---- !u!114 &4622113329151341698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8575800474968087042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 40
-  <ImpulseForce>k__BackingField: 2
 --- !u!1 &8781031819921435620
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,4 +106,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 4622113329151341698}
+  _impulseForce: 0

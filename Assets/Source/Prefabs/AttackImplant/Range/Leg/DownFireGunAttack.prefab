@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f9d582a20c49adaa9c4f13a67b44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageStats: {fileID: 7570069373384950595}
+  _impulseForce: 0
 --- !u!1 &7753142188621871657
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +190,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6254646243924437017}
   - component: {fileID: 8796985076486456060}
-  - component: {fileID: 7570069373384950595}
   m_Layer: 0
   m_Name: DownFireGunAttack
   m_TagString: Untagged
@@ -234,17 +233,3 @@ MonoBehaviour:
   _shooter: {fileID: 7019682676254904920}
   _projectilePool: {fileID: 4628957210907883047}
   _projectileFactory: {fileID: 5632590411063314363}
---- !u!114 &7570069373384950595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7905445255755391439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ec66758de44407b67ffc1195b5277d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 40
-  <ImpulseForce>k__BackingField: 1
