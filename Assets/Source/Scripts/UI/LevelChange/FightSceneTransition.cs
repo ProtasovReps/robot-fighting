@@ -5,7 +5,7 @@ namespace UI.LevelChange
 {
     public class FightSceneTransition : SceneTransition
     {
-        private const int FirstSceneIndex = 2;
+        private const int FirstSceneIndex = 3;
         
         protected override void LoadScene()
         {

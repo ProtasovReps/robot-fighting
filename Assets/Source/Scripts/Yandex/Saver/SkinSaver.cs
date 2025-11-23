@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using CharacterSystem;
 using Interface;
+using UI.Customization;
 
 namespace YG.Saver
 {
     public class SkinSaver : ISaver
     {
-        private readonly List<Fighter> _fighters;
+        private readonly List<SkinView> _fighters;
 
-        private Fighter _settedFighter;
+        private SkinView _settedFighter;
 
         public SkinSaver()
         {
@@ -17,7 +18,7 @@ namespace YG.Saver
             _settedFighter = YG2.saves.SettedFighter;
         }
 
-        public void Add(Fighter fighter)
+        public void Add(SkinView fighter)
         {
             if (_fighters.Contains(fighter))
                 throw new ArgumentException(nameof(fighter));
@@ -25,17 +26,17 @@ namespace YG.Saver
             _fighters.Add(fighter);
         }
 
-        public bool Contains(Fighter fighter)
+        public bool Contains(SkinView fighter)
         {
             return _fighters.Contains(fighter);
         }
 
-        public bool IsSetted(Fighter fighter)
+        public bool IsSetted(SkinView fighter)
         {
             return _settedFighter == fighter;
         }
         
-        public void Set(Fighter fighter)
+        public void Set(SkinView fighter)
         {
             _settedFighter = fighter;
         }

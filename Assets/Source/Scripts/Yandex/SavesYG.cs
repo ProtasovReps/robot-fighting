@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using CharacterSystem;
 using Extensions;
+using UI.Customization;
 using UI.Store;
 
 namespace YG
@@ -12,11 +12,11 @@ namespace YG
         public float SpeedStat = 6f;
         public float DamageStat = 100;
         public float BlockStat = 60;
-        public int SceneIndex = 2;
+        public int SceneIndex = 3;
         public bool IfBeatedGame = false;
         public List<SellableView> SellableViews = new();
         public Dictionary<AttackType, ImplantView> SettedImplants = new();
-        public Fighter SettedFighter;
-        public List<Fighter> Fighters = new();
+        public SkinView SettedFighter;
+        public List<SkinView> Fighters = new();
     }
 }

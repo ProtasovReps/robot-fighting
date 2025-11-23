@@ -71,7 +71,6 @@ public class FighterShowcase : MonoBehaviour
         {
             spawnedSkin = _spawnedFighters[requiredSkin];
         }
-        
 
         _lastSpawnedFighter?.gameObject.SetActive(false);
         _lastSpawnedFighter = spawnedSkin;
