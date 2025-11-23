@@ -9,9 +9,9 @@ namespace YG
     {
         public int Money = 600;
         public float HealthStat = 140;
-        public float SpeedStat = 5f;
-        public float DamageStat = 40;
-        public float BlockStat = 70;
+        public float SpeedStat = 6f;
+        public float DamageStat = 30;
+        public float BlockStat = 60;
         public int SceneIndex = 2;
         public bool IfBeatedGame = false;
         public List<SellableView> SellableViews = new();
