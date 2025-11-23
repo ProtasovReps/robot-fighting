@@ -23,10 +23,8 @@ namespace FightingSystem.Attacks
 
         public async UniTask Launch(CancellationTokenSource tokenSource)
         {
-            Debug.Log("Жду");
             await UniTask.WaitForSeconds(_startDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);
             await Execute(tokenSource.Token, _duration);
-            Debug.Log("Дожидаю");
             await UniTask.WaitForSeconds(_endDelay, cancellationToken: tokenSource.Token, cancelImmediately: true);
         }
 

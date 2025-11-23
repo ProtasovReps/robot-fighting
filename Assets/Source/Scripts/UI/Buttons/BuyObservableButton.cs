@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace UI.Buttons
 {
-    public class BuyObservableButton : ObservableButton<GoodPanel>
+    public class BuyObservableButton : ObservableButton<BuyGoodPanel>
     {
-        [SerializeField] private GoodPanel _goodPanel;
+        [SerializeField] private BuyGoodPanel _buyGoodPanel;
         
-        protected override GoodPanel Get()
+        protected override BuyGoodPanel Get()
         {
-            return _goodPanel;
+            return _buyGoodPanel;
         }
     }
 }

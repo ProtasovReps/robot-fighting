@@ -40,9 +40,9 @@ namespace UI.Store
             _subscriptions?.Dispose();
         }
 
-        private void Sell(GoodPanel goodPanel)
+        private void Sell(BuyGoodPanel buyGoodPanel)
         {
-            SellableView sellable = goodPanel.Get();
+            SellableView sellable = buyGoodPanel.Get();
             int price = sellable.Price;
 
             if (_moneySpendable.TrySpend(price) == false)
@@ -51,7 +51,7 @@ namespace UI.Store
             }
 
             _goodSaver.Add(sellable);
-            goodPanel.SetEnable(false);
+            buyGoodPanel.SetEnable(false);
         }
     }
 }

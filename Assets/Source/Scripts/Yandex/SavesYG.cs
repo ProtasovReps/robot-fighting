@@ -8,9 +8,9 @@ namespace YG
     public partial class SavesYG
     {
         public int Money = 600;
-        public float HealthStat = 140;
+        public float HealthStat = 1000;
         public float SpeedStat = 6f;
-        public float DamageStat = 30;
+        public float DamageStat = 100;
         public float BlockStat = 60;
         public int SceneIndex = 2;
         public bool IfBeatedGame = false;

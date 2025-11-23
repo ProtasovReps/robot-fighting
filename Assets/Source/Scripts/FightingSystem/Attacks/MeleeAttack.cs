@@ -32,7 +32,6 @@ namespace FightingSystem.Attacks
                     isHitted = true;
                 }
                 
-                Debug.Log("Бью");
                 elapsedTime += Time.deltaTime;
                 await UniTask.Yield(cancellationToken: token, cancelImmediately: true);
             }
