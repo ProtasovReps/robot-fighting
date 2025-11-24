@@ -19,12 +19,12 @@ namespace UI.Customization
         [SerializeField] private ImplantView _tempStartImplantView;  // Temo!!!!
         [SerializeField] private AttackType _requiredState;
 
-        private ImplantSaver _implantSaver;
+        private PlayerImplantSave _playerImplantSave;
         
         [Inject]
-        private void Inject(ImplantSaver implantSaver)
+        private void Inject(PlayerImplantSave playerImplantSave)
         {
-            _implantSaver = implantSaver;
+            _playerImplantSave = playerImplantSave;
         }
         
         public void Initialize(List<EquipButton> equipButtons)
@@ -46,7 +46,7 @@ namespace UI.Customization
             if (implantView.AttackImplant.Parameters.RequiredState != _requiredState)
                 throw new ArgumentException(nameof(implantView));
             
-            _implantSaver.SetImplant(_requiredState, implantView);
+            _playerImplantSave.Set(_requiredState, implantView.AttackImplant);
 
             _sellableImage.sprite = implantView.SellableImage;
             _sellableName.text = implantView.Name;

@@ -33,16 +33,15 @@ namespace Reflex
         {    
             Wallet wallet = new(YG2.saves.Money);
             WalletSaver walletSaver = new(wallet);
-            ImplantSaver implantSaver = new();
+            PlayerImplantSave playerImplantSave = new();
             SkinSaver skinSaver = new();
             
             _progressSaver.Add(walletSaver);
-            _progressSaver.Add(implantSaver);
             _progressSaver.Add(skinSaver);
             _moneyView.Initialize(wallet);
             
             containerBuilder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IMoneySpendable));
-            containerBuilder.AddSingleton(implantSaver);
+            containerBuilder.AddSingleton(playerImplantSave);
             containerBuilder.AddSingleton(skinSaver);
             containerBuilder.AddSingleton(_progressSaver);
             containerBuilder.AddSingleton(_fighterShowcase);

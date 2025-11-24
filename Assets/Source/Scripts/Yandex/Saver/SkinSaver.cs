@@ -8,9 +8,9 @@ namespace YG.Saver
 {
     public class SkinSaver : ISaver
     {
-        private readonly List<SkinView> _fighters;
+        private readonly List<Fighter> _fighters;
 
-        private SkinView _settedFighter;
+        private Fighter _settedFighter;
 
         public SkinSaver()
         {
@@ -18,7 +18,7 @@ namespace YG.Saver
             _settedFighter = YG2.saves.SettedFighter;
         }
 
-        public void Add(SkinView fighter)
+        public void Add(Fighter fighter)
         {
             if (_fighters.Contains(fighter))
                 throw new ArgumentException(nameof(fighter));
@@ -26,17 +26,17 @@ namespace YG.Saver
             _fighters.Add(fighter);
         }
 
-        public bool Contains(SkinView fighter)
+        public bool Contains(Fighter fighter)
         {
             return _fighters.Contains(fighter);
         }
 
-        public bool IsSetted(SkinView fighter)
+        public bool IsSetted(Fighter fighter)
         {
             return _settedFighter == fighter;
         }
         
-        public void Set(SkinView fighter)
+        public void Set(Fighter fighter)
         {
             _settedFighter = fighter;
         }

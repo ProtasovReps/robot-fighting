@@ -30,7 +30,7 @@ namespace UI.Panel
         
         private void SetSkinView(SkinView skinView)
         {
-            if (_skinSaver.IsSetted(skinView))
+            if (_skinSaver.IsSetted(skinView.Fighter))
             {
                 SetEnable(false);
                 return;
@@ -42,7 +42,7 @@ namespace UI.Panel
 
         private void Choose()
         {
-            _skinSaver.Set(_skinView);
+            _skinSaver.Set(_skinView.Fighter);
             SetEnable(false);
         }
     }

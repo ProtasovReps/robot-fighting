@@ -37,7 +37,7 @@ namespace UI.Panel
 
         private void SetSkin(SkinView skinView)
         {
-            if (_skinSaver.Contains(skinView))
+            if (_skinSaver.Contains(skinView.Fighter))
             {
                 _buyButton.gameObject.SetActive(false);
                 return;
@@ -56,7 +56,7 @@ namespace UI.Panel
             }
 
             BroAudio.Play(_skinBaughtSound);
-            _skinSaver.Add(_sellectedSkin);
+            _skinSaver.Add(_sellectedSkin.Fighter);
             _buyButton.gameObject.SetActive(false);
         }
     }
