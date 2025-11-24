@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 3361006041500974722}
   - component: {fileID: 8943368177320517145}
   - component: {fileID: 3129587235003955599}
+  - component: {fileID: 8407300399704678139}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -128,6 +129,7 @@ MonoBehaviour:
   _playerAnimatedCharacter: {fileID: 0}
   _disposer: {fileID: 8943368177320517145}
   _saver: {fileID: 3129587235003955599}
+  _defaultSavesInstaller: {fileID: 8407300399704678139}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
   _botHitFactory: {fileID: 5552862501096592642}
@@ -162,6 +164,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019527668bc446b084040ec507361634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8407300399704678139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417841561429495828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50332503f3642a8bb30304553684568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultUpAttackImplant: {fileID: 11400000, guid: 5e4b315d42534c94aa62aafa058d42c4, type: 2}
+  _defaultDownAttackImplant: {fileID: 11400000, guid: 509badac3c45e1a49a2cf5d669f507b4, type: 2}
+  _defaultSuperAttackImplant: {fileID: 11400000, guid: 0fd73bad15926e8408fb69c462ee820a, type: 2}
+  _defaultFighter: {fileID: 7661856510355865214, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,9 +457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _placeHolderStash: {fileID: 0}
-  _defaultUpAttackImplant: {fileID: 4387927078362212267, guid: 653eb78d849a0fb48aed4a029afa3928, type: 3}
-  _defaultDownAttackImplant: {fileID: 4879009691047609091, guid: ca44ffc143caec5488e3b2010ba61741, type: 3}
-  _defaultSuperAttackImplant: {fileID: 7953322764121576475, guid: 4febeb9c7bc9c784c90508111afdd6d9, type: 3}
 --- !u!1 &4122987826340231935
 GameObject:
   m_ObjectHideFlags: 0

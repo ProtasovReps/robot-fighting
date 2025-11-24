@@ -40,13 +40,6 @@ namespace YG.Saver
             _implants[attackType] = implantView;
         }
 
-        public bool Exists(AttackType attackType)
-        {
-            ValidateDictionary(attackType);
-
-            return _implants[attackType] != null;
-        }
-    
         private void ValidateDictionary(AttackType attackType)
         {
             if (_implants.ContainsKey(attackType) == false)

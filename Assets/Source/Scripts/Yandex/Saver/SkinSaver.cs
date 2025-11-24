@@ -44,7 +44,7 @@ namespace YG.Saver
         public void Save()
         {
             YG2.saves.SettedFighter = _settedFighter;
-            YG2.saves.SettedFighter = _settedFighter;
+            YG2.saves.Fighters = _fighters;
         }
     }
 }

@@ -43,6 +43,7 @@ namespace Reflex
         [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // убрать с приходом сейвов
         [SerializeField] private Disposer _disposer;
         [SerializeField] private ProgressSaver _saver;
+        [SerializeField] private DefaultSavesInstaller _defaultSavesInstaller;
         
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
@@ -58,6 +59,9 @@ namespace Reflex
         
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
+            if(YG2.saves.UpAttackImplant == null)
+                _defaultSavesInstaller.Install(new GoodSaver(), new PlayerImplantSave(), new SkinSaver());
+            
             AnimationFactory animationFactory = new();
 
             InstallBot(animationFactory, containerBuilder);
