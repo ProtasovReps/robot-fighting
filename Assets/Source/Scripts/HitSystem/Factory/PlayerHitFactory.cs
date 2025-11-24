@@ -1,12 +1,16 @@
-﻿using UnityEngine;
-using YG;
+﻿using YG;
 
 namespace HitSystem
 {
-    public class PlayerHitFactory : HitFactory // временно такой же как и Bot
+    public class PlayerHitFactory : HitFactory
     {
-        [SerializeField] private HitColliderStash _colliderStash;
+        private HitColliderStash _colliderStash;
 
+        public void Initialize(HitColliderStash hitColliderStash)
+        {
+            _colliderStash = hitColliderStash;
+        }
+        
         protected override float GetBlockValue()
         {
             return YG2.saves.BlockStat;

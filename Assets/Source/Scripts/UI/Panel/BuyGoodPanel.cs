@@ -9,7 +9,7 @@ namespace UI.Panel
 {
     public class BuyGoodPanel : SwitchablePanel
     {
-        [SerializeField] private SellableView _sellableView;
+        [SerializeField] private ImplantView _sellableView;
         [SerializeField] private TMP_Text _name;
         [SerializeField] private TMP_Text _price;
         [SerializeField] private Image _goodImage;
@@ -34,7 +34,7 @@ namespace UI.Panel
             _goodImage.sprite = _sellableView.SellableImage;
         }
 
-        public SellableView Get()
+        public ImplantView Get()
         {
             return _sellableView;
         }

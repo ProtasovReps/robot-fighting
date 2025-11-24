@@ -15,9 +15,9 @@ namespace YG
         
         public void Install(GoodSaver goodSaver, PlayerImplantSave implantSave, SkinSaver skinSaver)
         {
-            implantSave.Set(AttackType.UpAttack, _defaultUpAttackImplant.AttackImplant);
-            implantSave.Set(AttackType.DownAttack, _defaultDownAttackImplant.AttackImplant);
-            implantSave.Set(AttackType.Super, _defaultSuperAttackImplant.AttackImplant);
+            implantSave.Set(AttackType.UpAttack, _defaultUpAttackImplant);
+            implantSave.Set(AttackType.DownAttack, _defaultDownAttackImplant);
+            implantSave.Set(AttackType.Super, _defaultSuperAttackImplant);
             
             goodSaver.Add(_defaultUpAttackImplant);
             goodSaver.Add(_defaultDownAttackImplant);

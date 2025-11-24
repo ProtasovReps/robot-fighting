@@ -10,13 +10,12 @@ namespace ImplantSystem.Factory
     {
         private readonly Dictionary<AttackPart, AttackPartSide> _attackSides = new();
 
-        [SerializeField] private ImplantPlaceHolderStash _placeHolderStash;
-
         public ImplantPlaceHolderStash Produce()
         {
             AttackImplant[] implants = GetImplants();
-
-            _placeHolderStash.Initialize(implants.Length);
+            ImplantPlaceHolderStash stash = GetStash();
+            
+            stash.Initialize(implants.Length);
             
             InstallAttackSides();
 
@@ -24,16 +23,17 @@ namespace ImplantSystem.Factory
             {
                 AttackPart requiredPart = implants[i].Parameters.RequiredPart;
                 AttackPartSide requiredPartSide = _attackSides[requiredPart];
-                ImplantPlaceHolder placeHolder = _placeHolderStash.Get(requiredPartSide);
+                ImplantPlaceHolder placeHolder = stash.Get(requiredPartSide);
                 AttackImplant newImplant = Instantiate(implants[i]);
 
                 placeHolder.SetImplant(newImplant);
             }
 
-            return _placeHolderStash;
+            return stash;
         }
 
         protected abstract AttackImplant[] GetImplants();
+        protected abstract ImplantPlaceHolderStash GetStash();
         protected abstract void AddAttackSides(Dictionary<AttackPart, AttackPartSide> partSides);
 
         private void InstallAttackSides()

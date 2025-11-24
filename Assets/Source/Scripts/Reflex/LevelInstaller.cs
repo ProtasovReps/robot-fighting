@@ -14,6 +14,7 @@ using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
 using CharacterSystem.CharacterHealth;
+using EffectSystem.Particle;
 using ImplantSystem;
 using ImplantSystem.Factory;
 using InputSystem;
@@ -35,20 +36,21 @@ namespace Reflex
         [Header("Player")]
         [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
         [SerializeField] private PlayerAttackFactory _playerAttackFactory;
-        [SerializeField] private PlayerHitFactory _playerHitFactory; // поменять на конкретный тип
+        [SerializeField] private PlayerHitFactory _playerHitFactory;
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private PlayerParameters _playerParameters;
         [SerializeField] private PlayerImplantFactory _playerImplantFactory;
-        [SerializeField] private AnimatedCharacter _playerAnimatedCharacter; // убрать с приходом сейвов
         [SerializeField] private Disposer _disposer;
         [SerializeField] private ProgressSaver _saver;
         [SerializeField] private DefaultSavesInstaller _defaultSavesInstaller;
+        [SerializeField] private FighterSpawner _fighterSpawner;
+        [SerializeField] private PlayerHitParticles _playerHitParticles;
         
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotAttackFactory _botAttackFactory;
-        [SerializeField] private BotHitFactory _botHitFactory; // поменять на конкретный тип
+        [SerializeField] private BotHitFactory _botHitFactory;
         [SerializeField] private BotInputTransitionFactory _botInputTransitionFactory;
         [SerializeField] private BotMovement _botMovement;
         [SerializeField] private DirectionValidationFactory _botDirectionValidationFactory;
@@ -56,14 +58,19 @@ namespace Reflex
         [SerializeField] private BotImplantFactory _botImplantFactory;
         [SerializeField] private ActionFactory _botActionFactory;
         [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
+
+        private Fighter _player;
         
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             if(YG2.saves.UpAttackImplant == null)
                 _defaultSavesInstaller.Install(new GoodSaver(), new PlayerImplantSave(), new SkinSaver());
+
+            _player = _fighterSpawner.Spawn(); 
+            _player.Initialize();    
             
             AnimationFactory animationFactory = new();
-
+            
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
             InstallSaves(containerBuilder);
@@ -75,11 +82,17 @@ namespace Reflex
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
             PlayerHealth health = new(YG2.saves.HealthStat);
+            
+            _playerHitFactory.Initialize(_player.HitColliderStash);
+            _playerHitParticles.Initialize(_player.HitEffectStash);
+            _playerImplantFactory.Initialize(_player.ImplantPlaceHolderStash);
+            
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);
             PlayerDeath death = new(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
-            AttackAnimationOverrider animationOverrider = new(_playerAnimatedCharacter.Animator);
+
+            AttackAnimationOverrider animationOverrider = new(_player.AnimatedCharacter.Animator);
             SuperAttackCharge attackCharge = new(hitReader, playerStateMachine, conditionBuilder);
             
             _disposer.Add(death);
@@ -90,7 +103,7 @@ namespace Reflex
             
             PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
             
-            animationFactory.Produce(_playerAnimatedCharacter, 
+            animationFactory.Produce(_player.AnimatedCharacter, 
                 playerStateMachine, _playerParameters, positionTranslation, _disposer, YG2.saves.SpeedStat);
             
             animationOverrider.Override(placeHolderStash);

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using CharacterSystem;
-using ImplantSystem.AttackImplants;
 using UI.Store;
 
 namespace YG
@@ -14,10 +13,10 @@ namespace YG
         public float BlockStat = 60;
         public int SceneIndex = 3;
         public bool IfBeatedGame = false;
-        public List<SellableView> SellableViews = new();
-        public AttackImplant UpAttackImplant;
-        public AttackImplant DownAttackImplant;
-        public AttackImplant SuperAttackImplant;
+        public List<ImplantView> Implants = new();
+        public ImplantView UpAttackImplant;
+        public ImplantView DownAttackImplant;
+        public ImplantView SuperAttackImplant;
         public List<Fighter> Fighters = new();
         public Fighter SettedFighter;
     }

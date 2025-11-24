@@ -16,7 +16,6 @@ namespace UI.Customization
     {
         [SerializeField] private Image _sellableImage;
         [SerializeField] private TMP_Text _sellableName;
-        [SerializeField] private ImplantView _tempStartImplantView;  // Temo!!!!
         [SerializeField] private AttackType _requiredState;
 
         private PlayerImplantSave _playerImplantSave;
@@ -37,8 +36,7 @@ namespace UI.Customization
                     .AddTo(this);
             }
             
-            // Set(YG2.saves.SettedImplants[RequiredState]);
-            Set(_tempStartImplantView);
+            Set(_playerImplantSave.Get(_requiredState));
         }
 
         private void Set(ImplantView implantView)
@@ -46,7 +44,7 @@ namespace UI.Customization
             if (implantView.AttackImplant.Parameters.RequiredState != _requiredState)
                 throw new ArgumentException(nameof(implantView));
             
-            _playerImplantSave.Set(_requiredState, implantView.AttackImplant);
+            _playerImplantSave.Set(_requiredState, implantView);
 
             _sellableImage.sprite = implantView.SellableImage;
             _sellableName.text = implantView.Name;

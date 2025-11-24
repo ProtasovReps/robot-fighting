@@ -6,26 +6,28 @@ namespace YG.Saver
 {
     public class GoodSaver : ISaver
     {
-        private readonly List<SellableView> _sellableViews;
+        private readonly List<ImplantView> _implantViews;
 
         public GoodSaver()
         {
-            _sellableViews = new(YG2.saves.SellableViews);
+            _implantViews = new(YG2.saves.Implants);
         }
 
-        public bool Contains(SellableView sellableView)
+        public IEnumerable<ImplantView> ImplantViews => _implantViews;
+        
+        public bool Contains(ImplantView implantView)
         {
-            return _sellableViews.Contains(sellableView);
+            return _implantViews.Contains(implantView);
         }
         
-        public void Add(SellableView sellableView)
+        public void Add(ImplantView implantView)
         {
-            _sellableViews.Add(sellableView);
+            _implantViews.Add(implantView);
         }
         
         public void Save()
         {
-            YG2.saves.SellableViews = _sellableViews;
+            YG2.saves.Implants = _implantViews;
         }
     }
 }

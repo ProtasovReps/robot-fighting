@@ -2,32 +2,29 @@
 using System.Collections.Generic;
 using Extensions;
 using R3;
+using Reflex.Attributes;
 using UI.Buttons;
 using UI.Panel;
 using UI.Store;
 using UnityEngine;
+using YG.Saver;
 
 namespace UI.Switchers
 {
-    public class EquipmentPanelSwitcher : MonoBehaviour // потом подумать над монобехами, мб некоторые убрать можно
+    public class EquipmentPanelSwitcher : MonoBehaviour
     {
-        [SerializeField] private ImplantView _testImplant1; // mock
-        [SerializeField] private ImplantView _testImplant2; // mock
-        [SerializeField] private ImplantView _testImplatn3;
-         
         private readonly Dictionary<AttackType, EquipmentPanel> _equipment = new();
+
+        private PlayerImplantSave _implantSave;
         
-        private Dictionary<AttackType, ImplantView> _mockImplants;// mock
+        [Inject]
+        private void Inject(PlayerImplantSave implantSave)
+        {
+            _implantSave = implantSave;
+        }
         
         public void Initialize(IEnumerable<EquipmentPanel> equipmentPanels, IEnumerable<EquipButton> buttons)
         {
-            _mockImplants = new Dictionary<AttackType, ImplantView> 
-            {
-                { _testImplant1.AttackImplant.Parameters.RequiredState, _testImplant1},
-                { _testImplant2.AttackImplant.Parameters.RequiredState, _testImplant2},
-                { _testImplatn3.AttackImplant.Parameters.RequiredState, _testImplatn3}
-            };
-                
             List<EquipmentPanel> activePanels = GetActivePanels(equipmentPanels);
             
             foreach (EquipmentPanel panel in activePanels)
@@ -59,23 +56,8 @@ namespace UI.Switchers
             {
                 AttackType attackType = GetAttackType(panel);
                 ImplantView implantView = panel.Get();
-
                 
-                // if (YG2.saves.SettedImplants.ContainsKey(attackType) == false)
-                // {
-                //     throw new KeyNotFoundException(nameof(attackType));
-                // }
-                //
-                // if (YG2.saves.SettedImplants[attackType] == implantView) // замокать
-                // {
-                //     activePanels.Add(panel);
-                // }
-                if (_mockImplants.ContainsKey(attackType) == false)
-                {
-                    throw new KeyNotFoundException(nameof(attackType));
-                }
-                
-                if (_mockImplants[attackType] == implantView)
+                if (_implantSave.Get(attackType) == implantView)
                 {
                     activePanels.Add(panel);
                 }

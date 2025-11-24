@@ -2,6 +2,7 @@
 using UI.Panel;
 using UI.Store;
 using UnityEngine;
+using YG.Saver;
 
 namespace UI.Customization
 {
@@ -11,17 +12,16 @@ namespace UI.Customization
 
         [SerializeField] private Transform _placeHolder;
         [SerializeField] private EquipmentPanel _prefab;
-        [SerializeField] private ImplantView[] _sellables; // temp, получать из Initializer
 
         public IEnumerable<EquipmentPanel> EquipmentPanels => _equipmentPanels;
         
-        public void Initialize()
+        public void Initialize(GoodSaver goodSaver)
         {
-            for (int i = 0; i < _sellables.Length; i++)
+            foreach (ImplantView view in goodSaver.ImplantViews)
             {
                 EquipmentPanel panel = Instantiate(_prefab, _placeHolder);
                 
-                panel.Set(_sellables[i]);
+                panel.Set(view);
                 _equipmentPanels.Add(panel);
             }
         }

@@ -42,7 +42,7 @@ namespace UI.Store
 
         private void Sell(BuyGoodPanel buyGoodPanel)
         {
-            SellableView sellable = buyGoodPanel.Get();
+            ImplantView sellable = buyGoodPanel.Get();
             int price = sellable.Price;
 
             if (_moneySpendable.TrySpend(price) == false)

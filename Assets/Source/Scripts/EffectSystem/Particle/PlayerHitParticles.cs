@@ -1,11 +1,15 @@
 ﻿using HitSystem;
-using UnityEngine;
 
 namespace EffectSystem.Particle
 {
-    public class PlayerHitParticles : HitParticles // пока без сейвов дублирует логику bot'a
+    public class PlayerHitParticles : HitParticles
     {
-        [SerializeField] private HitEffectStash _hitEffectStash;
+        private HitEffectStash _hitEffectStash;
+        
+        public void Initialize(HitEffectStash hitEffectStash)
+        {
+            _hitEffectStash = hitEffectStash;
+        }
         
         protected override HitEffectStash GetStash()
         {

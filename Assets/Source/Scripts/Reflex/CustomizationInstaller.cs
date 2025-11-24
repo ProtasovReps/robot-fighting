@@ -24,7 +24,7 @@ namespace Reflex
 
         private void Awake()
         {
-            _bag.Initialize();
+            _bag.Initialize(new GoodSaver());
             InstallButtons();
             _fighterShowcase.Initialize();
         }
@@ -38,6 +38,7 @@ namespace Reflex
             
             _progressSaver.Add(walletSaver);
             _progressSaver.Add(skinSaver);
+            _progressSaver.Add(playerImplantSave);
             _moneyView.Initialize(wallet);
             
             containerBuilder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IMoneySpendable));
