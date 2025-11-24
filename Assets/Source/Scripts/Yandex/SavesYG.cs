@@ -6,11 +6,11 @@ namespace YG
 {
     public partial class SavesYG
     {
-        public int Money = 600;
-        public float HealthStat = 1000;
-        public float SpeedStat = 6f;
-        public float DamageStat = 100;
-        public float BlockStat = 60;
+        public int Money = 400;
+        public float HealthStat = 80;
+        public float SpeedStat = 4f;
+        public float DamageStat = 15;
+        public float BlockStat = 20;
         public int SceneIndex = 3;
         public bool IfBeatedGame = false;
         public List<ImplantView> Implants = new();
