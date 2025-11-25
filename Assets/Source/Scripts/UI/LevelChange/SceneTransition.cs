@@ -1,5 +1,4 @@
 ﻿using System;
-using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using UI.Buttons;
 using UI.Effect;
@@ -43,7 +42,6 @@ namespace UI.LevelChange
             await _scaleAnimation.Play();
             
             Time.timeScale = DefaultTimeScale;
-            BroAudio.Stop(BroAudioType.Music);
             LoadScene();
         }
     }

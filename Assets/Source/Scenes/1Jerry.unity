@@ -370,11 +370,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 329325.38
+      value: 329854.03
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 891729.06
+      value: 892468.3
       objectReference: {fileID: 0}
     - target: {fileID: 1599395024595187726, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_Camera
@@ -697,6 +697,10 @@ PrefabInstance:
     - target: {fileID: 1579168401308389774, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729795486559209853, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -324.46704
       objectReference: {fileID: 0}
     - target: {fileID: 5421873227740972147, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
       propertyPath: m_Camera
@@ -2193,6 +2197,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music.ID
+      value: 268435458
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 41bfe3cb0fd0ef844a07693e143ed66e, type: 2}
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 8279162439755596119}
     - target: {fileID: 4900792603257804669, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
       propertyPath: m_Name
       value: Sounds
@@ -2246,6 +2262,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+--- !u!1 &8279162439755596119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4900792603257804669, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+  m_PrefabInstance: {fileID: 8279162439755596118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9188487376419417025
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -343,11 +343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 172343.25
+      value: 172583.69
       objectReference: {fileID: 0}
     - target: {fileID: 1476523768288352934, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 517862.34
+      value: 518089.53
       objectReference: {fileID: 0}
     - target: {fileID: 1599395024595187726, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       propertyPath: m_Camera
@@ -2099,6 +2099,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music.ID
+      value: 268435457
+      objectReference: {fileID: 0}
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 41bfe3cb0fd0ef844a07693e143ed66e, type: 2}
+    - target: {fileID: 4382319578729893368, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+      propertyPath: _music.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 8279162439755596119}
     - target: {fileID: 4900792603257804669, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
       propertyPath: m_Name
       value: Sounds
@@ -2148,6 +2160,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+--- !u!1 &8279162439755596119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4900792603257804669, guid: e518d3d687b26354eac33cd49c51fdc0, type: 3}
+  m_PrefabInstance: {fileID: 8279162439755596118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9188487376419417025
 PrefabInstance:
   m_ObjectHideFlags: 0
