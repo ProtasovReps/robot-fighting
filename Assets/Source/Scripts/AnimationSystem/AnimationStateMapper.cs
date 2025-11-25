@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace AnimationSystem
 {
-    public class AnimationStateMapper : MonoBehaviour
+    [Serializable]
+    public class AnimationStateMapper
     {
         private readonly Dictionary<string, Type> _names = new();
         

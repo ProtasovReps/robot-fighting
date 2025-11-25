@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 8943368177320517145}
   - component: {fileID: 3129587235003955599}
   - component: {fileID: 8407300399704678139}
-  - component: {fileID: 8197264934627171753}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -132,7 +131,24 @@ MonoBehaviour:
   _defaultSavesInstaller: {fileID: 8407300399704678139}
   _fighterSpawner: {fileID: 0}
   _playerHitParticles: {fileID: 0}
-  _animationStateMapper: {fileID: 8197264934627171753}
+  _animationStateMapper:
+    _upAttackAnimations:
+    - {fileID: 7400000, guid: 20107bbeeea397743b4c00e8003e198c, type: 2}
+    - {fileID: 7400000, guid: 53e6eace8a3b9554abb84a62b90f2204, type: 2}
+    - {fileID: 7400000, guid: 4b2543fc063cf0740838c46a533fa2c8, type: 2}
+    - {fileID: 7400000, guid: 3d55458cc07136a4bb7e6cb442b35b4a, type: 2}
+    - {fileID: 7400000, guid: 4e137d14e1747d84ab0342f65752cd5e, type: 2}
+    - {fileID: 7400000, guid: 51904d3940533594db88749c3e3e365f, type: 2}
+    _downAttackAnimations:
+    - {fileID: 7400000, guid: 595b0975f4749774cb7bad6edf14194f, type: 2}
+    - {fileID: 7400000, guid: 6b6a32c99f0b52346b135cc1d0b42511, type: 2}
+    - {fileID: 7400000, guid: 54033521a9c6d164c89bd2d1aee1702c, type: 2}
+    - {fileID: 7400000, guid: 982f8ce37274d44489418dccae511547, type: 2}
+    - {fileID: 7400000, guid: 5833584e861149244869777673525548, type: 2}
+    _superAttackAnimations:
+    - {fileID: 7400000, guid: 870041dcf6c68534e83b1888c9c5baea, type: 2}
+    - {fileID: 7400000, guid: 98104fb8ce4213a449b882a1d17273c7, type: 2}
+    - {fileID: 7400000, guid: cb64d877a97186142be681b03995e1f2, type: 2}
   _botTransitionFactory: {fileID: 1878525661922352557}
   _botAttackFactory: {fileID: 1910237874827508604}
   _botHitFactory: {fileID: 5552862501096592642}
@@ -183,35 +199,6 @@ MonoBehaviour:
   _defaultDownAttackImplant: {fileID: 6678659835579656486, guid: 11f1463d755bf2a469600e3d198e8a37, type: 3}
   _defaultSuperAttackImplant: {fileID: 6678659835579656486, guid: c5ad23d26b1992046a2ec80dcf062333, type: 3}
   _defaultFighter: {fileID: 7661856510355865214, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
---- !u!114 &8197264934627171753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417841561429495828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29f6fbb240ab4042ae7823e1f15dfc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upAttackAnimations:
-  - {fileID: 7400000, guid: 20107bbeeea397743b4c00e8003e198c, type: 2}
-  - {fileID: 7400000, guid: 53e6eace8a3b9554abb84a62b90f2204, type: 2}
-  - {fileID: 7400000, guid: 4b2543fc063cf0740838c46a533fa2c8, type: 2}
-  - {fileID: 7400000, guid: 3d55458cc07136a4bb7e6cb442b35b4a, type: 2}
-  - {fileID: 7400000, guid: 4e137d14e1747d84ab0342f65752cd5e, type: 2}
-  - {fileID: 7400000, guid: 51904d3940533594db88749c3e3e365f, type: 2}
-  _downAttackAnimations:
-  - {fileID: 7400000, guid: 595b0975f4749774cb7bad6edf14194f, type: 2}
-  - {fileID: 7400000, guid: 6b6a32c99f0b52346b135cc1d0b42511, type: 2}
-  - {fileID: 7400000, guid: 54033521a9c6d164c89bd2d1aee1702c, type: 2}
-  - {fileID: 7400000, guid: 982f8ce37274d44489418dccae511547, type: 2}
-  - {fileID: 7400000, guid: 5833584e861149244869777673525548, type: 2}
-  _superAttackAnimations:
-  - {fileID: 7400000, guid: 870041dcf6c68534e83b1888c9c5baea, type: 2}
-  - {fileID: 7400000, guid: 98104fb8ce4213a449b882a1d17273c7, type: 2}
-  - {fileID: 7400000, guid: cb64d877a97186142be681b03995e1f2, type: 2}
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
