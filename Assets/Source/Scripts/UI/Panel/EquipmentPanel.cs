@@ -16,7 +16,7 @@ namespace UI.Panel
 
         public void Set(ImplantView implantView)
         {
-            _sellableImage.sprite = implantView.SellableImage;
+            _sellableImage.sprite = implantView.ImplantImage;
             _name.text = implantView.Name;
 
             _implantView = implantView;

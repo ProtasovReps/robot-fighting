@@ -46,7 +46,7 @@ namespace UI.Customization
             
             _playerImplantSave.Set(_requiredState, implantView);
 
-            _sellableImage.sprite = implantView.SellableImage;
+            _sellableImage.sprite = implantView.ImplantImage;
             _sellableName.text = implantView.Name;
         }
     }

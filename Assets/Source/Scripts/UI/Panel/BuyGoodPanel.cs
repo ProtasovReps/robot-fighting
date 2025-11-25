@@ -31,7 +31,7 @@ namespace UI.Panel
         {
             _name.text = _sellableView.Name;
             _price.text = _sellableView.Price.ToString();
-            _goodImage.sprite = _sellableView.SellableImage;
+            _goodImage.sprite = _sellableView.ImplantImage;
         }
 
         public ImplantView Get()

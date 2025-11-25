@@ -3,9 +3,11 @@ using UnityEngine;
 
 namespace UI.Store
 {
-    [CreateAssetMenu(fileName = "ImplantView", menuName = "GoodView/ImplantView")]
-    public class ImplantView : SellableView
+    public class ImplantView : MonoBehaviour
     {
+        [field: SerializeField] public string Name { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
+        [field: SerializeField] public Sprite ImplantImage { get; private set; }
         [field: SerializeField] public AttackImplant AttackImplant { get; private set; }
     }
 }
