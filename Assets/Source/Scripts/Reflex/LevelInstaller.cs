@@ -46,6 +46,7 @@ namespace Reflex
         [SerializeField] private DefaultSavesInstaller _defaultSavesInstaller;
         [SerializeField] private FighterSpawner _fighterSpawner;
         [SerializeField] private PlayerHitParticles _playerHitParticles;
+        [SerializeField] private AnimationStateMapper _animationStateMapper;
         
         [Header("Bot")]
         [SerializeField] private BotTransitionFactory _botTransitionFactory;
@@ -92,7 +93,9 @@ namespace Reflex
             PlayerDeath death = new(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
 
-            AttackAnimationOverrider animationOverrider = new(_player.AnimatedCharacter.Animator);
+            _animationStateMapper.Initialize();
+            
+            AttackAnimationOverrider overrider = new(_player.AnimatedCharacter.Animator, _animationStateMapper);
             SuperAttackCharge attackCharge = new(hitReader, playerStateMachine, conditionBuilder);
             
             _disposer.Add(death);
@@ -106,7 +109,7 @@ namespace Reflex
             animationFactory.Produce(_player.AnimatedCharacter, 
                 playerStateMachine, _playerParameters, positionTranslation, _disposer, YG2.saves.SpeedStat);
             
-            animationOverrider.Override(placeHolderStash);
+            overrider.Override(placeHolderStash);
            
             builder.AddSingleton(attackCharge);
             builder.AddSingleton(health);
@@ -124,7 +127,6 @@ namespace Reflex
             HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder, _disposer);
             BotDeath death = new BotDeath(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallBotInput(builder, death);
-            AttackAnimationOverrider animationOverrider = new(_botAnimatedCharacter.Animator);
 
             _disposer.Add(death);
             _botAttackFactory.Produce(placeHolderStash);
@@ -133,7 +135,6 @@ namespace Reflex
             
             animationFactory.Produce(_botAnimatedCharacter,
                 botStateMachine, _botParameters, positionTranslation, _disposer, _botParameters.MoveSpeed);
-            animationOverrider.Override(placeHolderStash);
 
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
