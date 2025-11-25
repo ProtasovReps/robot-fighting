@@ -139,7 +139,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 6719883577224122314}
-  <Parameters>k__BackingField: {fileID: 11400000, guid: 08bfc6b0153ddbe49a38e491c71de10c, type: 2}
+  <Parameters>k__BackingField:
+    <StartDelay>k__BackingField: 0.7
+    <EndDelay>k__BackingField: 1
+    <Duration>k__BackingField: 0
+    <Clip>k__BackingField: {fileID: 7400000, guid: cb64d877a97186142be681b03995e1f2, type: 2}
+    <RequiredPart>k__BackingField: 3
+    <RequiredState>k__BackingField: 3
   _overlaper: {fileID: 6813220050473298452}
   _spherecaster: {fileID: 6430291483255113304}
 --- !u!1 &8938069203134541735

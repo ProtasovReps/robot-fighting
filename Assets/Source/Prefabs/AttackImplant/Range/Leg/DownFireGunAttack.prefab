@@ -229,7 +229,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 7772344980419299188}
-  <Parameters>k__BackingField: {fileID: 11400000, guid: 5a7954543773e3547b1d021b7b38637e, type: 2}
+  <Parameters>k__BackingField:
+    <StartDelay>k__BackingField: 0.4
+    <EndDelay>k__BackingField: 1.5
+    <Duration>k__BackingField: 0
+    <Clip>k__BackingField: {fileID: 7400000, guid: 0482066385fd6ff41b2efcc09cfc53e3, type: 2}
+    <RequiredPart>k__BackingField: 3
+    <RequiredState>k__BackingField: 1
   _shooter: {fileID: 7019682676254904920}
   _projectilePool: {fileID: 4628957210907883047}
   _projectileFactory: {fileID: 5632590411063314363}

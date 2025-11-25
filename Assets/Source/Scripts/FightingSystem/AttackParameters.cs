@@ -1,10 +1,11 @@
-﻿using Extensions;
+﻿using System;
+using Extensions;
 using UnityEngine;
 
 namespace FightingSystem
 {
-    [CreateAssetMenu(fileName = "AttackParameters", menuName = "Fighter/AttackParameters")]
-    public class AttackParameters : ScriptableObject
+    [Serializable]
+    public struct AttackParameters
     {
         [field: SerializeField] public float StartDelay { get; private set; }
         [field: SerializeField] public float EndDelay { get; private set; }

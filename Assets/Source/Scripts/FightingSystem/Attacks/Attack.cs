@@ -13,7 +13,7 @@ namespace FightingSystem.Attacks
         
         protected Attack(float duration, float startDelay, float endDelay)
         {
-            if (startDelay <= 0)
+            if (startDelay < 0)
                 throw new ArgumentOutOfRangeException(nameof(startDelay));
 
             _duration = duration;

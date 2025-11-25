@@ -47,7 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageFactory: {fileID: 3250714625009215344}
-  <Parameters>k__BackingField: {fileID: 11400000, guid: d6f8093339ebd864c84ac97ca35f32a0, type: 2}
+  <Parameters>k__BackingField:
+    <StartDelay>k__BackingField: 0
+    <EndDelay>k__BackingField: 0.4
+    <Duration>k__BackingField: 1
+    <Clip>k__BackingField: {fileID: 7400000, guid: 870041dcf6c68534e83b1888c9c5baea, type: 2}
+    <RequiredPart>k__BackingField: 1
+    <RequiredState>k__BackingField: 3
   _spherecaster: {fileID: 8012214496558000148}
 --- !u!114 &8012214496558000148
 MonoBehaviour:
