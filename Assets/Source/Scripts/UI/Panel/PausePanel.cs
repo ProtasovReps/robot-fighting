@@ -1,8 +1,8 @@
-﻿using System;
-using Ami.BroAudio;
+﻿using Ami.BroAudio;
 using R3;
 using UI.Buttons;
 using UnityEngine;
+using YG;
 
 namespace UI.Panel
 {
@@ -23,6 +23,8 @@ namespace UI.Panel
             _disableButton.Pressed
                 .Subscribe(_ => Disable())
                 .AddTo(this);
+
+            YG2.onPauseGame += _ => Enable();
             
             Disable();
         }
