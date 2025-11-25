@@ -19,6 +19,9 @@ namespace UI.Customization
         {
             foreach (ImplantView view in goodSaver.ImplantViews)
             {
+                if (view == null)
+                    continue;
+                
                 EquipmentPanel panel = Instantiate(_prefab, _placeHolder);
                 
                 panel.Set(view);

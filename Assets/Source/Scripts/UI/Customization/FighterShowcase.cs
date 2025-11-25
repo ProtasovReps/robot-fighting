@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using CharacterSystem;
 using R3;
 using UI.Customization;
 using UnityEngine;
-using YG;
+using Random = UnityEngine.Random;
 
 public class FighterShowcase : MonoBehaviour
 {
@@ -22,9 +21,6 @@ public class FighterShowcase : MonoBehaviour
 
     public void Initialize()
     {
-        Fighter settedFighter = YG2.saves.SettedFighter;
-        int lastSettedFighterIndex = 0;
-        
         _spawnedFighters = new Dictionary<Fighter, Fighter>();
         
         for (int i = 0; i < _skinViews.Length; i++)
@@ -34,13 +30,10 @@ public class FighterShowcase : MonoBehaviour
             if (_spawnedFighters.ContainsKey(fighter))
                 throw new ArgumentException(nameof(fighter));
 
-            if (settedFighter == _skinViews[i].Fighter)
-                lastSettedFighterIndex = i;
-            
             _spawnedFighters.Add(fighter, null);
         }
 
-        _lastIndex = lastSettedFighterIndex;
+        _lastIndex = Random.Range(0, _skinViews.Length);
         
         Show();
     }

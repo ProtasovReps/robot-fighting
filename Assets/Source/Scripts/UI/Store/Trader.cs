@@ -4,6 +4,7 @@ using Reflex.Attributes;
 using UI.Buttons;
 using UI.Panel;
 using UnityEngine;
+using YG;
 using YG.Saver;
 
 namespace UI.Store
@@ -15,12 +16,14 @@ namespace UI.Store
         private CompositeDisposable _subscriptions;
         private IMoneySpendable _moneySpendable;
         private GoodSaver _goodSaver;
+        private ProgressSaver _progressSaver;
         
         [Inject]
-        private void Inject(IMoneySpendable moneySpendable, GoodSaver goodSaver)
+        private void Inject(IMoneySpendable moneySpendable, GoodSaver goodSaver, ProgressSaver progressSaver)
         {
             _moneySpendable = moneySpendable;
             _goodSaver = goodSaver;
+            _progressSaver = progressSaver;
         }
 
         private void Awake()
@@ -51,6 +54,7 @@ namespace UI.Store
             }
 
             _goodSaver.Add(sellable);
+            _progressSaver.Save();
             buyGoodPanel.SetEnable(false);
         }
     }

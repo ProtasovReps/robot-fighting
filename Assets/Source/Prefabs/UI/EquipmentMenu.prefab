@@ -331,7 +331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -33.799927}
+  m_AnchoredPosition: {x: 450, y: -33.799927}
   m_SizeDelta: {x: 610.7, y: -431.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4692436021070301088
@@ -348,13 +348,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _placeHolder: {fileID: 1864347659545548439}
   _prefab: {fileID: 6275143084727342767, guid: 6575ba4672118474bb9d11558d644b46, type: 3}
-  _sellables:
-  - {fileID: 11400000, guid: 5e4b315d42534c94aa62aafa058d42c4, type: 2}
-  - {fileID: 11400000, guid: 31a87e39e69cdc84785b7d625b342e84, type: 2}
-  - {fileID: 11400000, guid: a5741ae51dcfe2a4b9da7a62bf7a1408, type: 2}
-  - {fileID: 11400000, guid: 78f5dc398b6ed164ea75237694dc4681, type: 2}
-  - {fileID: 11400000, guid: 0fd73bad15926e8408fb69c462ee820a, type: 2}
-  - {fileID: 11400000, guid: a399dbf92fb76a44aae92cf4a11cdd3b, type: 2}
 --- !u!222 &3184358695963452877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -842,9 +835,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a500502f72745ccab15748fbb217544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _testImplant1: {fileID: 11400000, guid: 5e4b315d42534c94aa62aafa058d42c4, type: 2}
-  _testImplant2: {fileID: 11400000, guid: 31a87e39e69cdc84785b7d625b342e84, type: 2}
-  _testImplatn3: {fileID: 0}
 --- !u!1 &7781911032987391912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1360,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8169df8a411d39f44b46c98a6e73ece4, type: 2}
   - {fileID: 11400000, guid: a76d4a827516ae04981ba28c211797c3, type: 2}
   _spawnPoint: {fileID: 0}
-  _tempLastFighter: {fileID: 11400000, guid: edfb1ebb1cdd83740a0c0db0ac25cda2, type: 2}
 --- !u!114 &3159503465114539843
 MonoBehaviour:
   m_ObjectHideFlags: 0
