@@ -14,17 +14,17 @@ namespace UI.Panel
         [SerializeField] private TMP_Text _price;
         [SerializeField] private Image _goodImage;
 
-        private GoodSaver _goodSaver;
+        private ImplantSaver _implantSaver;
 
         private void Start()
         {
-            CheckPlayerSellables(_goodSaver);
+            CheckPlayerSellables(_implantSaver);
         }
 
         [Inject]
-        private void Inject(GoodSaver goodSaver)
+        private void Inject(ImplantSaver implantSaver)
         {
-            _goodSaver = goodSaver;
+            _implantSaver = implantSaver;
         }
 
         private void Awake()
@@ -39,9 +39,9 @@ namespace UI.Panel
             return _sellableView;
         }
 
-        private void CheckPlayerSellables(GoodSaver goodSaver)
+        private void CheckPlayerSellables(ImplantSaver implantSaver)
         {
-            bool isNewItem = goodSaver.Contains(_sellableView) == false;
+            bool isNewItem = implantSaver.Contains(_sellableView) == false;
 
             SetEnable(isNewItem);
         }

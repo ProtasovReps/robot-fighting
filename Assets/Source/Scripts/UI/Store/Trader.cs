@@ -15,14 +15,14 @@ namespace UI.Store
         
         private CompositeDisposable _subscriptions;
         private IMoneySpendable _moneySpendable;
-        private GoodSaver _goodSaver;
+        private ImplantSaver _implantSaver;
         private ProgressSaver _progressSaver;
         
         [Inject]
-        private void Inject(IMoneySpendable moneySpendable, GoodSaver goodSaver, ProgressSaver progressSaver)
+        private void Inject(IMoneySpendable moneySpendable, ImplantSaver implantSaver, ProgressSaver progressSaver)
         {
             _moneySpendable = moneySpendable;
-            _goodSaver = goodSaver;
+            _implantSaver = implantSaver;
             _progressSaver = progressSaver;
         }
 
@@ -45,15 +45,15 @@ namespace UI.Store
 
         private void Sell(BuyGoodPanel buyGoodPanel)
         {
-            ImplantView sellable = buyGoodPanel.Get();
-            int price = sellable.Price;
+            ImplantView implantView = buyGoodPanel.Get();
+            int price = implantView.Price;
 
             if (_moneySpendable.TrySpend(price) == false)
             {
                 return;
             }
 
-            _goodSaver.Add(sellable);
+            _implantSaver.Add(implantView);
             _progressSaver.Save();
             buyGoodPanel.SetEnable(false);
         }

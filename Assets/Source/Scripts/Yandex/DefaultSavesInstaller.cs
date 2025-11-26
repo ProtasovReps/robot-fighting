@@ -13,21 +13,26 @@ namespace YG
         [SerializeField] private ImplantView _defaultSuperAttackImplant;
         [SerializeField] private Fighter _defaultFighter;
         
-        public void Install(GoodSaver goodSaver, PlayerImplantSave implantSave, SkinSaver skinSaver)
+        public void Install()
         {
-            implantSave.Set(AttackType.UpAttack, _defaultUpAttackImplant);
-            implantSave.Set(AttackType.DownAttack, _defaultDownAttackImplant);
-            implantSave.Set(AttackType.Super, _defaultSuperAttackImplant);
+            Hasher<ImplantView> hasher = new();
+            ImplantSaver implantSaver = new(hasher);
+            EquipedImplantSaver equipedImplantSaver = new(hasher);
+            SkinSaver skinSaver = new(new Hasher<Fighter>());
             
-            goodSaver.Add(_defaultUpAttackImplant);
-            goodSaver.Add(_defaultDownAttackImplant);
-            goodSaver.Add(_defaultSuperAttackImplant);
+            equipedImplantSaver.Set(AttackType.UpAttack, _defaultUpAttackImplant);
+            equipedImplantSaver.Set(AttackType.DownAttack, _defaultDownAttackImplant);
+            equipedImplantSaver.Set(AttackType.Super, _defaultSuperAttackImplant);
+            
+            implantSaver.Add(_defaultUpAttackImplant);
+            implantSaver.Add(_defaultDownAttackImplant);
+            implantSaver.Add(_defaultSuperAttackImplant);
             
             skinSaver.Add(_defaultFighter);
             skinSaver.Set(_defaultFighter);
             
-            goodSaver.Save();
-            implantSave.Save();
+            implantSaver.Save();
+            equipedImplantSaver.Save();
             skinSaver.Save();
         }
     }

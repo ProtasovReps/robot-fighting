@@ -17,13 +17,14 @@ namespace UI.Customization
         [SerializeField] private Image _sellableImage;
         [SerializeField] private TMP_Text _sellableName;
         [SerializeField] private AttackType _requiredState;
-
-        private PlayerImplantSave _playerImplantSave;
+        [SerializeField] private ImplantView[] _implantViews;
+        
+        private EquipedImplantSaver _equipedImplantSaver;
         
         [Inject]
-        private void Inject(PlayerImplantSave playerImplantSave)
+        private void Inject(EquipedImplantSaver equipedImplantSaver)
         {
-            _playerImplantSave = playerImplantSave;
+            _equipedImplantSaver = equipedImplantSaver;
         }
         
         public void Initialize(List<EquipButton> equipButtons)
@@ -35,8 +36,17 @@ namespace UI.Customization
                     .Subscribe(implant => Set(implant.Get()))
                     .AddTo(this);
             }
-            
-            Set(_playerImplantSave.Get(_requiredState));
+
+            for (int i = 0; i < _implantViews.Length; i++)
+            {
+                ImplantView view = _implantViews[i];
+                
+                if(_equipedImplantSaver.IsSetted(_requiredState, view) == false)
+                    continue;
+                
+                Set(view);
+                break;
+            }
         }
 
         private void Set(ImplantView implantView)
@@ -44,7 +54,7 @@ namespace UI.Customization
             if (implantView.AttackImplant.Parameters.RequiredState != _requiredState)
                 throw new ArgumentException(nameof(implantView));
             
-            _playerImplantSave.Set(_requiredState, implantView);
+            _equipedImplantSaver.Set(_requiredState, implantView);
 
             _sellableImage.sprite = implantView.ImplantImage;
             _sellableName.text = implantView.Name;

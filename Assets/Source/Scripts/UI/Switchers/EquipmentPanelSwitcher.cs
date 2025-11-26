@@ -15,12 +15,12 @@ namespace UI.Switchers
     {
         private readonly Dictionary<AttackType, EquipmentPanel> _equipment = new();
 
-        private PlayerImplantSave _implantSave;
+        private EquipedImplantSaver _implantSaver;
         
         [Inject]
-        private void Inject(PlayerImplantSave implantSave)
+        private void Inject(EquipedImplantSaver implantSaver)
         {
-            _implantSave = implantSave;
+            _implantSaver = implantSaver;
         }
         
         public void Initialize(IEnumerable<EquipmentPanel> equipmentPanels, IEnumerable<EquipButton> buttons)
@@ -57,7 +57,7 @@ namespace UI.Switchers
                 AttackType attackType = GetAttackType(panel);
                 ImplantView implantView = panel.Get();
                 
-                if (_implantSave.Get(attackType) == implantView)
+                if (_implantSaver.IsSetted(attackType, implantView))
                 {
                     activePanels.Add(panel);
                 }

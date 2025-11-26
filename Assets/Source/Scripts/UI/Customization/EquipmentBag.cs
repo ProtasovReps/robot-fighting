@@ -12,13 +12,19 @@ namespace UI.Customization
 
         [SerializeField] private Transform _placeHolder;
         [SerializeField] private EquipmentPanel _prefab;
-
+        [SerializeField] private ImplantView[] _implantViews;    
+        
         public IEnumerable<EquipmentPanel> EquipmentPanels => _equipmentPanels;
         
-        public void Initialize(GoodSaver goodSaver)
+        public void Initialize(ImplantSaver implantSaver)
         {
-            foreach (ImplantView view in goodSaver.ImplantViews)
+            for (int i = 0; i < _implantViews.Length; i++)
             {
+                ImplantView view = _implantViews[i];
+                
+                if(implantSaver.Contains(view) == false)
+                    continue;
+                    
                 EquipmentPanel panel = Instantiate(_prefab, _placeHolder);
                 
                 panel.Set(view);

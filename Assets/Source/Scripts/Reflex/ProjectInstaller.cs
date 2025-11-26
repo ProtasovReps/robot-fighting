@@ -8,7 +8,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
     private const int CustomizationLevelIndex = 1;
     private const int FirstLevelIndex = 3;
     private const int FirstCustomizationsSceneIndex = 6;
-
+   
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
         var awaiter = GameObject.CreatePrimitive(PrimitiveType.Cube).AddComponent<SDKAwaiter>();

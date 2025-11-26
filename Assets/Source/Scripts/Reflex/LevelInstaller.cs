@@ -23,6 +23,7 @@ using InputSystem.Bot.Factory;
 using Interface;
 using MovementSystem;
 using Reflex.Core;
+using UI.Store;
 using UnityEngine;
 using YG;
 using YG.Saver;
@@ -65,7 +66,7 @@ namespace Reflex
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             if(YG2.saves.UpAttackImplant == null)
-                _defaultSavesInstaller.Install(new GoodSaver(), new PlayerImplantSave(), new SkinSaver());
+                _defaultSavesInstaller.Install();
 
             _player = _fighterSpawner.Spawn(); 
             _player.Initialize();    
@@ -83,10 +84,11 @@ namespace Reflex
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
             PlayerHealth health = new(YG2.saves.HealthStat);
+            EquipedImplantSaver equipedImplantSaver = new(new Hasher<ImplantView>());
             
             _playerHitFactory.Initialize(_player.HitColliderStash);
             _playerHitParticles.Initialize(_player.HitEffectStash);
-            _playerImplantFactory.Initialize(_player.ImplantPlaceHolderStash);
+            _playerImplantFactory.Initialize(_player.ImplantPlaceHolderStash, equipedImplantSaver);
             
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);

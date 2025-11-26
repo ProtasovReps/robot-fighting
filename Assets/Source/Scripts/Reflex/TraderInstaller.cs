@@ -1,7 +1,9 @@
 using CharacterSystem;
+using Extensions;
 using Interface;
 using Reflex.Core;
 using UI.Info;
+using UI.Store;
 using UnityEngine;
 using YG;
 using YG.Saver;
@@ -17,15 +19,15 @@ namespace Reflex
         {
             Wallet wallet = new(YG2.saves.Money);
             WalletSaver walletSaver = new(wallet);
-            GoodSaver goodSaver = new();
+            ImplantSaver implantSaver = new(new Hasher<ImplantView>());
             
             _progressSaver.Add(walletSaver);
-            _progressSaver.Add(goodSaver);
+            _progressSaver.Add(implantSaver);
             _moneyView.Initialize(wallet);
 
             containerBuilder.AddSingleton(wallet, typeof(IMoneyAddable), typeof(IMoneySpendable));
             containerBuilder.AddSingleton(_progressSaver);
-            containerBuilder.AddSingleton(goodSaver);
+            containerBuilder.AddSingleton(implantSaver);
         }
     }
 }
