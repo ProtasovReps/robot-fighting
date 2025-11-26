@@ -1,32 +1,25 @@
-﻿using R3;
-using TMPro;
-using UI.Buttons;
-using UI.Panel;
+﻿using TMPro;
+using UI.LevelEnd;
 using UnityEngine;
 
-namespace UI.LevelEnd
+namespace YG.Awards
 {
-    public class MultiplyAwardPanel : SwitchablePanel
+    public class MultiplyAwardPanel : AwardPanel
     {
-        [SerializeField] private UnitButton _button;
+        private const int OneMinus = 1;
+        
         [SerializeField] private TMP_Text _multipliedAwardText;
         [SerializeField] private Chest _chest;
         [SerializeField, Min(1)] private int _multiplier;
         
-        private void Awake()
+        private void Start()
         {
             _multipliedAwardText.text = (_chest.AwardAmount * _multiplier).ToString();
-
-            _button.Pressed
-                .Subscribe(_ => Multiply())
-                .AddTo(this);
         }
 
-        private void Multiply()
+        protected override void AddAward()
         {
-            // показать рекламу
-
-            int addAmount = _multiplier - 1;
+            int addAmount = _multiplier - OneMinus;
 
             for (int i = 0; i < addAmount; i++)
                 _chest.AddAward();

@@ -61,18 +61,10 @@ namespace Reflex
         [SerializeField] private ActionFactory _botActionFactory;
         [SerializeField] private AnimatedCharacter _botAnimatedCharacter;
 
-        private Fighter _player;
-        
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             if (YG2.saves.UpAttackImplant == null)
-            {
-                _defaultSavesInstaller.InstallSellables();
-                _defaultSavesInstaller.InstallStats();
-            }
-
-            _player = _fighterSpawner.Spawn(); 
-            _player.Initialize();    
+                _defaultSavesInstaller.Install();
             
             AnimationFactory animationFactory = new();
             
@@ -83,39 +75,40 @@ namespace Reflex
 
         private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
         {
+            Fighter player = _fighterSpawner.Spawn(); 
             State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new(states);
             PlayerConditionBuilder conditionBuilder = new();
             PlayerHealth health = new(YG2.saves.HealthStat);
             EquipedImplantSaver equipedImplantSaver = new(new Hasher<ImplantView>());
             
-            _playerHitFactory.Initialize(_player.HitColliderStash);
-            _playerHitParticles.Initialize(_player.HitEffectStash);
-            _playerImplantFactory.Initialize(_player.ImplantPlaceHolderStash, equipedImplantSaver);
+            player.Initialize();
+            _playerHitFactory.Initialize(player.HitColliderStash);
+            _playerHitParticles.Initialize(player.HitEffectStash);
+            _playerImplantFactory.Initialize(player.ImplantPlaceHolderStash, equipedImplantSaver);
             
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);
             PlayerDeath death = new(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
+            PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
 
             _animationStateMapper.Initialize();
             
-            AttackAnimationOverrider overrider = new(_player.AnimatedCharacter.Animator, _animationStateMapper);
+            AttackAnimationOverrider overrider = new(player.AnimatedCharacter.Animator, _animationStateMapper);
             SuperAttackCharge attackCharge = new(hitReader, playerStateMachine, conditionBuilder);
             
-            _disposer.Add(death);
-            _disposer.Add(attackCharge);
-            _disposer.Add(new Stretch(playerStateMachine, conditionBuilder));
-            
             _playerAttackFactory.Produce(placeHolderStash);
-            
-            PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
-            
-            animationFactory.Produce(_player.AnimatedCharacter, 
+
+            animationFactory.Produce(player.AnimatedCharacter, 
                 playerStateMachine, _playerParameters, positionTranslation, _disposer, YG2.saves.SpeedStat);
             
             overrider.Override(placeHolderStash);
            
+            _disposer.Add(death);
+            _disposer.Add(attackCharge);
+            _disposer.Add(new Stretch(playerStateMachine, conditionBuilder));
+
             builder.AddSingleton(attackCharge);
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
@@ -195,14 +188,14 @@ namespace Reflex
             return validatedInput;
         }
 
-        private PositionTranslation InstallPlayerMovement(IMoveInput moveInput)
+        private PositionTranslation InstallPlayerMovement(IMoveInput moveInput) // одинаковые
         {
             PositionTranslation positionTranslation = new(_playerParameters.transform, YG2.saves.SpeedStat);
             _playerMovement.Initialize(moveInput, positionTranslation);
             return positionTranslation;
         }
         
-        private PositionTranslation InstallBotMovement(IMoveInput moveInput)
+        private PositionTranslation InstallBotMovement(IMoveInput moveInput) // одинаковые
         {
             PositionTranslation positionTranslation = new(_botParameters.transform, _botParameters.MoveSpeed);
             _botMovement.Initialize(moveInput, positionTranslation);

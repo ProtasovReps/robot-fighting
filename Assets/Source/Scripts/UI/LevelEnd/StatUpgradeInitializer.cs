@@ -1,9 +1,9 @@
 ﻿using Extensions;
-using R3;
 using UI.Effect;
 using UI.Info;
 using UI.Panel;
 using UnityEngine;
+using YG.Awards;
 
 namespace UI.LevelEnd
 {
@@ -13,18 +13,19 @@ namespace UI.LevelEnd
         [SerializeField] private IntegerView _pointsView;
         [SerializeField, Min(1)] private int _skillPoints;
         [SerializeField] private AnimatablePanelSwitcher _animatableSwitcher;
-
+        [SerializeField] private ExtraUpgradeAwardPanel _awardPanel;
+        
         private void Awake()
         {
-            DownCounter downCounter = new(_skillPoints);
-           
-            Observable<Unit> switchMessage = downCounter.Value
-                .Where(value => value == 0)
-                .Select(_ => Unit.Default);
+            DownCounter counter = new();
             
-            _pointsView.Initialize(downCounter);
-            _statUpgradePanel.Initialize(downCounter);
-            _animatableSwitcher.Initialize(switchMessage);
+            counter.Reset();
+            counter.AddPoints(_skillPoints);
+           
+            _awardPanel.Initialize(counter);
+            _pointsView.Initialize(counter);
+            _statUpgradePanel.Initialize(counter);
+            _animatableSwitcher.Initialize(counter.Ended);
         }
     }
 }

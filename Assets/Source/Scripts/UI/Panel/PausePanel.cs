@@ -24,8 +24,6 @@ namespace UI.Panel
                 .Subscribe(_ => Disable())
                 .AddTo(this);
 
-            YG2.onPauseGame += _ => Enable();
-            
             Disable();
         }
 

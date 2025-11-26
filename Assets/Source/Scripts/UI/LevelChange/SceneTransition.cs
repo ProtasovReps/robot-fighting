@@ -5,6 +5,7 @@ using UI.Effect;
 using UnityEngine;
 using R3;
 using Reflex.Attributes;
+using YG;
 using YG.Saver;
 
 namespace UI.LevelChange
@@ -28,10 +29,16 @@ namespace UI.LevelChange
         private void Awake()
         {
             _subscription = _unitButton.Pressed
-                .Subscribe(_ => Transit().Forget());
+                .Subscribe(_ => ShowAd());
         }
 
         protected abstract void LoadScene();
+
+        private void ShowAd()
+        {
+            YG2.InterstitialAdvShow();
+            Transit().Forget();
+        }
         
         private async UniTaskVoid Transit()
         {

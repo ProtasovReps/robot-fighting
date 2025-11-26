@@ -1,0 +1,39 @@
+﻿using Interface;
+using R3;
+using Reflex.Attributes;
+using TMPro;
+using UI.Buttons;
+using UnityEngine;
+
+namespace YG.Awards
+{
+    public class CoinAwardPanel : AwardPanel
+    {
+        private const char AddSymbol = '+';
+        
+        [SerializeField, Min(1)] private int _minAddAmount;
+        [SerializeField, Min(1)] private int _maxAddAmount;
+        [SerializeField] private TMP_Text _amountView;
+
+        private int _addAmount;
+        private IMoneyAddable _moneyAddable;
+        
+        [Inject]
+        private void Inject(IMoneyAddable moneyAddable)
+        {
+            _moneyAddable = moneyAddable;
+        }
+
+        private void Awake()
+        {
+            _addAmount = Random.Range(_minAddAmount, _maxAddAmount);
+            _amountView.text = $"{AddSymbol}{_addAmount}";
+        }
+
+        protected override void AddAward()
+        {
+            _moneyAddable.Add(_addAmount);
+            SetEnable(false);
+        }
+    }
+}
