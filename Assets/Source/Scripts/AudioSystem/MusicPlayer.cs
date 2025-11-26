@@ -10,19 +10,21 @@ namespace AudioSystem
         
         private void Awake()
         {
-            YG2.onPauseGame += isPaused => OnPauseGame(isPaused);
-
+            YG2.onPauseGame += isPaused => SetPause(isPaused);
+            YG2.onFocusWindowGame += isFocused => SetPause(!isFocused);
+            
             Play();
         }
 
         private void OnDestroy()
         {
-            YG2.onPauseGame -= isPaused => OnPauseGame(isPaused);
-
+            YG2.onPauseGame -= isPaused => SetPause(isPaused);
+            YG2.onFocusWindowGame -= isFocused => SetPause(!isFocused);
+            
             Stop();
         }
 
-        private void OnPauseGame(bool isPaused)
+        private void SetPause(bool isPaused)
         {
             if(isPaused)
                 Stop();
@@ -32,6 +34,7 @@ namespace AudioSystem
         
         private void Play()
         {
+            BroAudio.SetVolume(YG2.saves.SoundVolume);
             BroAudio.Play(_music);
         }
 

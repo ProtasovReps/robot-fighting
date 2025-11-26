@@ -16,29 +16,21 @@ namespace AudioSystem
             _slider.maxValue = MaxSound;
             _slider.value = YG2.saves.SoundVolume;
             
-            BroAudio.SetVolume(_slider.value);
-        }
-
-        private void OnEnable()
-        {
             _slider.onValueChanged.AddListener(OnSliderValueChanged);
-        }
-
-        private void OnDisable()
-        {
-            _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
+            BroAudio.SetVolume(_slider.value);
         }
 
         private void OnDestroy()
         {
-            YG2.saves.SoundVolume = _slider.value;
+            _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
             YG2.SaveProgress();
         }
 
         private void OnSliderValueChanged(float newValue)
         {
             _slider.value = newValue;
-
+            
+            YG2.saves.SoundVolume = _slider.value;
             BroAudio.SetVolume(newValue);
         }
     }
