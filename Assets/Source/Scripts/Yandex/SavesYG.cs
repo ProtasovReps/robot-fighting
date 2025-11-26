@@ -5,12 +5,11 @@ namespace YG
     public partial class SavesYG
     {
         public int Money = 400;
-        public float HealthStat = 80;
-        public float SpeedStat = 5f;
-        public float DamageStat = 15;
-        public float BlockStat = 20;
+        public float HealthStat;
+        public float SpeedStat;
+        public float DamageStat;
+        public float BlockStat;
         public int SceneIndex = 3; 
-        public bool IsBeatedGame = false;
         public bool IsGuidePassed = false;
         public List<string> Implants = new();
         public List<string> Fighters = new();

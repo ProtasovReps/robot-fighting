@@ -12,8 +12,12 @@ namespace YG
         [SerializeField] private ImplantView _defaultDownAttackImplant;
         [SerializeField] private ImplantView _defaultSuperAttackImplant;
         [SerializeField] private Fighter _defaultFighter;
+        [SerializeField] private float _health;
+        [SerializeField] private float _damage;
+        [SerializeField] private float _speed;
+        [SerializeField] private float _block;
         
-        public void Install()
+        public void InstallSellables()
         {
             Hasher<ImplantView> hasher = new();
             ImplantSaver implantSaver = new(hasher);
@@ -34,6 +38,14 @@ namespace YG
             implantSaver.Save();
             equipedImplantSaver.Save();
             skinSaver.Save();
+        }
+
+        public void InstallStats()
+        {
+            YG2.saves.HealthStat = _health;
+            YG2.saves.DamageStat = _damage;
+            YG2.saves.SpeedStat = _speed;
+            YG2.saves.BlockStat = _block;
         }
     }
 }

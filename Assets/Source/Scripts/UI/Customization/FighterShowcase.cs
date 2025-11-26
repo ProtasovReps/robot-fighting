@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using CharacterSystem;
 using R3;
 using UI.Customization;
+using Unity.VisualScripting;
 using UnityEngine;
+using YG;
 using Random = UnityEngine.Random;
 
 public class FighterShowcase : MonoBehaviour
@@ -22,7 +24,7 @@ public class FighterShowcase : MonoBehaviour
     public void Initialize()
     {
         _spawnedFighters = new Dictionary<Fighter, Fighter>();
-        
+
         for (int i = 0; i < _skinViews.Length; i++)
         {
             Fighter fighter = _skinViews[i].Fighter;
@@ -33,8 +35,11 @@ public class FighterShowcase : MonoBehaviour
             _spawnedFighters.Add(fighter, null);
         }
 
-        _lastIndex = Random.Range(0, _skinViews.Length);
-        
+        if (YG2.saves.IsGuidePassed == false)
+            _lastIndex = 0;
+        else
+            _lastIndex = Random.Range(0, _skinViews.Length);
+
         Show();
     }
 

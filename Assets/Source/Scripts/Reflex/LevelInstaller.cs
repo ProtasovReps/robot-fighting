@@ -65,8 +65,11 @@ namespace Reflex
         
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            if(YG2.saves.UpAttackImplant == null)
-                _defaultSavesInstaller.Install();
+            if (YG2.saves.UpAttackImplant == null)
+            {
+                _defaultSavesInstaller.InstallSellables();
+                _defaultSavesInstaller.InstallStats();
+            }
 
             _player = _fighterSpawner.Spawn(); 
             _player.Initialize();    
