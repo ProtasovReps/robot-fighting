@@ -20,7 +20,7 @@ namespace UI.Effect
                 .Subscribe(_ => Switch().Forget());
         }
 
-        private async UniTaskVoid Switch()
+        protected virtual async UniTaskVoid Switch()
         {
             _subscription.Dispose();
             await _disappearAnimation.Play();
