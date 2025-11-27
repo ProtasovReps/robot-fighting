@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1859947869194859943, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_Size
-      value: 0.83417004
+      value: 0.8340059
       objectReference: {fileID: 0}
     - target: {fileID: 2098152534843058594, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_SortingOrder
@@ -89,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020184235555761805, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 177403.1
+      value: 177362.23
       objectReference: {fileID: 0}
     - target: {fileID: 4020184235555761805, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 544391.9
+      value: 545522.25
       objectReference: {fileID: 0}
     - target: {fileID: 4874055393640175665, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -260,6 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4839107711492274060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6958285841991664551, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
+  m_PrefabInstance: {fileID: 2573590344827581483}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6829970336143350534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9043183100574904109, guid: f972cf4c5d7af3446b1260bb3f5f5f8f, type: 3}
@@ -279,6 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rewardType: 0
   _unitButton: {fileID: 8152962304777307732}
+  _awardAmountText: {fileID: 4839107711492274060}
   _multipliedAwardText: {fileID: 4340973955527730699}
   _chest: {fileID: 2359888809805905796}
   _multiplier: 3

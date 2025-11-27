@@ -7,7 +7,8 @@ namespace YG.Awards
     public class MultiplyAwardPanel : AwardPanel
     {
         private const int OneMinus = 1;
-        
+
+        [SerializeField] private TMP_Text _awardAmountText;
         [SerializeField] private TMP_Text _multipliedAwardText;
         [SerializeField] private Chest _chest;
         [SerializeField, Min(1)] private int _multiplier;
@@ -24,6 +25,7 @@ namespace YG.Awards
             for (int i = 0; i < addAmount; i++)
                 _chest.AddAward();
 
+            _awardAmountText.text = _multipliedAwardText.text; 
             SetEnable(false);
         }
     }
