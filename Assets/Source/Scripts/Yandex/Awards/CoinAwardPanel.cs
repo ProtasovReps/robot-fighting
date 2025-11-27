@@ -1,8 +1,6 @@
 ﻿using Interface;
-using R3;
 using Reflex.Attributes;
 using TMPro;
-using UI.Buttons;
 using UnityEngine;
 
 namespace YG.Awards
@@ -24,7 +22,7 @@ namespace YG.Awards
             _moneyAddable = moneyAddable;
         }
 
-        private void Awake()
+        private void Start()
         {
             _addAmount = Random.Range(_minAddAmount, _maxAddAmount);
             _amountView.text = $"{AddSymbol}{_addAmount}";
