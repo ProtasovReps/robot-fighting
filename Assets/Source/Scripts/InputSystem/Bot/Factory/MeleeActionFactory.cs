@@ -11,16 +11,14 @@ namespace InputSystem.Bot.Factory
         {
             BotAction upAttack = stash.Get(MotionHashes.ArmAttack);
             BotAction downAttack = stash.Get(MotionHashes.LegAttack);
-            BotAction special = stash.Get(MotionHashes.Special);
             BotAction block = stash.Get(MotionHashes.Block);
             
             disposer.Add(new RandomActionExecutor<PlayerNearbyState>(machine, block, upAttack,
-                downAttack, special));
+                downAttack));
             disposer.Add(new RandomActionExecutor<ValidAttackDistanceState>(machine, upAttack, 
                 downAttack));
             disposer.Add(upAttack);
             disposer.Add(downAttack);
-            disposer.Add(special);
             disposer.Add(block);
         }
     }
