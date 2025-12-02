@@ -19,11 +19,13 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
     private void InstallProject()
     {
         InstallLevel();
+        InstallLocalization();
     }
 
     private void InstallLocalization()
     {
-        //
+        YG2.GetLanguage();
+        YG2.SwitchLanguage(YG2.lang);
     }
 
     private void InstallLevel()

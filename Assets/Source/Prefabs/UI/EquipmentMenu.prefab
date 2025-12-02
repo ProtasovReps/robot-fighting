@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 1168661965212218526}
   - component: {fileID: 3723647863925867878}
   - component: {fileID: 5348010289741013466}
+  - component: {fileID: 213754786614473675}
   m_Layer: 5
   m_Name: SetupText
   m_TagString: Untagged
@@ -1034,12 +1035,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.21
+  m_fontSize: 80
   m_fontSizeBase: 89.21
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 80
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1076,6 +1077,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &213754786614473675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7965161153878992660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081144cfc5f641848730c019a5938c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u041E\u0434\u0435\u0442\u044C"
+  _en: Set
+  _tr: Koymak
+  _textField: {fileID: 5348010289741013466}
 --- !u!1 &8215670149048116971
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2686,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 212697724263529903, guid: 9eec8628c133ccc419f3f46ee92f070a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7139092039397832754}
+    - targetCorrespondingSourceObject: {fileID: 3615706502191664370, guid: 9eec8628c133ccc419f3f46ee92f070a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8741102689334239336}
   m_SourcePrefab: {fileID: 100100000, guid: 9eec8628c133ccc419f3f46ee92f070a, type: 3}
 --- !u!114 &103711801080677025 stripped
 MonoBehaviour:
@@ -2733,6 +2753,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8872425719469948139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4003171705863750414, guid: 9eec8628c133ccc419f3f46ee92f070a, type: 3}
+  m_PrefabInstance: {fileID: 5525687339586486245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116058275196482327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9116058275196482327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3615706502191664370, guid: 9eec8628c133ccc419f3f46ee92f070a, type: 3}
+  m_PrefabInstance: {fileID: 5525687339586486245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8741102689334239336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9116058275196482327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081144cfc5f641848730c019a5938c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0411\u043E\u0439!"
+  _en: Fight
+  _tr: "Sava\u015Fa"
+  _textField: {fileID: 8872425719469948139}
 --- !u!1001 &7771442040111454053
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 4387129141297414747}
   - component: {fileID: 3956681974560614978}
   - component: {fileID: 8330173549677814343}
+  - component: {fileID: 6073547021642725953}
   m_Layer: 5
   m_Name: TapText
   m_TagString: Untagged
@@ -263,6 +264,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6073547021642725953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948599328365418924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081144cfc5f641848730c019a5938c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0422\u042B\u041A"
+  _en: TAP
+  _tr: TAP
+  _textField: {fileID: 8330173549677814343}
 --- !u!1 &3814993804477845259
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 999875031425150977, guid: 660c0dde0386d3b4caf2da982cb94d09, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 232475.9
+      value: 255594.27
       objectReference: {fileID: 0}
     - target: {fileID: 2725392833177412782, guid: 660c0dde0386d3b4caf2da982cb94d09, type: 3}
       propertyPath: m_Size

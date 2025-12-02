@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 27489851829298415}
   - component: {fileID: 8174140643108752411}
   - component: {fileID: 5599938644912061954}
+  - component: {fileID: 8171323576574420758}
   m_Layer: 5
   m_Name: AvaiblePoints
   m_TagString: Untagged
@@ -419,6 +420,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8171323576574420758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8272201953394685592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081144cfc5f641848730c019a5938c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u041E\u0447\u043A\u0438:"
+  _en: 'Points:'
+  _tr: 'Puanlar:'
+  _textField: {fileID: 5599938644912061954}
 --- !u!1001 &834107865773061351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -462,6 +479,18 @@ PrefabInstance:
     - target: {fileID: 4248154705406266170, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_text
       value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _en
+      value: Damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _ru
+      value: "\u0423\u0440\u043E\u043D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _tr
+      value: Hasar
       objectReference: {fileID: 0}
     - target: {fileID: 6200468668732559431, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_AnchorMax.x
@@ -941,6 +970,18 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _en
+      value: Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _ru
+      value: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _tr
+      value: "H\u0131z"
+      objectReference: {fileID: 0}
     - target: {fileID: 6245664539081314561, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 157.1
@@ -1104,6 +1145,18 @@ PrefabInstance:
     - target: {fileID: 4248154705406266170, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_text
       value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _en
+      value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _ru
+      value: "\u0411\u043B\u043E\u043A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888786936401971552, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
+      propertyPath: _tr
+      value: Engel
       objectReference: {fileID: 0}
     - target: {fileID: 6245664539081314561, guid: d9a61b81f0e417948b71193541406bc7, type: 3}
       propertyPath: m_SizeDelta.x

@@ -431,6 +431,7 @@ GameObject:
   - component: {fileID: 694541097}
   - component: {fileID: 694541099}
   - component: {fileID: 694541098}
+  - component: {fileID: 694541100}
   m_Layer: 5
   m_Name: Input
   m_TagString: Untagged
@@ -554,6 +555,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694541096}
   m_CullTransparentMesh: 1
+--- !u!114 &694541100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694541096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 081144cfc5f641848730c019a5938c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ru: "\u0427"
+  _en: X
+  _tr: X
+  _textField: {fileID: 694541098}
 --- !u!114 &714131439 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8454669540832127550, guid: bb036bcf787ecdc4ea0a0bd8e6395801, type: 3}
@@ -601,7 +618,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 28846551569274816, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 559.5
+      value: 463.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 28846551569274816, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -345.6
       objectReference: {fileID: 0}
     - target: {fileID: 3512963451652444821, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_Name
@@ -691,18 +712,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4972138053453059880, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: _en
+      value: To block a blow, press the block button or the signed button on the
+        keyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972138053453059880, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: _ru
+      value: "\u0414\u043B\u044F \u0431\u043B\u043E\u043A\u0430 \u043D\u0430\u0436\u0438\u043C\u0430\u0439
+        \u043A\u043D\u043E\u043F\u043A\u0443 \u0431\u043B\u043E\u043A\u0430 \u0438\u043B\u0438
+        \u043F\u043E\u0434\u043F\u0438\u0441\u0430\u043D\u043D\u0443\u044E \u043A\u043D\u043E\u043F\u043A\u0443
+        \u043D\u0430 \u043A\u043B\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u0435"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4972138053453059880, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: _tr
+      value: "Bir darbeyi engellemek i\xE7in, klavyedeki bloklama d\xFC\u011Fmesine
+        veya i\u015Faretli d\xFC\u011Fmeye bas\u0131n."
+      objectReference: {fileID: 0}
     - target: {fileID: 5075003876886482832, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_text
       value: To block a blow, press the block button or the signed button on the
         keyboard
       objectReference: {fileID: 0}
+    - target: {fileID: 5075003876886482832, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: m_fontSize
+      value: 54.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5075003876886482832, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6003265927760488347, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -151.5
+      value: -144.09999
       objectReference: {fileID: 0}
     - target: {fileID: 6003265927760488347, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 39.59999
+      value: 21.649998
       objectReference: {fileID: 0}
     - target: {fileID: 6948029207048499622, guid: 2542935ee0a475249afda571e2a025e3, type: 3}
       propertyPath: m_Name
@@ -1347,6 +1393,18 @@ PrefabInstance:
     - target: {fileID: 650103835967540118, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
       propertyPath: m_Name
       value: HealthBars
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021267289452052260, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
+      propertyPath: _en
+      value: Borsch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021267289452052260, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
+      propertyPath: _ru
+      value: "\u0411\u043E\u0440\u0449"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1021267289452052260, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
+      propertyPath: _tr
+      value: Ezogelin
       objectReference: {fileID: 0}
     - target: {fileID: 1579168401308389774, guid: 83fc80b2bcb132940805b8bc400bcbb3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2742,9 +2800,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 148646689394293699, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 260701617012708670, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
       propertyPath: m_Name
       value: InputButtons
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713927988346482788, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1713927988346482788, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3655209577869171378, guid: efcaa619b68ffe94ab3822bcb5d22f1f, type: 3}
       propertyPath: m_Camera

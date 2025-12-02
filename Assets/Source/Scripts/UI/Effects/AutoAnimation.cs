@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
+using YG;
 
 namespace UI.Effect
 {
@@ -18,6 +19,8 @@ namespace UI.Effect
             await UniTask.WaitForSeconds(_delay);
             await _animatable.Play();
             _animatable.gameObject.SetActive(false);
+            
+            YG2.GameReadyAPI();
         }
     }
 }
