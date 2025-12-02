@@ -228,7 +228,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4568148064747729946}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.46501893
+  m_Size: 0.46487325
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -468,7 +468,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tap
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3619513389376273238
@@ -1028,8 +1028,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: +299
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
-  m_sharedMaterial: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1269,10 +1269,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3881407579855073354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 10}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 18.679983, y: 0}
+  m_SizeDelta: {x: -37.360035, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &922595907519861712
 CanvasRenderer:
@@ -1304,8 +1304,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: GO!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
-  m_sharedMaterial: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+  m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1946,6 +1946,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 9d054d8ef1210cb408c6addb64702f35, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel
@@ -2070,6 +2086,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: faba08357af9b724295547418c93a804, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (8)
@@ -2194,6 +2226,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 65540d09dc8c4cd4da802352bbd26592, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (2)
@@ -2318,6 +2366,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 8bf903fc62c600243aaceed7dd6a6d87, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (3)
@@ -2565,6 +2629,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 2e055dc72ac919f48a54597e8998517d, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (1)
@@ -2823,6 +2903,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 46fb5092a9d92c04f807b90f5c107735, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (4)
@@ -2947,6 +3043,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: d2ad008a1a94f324d8d922b29c2c6986, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (5)
@@ -3071,6 +3183,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 4323ce1124754244a9c111dc75df5683, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (7)
@@ -3195,6 +3323,22 @@ PrefabInstance:
       propertyPath: _sellableView
       value: 
       objectReference: {fileID: 6678659835579656486, guid: 716a04f0b7d371249af25ef519949379, type: 3}
+    - target: {fileID: 3987039829399971601, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
+    - target: {fileID: 5718535557225509434, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6006334455531327837, guid: bfb559b3f71183142833fcb127a4d7e9, type: 3}
       propertyPath: m_Name
       value: BuyGoodPanel (6)
