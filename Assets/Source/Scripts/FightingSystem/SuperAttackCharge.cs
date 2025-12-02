@@ -11,8 +11,8 @@ namespace FightingSystem
     public class SuperAttackCharge : IFloatValueChangeable, IDisposable
     {
         private const float FullValue = 100f;
-        private const float MaxChargeValue = 40;
-        private const float MinChargeValue = 20;
+        private const float MaxChargeValue = 80;
+        private const float MinChargeValue = 40;
 
         private readonly ReactiveProperty<float> _value;
         private readonly CompositeDisposable _subscriptions;
