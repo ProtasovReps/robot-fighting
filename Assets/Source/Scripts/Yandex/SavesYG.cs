@@ -5,9 +5,9 @@ namespace YG
     public partial class SavesYG
     {
         public int GloryPoints = 0;
-        public int Money = 300;
+        public int Money = 30000;
         public float HealthStat = 80f;
-        public float SpeedStat = 5f;
+        public float SpeedStat = 8f;
         public float DamageStat = 15f;
         public float BlockStat = 20;
         public int SceneIndex = 3;

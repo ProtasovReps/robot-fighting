@@ -9,6 +9,8 @@ namespace InputSystem.Bot.Executor
 {
     public class NothingNearbyActionExecutor : RandomActionExecutor<NothingNearbyState>
     {
+        private const int DirectionsCount = 3;
+        
         private readonly IDisposable _subscription;
         private readonly Dictionary<int, BotAction> _directions;
         private readonly BotMoveInput _botMoveInput;
@@ -17,9 +19,9 @@ namespace InputSystem.Bot.Executor
 
         public NothingNearbyActionExecutor(
             IStateMachine stateMachine, BotMoveInput botMoveInput, BotAction left, BotAction right, BotAction inPlace)
-            : base(stateMachine, left, right, inPlace)
+            : base(stateMachine, left, left, right, inPlace)
         {
-            _directions = new Dictionary<int, BotAction>(3)
+            _directions = new Dictionary<int, BotAction>(DirectionsCount)
             {
                 { Directions.Left, left },
                 { Directions.Right, right },
