@@ -5,6 +5,8 @@ namespace EffectSystem.StateDependent
 {
     public class HitEffect : StateDependentEffect<HittedState>
     {
+        private const int OneMinus = 1;
+        
         [SerializeField, Range(0.01f, 0.1f)] private float _strength;
         [SerializeField] private Camera _camera;
         
@@ -14,7 +16,7 @@ namespace EffectSystem.StateDependent
         private void Awake()
         {
             _transform = _camera.transform;
-            _vectorLength = 1 - _strength;
+            _vectorLength = OneMinus - _strength;
         }
 
         protected override void Apply()

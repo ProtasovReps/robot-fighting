@@ -42,7 +42,10 @@ namespace FightingSystem
                 .AddTo(this);
 
             stateMachine.Value
-                .Where(state => state is HittedState)
+                .Pairwise()
+                .Where(states => states.Previous is AttackState)
+                .Where(states => states.Previous.Type != typeof(SuperAttackState))
+                .Where(states => states.Current is not AttackState)
                 .Subscribe(_ => CancelAttack())
                 .AddTo(this);
 

@@ -23,7 +23,6 @@ namespace AudioSystem
         private void OnDestroy()
         {
             _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
-            YG2.SaveProgress();
         }
 
         private void OnSliderValueChanged(float newValue)
