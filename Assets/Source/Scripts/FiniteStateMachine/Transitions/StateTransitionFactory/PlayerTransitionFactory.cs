@@ -54,17 +54,17 @@ namespace FiniteStateMachine.Transitions.Factory
         protected override void InstallTransitions(StateMachine machine, ConditionBuilder builder, Disposer disposer)
         {
             var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), machine)
-                .InitializeTransition<IdleState, int>(
+                .InitializeTransition<IdleState, float>(
                     _moveInput.Value, builder.Get<IdleState>())
-                .InitializeTransition<StretchState, int>(
+                .InitializeTransition<StretchState, float>(
                     _moveInput.Value, builder.Get<StretchState>())
-                .InitializeTransition<MoveLeftState, int>(
+                .InitializeTransition<MoveLeftState, float>(
                     _moveInput.Value, builder.Get<MoveLeftState>())
-                .InitializeTransition<MoveRightState, int>(
+                .InitializeTransition<MoveRightState, float>(
                     _moveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<JumpState, Unit>(
                     _moveInput.JumpPressed, builder.Get<JumpState>())
-                .InitializeTransition<MoveJumpState, int>(
+                .InitializeTransition<MoveJumpState, float>(
                     _moveInput.Value, builder.Get<MoveJumpState>())
                 .InitializeTransition<UpDeathState, Unit>(
                     _death.UpDeath, builder.Get<DeathState>())

@@ -7,10 +7,8 @@ namespace Extensions
     public class DownCounter : IValueChangeable<int>
     {
         private readonly ReactiveProperty<int> _value = new();
-        private readonly Subject<Unit> _ended = new();
         
         public ReadOnlyReactiveProperty<int> Value => _value;
-        public Observable<Unit> Ended => _ended;
         
         public void AddPoints(int count)
         {
@@ -32,9 +30,6 @@ namespace Extensions
             int newValue = _value.CurrentValue;
             
             SetPoints(--newValue);
-            
-            if(_value.CurrentValue <= 0)
-                _ended.OnNext(Unit.Default);
         }
 
         private void SetPoints(int newValue)

@@ -19,7 +19,7 @@ namespace InputSystem.Bot.Executor
 
         public NothingNearbyActionExecutor(
             IStateMachine stateMachine, BotMoveInput botMoveInput, BotAction left, BotAction right, BotAction inPlace)
-            : base(stateMachine, left, left, right, inPlace)
+            : base(stateMachine, left, right, inPlace)
         {
             _directions = new Dictionary<int, BotAction>(DirectionsCount)
             {

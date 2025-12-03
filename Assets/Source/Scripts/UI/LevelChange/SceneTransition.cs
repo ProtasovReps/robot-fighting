@@ -37,7 +37,6 @@ namespace UI.LevelChange
 
         private void ShowAd()
         {
-            BroAudio.Stop(BroAudioType.All);
             YG2.InterstitialAdvShow();
             Transit().Forget();
         }

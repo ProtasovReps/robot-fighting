@@ -10,31 +10,31 @@ namespace InputSystem
     public class ValidatedInput : IMoveInput, IDisposable
     {
         private readonly Transform _transform;
-        private readonly Dictionary<int, DistanceValidator> _distanceValidators;
-        private readonly ReactiveProperty<int> _direction;
+        private readonly Dictionary<float, DistanceValidator> _distanceValidators;
+        private readonly ReactiveProperty<float> _direction;
         private readonly IDisposable _subscription;
 
         public ValidatedInput(
             Transform transform,
             IMoveInput moveInput,
-            Dictionary<int, DistanceValidator> distanceValidators)
+            Dictionary<float, DistanceValidator> distanceValidators)
         {
             _transform = transform;
             _distanceValidators = distanceValidators;
-            _direction = new ReactiveProperty<int>();
+            _direction = new ReactiveProperty<float>();
 
             _subscription = moveInput.Value
                 .Subscribe(SetDirection);
         }
 
-        public ReadOnlyReactiveProperty<int> Value => _direction;
+        public ReadOnlyReactiveProperty<float> Value => _direction;
 
         public void Dispose()
         {
             _subscription?.Dispose();
         }
 
-        private void SetDirection(int direction)
+        private void SetDirection(float direction)
         {
             if (direction == 0)
                 _direction.OnNext(direction);

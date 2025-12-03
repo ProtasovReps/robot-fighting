@@ -51,11 +51,11 @@ namespace FiniteStateMachine.Transitions.Factory
             Observable<Unit> block = _botFightInput.GetObservable(MotionHashes.Block);
 
             var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), machine)
-                .InitializeTransition<IdleState, int>(
+                .InitializeTransition<IdleState, float>(
                     _botMoveInput.Value, builder.Get<IdleState>())
-                .InitializeTransition<MoveLeftState, int>(
+                .InitializeTransition<MoveLeftState, float>(
                     _botMoveInput.Value, builder.Get<MoveLeftState>())
-                .InitializeTransition<MoveRightState, int>(
+                .InitializeTransition<MoveRightState, float>(
                     _botMoveInput.Value, builder.Get<MoveRightState>())
                 .InitializeTransition<UpDeathState, Unit>(
                     _death.UpDeath, builder.Get<DeathState>())

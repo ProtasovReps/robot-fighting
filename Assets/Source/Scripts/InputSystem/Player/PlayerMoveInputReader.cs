@@ -6,14 +6,14 @@ namespace InputSystem
 {
     public class PlayerMoveInputReader : IMoveInput, IDisposable 
     {
-        private readonly ReactiveProperty<int> _direction;
+        private readonly ReactiveProperty<float> _direction;
         private readonly IDisposable _subscription;
        
         public PlayerMoveInputReader(UserInput userInput)
         {
             var jumpPressed = new Subject<Unit>();
             
-            _direction = new ReactiveProperty<int>();
+            _direction = new ReactiveProperty<float>();
             JumpPressed = jumpPressed;
             
             userInput.Player.Jump.performed += _ => jumpPressed.OnNext(Unit.Default);
@@ -22,7 +22,7 @@ namespace InputSystem
                 .Subscribe(_ => _direction.OnNext((int)userInput.Player.Move.ReadValue<float>()));
         }
         
-        public ReadOnlyReactiveProperty<int> Value => _direction;
+        public ReadOnlyReactiveProperty<float> Value => _direction;
         public Observable<Unit> JumpPressed { get; }
     
         public void Dispose()

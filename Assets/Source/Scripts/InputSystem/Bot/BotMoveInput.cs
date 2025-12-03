@@ -7,7 +7,7 @@ namespace InputSystem.Bot
 {
     public class BotMoveInput : IMoveInput, IDisposable
     {
-        private readonly ReactiveProperty<int> _direction = new();
+        private readonly ReactiveProperty<float> _direction = new();
         private readonly IDisposable _subscription;
 
         public BotMoveInput()
@@ -16,7 +16,7 @@ namespace InputSystem.Bot
                 .Subscribe(_ => _direction.OnNext(_direction.CurrentValue));
         }
         
-        public ReadOnlyReactiveProperty<int> Value => _direction;
+        public ReadOnlyReactiveProperty<float> Value => _direction;
         
         public void Dispose()
         {

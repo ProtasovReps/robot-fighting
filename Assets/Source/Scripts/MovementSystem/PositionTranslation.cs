@@ -25,7 +25,7 @@ namespace MovementSystem
 
         public ReadOnlyReactiveProperty<float> CurrentSpeed => _currentSpeed;
 
-        public void TranslatePosition(int direction)
+        public void Translate(float direction)
         {
             float newSpeed = Mathf.Lerp(_currentSpeed.Value, _moveSpeed, _moveSpeed * Time.deltaTime);
             float targetDistance = direction * newSpeed * Time.deltaTime;

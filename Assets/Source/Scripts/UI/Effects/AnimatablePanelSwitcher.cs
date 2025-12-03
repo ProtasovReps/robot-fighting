@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using R3;
+using UI.Buttons;
 using UnityEngine;
 
 namespace UI.Effect
@@ -9,14 +10,13 @@ namespace UI.Effect
     {
         [SerializeField] private ScaleAnimation _disappearAnimation;
         [SerializeField] private ScaleAnimation _appearAnimation;
-        [SerializeField] private float _switchDelay;
-
+        [SerializeField] private UnitButton _unitButton;
+        
         private IDisposable _subscription;
 
-        public void Initialize(Observable<Unit> observable)
+        private void Awake()
         {
-            _subscription = observable
-                .Delay(TimeSpan.FromSeconds(_switchDelay))
+            _subscription = _unitButton.Pressed
                 .Subscribe(_ => Switch().Forget());
         }
 

@@ -11,7 +11,7 @@ namespace UI.Buttons
         [SerializeField] private Button _button;
 
         public Observable<T> Pressed => _pressed;
-
+        
         protected abstract T Get();
         
         private void Awake()

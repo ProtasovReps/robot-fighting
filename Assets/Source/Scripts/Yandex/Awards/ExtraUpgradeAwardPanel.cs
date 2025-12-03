@@ -1,5 +1,4 @@
 ﻿using Extensions;
-using R3;
 using UnityEngine;
 
 namespace YG.Awards
@@ -13,10 +12,6 @@ namespace YG.Awards
         public void Initialize(DownCounter downCounter)
         {
             _downCounter = downCounter;
-            
-            _downCounter.Ended
-                .Subscribe(_ => SetEnable(false))
-                .AddTo(this);
         }
         
         protected override void AddAward()

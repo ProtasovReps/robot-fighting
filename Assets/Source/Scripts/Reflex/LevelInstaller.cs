@@ -145,7 +145,7 @@ namespace Reflex
 
             BotMoveInput botMoveInput = new();
             BotFightInput botFightInput = new();
-            Dictionary<int, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
+            Dictionary<float, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
             ValidatedInput validatedBotInput = new(_botParameters.transform, botMoveInput, directions);
 
             _disposer.Add(botMoveInput);
@@ -172,7 +172,7 @@ namespace Reflex
             UserInput input = new();
             PlayerMoveInputReader moveInputReader = new(input);
             PlayerAttackInputReader attackInputReader = new(input);
-            Dictionary<int, DistanceValidator> directions = _playerDirectionValidationFactory.Produce();
+            Dictionary<float, DistanceValidator> directions = _playerDirectionValidationFactory.Produce();
             ValidatedInput validatedInput = new(_playerParameters.transform, moveInputReader, directions);
 
             _playerTransitionFactory.Initialize(moveInputReader, attackInputReader, death);

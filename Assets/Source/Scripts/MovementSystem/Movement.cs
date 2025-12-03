@@ -11,6 +11,8 @@ namespace MovementSystem
         where TStateMachine : IStateMachine
         where TConditionBuilder : IConditionAddable
     {
+        [SerializeField] private float _attackMoveSpeedReduce;
+        
         private IMoveInput _moveInput;
         private IStateMachine _stateMachine;
         private PositionTranslation _positionTranslation;
@@ -29,9 +31,14 @@ namespace MovementSystem
         {
             _moveInput.Value
                 .Where(_ => _stateMachine.Value.CurrentValue is MoveState)
-                .Subscribe(_positionTranslation.TranslatePosition)
+                .Subscribe(_positionTranslation.Translate)
+                .AddTo(this);   
+            
+            _moveInput.Value
+                .Where(_ => _stateMachine.Value.CurrentValue is AttackState)
+                .Subscribe(value => _positionTranslation.Translate(value * _attackMoveSpeedReduce))
                 .AddTo(this);
-
+            
             _stateMachine.Value
                 .Where(value => value.Type == typeof(IdleState))
                 .Subscribe(_ => _positionTranslation.ResetSpeed())

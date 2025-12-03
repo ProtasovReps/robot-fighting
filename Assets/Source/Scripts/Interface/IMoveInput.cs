@@ -1,6 +1,6 @@
 ﻿namespace Interface
 {
-    public interface IMoveInput : IValueChangeable<int>
+    public interface IMoveInput : IValueChangeable<float>
     {
     }
 }

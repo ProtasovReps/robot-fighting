@@ -9,9 +9,9 @@ namespace InputSystem
         [SerializeField] private DistanceValidator _leftDistanceValidator;
         [SerializeField] private DistanceValidator _rightDistanceValidator;
 
-        public Dictionary<int, DistanceValidator> Produce()
+        public Dictionary<float, DistanceValidator> Produce()
         {
-            return new Dictionary<int, DistanceValidator>
+            return new Dictionary<float, DistanceValidator>
             {
                 { Directions.Left, _leftDistanceValidator },
                 { Directions.Right, _rightDistanceValidator }
