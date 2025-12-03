@@ -7,6 +7,7 @@ namespace UI.Store
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public int Price { get; private set; }
+        [field: SerializeField] public Sprite ImplantTypeImage { get; private set; }
         [field: SerializeField] public Sprite ImplantImage { get; private set; }
         [field: SerializeField] public AttackImplant AttackImplant { get; private set; }
     }

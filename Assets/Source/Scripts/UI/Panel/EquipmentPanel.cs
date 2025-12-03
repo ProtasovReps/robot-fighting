@@ -3,6 +3,7 @@ using UI.Buttons;
 using UI.Store;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace UI.Panel
 {
@@ -10,6 +11,7 @@ namespace UI.Panel
     public class EquipmentPanel : SwitchablePanel
     {
         [SerializeField] private Image _sellableImage;
+        [SerializeField] private Image _sellableType;
         [SerializeField] private TMP_Text _name;
         
         private ImplantView _implantView;
@@ -17,6 +19,7 @@ namespace UI.Panel
         public void Set(ImplantView implantView)
         {
             _sellableImage.sprite = implantView.ImplantImage;
+            _sellableType.sprite = implantView.ImplantTypeImage;
             _name.text = implantView.Name;
 
             _implantView = implantView;

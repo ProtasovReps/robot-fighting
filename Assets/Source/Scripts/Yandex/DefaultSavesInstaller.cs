@@ -34,6 +34,8 @@ namespace YG
             implantSaver.Save();
             equipedImplantSaver.Save();
             skinSaver.Save();
+            
+            YG2.SaveProgress();
         }
     }
 }

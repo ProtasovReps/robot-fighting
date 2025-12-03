@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
+    m_Left: 10
     m_Right: 0
-    m_Top: 0
+    m_Top: 20
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
@@ -378,7 +378,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3859009561649840802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 11.9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -388,8 +388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450, y: -33.799927}
-  m_SizeDelta: {x: 610.7, y: -431.6}
+  m_AnchoredPosition: {x: 435, y: -34.999992}
+  m_SizeDelta: {x: 610, y: -430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4692436021070301088
 MonoBehaviour:
@@ -2337,6 +2337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4082784690043317850}
     m_Modifications:
+    - target: {fileID: 1208985389613270707, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c5e89d08241b54ec7bc004a7b9bcd16b, type: 3}
     - target: {fileID: 3887663585119793265, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
       propertyPath: _tempStartImplantView
       value: 
@@ -2344,6 +2348,14 @@ PrefabInstance:
     - target: {fileID: 4822210423845520684, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
       propertyPath: m_Name
       value: AttackEquimpentCells
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285102957402831061, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c6f5b7a54bd84489ba7d655c5b7b812, type: 3}
+    - target: {fileID: 6864967501882655739, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 7541957454199153496, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
       propertyPath: m_Pivot.x
@@ -2425,6 +2437,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8295167905791302362, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 381.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890724722098627060, guid: bd107876d4fb0b74d9057be3a2426b6f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 76e25aa4f77fb1443b5e72cc3f560790, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -61,7 +61,7 @@ namespace Reflex
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            if (YG2.saves.UpAttackImplant == null)
+            if (YG2.saves.Implants.Count == 0)
                 _defaultSavesInstaller.Install();
 
             AnimationFactory animationFactory = new();
