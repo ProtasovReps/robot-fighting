@@ -17,10 +17,10 @@ namespace UI.Guide
         [SerializeField] private UnitButton _nextButton;
 
         private CancellationTokenSource _tokenSource;
-        private bool _isPlaying; //temp, после проверять animatable на executed;
 
         public Observable<Unit> Executed => _executed;
-
+        protected Subject<Unit> SubjectExecuted => _executed;
+        
         private void Awake()
         {
             _nextButton.Pressed
@@ -28,7 +28,7 @@ namespace UI.Guide
                 .AddTo(this);
         }
 
-        public void Say()
+        public virtual void Say()
         {
             if (_tokenSource != null)
                 _tokenSource.Cancel();
@@ -59,7 +59,7 @@ namespace UI.Guide
 
         private void Cancel()
         {
-            if (_tokenSource.IsCancellationRequested == false)
+            if (_tokenSource?.IsCancellationRequested == false)
             {
                 _tokenSource.Cancel();
                 _text.maxVisibleCharacters = _text.text.Length;
