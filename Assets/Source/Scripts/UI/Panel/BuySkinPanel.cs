@@ -6,6 +6,7 @@ using TMPro;
 using UI.Buttons;
 using UI.Customization;
 using UnityEngine;
+using YG;
 using YG.Saver;
 
 namespace UI.Panel
@@ -15,17 +16,17 @@ namespace UI.Panel
         [SerializeField] private UnitButton _buyButton;
         [SerializeField] private TMP_Text _price;
         [SerializeField] private SoundID _skinBaughtSound;
-        
+
         private IMoneySpendable _moneySpendable;
         private SkinView _sellectedSkin;
         private SkinSaver _skinSaver;
-        
+
         [Inject]
         private void Inject(FighterShowcase fighterShowcase, IMoneySpendable moneySpendable, SkinSaver skinSaver)
         {
             _moneySpendable = moneySpendable;
             _skinSaver = skinSaver;
-            
+
             fighterShowcase.SkinChanged
                 .Subscribe(SetSkin)
                 .AddTo(this);
@@ -55,7 +56,9 @@ namespace UI.Panel
                 return;
             }
 
+            YG2.MetricaSend(_sellectedSkin.name);
             BroAudio.Play(_skinBaughtSound);
+            
             _skinSaver.Add(_sellectedSkin.Fighter);
             _buyButton.gameObject.SetActive(false);
         }

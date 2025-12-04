@@ -7,6 +7,7 @@ namespace YG.Awards
 {
     public class CoinAwardPanel : AwardPanel
     {
+        private const string RewardMoneyWatched = nameof(RewardMoneyWatched);
         private const char AddSymbol = '+';
         
         [SerializeField, Min(1)] private int _minAddAmount;
@@ -30,6 +31,8 @@ namespace YG.Awards
 
         protected override void AddAward()
         {
+            YG2.MetricaSend(RewardMoneyWatched);
+            
             _moneyAddable.Add(_addAmount);
             SetEnable(false);
         }

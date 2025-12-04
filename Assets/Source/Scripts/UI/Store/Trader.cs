@@ -53,6 +53,8 @@ namespace UI.Store
                 return;
             }
 
+            YG2.MetricaSend(implantView.name);
+            
             _implantSaver.Add(implantView);
             _progressSaver.Save();
             buyGoodPanel.SetEnable(false);

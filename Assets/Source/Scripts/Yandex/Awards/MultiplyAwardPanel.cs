@@ -6,6 +6,7 @@ namespace YG.Awards
 {
     public class MultiplyAwardPanel : AwardPanel
     {
+        private const string RewardCoinMultiWatched = nameof(RewardCoinMultiWatched);
         private const int OneMinus = 1;
 
         [SerializeField] private TMP_Text _awardAmountText;
@@ -20,6 +21,8 @@ namespace YG.Awards
 
         protected override void AddAward()
         {
+            YG2.MetricaSend(RewardCoinMultiWatched);
+            
             int addAmount = _multiplier - OneMinus;
 
             for (int i = 0; i < addAmount; i++)
