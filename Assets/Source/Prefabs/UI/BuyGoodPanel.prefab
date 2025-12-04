@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 8237856858036471566}
   - component: {fileID: 5887017356340774503}
   - component: {fileID: 4919355968828369420}
+  - component: {fileID: 8833561789118148321}
   m_Layer: 5
   m_Name: BuyGoodPanel
   m_TagString: Untagged
@@ -458,9 +459,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sellableView: {fileID: 0}
-  _name: {fileID: 5718535557225509434}
-  _price: {fileID: 3987039829399971601}
+  _translation: {fileID: 8833561789118148321}
   _goodImage: {fileID: 7976095436996206463}
+  _goodTypeImage: {fileID: 6393178259130578053}
+  _price: {fileID: 3987039829399971601}
 --- !u!225 &8593378742597073599
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -548,6 +550,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8833561789118148321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006334455531327837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3ecee9e6cf4ce9bd2bf87cb2cd0ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 5718535557225509434}
 --- !u!1 &6362961944331196582
 GameObject:
   m_ObjectHideFlags: 0

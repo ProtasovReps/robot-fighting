@@ -3,6 +3,7 @@ using TMPro;
 using UI.Store;
 using UnityEngine;
 using UnityEngine.UI;
+using YG.Localization;
 using YG.Saver;
 
 namespace UI.Panel
@@ -10,9 +11,10 @@ namespace UI.Panel
     public class BuyGoodPanel : SwitchablePanel
     {
         [SerializeField] private ImplantView _sellableView;
-        [SerializeField] private TMP_Text _name;
-        [SerializeField] private TMP_Text _price;
+        [SerializeField] private ImplantTranslation _translation;
         [SerializeField] private Image _goodImage;
+        [SerializeField] private Image _goodTypeImage;
+        [SerializeField] private TMP_Text _price;
 
         private ImplantSaver _implantSaver;
 
@@ -29,9 +31,10 @@ namespace UI.Panel
 
         private void Awake()
         {
-            _name.text = _sellableView.Name;
+            _translation.Translate(_sellableView);
             _price.text = _sellableView.Price.ToString();
             _goodImage.sprite = _sellableView.ImplantImage;
+            _goodTypeImage.sprite = _sellableView.ImplantTypeImage;
         }
 
         public ImplantView Get()

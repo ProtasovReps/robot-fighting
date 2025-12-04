@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Extensions;
 using R3;
 using Reflex.Attributes;
-using TMPro;
 using UI.Buttons;
 using UI.Store;
 using UnityEngine;
 using UnityEngine.UI;
+using YG.Localization;
 using YG.Saver;
 
 namespace UI.Customization
@@ -15,9 +15,9 @@ namespace UI.Customization
     public class EquipedImplant : MonoBehaviour
     {
         [SerializeField] private Image _sellableImage;
-        [SerializeField] private TMP_Text _sellableName;
         [SerializeField] private AttackType _requiredState;
         [SerializeField] private ImplantView[] _implantViews;
+        [SerializeField] private ImplantTranslation _implantTranslation;
         
         private EquipedImplantSaver _equipedImplantSaver;
         
@@ -55,9 +55,9 @@ namespace UI.Customization
                 throw new ArgumentException(nameof(implantView));
             
             _equipedImplantSaver.Set(_requiredState, implantView);
+            _implantTranslation.Translate(implantView);
 
             _sellableImage.sprite = implantView.ImplantImage;
-            _sellableName.text = implantView.Name;
         }
     }
 }

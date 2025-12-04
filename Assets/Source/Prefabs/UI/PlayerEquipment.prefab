@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 3228654937000147534}
   - component: {fileID: 1005261469253386287}
   - component: {fileID: 6703396041919321199}
+  - component: {fileID: 4222174672912444755}
   m_Layer: 5
   m_Name: PlayerEquipment
   m_TagString: Untagged
@@ -243,9 +244,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sellableImage: {fileID: 5205817529091884880}
-  _sellableName: {fileID: 3316357073635300570}
   _requiredState: 0
   _implantViews: []
+  _implantTranslation: {fileID: 4222174672912444755}
+--- !u!114 &4222174672912444755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2416560837057609092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3ecee9e6cf4ce9bd2bf87cb2cd0ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 3316357073635300570}
 --- !u!1 &7633335820862771922
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,17 @@
-﻿using TMPro;
-using UI.Buttons;
+﻿using UI.Buttons;
 using UI.Store;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
+using YG.Localization;
 
 namespace UI.Panel
 {
     [RequireComponent(typeof(EquipButton))]
     public class EquipmentPanel : SwitchablePanel
     {
+        [SerializeField] private ImplantTranslation _implantTranslation;
         [SerializeField] private Image _sellableImage;
         [SerializeField] private Image _sellableType;
-        [SerializeField] private TMP_Text _name;
         
         private ImplantView _implantView;
 
@@ -20,8 +19,8 @@ namespace UI.Panel
         {
             _sellableImage.sprite = implantView.ImplantImage;
             _sellableType.sprite = implantView.ImplantTypeImage;
-            _name.text = implantView.Name;
-
+            
+            _implantTranslation.Translate(implantView);
             _implantView = implantView;
         }
 
