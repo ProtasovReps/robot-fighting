@@ -33,6 +33,7 @@ namespace YG.Localization
 
             _languages = _sprites.Select(element => element.Key).ToArray();
             _currentIndex = Array.IndexOf(_languages, YG2.lang);
+            _image.sprite = _sprites[YG2.lang];
             
             _button.Pressed
                 .Subscribe(_ => SwitchLanguage())
