@@ -9,12 +9,12 @@ namespace CharacterSystem
         private readonly ReactiveProperty<int> _value;
         private readonly Subject<Unit> _spent;
         private readonly Subject<Unit> _failedSpend;
-        
+
         public Wallet(int startValue)
         {
             ValidateAmount(startValue);
-            
-            _value = new ReactiveProperty<int>(startValue); 
+
+            _value = new ReactiveProperty<int>(startValue);
             _spent = new Subject<Unit>();
             _failedSpend = new Subject<Unit>();
         }
@@ -22,14 +22,14 @@ namespace CharacterSystem
         public ReadOnlyReactiveProperty<int> Value => _value;
         public Observable<Unit> Spent => _spent;
         public Observable<Unit> FailedSpend => _failedSpend;
-        
+
         public void Add(int amount)
         {
             ValidateAmount(amount);
 
             _value.OnNext(_value.CurrentValue + amount);
         }
-        
+
         public bool TrySpend(int amount)
         {
             ValidateAmount(amount);
@@ -39,7 +39,7 @@ namespace CharacterSystem
                 _failedSpend.OnNext(Unit.Default);
                 return false;
             }
-            
+
             _value.OnNext(_value.CurrentValue - amount);
             _spent.OnNext(Unit.Default);
             return true;
@@ -47,10 +47,12 @@ namespace CharacterSystem
 
         private void ValidateAmount(int amount)
         {
-            if (amount <= 0)
+            if (amount > 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(amount));
+                return;
             }
+
+            throw new ArgumentOutOfRangeException(nameof(amount));
         }
     }
 }
