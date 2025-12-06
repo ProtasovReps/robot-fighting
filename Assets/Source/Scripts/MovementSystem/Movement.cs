@@ -48,10 +48,14 @@ namespace MovementSystem
         public void Initialize(IMoveInput moveInput, PositionTranslation positionTranslation)
         {
             if (moveInput == null)
+            {
                 throw new ArgumentNullException(nameof(moveInput));
+            }
 
             if (positionTranslation == null)
+            {
                 throw new ArgumentNullException(nameof(positionTranslation));
+            }
 
             _moveInput = moveInput;
             _positionTranslation = positionTranslation;

@@ -13,10 +13,14 @@ namespace MovementSystem
         public PositionTranslation(Transform transform, float moveSpeed)
         {
             if (transform == null)
+            {
                 throw new ArgumentNullException(nameof(transform));
+            }
 
             if (moveSpeed <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(moveSpeed));
+            }
 
             _transform = transform;
             _moveSpeed = moveSpeed;

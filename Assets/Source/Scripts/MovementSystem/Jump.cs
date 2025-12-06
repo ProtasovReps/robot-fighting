@@ -42,7 +42,9 @@ namespace MovementSystem
         private void OnJumpPressed()
         {
             if (IsContinuing)
+            {
                 return;
+            }
 
             IsContinuing = true;
             TranslateUp().Forget();
