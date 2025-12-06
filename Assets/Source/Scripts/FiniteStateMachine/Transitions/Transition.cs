@@ -11,7 +11,9 @@ namespace FiniteStateMachine.Transitions
         protected Transition(StateMachine machine)
         {
             if (machine == null)
+            {
                 throw new ArgumentNullException(nameof(machine));
+            }
 
             _machine = machine;
         }
@@ -19,7 +21,9 @@ namespace FiniteStateMachine.Transitions
         public void Transit()
         {
             if (ValidateState(_machine.Value.CurrentValue) == false)
+            {
                 return;
+            }
 
             _machine.Enter(typeof(TTargetState));
         }

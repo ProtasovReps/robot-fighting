@@ -25,10 +25,14 @@ namespace FiniteStateMachine.Transitions.Factory
         private void Start()
         {
             if (_stateMachine == null)
+            {
                 throw new ArgumentNullException(nameof(_stateMachine));
+            }
 
             if (_builder == null)
+            {
                 throw new ArgumentNullException(nameof(_builder));
+            }
 
             InitializeTransitions();
         }

@@ -14,10 +14,14 @@ namespace FiniteStateMachine.Transitions
         public TransitionInitializer(TransitionFactory transitionFactory, StateMachine stateMachine)
         {
             if (transitionFactory == null)
+            {
                 throw new ArgumentNullException(nameof(transitionFactory));
+            }
 
             if (stateMachine == null)
+            {
                 throw new ArgumentNullException(nameof(stateMachine));
+            }
             
             _transitionFactory = transitionFactory;
             _stateMachine = stateMachine;

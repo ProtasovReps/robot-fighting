@@ -8,7 +8,9 @@ namespace FiniteStateMachine.Conditions
         public Condition(Func<Unit, bool> condition)
         {
             if (condition == null)
+            {
                 throw new ArgumentNullException(nameof(condition));
+            }
             
             Current = condition;
         }
@@ -18,6 +20,7 @@ namespace FiniteStateMachine.Conditions
         public void Add(Func<Unit, bool> newCondition, bool isExecuting)
         {
             Func<Unit, bool> tempCondition = Current;
+            
             Current = unit => tempCondition(unit) && newCondition(unit) == isExecuting;
         }
 

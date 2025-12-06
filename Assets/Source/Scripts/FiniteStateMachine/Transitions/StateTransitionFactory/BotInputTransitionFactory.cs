@@ -29,7 +29,7 @@ namespace FiniteStateMachine.Transitions.Factory
             ConditionBuilder builder,
             Disposer disposer)
         {
-            var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), stateMachine) // dispose
+            var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), stateMachine)
                 .InitializeTransition<WallNearbyState, Unit>(
                     Observable.EveryUpdate(), builder.Get<WallNearbyState>())
                 .InitializeTransition<PlayerNearbyState, Unit>(

@@ -14,10 +14,14 @@ namespace FiniteStateMachine
         protected StateMachine(State[] states)
         {
             if (states == null)
+            {
                 throw new ArgumentNullException(nameof(states));
+            }
 
             if (states.Length == 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(states));
+            }
 
             _states = states;
             _currentState = new ReactiveProperty<State>(states[0]);
@@ -30,7 +34,9 @@ namespace FiniteStateMachine
             State state = Array.Find(_states, state => state.Type == newState);
 
             if (state == null)
+            {
                 throw new StateNotFoundException(nameof(newState));
+            }
 
             _currentState.OnNext(state);
         }
