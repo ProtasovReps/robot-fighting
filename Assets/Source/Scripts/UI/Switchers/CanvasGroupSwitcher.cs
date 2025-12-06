@@ -16,7 +16,6 @@ namespace UI.Switchers
 
         protected void Disable()
         {
-            
             _group.interactable = false;
             _group.alpha = _disabledTransparency;
         }

@@ -11,9 +11,13 @@ namespace UI.Guide
         public override void Say()
         {
             if (YG2.envir.isDesktop == _isPC)
+            {
                 base.Say();
+            }
             else
+            {
                 SubjectExecuted.OnNext(Unit.Default);
+            }
         }
     }
 }

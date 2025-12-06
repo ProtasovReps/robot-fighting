@@ -13,7 +13,9 @@ namespace UI.Guide.Pointers
             gameObject.SetActive(false);
 
             if (YG2.saves.IsGuidePassed)
+            {
                 return;
+            }
             
             _disappearingPointer.Disappeared
                 .Subscribe(_ => gameObject.SetActive(true))

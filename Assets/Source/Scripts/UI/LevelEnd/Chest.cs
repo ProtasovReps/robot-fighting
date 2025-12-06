@@ -19,7 +19,9 @@ namespace UI.LevelEnd
         private void Inject(IMoneyAddable moneyAddable)
         {
             if (_minAwardValue > _maxAwardValue)
+            {
                 throw new ArgumentOutOfRangeException(nameof(_minAwardValue));
+            }
             
             _moneyAddable = moneyAddable;
             AwardAmount = Random.Range(_minAwardValue, _maxAwardValue);

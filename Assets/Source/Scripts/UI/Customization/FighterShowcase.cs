@@ -29,15 +29,21 @@ public class FighterShowcase : MonoBehaviour
             Fighter fighter = _skinViews[i].Fighter;
 
             if (_spawnedFighters.ContainsKey(fighter))
+            {
                 throw new ArgumentException(nameof(fighter));
+            }
 
             _spawnedFighters.Add(fighter, null);
         }
 
         if (YG2.saves.IsGuidePassed == false)
+        {
             _lastIndex = 0;
+        }
         else
+        {
             _lastIndex = Random.Range(0, _skinViews.Length);
+        }
 
         Show();
     }
@@ -47,7 +53,9 @@ public class FighterShowcase : MonoBehaviour
         _lastIndex++;
 
         if (_lastIndex >= _skinViews.Length)
+        {
             _lastIndex = 0;
+        }
 
         Show();
     }
@@ -57,7 +65,9 @@ public class FighterShowcase : MonoBehaviour
         _lastIndex--;
 
         if (_lastIndex < 0)
+        {
             _lastIndex = _skinViews.Length - 1;
+        }
 
         Show();
     }

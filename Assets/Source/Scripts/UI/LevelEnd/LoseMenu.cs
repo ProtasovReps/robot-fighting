@@ -11,7 +11,9 @@ namespace UI.LevelEnd
         protected override int GetNewScore(int currentScore)
         {
             if (_scoreReduceValue <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(_scoreReduceValue));
+            }
             
             int newScore = currentScore - _scoreReduceValue;
             

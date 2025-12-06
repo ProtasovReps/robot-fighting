@@ -22,9 +22,13 @@ namespace UI.Switchers
         private void Switch(bool isPanelEnabled)
         {
             if (isPanelEnabled)
+            {
                 Enable();
+            }
             else
+            {
                 Disable();
+            }
 
             _disabledImage.enabled = !isPanelEnabled;
         }

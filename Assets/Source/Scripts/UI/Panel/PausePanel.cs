@@ -2,7 +2,6 @@
 using R3;
 using UI.Buttons;
 using UnityEngine;
-using YG;
 
 namespace UI.Panel
 {

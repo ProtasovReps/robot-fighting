@@ -27,7 +27,9 @@ namespace UI.LevelEnd
         protected override int GetNewScore(int currentScore)
         {
             if (_addScoreValue <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(_addScoreValue));
+            }
             
             return currentScore + _addScoreValue;
         }

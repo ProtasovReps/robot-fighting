@@ -40,9 +40,11 @@ namespace UI.Customization
             for (int i = 0; i < _implantViews.Length; i++)
             {
                 ImplantView view = _implantViews[i];
-                
-                if(_equipedImplantSaver.IsSetted(_requiredState, view) == false)
+
+                if (_equipedImplantSaver.IsSetted(_requiredState, view) == false)
+                {
                     continue;
+                }
                 
                 Set(view);
                 break;
@@ -52,7 +54,9 @@ namespace UI.Customization
         private void Set(ImplantView implantView)
         {
             if (implantView.AttackImplant.Parameters.RequiredState != _requiredState)
+            {
                 throw new ArgumentException(nameof(implantView));
+            }
             
             _equipedImplantSaver.Set(_requiredState, implantView);
             _implantTranslation.Translate(implantView);

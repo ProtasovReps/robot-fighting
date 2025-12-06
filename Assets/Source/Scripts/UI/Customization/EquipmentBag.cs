@@ -21,9 +21,11 @@ namespace UI.Customization
             for (int i = 0; i < _implantViews.Length; i++)
             {
                 ImplantView view = _implantViews[i];
-                
-                if(implantSaver.Contains(view) == false)
+
+                if (implantSaver.Contains(view) == false)
+                {
                     continue;
+                }
                     
                 EquipmentPanel panel = Instantiate(_prefab, _placeHolder);
                 

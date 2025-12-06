@@ -10,8 +10,8 @@ namespace UI.Info
         public void Initialize(IValueChangeable<int> valueChangeable)
         {
             _valueChangeable = valueChangeable;
-
             Observable<Unit> observable = _valueChangeable.Value.Select(_ => Unit.Default);
+
             Initialize(observable, () => _valueChangeable.Value.CurrentValue);
         }
     }

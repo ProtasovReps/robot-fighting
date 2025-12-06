@@ -31,7 +31,9 @@ namespace UI.Guide
         public virtual void Say()
         {
             if (_tokenSource != null)
+            {
                 _tokenSource.Cancel();
+            }
 
             _tokenSource = new CancellationTokenSource();
 

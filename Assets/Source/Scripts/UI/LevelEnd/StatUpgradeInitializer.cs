@@ -1,6 +1,5 @@
 ﻿using Extensions;
 using R3;
-using UI.Effect;
 using UI.Info;
 using UI.Panel;
 using UnityEngine;
