@@ -30,7 +30,9 @@ namespace UI.Effect
         private async UniTaskVoid StartEffect()
         {
             if (_scaleAnimation.IsPlaying)
+            {
                 return;
+            }
 
             BroAudio.Play(_errorSound);
             

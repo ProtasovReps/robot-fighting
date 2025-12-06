@@ -3,12 +3,13 @@ using Cysharp.Threading.Tasks;
 using R3;
 using TMPro;
 using UI.Buttons;
+using UI.Effect;
 using UnityEngine;
 using Unit = R3.Unit;
 
 namespace UI.Guide
 {
-    public class Replic : MonoBehaviour
+    public class Replic : Animatable
     {
         private readonly Subject<Unit> _executed = new();
 
@@ -16,11 +17,12 @@ namespace UI.Guide
         [SerializeField] private float _duration;
         [SerializeField] private UnitButton _nextButton;
 
-        private CancellationTokenSource _tokenSource;
-
+        private float _maxCharacters;
+        private bool _isSkipped;
+        
         public Observable<Unit> Executed => _executed;
         protected Subject<Unit> SubjectExecuted => _executed;
-        
+
         private void Awake()
         {
             _nextButton.Pressed
@@ -30,40 +32,26 @@ namespace UI.Guide
 
         public virtual void Say()
         {
-            if (_tokenSource != null)
-            {
-                _tokenSource.Cancel();
-            }
-
-            _tokenSource = new CancellationTokenSource();
-
-            Interpolate().Forget();
-        }
-
-        private async UniTaskVoid Interpolate()
-        {
-            float elapsedTime = 0f;
-            int maxCharacters = _text.text.Length;
-
-            _text.maxVisibleCharacters = 0;
-
-            while (elapsedTime < _duration && _tokenSource.IsCancellationRequested == false)
-            {
-                float newMaxCharacters = Mathf.Lerp(0, maxCharacters, elapsedTime / _duration);
-
-                _text.maxVisibleCharacters = (int)newMaxCharacters;
-                elapsedTime += Time.unscaledDeltaTime;
-                await UniTask.Yield(cancellationToken: _tokenSource.Token, cancelImmediately: true);
-            }
-
             Cancel();
+
+            _maxCharacters = _text.text.Length;
+            _text.maxVisibleCharacters = 0;
+            _isSkipped = false;
+            
+            Play().Forget();
         }
 
-        private void Cancel()
+        protected override void Animate(float factor)
         {
-            if (_tokenSource?.IsCancellationRequested == false)
+            _text.maxVisibleCharacters = (int)Mathf.Lerp(0, _maxCharacters, factor);
+        }
+
+        protected override void Cancel()
+        {
+            if (_isSkipped == false)
             {
-                _tokenSource.Cancel();
+                base.Cancel();
+                _isSkipped = true;
                 _text.maxVisibleCharacters = _text.text.Length;
             }
             else

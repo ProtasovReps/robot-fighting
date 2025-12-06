@@ -1,51 +1,32 @@
-﻿using System.Threading;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UI.Effect
 {
     public class PositionAnimation : Animatable
     {
         [SerializeField] private Transform _target;
-        [SerializeField] private float _delay;
-        [SerializeField] private float _duration;
         
-        private CancellationTokenSource _tokenSource;
         private Transform _transform;
+        private Vector3 _startPosition;
+        private Vector3 _targetPosition;
 
-        public override bool IsPlaying => _tokenSource != null;
-
+        private bool _isFirstLoop = true;
+        
         private void Awake()
         {
             _transform = transform;
         }
 
-        public override async UniTask Play()
+        protected override void Animate(float factor)
         {
-            await UniTask.WaitForSeconds(_delay, true);
-            
-            _tokenSource = new CancellationTokenSource();
-
-            float expiredTime = 0f;
-            Vector3 startPosition = _transform.position;
-            Vector3 targetPosition = _target.position;
-
-            while (expiredTime < _duration && _tokenSource.IsCancellationRequested == false)
+            if (_isFirstLoop)
             {
-                 Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, expiredTime / _duration);
-
-                _transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
-                expiredTime += Time.unscaledDeltaTime;
-                await UniTask.Yield(cancellationToken: _tokenSource.Token, cancelImmediately: true);
+                _startPosition = _transform.position;
+                _targetPosition = _target.position;
+                _isFirstLoop = false;
             }
-
-            Cancel();
-        }
-
-        protected override void Cancel()
-        {
-            _tokenSource?.Cancel();
-            _tokenSource = null;
+            
+            _transform.position = Vector3.Lerp(_startPosition, _targetPosition, factor);
         }
     }
 }
