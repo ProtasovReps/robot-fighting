@@ -1,7 +1,7 @@
 ﻿using CharacterSystem.Parameters;
 using UnityEngine;
 
-namespace HitSystem
+namespace HitSystem.Factory
 {
     public class BotHitFactory : HitFactory
     {

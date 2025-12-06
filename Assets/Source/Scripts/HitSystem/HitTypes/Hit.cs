@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using Interface;
 using R3;
 
-namespace HitSystem
+namespace HitSystem.HitTypes
 {
     public abstract class Hit : IContinuous, IDisposable
     {
@@ -16,7 +16,9 @@ namespace HitSystem
         protected Hit(float stunDuration, Observable<Unit> observable)
         {
             if (stunDuration <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(stunDuration));
+            }
 
             _stunDuration = stunDuration;
             _subscription = observable

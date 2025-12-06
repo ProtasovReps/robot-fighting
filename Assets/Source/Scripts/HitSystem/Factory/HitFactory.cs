@@ -3,10 +3,11 @@ using Extensions;
 using FightingSystem;
 using CharacterSystem.CharacterHealth;
 using HitSystem.FighterParts;
+using HitSystem.HitTypes;
 using Interface;
 using UnityEngine;
 
-namespace HitSystem
+namespace HitSystem.Factory
 {
     public abstract class HitFactory : MonoBehaviour
     {

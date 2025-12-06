@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
@@ -15,6 +14,7 @@ using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
 using CharacterSystem.CharacterHealth;
 using EffectSystem.Particle;
+using HitSystem.Factory;
 using ImplantSystem;
 using ImplantSystem.Factory;
 using InputSystem;

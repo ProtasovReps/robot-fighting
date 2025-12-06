@@ -1,6 +1,6 @@
 ﻿using YG;
 
-namespace HitSystem
+namespace HitSystem.Factory
 {
     public class PlayerHitFactory : HitFactory
     {

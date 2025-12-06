@@ -1,7 +1,7 @@
 ﻿using FiniteStateMachine.States;
 using Interface;
 
-namespace HitSystem
+namespace HitSystem.HitTypes
 {
     public class DownHit : Hit
     {
