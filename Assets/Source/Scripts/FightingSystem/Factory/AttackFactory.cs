@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Extensions;
 using FightingSystem.AttackDamage;
+using FightingSystem.Attackers;
 using FightingSystem.Attacks;
 using ImplantSystem;
 using ImplantSystem.AttackImplants;
@@ -28,7 +29,9 @@ namespace FightingSystem.Factory
                     Type attackState = AttackStateComparer.GetAttackState(implant.Parameters.RequiredState);
 
                     if (attacks.ContainsKey(attackState))
+                    {
                         throw new ArgumentOutOfRangeException(nameof(attackState));
+                    }
 
                     attacks.Add(attackState, implant.GetAttack(_opponentLayer, baseDamage));
                 }

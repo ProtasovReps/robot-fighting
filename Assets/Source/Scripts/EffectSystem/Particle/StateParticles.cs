@@ -24,7 +24,9 @@ namespace EffectSystem.Particle
         private void Play()
         {
             for (int i = 0; i < _effects.Length; i++)
+            {
                 _effects[i].Play();
+            }
         }
     }
 }

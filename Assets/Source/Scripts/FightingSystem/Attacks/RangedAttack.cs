@@ -13,7 +13,9 @@ namespace FightingSystem.Attacks
             : base(duration, startDelay, endDelay)
         {
             if (shooter == null)
+            {
                 throw new ArgumentNullException(nameof(shooter));
+            }
 
             _shooter = shooter;
         }

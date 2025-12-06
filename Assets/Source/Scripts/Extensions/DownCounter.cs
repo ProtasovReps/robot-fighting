@@ -13,7 +13,9 @@ namespace Extensions
         public void AddPoints(int count)
         {
             if (count <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(count));
+            }
             
             int newValue = _value.CurrentValue + count;
             

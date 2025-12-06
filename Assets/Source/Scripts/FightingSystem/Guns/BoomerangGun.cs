@@ -22,7 +22,9 @@ namespace FightingSystem.Guns
         protected override void TranslateProjectile(Projectile projectile, Vector3 direction, float force)
         {
             if (_boomerangs.ContainsKey(projectile) == false)
+            {
                 _boomerangs.Add(projectile, new Boomerang(_pivotDelay, direction));
+            }
 
             Boomerang boomerang = _boomerangs[projectile];
             

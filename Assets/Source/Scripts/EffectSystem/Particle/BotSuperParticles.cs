@@ -1,5 +1,4 @@
-﻿using EffectSystem.StateDependent;
-using FiniteStateMachine;
+﻿using FiniteStateMachine;
 using FiniteStateMachine.States;
 
 namespace EffectSystem.Particle

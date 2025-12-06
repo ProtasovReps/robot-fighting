@@ -2,7 +2,7 @@
 using FiniteStateMachine.Conditions;
 using Reflex.Attributes;
 
-namespace FightingSystem
+namespace FightingSystem.Attackers
 {
     public class PlayerAttacker : Attacker
     {

@@ -28,18 +28,16 @@ namespace Extensions
             damageable = null;
 
             if (hits == 0)
+            {
                 return false;
+            }
 
             if (_hits[0].transform.TryGetComponent(out damageable) == false)
+            {
                 return false;
+            }
 
             return true;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _radius);
         }
     }
 }

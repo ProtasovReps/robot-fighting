@@ -12,7 +12,9 @@ namespace CharacterSystem.CharacterHealth
         protected Health(float startValue)
         {
             if (startValue <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(startValue));
+            }
 
             MaxValue = startValue;
             _value = new ReactiveProperty<float>(MaxValue);

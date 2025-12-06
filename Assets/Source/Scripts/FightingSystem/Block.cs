@@ -26,10 +26,14 @@ namespace FightingSystem
             IConditionAddable conditionAddable)
         {
             if (blockDuration <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(blockDuration));
+            }
 
             if (blockValue <= 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(blockValue));
+            }
 
             _blockDuration = blockDuration;
             _blockValue = blockValue;

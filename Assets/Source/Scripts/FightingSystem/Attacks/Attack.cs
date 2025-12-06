@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 
 namespace FightingSystem.Attacks
 {
@@ -14,7 +13,9 @@ namespace FightingSystem.Attacks
         protected Attack(float duration, float startDelay, float endDelay)
         {
             if (startDelay < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(startDelay));
+            }
 
             _duration = duration;
             _startDelay = startDelay;

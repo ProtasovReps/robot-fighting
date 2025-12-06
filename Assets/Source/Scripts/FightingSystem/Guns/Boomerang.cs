@@ -14,7 +14,9 @@ namespace FightingSystem.Guns
         public Boomerang(float maxOneSideFlyTime, Vector3 direction)
         {
             if (maxOneSideFlyTime <= 0f)
+            {
                 throw new ArgumentOutOfRangeException(nameof(maxOneSideFlyTime));
+            }
 
             _maxOneSideFlyTime = maxOneSideFlyTime;
             _direction = direction;
@@ -34,7 +36,9 @@ namespace FightingSystem.Guns
         public Vector3 GetDirection()
         {
             if (_isPivoted)
+            {
                 return -_direction;
+            }
 
             return _direction;
         }

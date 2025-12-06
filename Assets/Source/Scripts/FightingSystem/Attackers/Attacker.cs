@@ -9,7 +9,7 @@ using Interface;
 using R3;
 using UnityEngine;
 
-namespace FightingSystem
+namespace FightingSystem.Attackers
 {
     public abstract class Attacker : MonoBehaviour, IContinuous
     {
@@ -26,7 +26,9 @@ namespace FightingSystem
         public void SetAttacks(Dictionary<Type, Attack> attacks)
         {
             if (attacks == null)
+            {
                 throw new ArgumentNullException(nameof(attacks));
+            }
 
             _attacks = attacks;
         }
@@ -34,7 +36,9 @@ namespace FightingSystem
         protected void Subscribe(IStateMachine stateMachine, IConditionAddable conditionAddable)
         {
             if (stateMachine == null)
+            {
                 throw new ArgumentNullException(nameof(stateMachine));
+            }
 
             stateMachine.Value
                 .Where(state => state is AttackState)
@@ -55,10 +59,14 @@ namespace FightingSystem
         private void PrepareAttack(Type state)
         {
             if (IsContinuing)
+            {
                 return;
+            }
 
             if (_attacks.ContainsKey(state) == false)
+            {
                 throw new StateNotFoundException(nameof(state));
+            }
 
             IsContinuing = true;
             _cancellationTokenSource = new CancellationTokenSource();

@@ -26,10 +26,14 @@ namespace AudioSystem
 
         private void SetPause(bool isPaused)
         {
-            if(isPaused)
+            if (isPaused)
+            {
                 Stop();
+            }
             else
+            {
                 Play();
+            }
         }
         
         private void Play()

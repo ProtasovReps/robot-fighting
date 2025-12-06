@@ -23,7 +23,9 @@ namespace FightingSystem.Guns
             _particleSystem.Play();
 
             if (_spherecaster.TryFindDamageable(out IDamageable<Damage> damageable) == false)
+            {
                 return;
+            }
 
             damageable.AcceptDamage(_damage);
         }

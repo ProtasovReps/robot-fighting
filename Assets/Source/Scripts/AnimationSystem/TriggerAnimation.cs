@@ -2,7 +2,6 @@
 using FiniteStateMachine.States;
 using Interface;
 using R3;
-using TMPro;
 using UnityEngine;
 
 namespace AnimationSystem
@@ -19,10 +18,14 @@ namespace AnimationSystem
         public TriggerAnimation(IStateMachine stateMachine, Animator animator, int animationHash)
         {
             if (stateMachine == null)
+            {
                 throw new ArgumentNullException(nameof(stateMachine));
+            }
 
             if (animator == null)
+            {
                 throw new ArgumentNullException(nameof(animator));
+            }
 
             _stateMachine = stateMachine;
             _animator = animator;

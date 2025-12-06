@@ -24,10 +24,14 @@ namespace Extensions
         public string GetHash(T hashObject, string data)
         {
             if (_hashedData.ContainsKey(hashObject))
+            {
                 return _hashedData[hashObject];
-            
+            }
+
             if (string.IsNullOrEmpty(data))
+            {
                 throw new ArgumentNullException(nameof(data));
+            }
 
             byte[] bytes = Encoding.UTF8.GetBytes(data);
             byte[] hash = _encoder.ComputeHash(bytes);

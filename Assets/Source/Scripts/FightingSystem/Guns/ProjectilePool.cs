@@ -33,9 +33,13 @@ namespace FightingSystem.Guns
             Projectile projectile;
 
             if (_freeProjectiles.Count > 0)
+            {
                 projectile = _freeProjectiles.Dequeue();
+            }
             else
+            {
                 projectile = Create();
+            }
 
             ActivateProjectile(projectile);
             return projectile;

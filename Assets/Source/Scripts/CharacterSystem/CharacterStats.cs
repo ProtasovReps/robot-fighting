@@ -28,7 +28,9 @@ namespace CharacterSystem
         public void Increase(StatType targetStat, float addAmount)
         {
             if (addAmount <= 0f)
+            {
                 throw new ArgumentOutOfRangeException(nameof(addAmount));
+            }
             
             ValidateDictionary(targetStat);
             
@@ -39,7 +41,9 @@ namespace CharacterSystem
         private void ValidateDictionary(StatType targetStat)
         {
             if (_stats.ContainsKey(targetStat) == false)
+            {
                 throw new KeyNotFoundException(nameof(targetStat));
+            }
         }
     }
 }

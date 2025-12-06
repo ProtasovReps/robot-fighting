@@ -23,7 +23,9 @@ namespace FightingSystem
             PlayerConditionBuilder conditionBuilder)
         {
             if (hitReader == null)
+            {
                 throw new ArgumentNullException(nameof(hitReader));
+            }
 
             MaxValue = FullValue;
 
