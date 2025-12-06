@@ -14,7 +14,9 @@ namespace InputSystem.Bot.Executor
             : base(stateMachine)
         {
             if (botActions.Length == 0)
+            {
                 throw new ArgumentException(nameof(botActions));
+            }
 
             _botActions = botActions;
         }

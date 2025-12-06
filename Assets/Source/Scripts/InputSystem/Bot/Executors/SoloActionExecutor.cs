@@ -13,7 +13,9 @@ namespace InputSystem.Bot.Executor
             : base(stateMachine)
         {
             if (botAction == null)
+            {
                 throw new ArgumentNullException(nameof(botAction));
+            }
 
             _botAction = botAction;
         }

@@ -37,9 +37,13 @@ namespace InputSystem
         private void SetDirection(float direction)
         {
             if (direction == 0)
+            {
                 _direction.OnNext(direction);
+            }
             else if (_distanceValidators[direction].IsValidDistance(_transform.position))
+            {
                 _direction.OnNext(direction);
+            }
         }
     }
 }

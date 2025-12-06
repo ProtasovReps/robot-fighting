@@ -16,10 +16,14 @@ namespace InputSystem.Bot
         public BotAction(Action action, float duration)
         {
             if (action == null)
+            {
                 throw new ArgumentNullException(nameof(action));
+            }
 
             if (duration < 0)
+            {
                 throw new ArgumentOutOfRangeException(nameof(duration));
+            }
 
             _executed = new Subject<Unit>();
             _action = action;

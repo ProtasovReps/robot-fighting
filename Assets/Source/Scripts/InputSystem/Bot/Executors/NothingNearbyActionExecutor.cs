@@ -46,15 +46,21 @@ namespace InputSystem.Bot.Executor
         protected override BotAction GetAction()
         {
             if (_lastState == typeof(NothingNearbyState))
+            {
                 return base.GetAction();
+            }
 
             int direction = 0;
 
             if (_lastState == typeof(PlayerNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Right)
+            {
                 direction = Directions.Right;
+            }
 
             if (_lastState == typeof(WallNearbyState) && _botMoveInput.Value.CurrentValue == Directions.Left)
+            {
                 direction = Directions.Left;
+            }
                 
             ResetLastState();
             return _directions[direction];

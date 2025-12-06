@@ -33,7 +33,9 @@ namespace InputSystem.Bot
         public BotAction Get(int motionHash)
         {
             if (_actions.ContainsKey(motionHash) == false)
+            {
                 throw new KeyNotFoundException(nameof(motionHash));
+            }
 
             return _actions[motionHash];
         }

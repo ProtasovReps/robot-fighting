@@ -36,7 +36,9 @@ namespace InputSystem.Bot
         private void ValidateKey(int motionHash)
         {
             if (_fightInputs.ContainsKey(motionHash) == false)
+            {
                 throw new KeyNotFoundException(nameof(motionHash));
+            }
         }
     }
 }
