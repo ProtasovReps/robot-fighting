@@ -13,11 +13,17 @@ namespace YG.Localization
             string translation;
 
             if (language == Russian)
+            {
                 translation = ru;
+            }
             else if (language == Turkish)
+            {
                 translation = tr;
+            }
             else
+            {
                 translation = en;
+            }
 
             text.text = translation;
         }

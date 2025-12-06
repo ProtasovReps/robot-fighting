@@ -11,7 +11,9 @@ namespace YG.Saver
         public void Save()
         {
             if (_savers.Count == 0)
+            {
                 return;
+            }
             
             for (int i = 0; i < _savers.Count; i++)
             {

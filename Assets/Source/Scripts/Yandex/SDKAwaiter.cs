@@ -9,7 +9,9 @@ namespace YG
         public async UniTaskVoid WaitSDKInitialization(Action callback)
         {
             while (YG2.isSDKEnabled == false)
+            {
                 await UniTask.Yield();
+            }
 
             callback?.Invoke();
         }

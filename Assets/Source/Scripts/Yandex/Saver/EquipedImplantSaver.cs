@@ -46,7 +46,9 @@ namespace YG.Saver
         private void ValidateDictionary(AttackType attackType)
         {
             if (_implants.ContainsKey(attackType) == false)
+            {
                 throw new KeyNotFoundException(nameof(attackType));
+            }
         }
 
         private string GetHash(ImplantView implantView)

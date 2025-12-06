@@ -10,7 +10,9 @@ namespace YG
         private void Awake()
         {
             if (YG2.player.auth == false)
+            {
                 return;
+            }
             
             _nameField.text = YG2.player.name;
         }

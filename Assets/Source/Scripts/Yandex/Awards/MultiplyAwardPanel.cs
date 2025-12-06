@@ -26,7 +26,9 @@ namespace YG.Awards
             int addAmount = _multiplier - OneMinus;
 
             for (int i = 0; i < addAmount; i++)
+            {
                 _chest.AddAward();
+            }
 
             _awardAmountText.text = _multipliedAwardText.text; 
             SetEnable(false);

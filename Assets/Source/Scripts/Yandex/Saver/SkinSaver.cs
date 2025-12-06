@@ -23,9 +23,11 @@ namespace YG.Saver
         public void Add(Fighter fighter)
         {
             string hash = GetHash(fighter);
-            
+
             if (_fighters.Contains(hash))
+            {
                 throw new ArgumentException(nameof(fighter));
+            }
 
             _fighters.Add(hash);
         }
