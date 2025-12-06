@@ -1,4 +1,5 @@
 ﻿using System;
+using Interface;
 using UnityEngine;
 
 namespace AnimationSystem
@@ -7,7 +8,7 @@ namespace AnimationSystem
     {
         [field: SerializeField] public Animator Animator { get; private set; }
 
-        private CharacterAnimation[] _animations;
+        private IAnimation[] _animations;
 
         private void OnDestroy()
         {
@@ -18,7 +19,7 @@ namespace AnimationSystem
                _animations[i].Dispose();
         }
 
-        public void Initialize(CharacterAnimation[] animations)
+        public void Initialize(IAnimation[] animations)
         {
             if (animations == null)
                 throw new ArgumentNullException(nameof(animations));

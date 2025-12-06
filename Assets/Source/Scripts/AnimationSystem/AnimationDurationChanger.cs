@@ -10,7 +10,7 @@ namespace AnimationSystem
 {
     public class AnimationDurationChanger : IDisposable
     {
-        private const float DefaultAnimatorSpeed = 1f;
+        private const float DefaultSpeed = 1f;
 
         private readonly Dictionary<Type, float> _stateDurations;
         private readonly Animator _animator;
@@ -44,11 +44,11 @@ namespace AnimationSystem
 
             if (_stateDurations.TryGetValue(stateType, out float duration) == false)
             {
-                _animator.speed = DefaultAnimatorSpeed;    
+                _animator.speed = DefaultSpeed;    
                 return;
             }
 
-            _animator.speed = DefaultAnimatorSpeed / duration;
+            _animator.speed = DefaultSpeed / duration;
         }
     }
 }

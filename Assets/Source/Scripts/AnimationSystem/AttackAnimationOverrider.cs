@@ -19,10 +19,14 @@ namespace AnimationSystem
         public AttackAnimationOverrider(Animator animator, AnimationStateMapper stateMapper)
         {
             if (animator == null)
+            {
                 throw new ArgumentNullException(nameof(animator));
+            }
 
             if (stateMapper == null)
+            {
                 throw new ArgumentNullException(nameof(stateMapper));
+            }
             
             _animator = animator;
             _stateMapper = stateMapper;
@@ -44,9 +48,11 @@ namespace AnimationSystem
                 foreach (AttackImplant newImplant in placeHolder.Implants)
                 {
                     Type attackState = AttackStateComparer.GetAttackState(newImplant.Parameters.RequiredState);
-                    
+
                     if (_requiredAttackTypes.Contains(attackState) == false)
+                    {
                         continue;
+                    }
 
                     int animationID = GetAnimationID(overrideController, attackState);
                     string animationName = overrideController.animationClips[animationID].name;
@@ -65,10 +71,14 @@ namespace AnimationSystem
                 string clipName = overrideController.animationClips[i].name;
 
                 if (_stateMapper.Contains(clipName) == false)
+                {
                     continue;
-                
+                }
+
                 if (_stateMapper.Get(clipName) != requiredState)
+                {
                     continue;
+                }
 
                 return i;
             }

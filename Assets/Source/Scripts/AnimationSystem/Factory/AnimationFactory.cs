@@ -19,7 +19,7 @@ namespace AnimationSystem.Factory
         {
             Animator animator = animatedCharacter.Animator;
             
-            var animations = new CharacterAnimation[]
+            var animations = new IAnimation[]
             {
                 new TriggerAnimation<IdleState>(stateMachine, animator, MotionHashes.Idle),
                 new TriggerAnimation<JumpState>(stateMachine, animator, MotionHashes.Jump),

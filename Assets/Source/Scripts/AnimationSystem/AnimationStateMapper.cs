@@ -24,7 +24,9 @@ namespace AnimationSystem
         public Type Get(string key)
         {
             if (_names.ContainsKey(key) == false)
+            {
                 throw new KeyNotFoundException(key);
+            }
 
             return _names[key];
         }
@@ -39,7 +41,9 @@ namespace AnimationSystem
             for (int i = 0; i < clips.Length; i++)
             {
                 if (_names.ContainsKey(clips[i].name))
+                {
                     throw new ArgumentOutOfRangeException(clips[i].name);
+                }
 
                 _names.Add(clips[i].name, state);
             }

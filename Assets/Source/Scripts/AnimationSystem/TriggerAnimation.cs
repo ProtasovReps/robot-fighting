@@ -1,29 +1,44 @@
 ﻿using System;
 using FiniteStateMachine.States;
 using Interface;
+using R3;
+using TMPro;
 using UnityEngine;
 
 namespace AnimationSystem
 {
-    public class TriggerAnimation<TState> : CharacterAnimation
+    public class TriggerAnimation<TState> : IAnimation
         where TState : State
     {
+        private readonly IStateMachine _stateMachine;
         private readonly int _animationHash;
+        private readonly Animator _animator;
+        
+        private IDisposable _subscription;
         
         public TriggerAnimation(IStateMachine stateMachine, Animator animator, int animationHash)
-            : base(stateMachine, animator)
         {
+            if (stateMachine == null)
+                throw new ArgumentNullException(nameof(stateMachine));
+
+            if (animator == null)
+                throw new ArgumentNullException(nameof(animator));
+
+            _stateMachine = stateMachine;
+            _animator = animator;
             _animationHash = animationHash;
         }
 
-        protected override Type GetRequiredState()
+        public void Dispose()
         {
-            return typeof(TState);
+            _subscription.Dispose();
         }
 
-        protected override void Animate()
+        public void Subscribe()
         {
-            Animator.SetTrigger(_animationHash);
+            _subscription = _stateMachine.Value
+                .Where(state => state.Type ==  typeof(TState))
+                .Subscribe(_ => _animator.SetTrigger(_animationHash));
         }
     }
 }
