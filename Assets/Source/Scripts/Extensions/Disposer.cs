@@ -11,7 +11,9 @@ namespace Extensions
         private void OnDestroy()
         {
             if (_disposables.Count == 0)
+            {
                 return;
+            }
             
             for (int i = 0; i < _disposables.Count; i++)
             {

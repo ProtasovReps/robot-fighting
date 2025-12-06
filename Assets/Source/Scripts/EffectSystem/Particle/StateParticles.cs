@@ -4,7 +4,7 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace EffectSystem.StateDependent
+namespace EffectSystem.Particle
 {
     public class StateParticles<TMachine, KState> : MonoBehaviour
         where TMachine : IStateMachine

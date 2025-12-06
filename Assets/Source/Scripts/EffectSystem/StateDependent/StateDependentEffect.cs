@@ -4,7 +4,7 @@ using R3;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace EffectSystem
+namespace EffectSystem.StateDependent
 {
     public abstract class StateDependentEffect<TState> : MonoBehaviour
     where TState : State
