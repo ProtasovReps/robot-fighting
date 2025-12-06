@@ -15,7 +15,6 @@ namespace ImplantSystem.AttackImplants
         {
             _spherecaster.Initialize(layerMask);
             _overlaper.Initialize(damage, _spherecaster);
-
             return new RangedAttack(Parameters.Duration, Parameters.StartDelay, Parameters.EndDelay, _overlaper);
         }
     }

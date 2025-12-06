@@ -16,7 +16,6 @@ namespace ImplantSystem.AttackImplants
             _projectileFactory.Initialize(damage, layerMask);
             _projectilePool.Initialize(_projectileFactory);
             _shooter.Initialize(_projectilePool);
-
             return new RangedAttack(Parameters.Duration, Parameters.StartDelay, Parameters.EndDelay, _shooter);
         }
     }

@@ -14,6 +14,7 @@ namespace ImplantSystem.AttackImplants
         public Attack GetAttack(LayerMask layer, Damage baseDamage)
         {
             Damage damage = _damageFactory.Produce(baseDamage);
+            
             return Construct(damage, layer);
         }
 

@@ -48,7 +48,9 @@ namespace ImplantSystem.Factory
             for (int i = 0; i < implants.Length; i++)
             {
                 if (_implantSaver.IsSetted(attackType, implants[i]) == false)
+                {
                     continue;
+                }
 
                 return implants[i].AttackImplant;
             }
