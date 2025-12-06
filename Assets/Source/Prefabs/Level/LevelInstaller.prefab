@@ -80,6 +80,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2555177441646745833}
   - {fileID: 8323438280980939928}
   - {fileID: 436244746455704741}
   - {fileID: 7732528285339877199}
@@ -199,10 +200,6 @@ MonoBehaviour:
   _defaultDownAttackImplant: {fileID: 6678659835579656486, guid: 11f1463d755bf2a469600e3d198e8a37, type: 3}
   _defaultSuperAttackImplant: {fileID: 6678659835579656486, guid: c5ad23d26b1992046a2ec80dcf062333, type: 3}
   _defaultFighter: {fileID: 7661856510355865214, guid: 1b89159eb755fbd4e8af3fc4cd172e1c, type: 3}
-  _health: 80
-  _damage: 15
-  _speed: 5
-  _block: 20
 --- !u!1 &1764151761344835433
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +383,64 @@ MonoBehaviour:
   _opponentLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!1 &3914886185780984500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2555177441646745833}
+  - component: {fileID: 5136603902177584478}
+  m_Layer: 0
+  m_Name: GarbageDestroyer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2555177441646745833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914886185780984500}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3293776013892293829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5136603902177584478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3914886185780984500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b7fa98d0d64c36a549ebc1d355fcf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deletables:
+  - {fileID: 8323438280980939928}
+  - {fileID: 436244746455704741}
+  - {fileID: 7732528285339877199}
+  - {fileID: 7752759616644942715}
+  - {fileID: 722223038793962747}
+  - {fileID: 7037750106558209730}
+  - {fileID: 1000348045145825106}
+  - {fileID: 2133218821764800854}
+  - {fileID: 1499346063154201949}
+  - {fileID: 3279515431764918886}
+  - {fileID: 2011379515507645360}
+  - {fileID: 4640780780397426480}
+  - {fileID: 3977744879053827545}
 --- !u!1 &3965541727533090262
 GameObject:
   m_ObjectHideFlags: 0
