@@ -62,7 +62,9 @@ namespace Reflex
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
             if (YG2.saves.Implants.Count == 0)
+            {
                 _defaultSavesInstaller.Install();
+            }
 
             AnimationFactory animationFactory = new();
 
@@ -89,8 +91,9 @@ namespace Reflex
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);
             PlayerDeath death = new(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
-            PositionTranslation positionTranslation = InstallPlayerMovement(moveInput);
-
+            PositionTranslation positionTranslation = new(_playerParameters.transform, YG2.saves.SpeedStat);
+            
+            _playerMovement.Initialize(moveInput, positionTranslation);
             _animationStateMapper.Initialize();
 
             AttackAnimationOverrider overrider = new(player.AnimatedCharacter.Animator, _animationStateMapper);
@@ -123,12 +126,12 @@ namespace Reflex
             HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder, _disposer);
             BotDeath death = new BotDeath(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallBotInput(builder, death);
+            PositionTranslation positionTranslation = new(_botParameters.transform, _botParameters.MoveSpeed);
 
             _disposer.Add(death);
             _botAttackFactory.Produce(placeHolderStash);
-
-            PositionTranslation positionTranslation = InstallBotMovement(moveInput);
-
+            _botMovement.Initialize(moveInput, positionTranslation);
+            
             animationFactory.Produce(_botAnimatedCharacter,
                 botStateMachine, _botParameters, positionTranslation, _disposer, _botParameters.MoveSpeed);
 
@@ -142,29 +145,21 @@ namespace Reflex
             State[] states = new BotInputStateFactory().Produce();
             BotInputStateMachine stateMachine = new(states);
             BotInputConditionBuilder conditionBuilder = new();
-
             BotMoveInput botMoveInput = new();
             BotFightInput botFightInput = new();
             Dictionary<float, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
             ValidatedInput validatedBotInput = new(_botParameters.transform, botMoveInput, directions);
+            ActionStash stash = new(botMoveInput, botFightInput, _botParameters);
+
+            _botTransitionFactory.Initialize(validatedBotInput, botFightInput, death);
+            _botActionFactory.InstallActions(stash, botMoveInput, stateMachine, _disposer);
 
             _disposer.Add(botMoveInput);
             _disposer.Add(validatedBotInput);
-
-            InstallBotActions(botMoveInput, botFightInput, stateMachine);
-
-            _botTransitionFactory.Initialize(validatedBotInput, botFightInput, death);
-
+            
             builder.AddSingleton(stateMachine);
             builder.AddSingleton(conditionBuilder);
             return validatedBotInput;
-        }
-
-        private void InstallBotActions(BotMoveInput moveInput, BotFightInput fightInput, BotInputStateMachine machine)
-        {
-            ActionStash stash = new(moveInput, fightInput, _botParameters);
-
-            _botActionFactory.InstallActions(stash, moveInput, machine, _disposer);
         }
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder, PlayerDeath death)
@@ -184,20 +179,6 @@ namespace Reflex
             input.Enable();
             builder.AddSingleton(input);
             return validatedInput;
-        }
-
-        private PositionTranslation InstallPlayerMovement(IMoveInput moveInput) // одинаковые
-        {
-            PositionTranslation positionTranslation = new(_playerParameters.transform, YG2.saves.SpeedStat);
-            _playerMovement.Initialize(moveInput, positionTranslation);
-            return positionTranslation;
-        }
-
-        private PositionTranslation InstallBotMovement(IMoveInput moveInput) // одинаковые
-        {
-            PositionTranslation positionTranslation = new(_botParameters.transform, _botParameters.MoveSpeed);
-            _botMovement.Initialize(moveInput, positionTranslation);
-            return positionTranslation;
         }
 
         private void InstallSaves(ContainerBuilder builder)

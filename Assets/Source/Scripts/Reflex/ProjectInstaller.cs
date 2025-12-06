@@ -33,11 +33,17 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         int sceneIndex;
 
         if (YG2.isFirstGameSession)
+        {
             sceneIndex = FirstLevelIndex;
+        }
         else if (YG2.saves.SceneIndex < FirstCustomizationsSceneIndex)
+        {
             sceneIndex = YG2.saves.SceneIndex;
+        }
         else
+        {
             sceneIndex = CustomizationLevelIndex;
+        }
 
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
     }
