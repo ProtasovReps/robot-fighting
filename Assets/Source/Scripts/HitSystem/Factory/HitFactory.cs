@@ -14,7 +14,6 @@ namespace HitSystem.Factory
         [SerializeField] private HitReader _hitReader;
         [SerializeField] private HitImpact _hitImpact;
         [SerializeField] private FighterParameters _fighterParameters;
-        [SerializeField] private ColliderSwitcher _colliderSwitcher;
         
         public HitReader Produce(
             Health health,
@@ -29,7 +28,7 @@ namespace HitSystem.Factory
 
             disposer.Add(block);
             
-            InitializeColliders(block, legs, machine);
+            InitializeColliders(block, legs);
             InitializeHit(conditionAddable, torso, legs, disposer);
             return _hitReader;
         }
@@ -47,14 +46,12 @@ namespace HitSystem.Factory
             disposer.Add(new DownHit(_fighterParameters.DownStunDuration, _hitReader, conditionAddable));
         }
 
-        private void InitializeColliders(Block block, Legs legs, IStateMachine stateMachine)
+        private void InitializeColliders(Block block, Legs legs)
         {
             HitColliderStash stash = GetColliderStash();
 
             stash.UpCollider.Initialize(block);
             stash.DownCollider.Initialize(legs);
-            
-            _colliderSwitcher.Initialize(stateMachine, stash);
         }
     }
 }

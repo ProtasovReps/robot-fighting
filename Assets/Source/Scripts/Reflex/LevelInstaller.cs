@@ -83,7 +83,7 @@ namespace Reflex
             EquipedImplantSaver equipedImplantSaver = new(new Hasher<ImplantView>());
 
             player.Initialize();
-            _playerHitFactory.Initialize(player.HitColliderStash);
+            _playerHitFactory.Initialize(player.HitColliderStash, playerStateMachine);
             _playerHitParticles.Initialize(player.HitEffectStash);
             _playerImplantFactory.Initialize(player.ImplantPlaceHolderStash, equipedImplantSaver);
 

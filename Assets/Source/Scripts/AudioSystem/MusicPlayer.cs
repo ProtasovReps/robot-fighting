@@ -38,6 +38,16 @@ namespace AudioSystem
         
         private void Play()
         {
+            if (YG2.nowInterAdv)
+            {
+                return;
+            }
+
+            if (YG2.nowRewardAdv)
+            {
+                return;
+            }
+            
             BroAudio.SetVolume(YG2.saves.SoundVolume);
             BroAudio.Play(_music);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using UI.Buttons;
 using UI.Effect;
@@ -36,6 +37,7 @@ namespace UI.LevelChange
 
         private void ShowAd()
         {
+            BroAudio.Stop(BroAudioType.All);
             YG2.InterstitialAdvShow();
             Transit().Forget();
         }

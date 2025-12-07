@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class FighterShowcase : MonoBehaviour
 {
+    private const int GuideSkinIndex = 1;
+    
     private readonly Subject<SkinView> _skinChanged = new();
 
     [SerializeField] private SkinView[] _skinViews;
@@ -38,7 +40,7 @@ public class FighterShowcase : MonoBehaviour
 
         if (YG2.saves.IsGuidePassed == false)
         {
-            _lastIndex = 0;
+            _lastIndex = GuideSkinIndex;
         }
         else
         {

@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using R3;
 using TMPro;
 using UI.Buttons;
@@ -14,7 +13,6 @@ namespace UI.Guide
         private readonly Subject<Unit> _executed = new();
 
         [SerializeField] private TMP_Text _text;
-        [SerializeField] private float _duration;
         [SerializeField] private UnitButton _nextButton;
 
         private float _maxCharacters;

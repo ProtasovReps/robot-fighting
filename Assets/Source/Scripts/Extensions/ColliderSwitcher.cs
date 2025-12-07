@@ -14,10 +14,9 @@ namespace Extensions
         public void Initialize(IStateMachine stateMachine, HitColliderStash colliderStash)
         {
             Type superState = typeof(SuperAttackState);
-            Type specialState = typeof(SpecialAttackState);
 
             _colliderStash = colliderStash;
-            Func<State, bool> stateMatched = state => state.Type == superState || state.Type == specialState;
+            Func<State, bool> stateMatched = state => state.Type == superState;
             
             stateMachine.Value
                 .Where(stateMatched)
