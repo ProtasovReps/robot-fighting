@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YG;
 
 namespace UI.LevelChange
@@ -20,6 +21,8 @@ namespace UI.LevelChange
             YG2.saves.BlockStat = _blockStat;
             YG2.saves.SceneIndex = FirstSceneIndex;
             YG2.SaveProgress();
+
+            SceneManager.LoadScene(FirstSceneIndex);
         }
     }
 }
