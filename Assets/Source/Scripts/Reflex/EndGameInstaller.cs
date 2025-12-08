@@ -1,5 +1,6 @@
 using Reflex.Core;
 using UnityEngine;
+using YG;
 using YG.Saver;
 
 namespace Reflex
@@ -10,6 +11,8 @@ namespace Reflex
         
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
+            YG2.saves.SceneIndex++;
+            
             containerBuilder.AddSingleton(_progressSaver);
         }
     }
