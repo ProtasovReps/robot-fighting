@@ -42,7 +42,6 @@ namespace UI.Guide
                 .Subscribe(_ => ChangeReplic());
 
             newReplic.gameObject.SetActive(true);
-            newReplic.Say();
         }
         
         private void ChangeReplic()
