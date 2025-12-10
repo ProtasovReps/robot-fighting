@@ -4,12 +4,14 @@ using FiniteStateMachine.States;
 using HitSystem;
 using Interface;
 using R3;
+using YG;
 using Random = UnityEngine.Random;
 
 namespace FightingSystem
 {
     public class SuperAttackCharge : IFloatValueChangeable, IDisposable
     {
+        private const int GuideIndex = 5;
         private const float FullValue = 100f;
         private const float MaxChargeValue = 80;
         private const float MinChargeValue = 40;
@@ -41,8 +43,15 @@ namespace FightingSystem
                 .Where(state => state.Type == typeof(SuperAttackState))
                 .Subscribe(_ => Reset())
                 .AddTo(_subscriptions);
-            
-            conditionBuilder.Add<SuperAttackState>(_ => _value.CurrentValue >= FullValue);
+
+            if (YG2.saves.SceneIndex < GuideIndex)
+            {
+                conditionBuilder.Add<SuperAttackState>(_ => true);
+            }
+            else
+            {
+                conditionBuilder.Add<SuperAttackState>(_ => _value.CurrentValue >= FullValue);
+            }
         }
 
         public ReadOnlyReactiveProperty<float> Value => _value;
@@ -53,7 +62,7 @@ namespace FightingSystem
             _subscriptions?.Dispose();
         }
 
-        public void Reset()
+        private void Reset()
         {
             _value.OnNext(0f);
         }
