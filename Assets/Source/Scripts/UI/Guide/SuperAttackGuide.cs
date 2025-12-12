@@ -17,8 +17,8 @@ namespace UI.Guide
         [SerializeField] private DistanceValidator _distanceValidator;
         [SerializeField] private Transform _player;
         [SerializeField] private Transform _shadow;
-        [SerializeField] private Replic _mobileReplic;
-        [SerializeField] private Replic _pCReplic;
+        [SerializeField] private Transform _mobileReplic;
+        [SerializeField] private Transform _pCReplic;
         [SerializeField] private Transform[] _objectsToDisable;
 
         [Inject]

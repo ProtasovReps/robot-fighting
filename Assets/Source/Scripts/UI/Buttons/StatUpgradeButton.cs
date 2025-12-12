@@ -1,6 +1,7 @@
 ﻿using CharacterSystem;
 using Extensions;
 using UnityEngine;
+using YG;
 
 namespace UI.Buttons.StatUpgrade
 {
@@ -12,6 +13,7 @@ namespace UI.Buttons.StatUpgrade
         public void Upgrade(CharacterStats stats)
         {
             stats.Increase(_statType, _upgradeValue);
+            YG2.MetricaSend(_statType.ToString());
         }
 
         protected override StatUpgradeButton Get()
