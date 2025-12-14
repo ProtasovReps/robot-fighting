@@ -108,7 +108,6 @@ namespace Reflex
 
             _disposer.Add(death);
             _disposer.Add(attackCharge);
-            _disposer.Add(new Stretch(playerStateMachine, conditionBuilder));
 
             builder.AddSingleton(attackCharge);
             builder.AddSingleton(health);

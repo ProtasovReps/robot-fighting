@@ -33,9 +33,6 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.Add<MoveJumpState>(builder.GetBare<JumpState>());
             builder.Merge<MoveJumpState, IdleState>(false);
 
-            builder.Merge<StretchState, IdleState>();
-            builder.Merge<IdleState, StretchState>(false);
-
             builder.MergeGlobal<DeathState>(false);
 
             builder.MergeGlobal<JumpState>(
@@ -57,8 +54,6 @@ namespace FiniteStateMachine.Transitions.Factory
             var soloInitializer = new TransitionInitializer(new SoloTransitionFactory(), machine)
                 .InitializeTransition<IdleState, float>(
                     _moveInput.Value, builder.Get<IdleState>())
-                .InitializeTransition<StretchState, float>(
-                    _moveInput.Value, builder.Get<StretchState>())
                 .InitializeTransition<MoveLeftState, float>(
                     _moveInput.Value, builder.Get<MoveLeftState>())
                 .InitializeTransition<MoveRightState, float>(

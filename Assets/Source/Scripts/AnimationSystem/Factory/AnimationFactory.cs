@@ -32,7 +32,6 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<DownHittedState>(stateMachine, animator, MotionHashes.LegsHit),
                 new TriggerAnimation<BlockState>(stateMachine, animator, MotionHashes.Block),
                 new TriggerAnimation<SpecialAttackState>(stateMachine, animator, MotionHashes.Special),
-                new TriggerAnimation<StretchState>(stateMachine, animator, MotionHashes.Stretch),
                 new TriggerAnimation<UpDeathState>(stateMachine, animator, MotionHashes.UpDeath),
                 new TriggerAnimation<DownDeathState>(stateMachine, animator, MotionHashes.DownDeath)
             };
