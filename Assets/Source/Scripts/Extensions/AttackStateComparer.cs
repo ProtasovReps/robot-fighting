@@ -15,7 +15,7 @@ namespace Extensions
                 { AttackType.UpAttack, typeof(UpAttackState) },
                 { AttackType.DownAttack, typeof(DownAttackState) },
                 { AttackType.Special, typeof(SpecialAttackState) },
-                { AttackType.Super, typeof(SuperAttackState) }
+                { AttackType.Super, typeof(SuperAttackState) },
             };
         }
 

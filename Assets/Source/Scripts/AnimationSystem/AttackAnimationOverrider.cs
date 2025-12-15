@@ -35,7 +35,7 @@ namespace AnimationSystem
             {
                 typeof(UpAttackState),
                 typeof(DownAttackState),
-                typeof(SuperAttackState)
+                typeof(SuperAttackState),
             };
         }
 

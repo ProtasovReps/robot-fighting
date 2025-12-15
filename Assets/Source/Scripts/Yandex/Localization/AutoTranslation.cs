@@ -17,12 +17,12 @@ namespace YG.Localization
 
         private void OnEnable()
         {
-            YG2.onSwitchLang += language =>  SetLanguage(language, _textField, _ru, _en, _tr);
+            YG2.onSwitchLang += language => SetLanguage(language, _textField, _ru, _en, _tr);
         }
 
         private void OnDisable()
         {
-            YG2.onSwitchLang -= language =>  SetLanguage(language, _textField, _ru, _en, _tr);
+            YG2.onSwitchLang -= language => SetLanguage(language, _textField, _ru, _en, _tr);
         }
     }
 }

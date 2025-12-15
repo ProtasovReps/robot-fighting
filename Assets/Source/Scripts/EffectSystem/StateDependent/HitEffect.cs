@@ -7,7 +7,7 @@ namespace EffectSystem.StateDependent
     {
         private const int OneMinus = 1;
         
-        [SerializeField, Range(0.01f, 0.1f)] private float _strength;
+        [SerializeField] [Range(0.01f, 0.1f)] private float _strength;
         [SerializeField] private Camera _camera;
         
         private Transform _transform;

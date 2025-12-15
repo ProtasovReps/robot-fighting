@@ -45,8 +45,12 @@ namespace CharacterSystem
         private async UniTaskVoid StretchDelayed()
         {
             _cancellationTokenSource = new CancellationTokenSource();
-            await UniTask.WaitForSeconds(StretchDelay, cancellationToken: _cancellationTokenSource.Token,
+            
+            await UniTask.WaitForSeconds(
+                StretchDelay,
+                cancellationToken: _cancellationTokenSource.Token,
                 cancelImmediately: true);
+            
             IsContinuing = true;
         }
 

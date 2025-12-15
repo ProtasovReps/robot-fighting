@@ -28,7 +28,7 @@ namespace YG.Localization
             {
                 { "ru", _ru },
                 { "en", _en },
-                { "tr", _tr }
+                { "tr", _tr },
             };
 
             _languages = _sprites.Select(element => element.Key).ToArray();

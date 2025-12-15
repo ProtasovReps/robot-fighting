@@ -9,14 +9,14 @@ namespace YG.Awards
     {
         private const string RewardMoneyWatched = nameof(RewardMoneyWatched);
         private const char AddSymbol = '+';
-        
-        [SerializeField, Min(1)] private int _minAddAmount;
-        [SerializeField, Min(1)] private int _maxAddAmount;
+
+        [SerializeField] [Min(1)] private int _minAddAmount;
+        [SerializeField] [Min(1)] private int _maxAddAmount;
         [SerializeField] private TMP_Text _amountView;
 
         private int _addAmount;
         private IMoneyAddable _moneyAddable;
-        
+
         [Inject]
         private void Inject(IMoneyAddable moneyAddable)
         {
@@ -32,7 +32,7 @@ namespace YG.Awards
         protected override void AddAward()
         {
             YG2.MetricaSend(RewardMoneyWatched);
-            
+
             _moneyAddable.Add(_addAmount);
             SetEnable(false);
         }

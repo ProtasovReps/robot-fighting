@@ -21,7 +21,7 @@ namespace FiniteStateMachine.Factory
                 new SuperAttackState(),
                 new StretchState(),
                 new UpDeathState(),
-                new DownDeathState()
+                new DownDeathState(),
             };
         }
     }

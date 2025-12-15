@@ -40,7 +40,7 @@ namespace AnimationSystem
         public void Subscribe()
         {
             _subscription = _stateMachine.Value
-                .Where(state => state.Type ==  typeof(TState))
+                .Where(state => state.Type == typeof(TState))
                 .Subscribe(_ => _animator.SetTrigger(_animationHash));
         }
     }

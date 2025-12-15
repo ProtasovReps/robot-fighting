@@ -25,7 +25,7 @@ namespace InputSystem.Bot.Executor
             {
                 { Directions.Left, left },
                 { Directions.Right, right },
-                { Directions.InPlace, inPlace }
+                { Directions.InPlace, inPlace },
             };
 
             _subscription = stateMachine.Value

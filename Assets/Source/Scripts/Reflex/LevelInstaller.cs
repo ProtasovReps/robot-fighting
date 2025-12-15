@@ -101,8 +101,13 @@ namespace Reflex
 
             _playerAttackFactory.Produce(placeHolderStash);
 
-            animationFactory.Produce(player.AnimatedCharacter,
-                playerStateMachine, _playerParameters, positionTranslation, _disposer, YG2.saves.SpeedStat);
+            animationFactory.Produce(
+                player.AnimatedCharacter, 
+                playerStateMachine,
+                _playerParameters,
+                positionTranslation,
+                _disposer,
+                YG2.saves.SpeedStat);
 
             overrider.Override(placeHolderStash);
 
@@ -132,8 +137,13 @@ namespace Reflex
             _botAttackFactory.Produce(placeHolderStash);
             _botMovement.Initialize(moveInput, positionTranslation);
             
-            animationFactory.Produce(_botAnimatedCharacter,
-                botStateMachine, _botParameters, positionTranslation, _disposer, _botParameters.MoveSpeed);
+            animationFactory.Produce(
+                _botAnimatedCharacter,
+                botStateMachine, 
+                _botParameters,
+                positionTranslation,
+                _disposer,
+                _botParameters.MoveSpeed);
 
             builder.AddSingleton(health);
             builder.AddSingleton(conditionBuilder);
@@ -188,7 +198,7 @@ namespace Reflex
                 { StatType.Health, YG2.saves.HealthStat },
                 { StatType.Damage, YG2.saves.DamageStat },
                 { StatType.Speed, YG2.saves.SpeedStat },
-                { StatType.Block, YG2.saves.BlockStat }
+                { StatType.Block, YG2.saves.BlockStat },
             };
 
             Wallet wallet = new(YG2.saves.Money);

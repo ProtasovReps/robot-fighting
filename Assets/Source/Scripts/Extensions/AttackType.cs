@@ -5,6 +5,6 @@
         UpAttack,
         DownAttack,
         Special,
-        Super
+        Super,
     }
 }

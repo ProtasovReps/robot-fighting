@@ -36,11 +36,17 @@ namespace FiniteStateMachine.Transitions.Factory
                 false, typeof(DownHittedState), typeof(DeathState));
             builder.MergeGlobal<DownHittedState>(
                 false, typeof(UpHittedState), typeof(DeathState));
+            
             builder.MergeGlobal<AttackState>(
-                false, typeof(UpHittedState), typeof(DownHittedState),
+                false, 
+                typeof(UpHittedState),
+                typeof(DownHittedState),
                 typeof(MoveRightState));
+            
             builder.MergeGlobal<BlockState>(
-                false, typeof(DownHittedState), typeof(DeathState),
+                false, 
+                typeof(DownHittedState),
+                typeof(DeathState),
                 typeof(MoveRightState));
         }
 

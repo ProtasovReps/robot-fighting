@@ -5,6 +5,6 @@
         Hands,
         Legs,
         UpProjectile,
-        DownProjectile
+        DownProjectile,
     }
 }
