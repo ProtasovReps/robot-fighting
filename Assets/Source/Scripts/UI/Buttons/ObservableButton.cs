@@ -6,7 +6,7 @@ namespace UI.Buttons
 {
     public abstract class ObservableButton<T> : MonoBehaviour
     {
-        private readonly Subject<T> _pressed = new();
+        private readonly Subject<T> _pressed = new ();
 
         [SerializeField] private Button _button;
 

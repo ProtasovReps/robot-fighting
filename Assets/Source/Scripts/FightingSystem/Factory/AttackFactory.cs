@@ -18,7 +18,7 @@ namespace FightingSystem.Factory
 
         public void Produce(ImplantPlaceHolderStash implantPlaceHolderStash)
         {
-            Dictionary<Type, Attack> attacks = new();
+            Dictionary<Type, Attack> attacks = new ();
            
             Damage baseDamage = GetBaseDamage();
 

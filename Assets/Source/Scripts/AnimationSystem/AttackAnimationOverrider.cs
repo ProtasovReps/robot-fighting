@@ -41,7 +41,7 @@ namespace AnimationSystem
 
         public void Override(ImplantPlaceHolderStash placeHolderStash)
         {
-            AnimatorOverrideController overrideController = new(_animator.runtimeAnimatorController);
+            AnimatorOverrideController overrideController = new (_animator.runtimeAnimatorController);
 
             foreach (ImplantPlaceHolder placeHolder in placeHolderStash.ActivePlaceHolders)
             {

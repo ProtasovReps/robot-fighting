@@ -2,18 +2,18 @@ using System.Collections.Generic;
 using AnimationSystem;
 using AnimationSystem.Factory;
 using CharacterSystem;
+using CharacterSystem.CharacterHealth;
+using CharacterSystem.Dying;
 using CharacterSystem.Parameters;
-using HitSystem;
+using EffectSystem.Particle;
 using Extensions;
 using FightingSystem;
-using CharacterSystem.Dying;
 using FightingSystem.Factory;
 using FiniteStateMachine;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.Factory;
 using FiniteStateMachine.Transitions.Factory;
-using CharacterSystem.CharacterHealth;
-using EffectSystem.Particle;
+using HitSystem;
 using HitSystem.Factory;
 using ImplantSystem;
 using ImplantSystem.Factory;
@@ -27,7 +27,6 @@ using UI.Store;
 using UnityEngine;
 using YG;
 using YG.Saver;
-using BotMovement = MovementSystem.BotMovement;
 using State = FiniteStateMachine.States.State;
 
 namespace Reflex
@@ -66,7 +65,7 @@ namespace Reflex
                 _defaultSavesInstaller.Install();
             }
 
-            AnimationFactory animationFactory = new();
+            AnimationFactory animationFactory = new ();
 
             InstallBot(animationFactory, containerBuilder);
             InstallPlayer(animationFactory, containerBuilder);
@@ -77,10 +76,10 @@ namespace Reflex
         {
             Fighter player = _fighterSpawner.Spawn();
             State[] states = new PlayerStateFactory().Produce();
-            PlayerStateMachine playerStateMachine = new(states);
-            PlayerConditionBuilder conditionBuilder = new();
-            PlayerHealth health = new(YG2.saves.HealthStat);
-            EquipedImplantSaver equipedImplantSaver = new(new Hasher<ImplantView>());
+            PlayerStateMachine playerStateMachine = new (states);
+            PlayerConditionBuilder conditionBuilder = new ();
+            PlayerHealth health = new (YG2.saves.HealthStat);
+            EquipedImplantSaver equipedImplantSaver = new (new Hasher<ImplantView>());
 
             player.Initialize();
             _playerHitFactory.Initialize(player.HitColliderStash);
@@ -89,15 +88,15 @@ namespace Reflex
 
             ImplantPlaceHolderStash placeHolderStash = _playerImplantFactory.Produce();
             HitReader hitReader = _playerHitFactory.Produce(health, playerStateMachine, conditionBuilder, _disposer);
-            PlayerDeath death = new(hitReader, health, conditionBuilder);
+            PlayerDeath death = new (hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallPlayerInput(builder, death);
-            PositionTranslation positionTranslation = new(_playerParameters.transform, YG2.saves.SpeedStat);
+            PositionTranslation positionTranslation = new (_playerParameters.transform, YG2.saves.SpeedStat);
             
             _playerMovement.Initialize(moveInput, positionTranslation);
             _animationStateMapper.Initialize();
 
-            AttackAnimationOverrider overrider = new(player.AnimatedCharacter.Animator, _animationStateMapper);
-            SuperAttackCharge attackCharge = new(hitReader, playerStateMachine, conditionBuilder);
+            AttackAnimationOverrider overrider = new (player.AnimatedCharacter.Animator, _animationStateMapper);
+            SuperAttackCharge attackCharge = new (hitReader, playerStateMachine, conditionBuilder);
 
             _playerAttackFactory.Produce(placeHolderStash);
 
@@ -124,14 +123,14 @@ namespace Reflex
         private void InstallBot(AnimationFactory animationFactory, ContainerBuilder builder)
         {
             State[] states = new BotStateFactory().Produce();
-            BotStateMachine botStateMachine = new(states);
-            BotConditionBuilder conditionBuilder = new();
-            BotHealth health = new(_botParameters.StartHealthValue);
+            BotStateMachine botStateMachine = new (states);
+            BotConditionBuilder conditionBuilder = new ();
+            BotHealth health = new (_botParameters.StartHealthValue);
             ImplantPlaceHolderStash placeHolderStash = _botImplantFactory.Produce();
             HitReader hitReader = _botHitFactory.Produce(health, botStateMachine, conditionBuilder, _disposer);
             BotDeath death = new BotDeath(hitReader, health, conditionBuilder);
             IMoveInput moveInput = InstallBotInput(builder, death);
-            PositionTranslation positionTranslation = new(_botParameters.transform, _botParameters.MoveSpeed);
+            PositionTranslation positionTranslation = new (_botParameters.transform, _botParameters.MoveSpeed);
 
             _disposer.Add(death);
             _botAttackFactory.Produce(placeHolderStash);
@@ -153,13 +152,13 @@ namespace Reflex
         private IMoveInput InstallBotInput(ContainerBuilder builder, BotDeath death)
         {
             State[] states = new BotInputStateFactory().Produce();
-            BotInputStateMachine stateMachine = new(states);
-            BotInputConditionBuilder conditionBuilder = new();
-            BotMoveInput botMoveInput = new();
-            BotFightInput botFightInput = new();
+            BotInputStateMachine stateMachine = new (states);
+            BotInputConditionBuilder conditionBuilder = new ();
+            BotMoveInput botMoveInput = new ();
+            BotFightInput botFightInput = new ();
             Dictionary<float, DistanceValidator> directions = _botDirectionValidationFactory.Produce();
-            ValidatedInput validatedBotInput = new(_botParameters.transform, botMoveInput, directions);
-            ActionStash stash = new(botMoveInput, botFightInput, _botParameters);
+            ValidatedInput validatedBotInput = new (_botParameters.transform, botMoveInput, directions);
+            ActionStash stash = new (botMoveInput, botFightInput, _botParameters);
 
             _botTransitionFactory.Initialize(validatedBotInput, botFightInput, death);
             _botActionFactory.InstallActions(stash, botMoveInput, stateMachine, _disposer);
@@ -174,11 +173,11 @@ namespace Reflex
 
         private IMoveInput InstallPlayerInput(ContainerBuilder builder, PlayerDeath death)
         {
-            UserInput input = new();
-            PlayerMoveInputReader moveInputReader = new(input);
-            PlayerAttackInputReader attackInputReader = new(input);
+            UserInput input = new ();
+            PlayerMoveInputReader moveInputReader = new (input);
+            PlayerAttackInputReader attackInputReader = new (input);
             Dictionary<float, DistanceValidator> directions = _playerDirectionValidationFactory.Produce();
-            ValidatedInput validatedInput = new(_playerParameters.transform, moveInputReader, directions);
+            ValidatedInput validatedInput = new (_playerParameters.transform, moveInputReader, directions);
 
             _playerTransitionFactory.Initialize(moveInputReader, attackInputReader, death);
 
@@ -201,11 +200,11 @@ namespace Reflex
                 { StatType.Block, YG2.saves.BlockStat },
             };
 
-            Wallet wallet = new(YG2.saves.Money);
-            CharacterStats stats = new(startStats);
+            Wallet wallet = new (YG2.saves.Money);
+            CharacterStats stats = new (startStats);
 
-            WalletSaver walletSaver = new(wallet);
-            CharacterStatSaver statSaver = new(stats);
+            WalletSaver walletSaver = new (wallet);
+            CharacterStatSaver statSaver = new (stats);
 
             _saver.Add(walletSaver);
             _saver.Add(statSaver);

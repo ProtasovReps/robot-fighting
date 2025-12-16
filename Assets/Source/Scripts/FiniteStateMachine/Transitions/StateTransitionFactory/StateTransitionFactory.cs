@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace FiniteStateMachine.Transitions.Factory
 {
-    public abstract class StateTransitionFactory<TStateMachine, KCondtionBuilder> : MonoBehaviour
+    public abstract class StateTransitionFactory<TStateMachine, TCondtionBuilder> : MonoBehaviour
         where TStateMachine : StateMachine
-        where KCondtionBuilder : ConditionBuilder
+        where TCondtionBuilder : ConditionBuilder
     {
         [SerializeField] private Disposer _disposer;
         
@@ -16,7 +16,7 @@ namespace FiniteStateMachine.Transitions.Factory
         private StateMachine _stateMachine;
 
         [Inject]
-        private void Inject(TStateMachine stateMachine, KCondtionBuilder conditionBuilder)
+        private void Inject(TStateMachine stateMachine, TCondtionBuilder conditionBuilder)
         {
             _stateMachine = stateMachine;
             _builder = conditionBuilder;

@@ -6,7 +6,7 @@ namespace Extensions
 {
     public class DownCounter : IValueChangeable<int>
     {
-        private readonly ReactiveProperty<int> _value = new();
+        private readonly ReactiveProperty<int> _value = new ();
         
         public ReadOnlyReactiveProperty<int> Value => _value;
         

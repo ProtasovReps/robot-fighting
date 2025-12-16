@@ -8,7 +8,7 @@ namespace AnimationSystem
     [Serializable]
     public class AnimationStateMapper
     {
-        private readonly Dictionary<string, Type> _names = new();
+        private readonly Dictionary<string, Type> _names = new ();
         
         [SerializeField] private AnimationClip[] _upAttackAnimations;
         [SerializeField] private AnimationClip[] _downAttackAnimations;

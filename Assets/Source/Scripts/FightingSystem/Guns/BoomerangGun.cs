@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using R3;
+using UnityEngine;
 
 namespace FightingSystem.Guns
 {
     public class BoomerangGun : Gun
     {
-        private readonly Dictionary<Projectile, Boomerang> _boomerangs = new();
+        private readonly Dictionary<Projectile, Boomerang> _boomerangs = new ();
         
         [SerializeField] private float _pivotDelay;
 

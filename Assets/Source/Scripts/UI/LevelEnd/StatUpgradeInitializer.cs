@@ -18,7 +18,7 @@ namespace UI.LevelEnd
 
         private void Awake()
         {
-            DownCounter counter = new();
+            DownCounter counter = new ();
 
             counter.Reset();
             counter.AddPoints(_skillPoints);

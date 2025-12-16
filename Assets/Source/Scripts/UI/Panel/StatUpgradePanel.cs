@@ -1,9 +1,9 @@
 ﻿using CharacterSystem;
 using Extensions;
-using UI.Buttons.StatUpgrade;
-using UnityEngine;
 using R3;
 using Reflex.Attributes;
+using UI.Buttons.StatUpgrade;
+using UnityEngine;
 
 namespace UI.Panel
 {

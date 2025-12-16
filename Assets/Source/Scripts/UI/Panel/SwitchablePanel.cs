@@ -5,7 +5,7 @@ namespace UI.Panel
 {
     public class SwitchablePanel : MonoBehaviour
     {
-        private readonly Subject<bool> _enableSwitched = new();
+        private readonly Subject<bool> _enableSwitched = new ();
 
         public Observable<bool> EnableSwitched => _enableSwitched;
 

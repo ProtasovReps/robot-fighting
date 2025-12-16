@@ -10,8 +10,8 @@ namespace FiniteStateMachine.Conditions
 {
     public class ConditionBuilder : IConditionAddable
     {
-        private readonly Dictionary<Type, Func<Unit, bool>> _bareConditions = new();
-        private readonly Dictionary<Type, Condition> _buildedConditions = new();
+        private readonly Dictionary<Type, Func<Unit, bool>> _bareConditions = new ();
+        private readonly Dictionary<Type, Condition> _buildedConditions = new ();
 
         public void Add<TKeyState>(Func<Unit, bool> condition)
             where TKeyState : State

@@ -7,7 +7,7 @@ namespace ImplantSystem.PlaceHolders
 {
     public class ImplantPlaceHolder : MonoBehaviour
     {
-        private readonly List<AttackImplant> _implants = new();
+        private readonly List<AttackImplant> _implants = new ();
         
         [field: SerializeField] public AttackPartSide AttackPartSide { get; private set; }     
 

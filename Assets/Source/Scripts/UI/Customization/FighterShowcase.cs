@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 public class FighterShowcase : MonoBehaviour
 {
-    private readonly Subject<SkinView> _skinChanged = new();
+    private readonly Subject<SkinView> _skinChanged = new ();
 
     [SerializeField] private SkinView[] _skinViews;
     [SerializeField] private Transform _spawnPoint;
