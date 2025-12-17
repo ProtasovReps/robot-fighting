@@ -5,7 +5,7 @@ namespace EffectSystem.StateDependent
 {
     public class DeathEffect : StateDependentEffect<DeathState>
     {
-        [SerializeField, Range(0.1f, 1f)] private float _targetTimeScale;
+        [SerializeField] [Range(0.1f, 1f)] private float _targetTimeScale;
         [SerializeField] private Transform[] _objectsToDisable;
         
         protected override void Apply()

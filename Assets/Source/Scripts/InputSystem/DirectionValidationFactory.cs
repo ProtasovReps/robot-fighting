@@ -14,7 +14,7 @@ namespace InputSystem
             return new Dictionary<float, DistanceValidator>
             {
                 { Directions.Left, _leftDistanceValidator },
-                { Directions.Right, _rightDistanceValidator }
+                { Directions.Right, _rightDistanceValidator },
             };
         }
     }

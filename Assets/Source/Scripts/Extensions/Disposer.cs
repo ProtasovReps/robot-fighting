@@ -6,7 +6,7 @@ namespace Extensions
 {
     public class Disposer : MonoBehaviour
     {
-        private readonly List<IDisposable> _disposables = new();
+        private readonly List<IDisposable> _disposables = new ();
 
         private void OnDestroy()
         {

@@ -1,8 +1,8 @@
 ﻿using CharacterSystem.Dying;
 using Extensions;
-using HitSystem;
 using FiniteStateMachine.Conditions;
 using FiniteStateMachine.States;
+using HitSystem;
 using InputSystem;
 using R3;
 using UnityEngine;
@@ -36,15 +36,25 @@ namespace FiniteStateMachine.Transitions.Factory
             builder.MergeGlobal<DeathState>(false);
 
             builder.MergeGlobal<JumpState>(
-                false, typeof(MoveJumpState), typeof(DeathState),
-                typeof(DownHittedState), typeof(UpHittedState));
+                false,
+                typeof(MoveJumpState),
+                typeof(DeathState),
+                typeof(DownHittedState),
+                typeof(UpHittedState));
+            
             builder.MergeGlobal<UpHittedState>(
                 false, typeof(DownHittedState), typeof(DeathState));
             builder.MergeGlobal<DownHittedState>(
                 false, typeof(UpHittedState), typeof(DeathState));
+           
             builder.MergeGlobal<AttackState>(
-                false, typeof(UpHittedState), typeof(DownHittedState),
-                typeof(JumpState), typeof(BlockState), typeof(MoveLeftState));
+                false, 
+                typeof(UpHittedState), 
+                typeof(DownHittedState),
+                typeof(JumpState),
+                typeof(BlockState),
+                typeof(MoveLeftState));
+            
             builder.MergeGlobal<BlockState>(
                 false, typeof(DownHittedState), typeof(DeathState));
         }

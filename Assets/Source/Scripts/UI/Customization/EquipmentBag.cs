@@ -8,7 +8,7 @@ namespace UI.Customization
 {
     public class EquipmentBag : MonoBehaviour
     {
-        private readonly List<EquipmentPanel> _equipmentPanels = new();
+        private readonly List<EquipmentPanel> _equipmentPanels = new ();
 
         [SerializeField] private Transform _placeHolder;
         [SerializeField] private EquipmentPanel _prefab;

@@ -33,7 +33,7 @@ namespace AnimationSystem.Factory
                 new TriggerAnimation<BlockState>(stateMachine, animator, MotionHashes.Block),
                 new TriggerAnimation<SpecialAttackState>(stateMachine, animator, MotionHashes.Special),
                 new TriggerAnimation<UpDeathState>(stateMachine, animator, MotionHashes.UpDeath),
-                new TriggerAnimation<DownDeathState>(stateMachine, animator, MotionHashes.DownDeath)
+                new TriggerAnimation<DownDeathState>(stateMachine, animator, MotionHashes.DownDeath),
             };
 
             var durationChanger = new AnimationDurationChanger(animator, stateMachine, fighterParameters);

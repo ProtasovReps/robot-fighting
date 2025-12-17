@@ -10,7 +10,7 @@ namespace UI.Guide
 {
     public class Replic : Animatable
     {
-        private readonly Subject<Unit> _executed = new();
+        private readonly Subject<Unit> _executed = new ();
 
         [SerializeField] private TMP_Text _text;
         [SerializeField] private UnitButton _nextButton;

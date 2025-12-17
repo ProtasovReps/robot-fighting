@@ -12,7 +12,7 @@ namespace FiniteStateMachine.Factory
                 new WallNearbyState(),
                 new PlayerNearbyState(),
                 new WallOpponentNearbyState(),
-                new ValidAttackDistanceState()
+                new ValidAttackDistanceState(),
             };
         }
     }

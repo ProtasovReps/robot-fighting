@@ -12,7 +12,7 @@ namespace YG.Awards
         [SerializeField] private TMP_Text _awardAmountText;
         [SerializeField] private TMP_Text _multipliedAwardText;
         [SerializeField] private Chest _chest;
-        [SerializeField, Min(1)] private int _multiplier;
+        [SerializeField] [Min(1)] private int _multiplier;
         
         private void Start()
         {

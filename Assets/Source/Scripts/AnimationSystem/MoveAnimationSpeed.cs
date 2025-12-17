@@ -1,8 +1,8 @@
 ﻿using System;
 using Extensions;
 using MovementSystem;
-using UnityEngine;
 using R3;
+using UnityEngine;
 
 namespace AnimationSystem
 {
@@ -14,7 +14,9 @@ namespace AnimationSystem
         private readonly IDisposable _subscription;
         private readonly float _maxMoveSpeed;
 
-        public MoveAnimationSpeed(Animator animator, PositionTranslation positionTranslation,
+        public MoveAnimationSpeed(
+            Animator animator,
+            PositionTranslation positionTranslation,
             float maxMoveSpeed)
         {
             _animator = animator;

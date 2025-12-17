@@ -16,7 +16,7 @@ namespace FightingSystem
         private readonly IDisposable _subscription;
         private readonly IDamageable<Damage> _damageable;
 
-        private CancellationTokenSource _tokenSource;
+        private CancellationTokenSource _source;
 
         public Block(
             float blockDuration,
@@ -50,8 +50,8 @@ namespace FightingSystem
 
         public void Dispose()
         {
-            _tokenSource?.Cancel();
-            _tokenSource?.Dispose();
+            _source?.Cancel();
+            _source?.Dispose();
             _subscription.Dispose();
         }
 
@@ -68,11 +68,10 @@ namespace FightingSystem
 
         private async UniTaskVoid Execute()
         {
-            _tokenSource = new CancellationTokenSource();
+            _source = new CancellationTokenSource();
 
             IsContinuing = true;
-            await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _tokenSource.Token,
-                cancelImmediately: true);
+            await UniTask.WaitForSeconds(_blockDuration, cancellationToken: _source.Token, cancelImmediately: true);
             IsContinuing = false;
         }
     }

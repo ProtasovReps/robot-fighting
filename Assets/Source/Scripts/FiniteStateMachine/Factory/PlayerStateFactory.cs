@@ -20,7 +20,7 @@ namespace FiniteStateMachine.Factory
                 new BlockState(),
                 new SuperAttackState(),
                 new UpDeathState(),
-                new DownDeathState()
+                new DownDeathState(),
             };
         }
     }

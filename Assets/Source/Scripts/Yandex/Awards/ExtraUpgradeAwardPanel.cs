@@ -7,7 +7,7 @@ namespace YG.Awards
     {
         private const string RewardPointsWatched = nameof(RewardPointsWatched);
         
-        [SerializeField, Min(1)] private int _addAmount;
+        [SerializeField] [Min(1)] private int _addAmount;
         
         private DownCounter _downCounter;
 

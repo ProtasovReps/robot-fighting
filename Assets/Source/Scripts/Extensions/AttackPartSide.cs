@@ -7,6 +7,6 @@
         LeftLeg,
         RightLeg,
         UpProjectile,
-        DownProjectile
+        DownProjectile,
     }
 }
