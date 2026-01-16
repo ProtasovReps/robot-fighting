@@ -2,7 +2,7 @@
 
 ![Header](https://i.ibb.co/jkgnZSpR/Banner3D.png)
 
-Cyberpunk WebGL fighting game about robots with leveling and customization of techniques and characters 🤖
+_Cyberpunk WebGL fighting game about robots with leveling and customization of techniques and characters_
 
 ## [▶️ Play](https://yandex.com/games/app/469671?draft=true&lang=en)
 
