@@ -1,8 +1,10 @@
+# Robot Fighting 🤖
+
 ![Header](https://i.ibb.co/jkgnZSpR/Banner3D.png)
 
-# Robot Fighting 
-
 Cyberpunk WebGL fighting game about robots with leveling and customization of techniques and characters 🤖
+
+## [▶️ Game Link](https://yandex.com/games/app/469671?draft=true&lang=en)
 
 ## Stack
 
@@ -28,8 +30,6 @@ Initially, the robot is weak and slow, after each level a certain number of _ski
 Every fifth level is a _boss fight_, bosses differ in their behavior from ordinary enemies and have __special techniques__. 🤖
 
 The game is not just about keystrokes or mindless button taps. Here you will have to __develop your own strategy to win.__ 🧠
-
-## [▶️ Game Link](https://yandex.com/games/app/469671?draft=true&lang=en)
 
 ## Contacts 📫
 
