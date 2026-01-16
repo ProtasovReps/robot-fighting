@@ -6,7 +6,7 @@ Cyberpunk WebGL fighting game about robots with leveling and customization of te
 
 ## [▶️ Play](https://yandex.com/games/app/469671?draft=true&lang=en)
 
-## Stack
+## Stack 💡
 
 - Unity 2022.3.7f1
 - R3
@@ -16,7 +16,7 @@ Cyberpunk WebGL fighting game about robots with leveling and customization of te
 - UniTask
 - YG Plugin 2
 
-## Mechanics
+## Mechanics 🔩
 
 ![Screenshot](https://i.ibb.co/QjnkGGBZ/orig.jpg)
 As befits any fighting game, here you have to beat your opponent! 🔥
