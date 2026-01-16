@@ -25,7 +25,7 @@ There are _three_ attacks in your robot's equipment - __upper__, __lower__, and 
 
 Initially, the robot is weak and slow, after each level a certain number of _skill points_ are given, so you make your bot more __agile, stronger, and more resilient__. 💪🏻
 
-![Gameplay](https://i.ibb.co/CKdV52f9/Robot-Gameplay.gif)
+![Gameplay](https://i.ibb.co/4nXk28nz/mamochki-1.gif)
 
 Every fifth level is a _boss fight_, bosses differ in their behavior from ordinary enemies and have __special techniques__. 🤖
 
