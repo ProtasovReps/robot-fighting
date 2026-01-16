@@ -4,7 +4,7 @@
 
 Cyberpunk WebGL fighting game about robots with leveling and customization of techniques and characters 🤖
 
-## [▶️ Game Link](https://yandex.com/games/app/469671?draft=true&lang=en)
+## [▶️ Play](https://yandex.com/games/app/469671?draft=true&lang=en)
 
 ## Stack
 
