@@ -34,6 +34,7 @@ namespace UI.Guide
             }
 
             _userInput.Disable();
+            
             SetGuideActive(true);
             StartReplic();
         }
@@ -72,6 +73,7 @@ namespace UI.Guide
         private void SetGuideActive(bool isActive)
         {
             Time.timeScale = isActive ? _enabledTimeScale : DefaultTimeScale;
+            
             gameObject.SetActive(isActive);
             
             foreach (Transform disabling in _objectsToDisable)
