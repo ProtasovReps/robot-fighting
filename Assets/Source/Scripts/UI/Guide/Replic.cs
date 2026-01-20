@@ -26,9 +26,11 @@ namespace UI.Guide
             _nextButton.Pressed
                 .Subscribe(_ => Cancel())
                 .AddTo(this);
+
+            Say();
         }
 
-        public virtual void Say()
+        protected virtual void Say()
         {
             Cancel();
 

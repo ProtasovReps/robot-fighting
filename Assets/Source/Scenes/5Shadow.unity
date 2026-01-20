@@ -356,6 +356,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmokeDark (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2692264837015159025, guid: 31e22c73472ee154287c37ac2a23fc81, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2692264837015159025, guid: 31e22c73472ee154287c37ac2a23fc81, type: 3}
+      propertyPath: InitialModule.startColor.minColor.a
+      value: 0.43137255
+      objectReference: {fileID: 0}
     - target: {fileID: 7651211753768540352, guid: 31e22c73472ee154287c37ac2a23fc81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.20902514
@@ -1742,11 +1750,15 @@ PrefabInstance:
     - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _colliderSwitcher
       value: 
-      objectReference: {fileID: 7362363793497753300}
+      objectReference: {fileID: 0}
     - target: {fileID: 5552862501096592642, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _fighterParameters
       value: 
       objectReference: {fileID: 7002616282951017619}
+    - target: {fileID: 6402419231275607692, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
+      propertyPath: _levelNumber
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7192326786253084433, guid: 35ec315b987668c4687f2ff6765c9573, type: 3}
       propertyPath: _hitImpact
       value: 
@@ -2100,7 +2112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <BaseImpulse>k__BackingField
-      value: 1.5
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <IdleDuration>k__BackingField
@@ -2128,7 +2140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <StartHealthValue>k__BackingField
-      value: 100
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4814461825682681044, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
       propertyPath: <OpponentLayerMask>k__BackingField.m_Bits
@@ -2199,17 +2211,6 @@ PrefabInstance:
       addedObject: {fileID: 1033307423}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
---- !u!114 &7362363793497753300 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2689881653038861166, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
-  m_PrefabInstance: {fileID: 7362363793497753299}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cb280ac6d64018b579e386a8b52b33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7362363793497753303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5126417679251285239, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}

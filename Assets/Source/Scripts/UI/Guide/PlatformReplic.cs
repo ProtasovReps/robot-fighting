@@ -8,7 +8,7 @@ namespace UI.Guide
     {
         [SerializeField] private bool _isPC;
         
-        public override void Say()
+        protected override void Say()
         {
             if (YG2.envir.isDesktop == _isPC)
             {

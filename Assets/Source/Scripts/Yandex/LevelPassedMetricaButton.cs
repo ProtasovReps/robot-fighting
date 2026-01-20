@@ -6,13 +6,15 @@ namespace YG
 {
     public class LevelPassedMetricaButton : MonoBehaviour
     {
+        private const string Passed = nameof(Passed);
+        
         [SerializeField] private UnitButton _unitButton;
         [SerializeField] [Min(1)] private int _levelNumber;
         
         private void Awake()
         {
             _unitButton.Pressed
-                .Subscribe(_ => YG2.MetricaSend($"{_levelNumber}Passed"))
+                .Subscribe(_ => YG2.MetricaSend(_levelNumber + Passed))
                 .AddTo(this);
         }
     }
