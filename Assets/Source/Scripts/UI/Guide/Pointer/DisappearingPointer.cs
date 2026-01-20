@@ -6,7 +6,7 @@ namespace UI.Guide.Pointers
 {
     public class DisappearingPointer : MonoBehaviour
     {
-        private readonly Subject<Unit> _disappeared = new();
+        private readonly Subject<Unit> _disappeared = new ();
         
         [SerializeField] private Button _button;
 

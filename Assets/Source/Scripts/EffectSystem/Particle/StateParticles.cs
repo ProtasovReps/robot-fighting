@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace EffectSystem.Particle
 {
-    public class StateParticles<TMachine, KState> : MonoBehaviour
+    public class StateParticles<TMachine, TState> : MonoBehaviour
         where TMachine : IStateMachine
-        where KState : State
+        where TState : State
     {
         [SerializeField] private ParticleSystem[] _effects;
 
@@ -16,7 +16,7 @@ namespace EffectSystem.Particle
         private void Inject(TMachine machine)
         {
             machine.Value
-                .Where(value => value is KState)
+                .Where(value => value is TState)
                 .Subscribe(_ => Play())
                 .AddTo(this);
         }

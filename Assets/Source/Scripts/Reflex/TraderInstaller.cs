@@ -17,9 +17,9 @@ namespace Reflex
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            Wallet wallet = new(YG2.saves.Money);
-            WalletSaver walletSaver = new(wallet);
-            ImplantSaver implantSaver = new(new Hasher<ImplantView>());
+            Wallet wallet = new (YG2.saves.Money);
+            WalletSaver walletSaver = new (wallet);
+            ImplantSaver implantSaver = new (new Hasher<ImplantView>());
             
             _progressSaver.Add(walletSaver);
             _progressSaver.Add(implantSaver);

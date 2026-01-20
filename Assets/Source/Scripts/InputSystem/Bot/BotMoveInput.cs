@@ -7,7 +7,7 @@ namespace InputSystem.Bot
 {
     public class BotMoveInput : IMoveInput, IDisposable
     {
-        private readonly ReactiveProperty<float> _direction = new();
+        private readonly ReactiveProperty<float> _direction = new ();
         private readonly IDisposable _subscription;
 
         public BotMoveInput()

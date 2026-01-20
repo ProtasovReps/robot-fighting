@@ -37,10 +37,10 @@ namespace Reflex
         {
             _implantHasher = new Hasher<ImplantView>();
             
-            Wallet wallet = new(YG2.saves.Money);
-            WalletSaver walletSaver = new(wallet);
-            EquipedImplantSaver equipedImplantSaver = new(_implantHasher);
-            SkinSaver skinSaver = new(new Hasher<Fighter>());
+            Wallet wallet = new (YG2.saves.Money);
+            WalletSaver walletSaver = new (wallet);
+            EquipedImplantSaver equipedImplantSaver = new (_implantHasher);
+            SkinSaver skinSaver = new (new Hasher<Fighter>());
             
             _progressSaver.Add(walletSaver);
             _progressSaver.Add(skinSaver);
@@ -56,7 +56,7 @@ namespace Reflex
 
         private void InstallButtons()
         {
-            List<EquipButton> equipButtons = new();
+            List<EquipButton> equipButtons = new ();
 
             foreach (EquipmentPanel panel in _bag.EquipmentPanels)
             {

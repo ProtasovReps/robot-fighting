@@ -7,7 +7,7 @@ namespace FightingSystem.Guns
 {
     public abstract class ProjectileShooter : Shooter
     {
-        private readonly Subject<Projectile> _executed = new();
+        private readonly Subject<Projectile> _executed = new ();
         
         [SerializeField] private float _shootForce;
         

@@ -7,7 +7,7 @@ namespace ImplantSystem.Factory
 {
     public class BotImplantFactory : ImplantFactory
     {
-        private readonly List<AttackImplant> _attackImplants = new();
+        private readonly List<AttackImplant> _attackImplants = new ();
 
         [SerializeField] private ImplantPlaceHolderStash _placeHolderStash;        
         [SerializeField] private AttackImplant _upAttackImplant;

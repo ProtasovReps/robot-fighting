@@ -14,8 +14,12 @@ namespace InputSystem.Bot.Factory
             BotAction special = stash.Get(MotionHashes.Special);
             BotAction block = stash.Get(MotionHashes.Block);
             
-            disposer.Add(new RandomActionExecutor<PlayerNearbyState>(machine, block, downAttack,
+            disposer.Add(new RandomActionExecutor<PlayerNearbyState>(
+                machine,
+                block,
+                downAttack,
                 special));
+            
             disposer.Add(new RandomActionExecutor<ValidAttackDistanceState>(machine, upAttack));
             
             disposer.Add(upAttack);

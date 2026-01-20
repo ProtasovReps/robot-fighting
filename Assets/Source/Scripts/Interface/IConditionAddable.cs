@@ -6,6 +6,7 @@ namespace Interface
 {
     public interface IConditionAddable
     {
-        void Add<TKeyState>(Func<Unit, bool> condition) where TKeyState : State;
+        void Add<TKeyState>(Func<Unit, bool> condition)
+            where TKeyState : State;
     }
 }

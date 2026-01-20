@@ -1,7 +1,7 @@
-﻿using CharacterSystem.Parameters;
+﻿using CharacterSystem.CharacterHealth;
+using CharacterSystem.Parameters;
 using Extensions;
 using FightingSystem;
-using CharacterSystem.CharacterHealth;
 using HitSystem.FighterParts;
 using HitSystem.HitTypes;
 using Interface;
@@ -21,10 +21,10 @@ namespace HitSystem.Factory
             IConditionAddable conditionAddable,
             Disposer disposer)
         {
-            Torso torso = new(health);
-            Legs legs = new(health);
+            Torso torso = new (health);
+            Legs legs = new (health);
             float blockValue = GetBlockValue();
-            Block block = new(_fighterParameters.BlockDuration, blockValue, torso, machine, conditionAddable);
+            Block block = new (_fighterParameters.BlockDuration, blockValue, torso, machine, conditionAddable);
 
             disposer.Add(block);
             

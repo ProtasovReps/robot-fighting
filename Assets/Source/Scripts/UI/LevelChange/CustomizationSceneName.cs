@@ -3,6 +3,6 @@
     public enum CustomizationSceneName
     {
         Customization,
-        Trader
+        Trader,
     }
 }

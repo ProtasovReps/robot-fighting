@@ -7,7 +7,7 @@ namespace YG
     public class LevelPassedMetricaButton : MonoBehaviour
     {
         [SerializeField] private UnitButton _unitButton;
-        [SerializeField, Min(1)] private int _levelNumber;
+        [SerializeField] [Min(1)] private int _levelNumber;
         
         private void Awake()
         {

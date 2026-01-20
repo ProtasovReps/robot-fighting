@@ -10,14 +10,14 @@ namespace FiniteStateMachine.Conditions
 {
     public class ConditionBuilder : IConditionAddable
     {
-        private readonly Dictionary<Type, Func<Unit, bool>> _bareConditions = new();
-        private readonly Dictionary<Type, Condition> _buildedConditions = new();
+        private readonly Dictionary<Type, Func<Unit, bool>> _bareConditions = new ();
+        private readonly Dictionary<Type, Condition> _buildedConditions = new ();
 
         public void Add<TKeyState>(Func<Unit, bool> condition)
             where TKeyState : State
         {
             Type newKey = typeof(TKeyState);
-            
+
             if (_bareConditions.ContainsKey(newKey))
             {
                 throw new ArgumentException(nameof(newKey));
@@ -36,7 +36,7 @@ namespace FiniteStateMachine.Conditions
         {
             return GetBuilded<TKeyState>().Current;
         }
-        
+
         public Func<Unit, bool> GetBare<TCondition>()
             where TCondition : State
         {
@@ -77,7 +77,7 @@ namespace FiniteStateMachine.Conditions
                 conditionPair.Value.Add(GetBare<TBareCondition>(), isExecuting);
             }
         }
-       
+
         private Condition GetBuilded<TCondition>()
             where TCondition : State
         {

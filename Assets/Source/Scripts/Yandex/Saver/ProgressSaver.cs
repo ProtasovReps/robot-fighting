@@ -6,7 +6,7 @@ namespace YG.Saver
 {
     public class ProgressSaver : MonoBehaviour
     {
-        private readonly List<ISaver> _savers = new();
+        private readonly List<ISaver> _savers = new ();
 
         public void Save()
         {

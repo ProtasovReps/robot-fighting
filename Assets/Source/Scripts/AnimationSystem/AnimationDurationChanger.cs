@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using CharacterSystem.Parameters;
 using FiniteStateMachine.States;
 using Interface;
-using UnityEngine;
 using R3;
+using UnityEngine;
 
 namespace AnimationSystem
 {
@@ -25,7 +25,7 @@ namespace AnimationSystem
             {
                 { typeof(UpHittedState), fighterParameters.StunDuration },
                 { typeof(DownHittedState), fighterParameters.DownStunDuration },
-                { typeof(BlockState), fighterParameters.BlockDuration}
+                { typeof(BlockState), fighterParameters.BlockDuration },
             };
 
             _animator = animator;
@@ -37,14 +37,14 @@ namespace AnimationSystem
         {
             _subscription?.Dispose();
         }
- 
+
         private void SetSpeed(State state)
         {
             Type stateType = state.Type;
 
             if (_stateDurations.TryGetValue(stateType, out float duration) == false)
             {
-                _animator.speed = DefaultSpeed;    
+                _animator.speed = DefaultSpeed;
                 return;
             }
 

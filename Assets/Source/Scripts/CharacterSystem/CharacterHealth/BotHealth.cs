@@ -2,7 +2,8 @@
 {
     public class BotHealth : Health
     {
-        public BotHealth(float startValue) : base(startValue)
+        public BotHealth(float startValue)
+            : base(startValue)
         {
         }
     }

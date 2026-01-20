@@ -35,7 +35,6 @@ namespace CharacterSystem
             
             fighter.transform.SetParent(_spawnPoint);
             return fighter;
-
         }
     }
 }

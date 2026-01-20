@@ -13,7 +13,7 @@ namespace UI.Switchers
 {
     public class EquipmentPanelSwitcher : MonoBehaviour
     {
-        private readonly Dictionary<AttackType, EquipmentPanel> _equipment = new();
+        private readonly Dictionary<AttackType, EquipmentPanel> _equipment = new ();
 
         private EquipedImplantSaver _implantSaver;
         
@@ -50,7 +50,7 @@ namespace UI.Switchers
 
         private List<EquipmentPanel> GetActivePanels(IEnumerable<EquipmentPanel> equipmentPanels)
         {
-            List<EquipmentPanel> activePanels = new();
+            List<EquipmentPanel> activePanels = new ();
             
             foreach (EquipmentPanel panel in equipmentPanels)
             {

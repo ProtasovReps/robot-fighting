@@ -17,7 +17,7 @@ namespace InputSystem.Bot
                 { MotionHashes.LegAttack, new Subject<Unit>() },
                 { MotionHashes.Special, new Subject<Unit>() },
                 { MotionHashes.Super, new Subject<Unit>() },
-                { MotionHashes.Block, new Subject<Unit>() }
+                { MotionHashes.Block, new Subject<Unit>() },
             };
         }
 

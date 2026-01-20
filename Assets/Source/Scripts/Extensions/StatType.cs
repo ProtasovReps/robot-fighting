@@ -5,6 +5,6 @@
         Health,
         Damage,
         Speed,
-        Block
+        Block,
     }
 }

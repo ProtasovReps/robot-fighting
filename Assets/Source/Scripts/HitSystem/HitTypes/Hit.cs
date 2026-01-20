@@ -11,7 +11,7 @@ namespace HitSystem.HitTypes
         private readonly float _stunDuration;
         private readonly IDisposable _subscription;
 
-        private CancellationTokenSource _cancellationTokenSource;
+        private CancellationTokenSource _source;
 
         protected Hit(float stunDuration, Observable<Unit> observable)
         {
@@ -30,8 +30,8 @@ namespace HitSystem.HitTypes
         public void Dispose()
         {
             _subscription.Dispose();
-            _cancellationTokenSource?.Cancel();
-            _cancellationTokenSource?.Dispose();
+            _source?.Cancel();
+            _source?.Dispose();
         }
 
         private void TakeHit()
@@ -45,14 +45,13 @@ namespace HitSystem.HitTypes
         private void Validate()
         {
             IsContinuing = false;
-            _cancellationTokenSource?.Cancel();
+            _source?.Cancel();
         }
 
         private async UniTaskVoid Execute()
         {
-            _cancellationTokenSource = new CancellationTokenSource();
-            await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _cancellationTokenSource.Token,
-                cancelImmediately: true);
+            _source = new CancellationTokenSource();
+            await UniTask.WaitForSeconds(_stunDuration, cancellationToken: _source.Token, cancelImmediately: true);
             IsContinuing = false;
         }
     }

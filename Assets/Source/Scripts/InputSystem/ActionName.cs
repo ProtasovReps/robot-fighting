@@ -6,6 +6,6 @@
         Punch,
         Kick,
         Block,
-        Super
+        Super,
     }
 }

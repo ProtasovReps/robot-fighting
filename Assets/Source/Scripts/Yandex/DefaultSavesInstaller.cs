@@ -15,10 +15,10 @@ namespace YG
         
         public void Install()
         {
-            Hasher<ImplantView> hasher = new();
-            ImplantSaver implantSaver = new(hasher);
-            EquipedImplantSaver equipedImplantSaver = new(hasher);
-            SkinSaver skinSaver = new(new Hasher<Fighter>());
+            Hasher<ImplantView> hasher = new ();
+            ImplantSaver implantSaver = new (hasher);
+            EquipedImplantSaver equipedImplantSaver = new (hasher);
+            SkinSaver skinSaver = new (new Hasher<Fighter>());
             
             equipedImplantSaver.Set(AttackType.UpAttack, _defaultUpAttackImplant);
             equipedImplantSaver.Set(AttackType.DownAttack, _defaultDownAttackImplant);

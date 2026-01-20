@@ -16,7 +16,7 @@ namespace YG.Saver
             {
                 { AttackType.UpAttack, YG2.saves.UpAttackImplant },
                 { AttackType.DownAttack, YG2.saves.DownAttackImplant },
-                { AttackType.Super, YG2.saves.SuperAttackImplant }
+                { AttackType.Super, YG2.saves.SuperAttackImplant },
             };
 
             _hasher = hasher;

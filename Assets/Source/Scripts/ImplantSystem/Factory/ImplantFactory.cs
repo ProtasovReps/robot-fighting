@@ -8,7 +8,7 @@ namespace ImplantSystem.Factory
 {
     public abstract class ImplantFactory : MonoBehaviour
     {
-        private readonly Dictionary<AttackPart, AttackPartSide> _attackSides = new();
+        private readonly Dictionary<AttackPart, AttackPartSide> _attackSides = new ();
 
         public ImplantPlaceHolderStash Produce()
         {

@@ -11,6 +11,10 @@ namespace HitSystem
         private Legs _legs;
         private Torso _torso;
 
+        public Observable<Damage> Hitted => _hitted;
+        public Observable<Unit> TorsoHitted => _torso.Hitted.Select(_ => Unit.Default);
+        public Observable<Unit> LegsHitted => _legs.Hitted.Select(_ => Unit.Default);
+        
         public void Initialize(Torso torso, Legs legs)
         {
             _hitted = new Subject<Damage>();
@@ -21,9 +25,5 @@ namespace HitSystem
                 .Subscribe(damage => _hitted.OnNext(damage))
                 .AddTo(this);
         }
-
-        public Observable<Damage> Hitted => _hitted;
-        public Observable<Unit> TorsoHitted => _torso.Hitted.Select(_ => Unit.Default);
-        public Observable<Unit> LegsHitted => _legs.Hitted.Select(_ => Unit.Default);
     }
 }

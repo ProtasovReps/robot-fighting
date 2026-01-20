@@ -35,13 +35,13 @@ namespace AnimationSystem
             {
                 typeof(UpAttackState),
                 typeof(DownAttackState),
-                typeof(SuperAttackState)
+                typeof(SuperAttackState),
             };
         }
 
         public void Override(ImplantPlaceHolderStash placeHolderStash)
         {
-            AnimatorOverrideController overrideController = new(_animator.runtimeAnimatorController);
+            AnimatorOverrideController overrideController = new (_animator.runtimeAnimatorController);
 
             foreach (ImplantPlaceHolder placeHolder in placeHolderStash.ActivePlaceHolders)
             {

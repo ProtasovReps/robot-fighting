@@ -8,13 +8,13 @@ namespace UI.LevelEnd
 {
     public class Chest : MonoBehaviour
     {
-        [SerializeField, Min(0)] private int _minAwardValue;
-        [SerializeField, Min(0)] private int _maxAwardValue;
+        [SerializeField] [Min(0)] private int _minAwardValue;
+        [SerializeField] [Min(0)] private int _maxAwardValue;
 
         private IMoneyAddable _moneyAddable;
 
         public int AwardAmount { get; private set; }
-        
+
         [Inject]
         private void Inject(IMoneyAddable moneyAddable)
         {
@@ -22,7 +22,7 @@ namespace UI.LevelEnd
             {
                 throw new ArgumentOutOfRangeException(nameof(_minAwardValue));
             }
-            
+
             _moneyAddable = moneyAddable;
             AwardAmount = Random.Range(_minAwardValue, _maxAwardValue);
         }

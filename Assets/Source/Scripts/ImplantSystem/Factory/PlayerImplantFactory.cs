@@ -13,23 +13,23 @@ namespace ImplantSystem.Factory
         [SerializeField] private ImplantView[] _upAttackImplants;
         [SerializeField] private ImplantView[] _downAttackImplants;
         [SerializeField] private ImplantView[] _superAttackImplants;
-        
+
         private ImplantPlaceHolderStash _stash;
         private EquipedImplantSaver _implantSaver;
-        
+
         public void Initialize(ImplantPlaceHolderStash stash, EquipedImplantSaver equipedImplantSaver)
         {
             _stash = stash;
             _implantSaver = equipedImplantSaver;
         }
-        
+
         protected override AttackImplant[] GetImplants()
         {
             AttackImplant upAttackImplant = GetImplant(AttackType.UpAttack, _upAttackImplants);
             AttackImplant downAttackImplant = GetImplant(AttackType.DownAttack, _downAttackImplants);
             AttackImplant superAttackImplant = GetImplant(AttackType.Super, _superAttackImplants);
-            
-            return new[] { upAttackImplant, downAttackImplant, superAttackImplant};
+
+            return new[] { upAttackImplant, downAttackImplant, superAttackImplant };
         }
 
         protected override ImplantPlaceHolderStash GetStash()
