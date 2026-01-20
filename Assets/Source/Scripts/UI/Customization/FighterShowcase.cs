@@ -11,7 +11,7 @@ public class FighterShowcase : MonoBehaviour
 {
     private const int GuideSkinIndex = 1;
     
-    private readonly Subject<SkinView> _skinChanged = new();
+    private readonly Subject<SkinView> _skinChanged = new ();
 
     [SerializeField] private SkinView[] _skinViews;
     [SerializeField] private Transform _spawnPoint;

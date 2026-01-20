@@ -33,7 +33,8 @@ namespace Reflex
 {
     public class LevelInstaller : MonoBehaviour, IInstaller
     {
-        [Header("Player")] [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
+        [Header("Player")] 
+        [SerializeField] private PlayerTransitionFactory _playerTransitionFactory;
         [SerializeField] private PlayerAttackFactory _playerAttackFactory;
         [SerializeField] private PlayerHitFactory _playerHitFactory;
         [SerializeField] private DirectionValidationFactory _playerDirectionValidationFactory;
@@ -47,7 +48,8 @@ namespace Reflex
         [SerializeField] private PlayerHitParticles _playerHitParticles;
         [SerializeField] private AnimationStateMapper _animationStateMapper;
 
-        [Header("Bot")] [SerializeField] private BotTransitionFactory _botTransitionFactory;
+        [Header("Bot")]
+        [SerializeField] private BotTransitionFactory _botTransitionFactory;
         [SerializeField] private BotAttackFactory _botAttackFactory;
         [SerializeField] private BotHitFactory _botHitFactory;
         [SerializeField] private BotInputTransitionFactory _botInputTransitionFactory;
