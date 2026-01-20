@@ -26,7 +26,10 @@ namespace UI.LevelEnd
             _subscription = machine.Value
                 .Delay(TimeSpan.FromSeconds(_appearDelay))
                 .Where(value => value is DeathState)
+                .Do(_ => gameObject.SetActive(true))
                 .Subscribe(_ => Appear());
+            
+            gameObject.SetActive(false);
         }
 
         protected virtual void Appear()
