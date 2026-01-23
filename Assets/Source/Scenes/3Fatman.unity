@@ -336,6 +336,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4dc7b0558205a468d771bb10d97208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2015407903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5481147647100045484, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+  m_PrefabInstance: {fileID: 2083868741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2015407904 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3059976576902114220, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+  m_PrefabInstance: {fileID: 2083868741}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e5992881064f5dbecf6d67134dc7a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2015407905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015407903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733d7c2924a74f1c9e0597634c0f9818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitButton: {fileID: 2015407904}
+  _scaleAnimation: {fileID: 2083868742}
 --- !u!114 &2030913206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 469982315641386245, guid: f23b89d472af2b84fad50367cc16c4f2, type: 3}
@@ -646,10 +676,14 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9015583847390209338, guid: 4844d96c36c2336488938a4409e91247, type: 3}
     - {fileID: 2269414442721507916, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+    - {fileID: 2843746563184754677, guid: 4844d96c36c2336488938a4409e91247, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6984473190575738089, guid: 4844d96c36c2336488938a4409e91247, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5481147647100045484, guid: 4844d96c36c2336488938a4409e91247, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2015407905}
     - targetCorrespondingSourceObject: {fileID: 6485451137702933212, guid: 4844d96c36c2336488938a4409e91247, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2083868745}
