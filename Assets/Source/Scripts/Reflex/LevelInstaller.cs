@@ -62,26 +62,28 @@ namespace Reflex
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
+            Hasher hasher = new ();
+            
             if (YG2.saves.Implants.Count == 0)
             {
-                _defaultSavesInstaller.Install();
+                _defaultSavesInstaller.Install(hasher);
             }
 
             AnimationFactory animationFactory = new ();
 
             InstallBot(animationFactory, containerBuilder);
-            InstallPlayer(animationFactory, containerBuilder);
+            InstallPlayer(animationFactory, hasher, containerBuilder);
             InstallSaves(containerBuilder);
         }
 
-        private void InstallPlayer(AnimationFactory animationFactory, ContainerBuilder builder)
+        private void InstallPlayer(AnimationFactory animationFactory, Hasher hasher, ContainerBuilder builder)
         {
-            Fighter player = _fighterSpawner.Spawn();
+            Fighter player = _fighterSpawner.Spawn(hasher);
             State[] states = new PlayerStateFactory().Produce();
             PlayerStateMachine playerStateMachine = new (states);
             PlayerConditionBuilder conditionBuilder = new ();
             PlayerHealth health = new (YG2.saves.HealthStat);
-            EquipedImplantSaver equipedImplantSaver = new (new Hasher<ImplantView>());
+            EquipedImplantSaver equipedImplantSaver = new (hasher);
 
             player.Initialize();
             _playerHitFactory.Initialize(player.HitColliderStash, playerStateMachine);

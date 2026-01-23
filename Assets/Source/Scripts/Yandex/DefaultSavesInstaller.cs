@@ -13,12 +13,11 @@ namespace YG
         [SerializeField] private ImplantView _defaultSuperAttackImplant;
         [SerializeField] private Fighter _defaultFighter;
         
-        public void Install()
+        public void Install(Hasher hasher)
         {
-            Hasher<ImplantView> hasher = new ();
             ImplantSaver implantSaver = new (hasher);
             EquipedImplantSaver equipedImplantSaver = new (hasher);
-            SkinSaver skinSaver = new (new Hasher<Fighter>());
+            SkinSaver skinSaver = new (hasher);
             
             equipedImplantSaver.Set(AttackType.UpAttack, _defaultUpAttackImplant);
             equipedImplantSaver.Set(AttackType.DownAttack, _defaultDownAttackImplant);

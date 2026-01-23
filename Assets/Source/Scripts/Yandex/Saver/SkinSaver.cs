@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using CharacterSystem;
 using Extensions;
-using Interface;
 
 namespace YG.Saver
 {
-    public class SkinSaver : ISaver
+    public class SkinSaver : EquipmentSaver
     {
-        private readonly List<string> _fighters;
-        private readonly Hasher<Fighter> _hasher;
+        private readonly List<int> _fighters;
         
-        private string _settedFighter;
+        private int _settedFighter;
 
-        public SkinSaver(Hasher<Fighter> hasher)
+        public SkinSaver(Hasher hasher) 
+            : base(hasher)
         {
-            _fighters = new List<string>(YG2.saves.Fighters);
-            _hasher = hasher;
+            _fighters = new List<int>(YG2.saves.Fighters);
             _settedFighter = YG2.saves.SettedFighter;
+        }
+
+        public override void Save()
+        {
+            YG2.saves.SettedFighter = _settedFighter;
+            YG2.saves.Fighters = _fighters;
         }
 
         public void Add(Fighter fighter)
         {
-            string hash = GetHash(fighter);
+            int hash = GetHash(fighter.name);
 
             if (_fighters.Contains(hash))
             {
@@ -34,28 +38,17 @@ namespace YG.Saver
 
         public bool Contains(Fighter fighter)
         {
-            return _fighters.Contains(GetHash(fighter));
+            return _fighters.Contains(GetHash(fighter.name));
         }
 
         public bool IsSetted(Fighter fighter)
         {
-            return _settedFighter == GetHash(fighter);
+            return _settedFighter == GetHash(fighter.name);
         }
         
         public void Set(Fighter fighter)
         {
-            _settedFighter = GetHash(fighter);
-        }
-
-        public void Save()
-        {
-            YG2.saves.SettedFighter = _settedFighter;
-            YG2.saves.Fighters = _fighters;
-        }
-
-        private string GetHash(Fighter fighter)
-        {
-            return _hasher.GetHash(fighter, fighter.name);
+            _settedFighter = GetHash(fighter.name);
         }
     }
 }

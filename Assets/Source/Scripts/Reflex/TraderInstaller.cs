@@ -3,7 +3,6 @@ using Extensions;
 using Interface;
 using Reflex.Core;
 using UI.Info;
-using UI.Store;
 using UnityEngine;
 using YG;
 using YG.Saver;
@@ -19,7 +18,7 @@ namespace Reflex
         {
             Wallet wallet = new (YG2.saves.Money);
             WalletSaver walletSaver = new (wallet);
-            ImplantSaver implantSaver = new (new Hasher<ImplantView>());
+            ImplantSaver implantSaver = new (new Hasher());
             
             _progressSaver.Add(walletSaver);
             _progressSaver.Add(implantSaver);

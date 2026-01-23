@@ -7,7 +7,6 @@ using UI.Buttons;
 using UI.Customization;
 using UI.Info;
 using UI.Panel;
-using UI.Store;
 using UI.Switchers;
 using UnityEngine;
 using YG;
@@ -24,7 +23,7 @@ namespace Reflex
         [SerializeField] private EquipmentPanelSwitcher _panelSwitcher;
         [SerializeField] private EquipedImplant[] _playerEquipments;
 
-        private Hasher<ImplantView> _implantHasher;
+        private Hasher _implantHasher;
         
         private void Awake()
         {
@@ -35,12 +34,12 @@ namespace Reflex
 
         public void InstallBindings(ContainerBuilder containerBuilder)
         {
-            _implantHasher = new Hasher<ImplantView>();
+            _implantHasher = new Hasher();
             
             Wallet wallet = new (YG2.saves.Money);
             WalletSaver walletSaver = new (wallet);
             EquipedImplantSaver equipedImplantSaver = new (_implantHasher);
-            SkinSaver skinSaver = new (new Hasher<Fighter>());
+            SkinSaver skinSaver = new (_implantHasher);
             
             _progressSaver.Add(walletSaver);
             _progressSaver.Add(skinSaver);

@@ -1,28 +1,25 @@
 ﻿using System.Collections.Generic;
 using Extensions;
-using Interface;
 using UI.Store;
 
 namespace YG.Saver
 {
-    public class EquipedImplantSaver : ISaver
+    public class EquipedImplantSaver : EquipmentSaver
     {
-        private readonly Dictionary<AttackType, string> _implants;
-        private readonly Hasher<ImplantView> _hasher;
+        private readonly Dictionary<AttackType, int> _implants;
         
-        public EquipedImplantSaver(Hasher<ImplantView> hasher)
+        public EquipedImplantSaver(Hasher hasher)
+            : base(hasher)
         {
-            _implants = new Dictionary<AttackType, string>
+            _implants = new Dictionary<AttackType, int>
             {
                 { AttackType.UpAttack, YG2.saves.UpAttackImplant },
                 { AttackType.DownAttack, YG2.saves.DownAttackImplant },
                 { AttackType.Super, YG2.saves.SuperAttackImplant },
             };
-
-            _hasher = hasher;
         }
 
-        public void Save()
+        public override void Save()
         {
             YG2.saves.UpAttackImplant = _implants[AttackType.UpAttack];
             YG2.saves.DownAttackImplant = _implants[AttackType.DownAttack];
@@ -33,14 +30,14 @@ namespace YG.Saver
         {
             ValidateDictionary(attackType);
             
-            _implants[attackType] = GetHash(implantView);
+            _implants[attackType] = GetHash(implantView.Name);
         }
 
         public bool IsSetted(AttackType attackType, ImplantView implantView)
         {
             ValidateDictionary(attackType);
 
-            return _implants[attackType] == GetHash(implantView);
+            return _implants[attackType] == GetHash(implantView.Name);
         }
 
         private void ValidateDictionary(AttackType attackType)
@@ -49,11 +46,6 @@ namespace YG.Saver
             {
                 throw new KeyNotFoundException(nameof(attackType));
             }
-        }
-
-        private string GetHash(ImplantView implantView)
-        {
-            return _hasher.GetHash(implantView, implantView.Name);
         }
     }
 }

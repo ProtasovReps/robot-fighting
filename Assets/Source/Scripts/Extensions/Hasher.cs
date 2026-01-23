@@ -5,15 +5,15 @@ using System.Text;
 
 namespace Extensions
 {
-    public class Hasher<T> : IDisposable
+    public class Hasher : IDisposable
     {
         private readonly SHA256 _encoder;
-        private readonly Dictionary<T, string> _hashedData;
+        private readonly Dictionary<string, int> _hashedData;
         
         public Hasher()
         {
             _encoder = SHA256.Create();
-            _hashedData = new Dictionary<T, string>();
+            _hashedData = new Dictionary<string, int>();
         }
         
         public void Dispose()
@@ -21,11 +21,11 @@ namespace Extensions
             _encoder?.Dispose();
         }
         
-        public string GetHash(T hashObject, string data)
+        public int GetHash(string data)
         {
-            if (_hashedData.ContainsKey(hashObject))
+            if (_hashedData.ContainsKey(data))
             {
-                return _hashedData[hashObject];
+                return _hashedData[data];
             }
 
             if (string.IsNullOrEmpty(data))
@@ -35,9 +35,9 @@ namespace Extensions
 
             byte[] bytes = Encoding.UTF8.GetBytes(data);
             byte[] hash = _encoder.ComputeHash(bytes);
-            string formatedHash = Convert.ToBase64String(hash);
+            int formatedHash = BitConverter.ToInt32(hash, 0);
             
-            _hashedData.Add(hashObject, formatedHash);
+            _hashedData.Add(data, formatedHash);
             return formatedHash;
         }
     }

@@ -10,9 +10,9 @@ namespace CharacterSystem
         [SerializeField] private Transform _spawnPoint;
         [SerializeField] private Fighter[] _fighterSkins;
         
-        public Fighter Spawn()
+        public Fighter Spawn(Hasher hasher)
         {
-            SkinSaver skinSaver = new SkinSaver(new Hasher<Fighter>());
+            SkinSaver skinSaver = new SkinSaver(hasher);
             Fighter settedSkin = null;
 
             for (int i = 0; i < _fighterSkins.Length; i++)
