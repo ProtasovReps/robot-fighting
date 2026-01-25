@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
@@ -23,9 +24,9 @@ namespace Extensions
         
         public int GetHash(string data)
         {
-            if (_hashedData.ContainsKey(data))
+            if (_hashedData.TryGetValue(data, out int memorizedHash))
             {
-                return _hashedData[data];
+                return memorizedHash;
             }
 
             if (string.IsNullOrEmpty(data))
@@ -35,7 +36,7 @@ namespace Extensions
 
             byte[] bytes = Encoding.UTF8.GetBytes(data);
             byte[] hash = _encoder.ComputeHash(bytes);
-            int formatedHash = BitConverter.ToInt32(hash, 0);
+            int formatedHash = BinaryPrimitives.ReadInt32LittleEndian(hash);
             
             _hashedData.Add(data, formatedHash);
             return formatedHash;
